@@ -1,0 +1,49 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import ShopStatus from '~/components/widgets/ShopStatus.astro';
+
+const metadata = {
+  title: 'Contact',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Title -->
+  <HeroText tagline="Me contacter" />
+
+  <!-- Contact cards -->
+  <Features2
+    items={[
+      {
+        title: 'Par téléphone',
+        description: '(+33) 06 81 30 85 58',
+        icon: 'tabler:phone',
+        callToAction: {
+          text: 'Téléphoner',
+          href: 'tel:+33681308558',
+          variant: 'primary',
+        },
+      },
+      {
+        title: 'Adresse',
+        description: '23 Hautefeuille, 77510 Sablonnières',
+        icon: 'tabler:map-pin',
+        callToAction: {
+          text: "S'y rendre",
+          href: 'lien maps',
+          variant: 'primary',
+        },
+      },
+      {
+        title: "Horaires d'ouverture",
+        description: 'Du mardi au samedi, de 9h à 18h',
+        icon: 'tabler:calendar',
+        slotContent: {
+          Component: ShopStatus,
+        }
+      },
+    ]}
+  />
+</Layout>

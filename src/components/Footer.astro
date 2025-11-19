@@ -1,0 +1,68 @@
+---
+import { SITE } from 'astrowind:config';
+import { getHomePermalink } from '~/utils/permalinks';
+import logo from '~/assets/images/logo.png';
+import ShopStatus from '~/components/widgets/ShopStatus.astro';
+---
+
+<footer class="relative border-t border-gray-200">
+  <div
+    class="relative max-w-7xl mx-auto px-4 sm:px-6 intersect-once intersect-quarter intersect-no-queue motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+  >
+    <div class="grid grid-cols-12 gap-6 py-8 md:py-12">
+      <!-- Logo & credits -->
+      <div class="col-span-12 lg:col-span-4">
+        <div class="mb-2">
+          <a class="inline-block font-bold text-xl" href={getHomePermalink()}>
+            <img src={logo.src} alt={SITE.name} class="h-12 w-auto" />
+          </a>
+        </div>
+        <span class="text-muted text-sm">© {new Date().getFullYear()} {SITE?.name}</span>
+      </div>
+
+      <!-- Sections -->
+      <div class="col-span-12 lg:col-span-8 flex flex-col md:flex-row justify-between gap-6">
+        <!-- Adresse -->
+        <div>
+          <div class="font-medium mb-2">Adresse & Horaires</div>
+          <ul class="text-sm flex flex-col gap-2">
+            <li>
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=Atelier+d'Ailes"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:underline"
+              >
+                23 Hautefeuille, 77510 Sablonnières
+              </a>
+            </li>
+            <li>Du mardi au samedi</li>
+            <li>De 9h à 18h</li>
+            <li><ShopStatus /></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <div class="font-medium mb-2">Contact</div>
+          <ul class="text-sm flex flex-col gap-2">
+            <li>Christophe GODARD</li>
+            <li><a href="tel:+33681308558" class="hover:underline">(+33) 06 81 30 85 58</a></li>
+            <li><a href="/legal" class="hover:underline">Mentions légales</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <div class="font-medium mb-2">Services</div>
+          <ul class="text-sm flex flex-col gap-2">
+            <li><a href="/about" class="hover:underline">Réparation de parapentes</a></li>
+            <li><a href="/about" class="hover:underline">Contrôle et entretien</a></li>
+            <li><a href="/about" class="hover:underline">Pliage de parachute de secours</a></li>
+            <li><a href="/advices" class="hover:underline">Conseils</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
