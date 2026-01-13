@@ -10,7 +10,7 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base text-default leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 cursor-pointer;
+    @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base text-default leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:outline-none focus:ring-primary/50 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 cursor-pointer;
   }
 
   .btn-primary {
@@ -24,6 +24,10 @@
   .btn-tertiary {
     @apply btn border-none shadow-none text-muted hover:text-gray-900;
   }
+}
+
+a:not(.btn):focus {
+  @apply outline-primary;
 }
 
 #header.scroll > div:first-child {

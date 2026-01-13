@@ -39,16 +39,21 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
       >
         {
           headerData.links.map(({ text, href }) => (
-            <li>
-                <a
-                  class:list={[
-                    'hover:text-link mx-2 md:mx-0 px-4 py-3 flex items-center whitespace-nowrap',
-                    { 'bg-primary/10 rounded-lg md:rounded-none text-primary font-semibold md:bg-transparent md:font-semibold md:border-b-2 md:border-primary': href === currentPath },
-                  ]}
-                  href={href}
-                >
-                  {text}
-                </a>
+            <li
+              class:list={[
+                'mx-2 md:mx-0 px-4 py-3 rounded-lg md:rounded-none transition-colors duration-200',
+                {
+                  'bg-primary/10 text-primary font-semibold md:bg-transparent md:border-b-2 md:border-primary':
+                    href === currentPath,
+                },
+              ]}
+            >
+              <a
+                class="hover:text-link flex items-center whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-white transition-colors duration-200"
+                href={href}
+              >
+                {text}
+              </a>
             </li>
           ))
         }
