@@ -11,7 +11,7 @@ metadata:
   title:
     default: "Atelier d'Ailes"
     template: "%s — Atelier d'Ailes"
-  description: "Atelier de révision et de réparation de parapentes et de matériel de vol libre, basé en Seine et Marne (77)."
+  description: 'Atelier de révision et de réparation de parapentes et de matériel de vol libre, basé en Seine et Marne (77).'
   robots:
     index: true
     follow: true

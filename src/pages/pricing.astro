@@ -9,52 +9,52 @@ const metadata = {
 };
 
 const inspectionDetails = [
-  { title: "Inspection de porosité", price: "40" },
-  { title: "Inspection géométrique du suspentage (tarif selon correction)", price: "40" },
-  { title: "Inspection visuelle de la voile", price: "100" },
-  { title: "Inspection de la résistance tissu", price: "100" },
+  { title: 'Inspection de porosité', price: '40' },
+  { title: 'Inspection géométrique du suspentage (tarif selon correction)', price: '40' },
+  { title: 'Inspection visuelle de la voile', price: '100' },
+  { title: 'Inspection de la résistance tissu', price: '100' },
   {
-    title: "Inspection de résistance suspente",
+    title: 'Inspection de résistance suspente',
     children: [
-      { 
-        title: "Suspente gainée", 
+      {
+        title: 'Suspente gainée',
         children: [
-          { title: "x1", price: "20" },
-          { title: "x2", price: "40" },
-          { title: "x3", price: "60" },
-        ]
+          { title: 'x1', price: '20' },
+          { title: 'x2', price: '40' },
+          { title: 'x3', price: '60' },
+        ],
       },
       {
-        title: "Suspente non gainée",
+        title: 'Suspente non gainée',
         children: [
-          { title: "x1", price: "25" },
-          { title: "x2", price: "50" },
-          { title: "x3", price: "75" },
-        ]
+          { title: 'x1', price: '25' },
+          { title: 'x2', price: '50' },
+          { title: 'x3', price: '75' },
+        ],
       },
     ],
   },
 ];
 
 const parachuteFoldingPrices = [
-  { title: "Monoplace sans sellette", price: "50" },
-  { title: "Monoplace avec installation dans la sellette ou container", price: "55" },
-  { title: "Biplace sans sellette", price: "55" },
-  { title: "Biplace avec installation dans la sellette", price: "60" },
-  { title: "Rogallo", price: "100" },
+  { title: 'Monoplace sans sellette', price: '50' },
+  { title: 'Monoplace avec installation dans la sellette ou container', price: '55' },
+  { title: 'Biplace sans sellette', price: '55' },
+  { title: 'Biplace avec installation dans la sellette', price: '60' },
+  { title: 'Rogallo', price: '100' },
 ];
 
 const repairPrices = [
-  { title: "Tarif horaire couture", price: "50" },
-  { title: "Changement de panneau (intrados ou extrados)", price: "quote" },
-  { title: "Changement de profil", price: "quote" },
-  { title: "Pièce tissu en plein", price: "quote" },
-  { title: "Pièce tissu simple", price: "quote" },
-  { title: "Patch autocollant", price: "quote" },
-  { title: "Suspente gainée posée", price: "17" },
-  { title: "Suspente gainée non posée", price: "13" },
-  { title: "Suspente épissurée posée", price: "25" },
-  { title: "Suspente épissurée non posée", price: "20" },
+  { title: 'Tarif horaire couture', price: '50' },
+  { title: 'Changement de panneau (intrados ou extrados)', price: 'quote' },
+  { title: 'Changement de profil', price: 'quote' },
+  { title: 'Pièce tissu en plein', price: 'quote' },
+  { title: 'Pièce tissu simple', price: 'quote' },
+  { title: 'Patch autocollant', price: 'quote' },
+  { title: 'Suspente gainée posée', price: '17' },
+  { title: 'Suspente gainée non posée', price: '13' },
+  { title: 'Suspente épissurée posée', price: '25' },
+  { title: 'Suspente épissurée non posée', price: '20' },
 ];
 ---
 
@@ -72,10 +72,10 @@ const repairPrices = [
         subtitle: 'Pour parapente et paramoteur',
         price: '50 à 100',
         items: [
-          { description: 'Etiam in libero, et volutpat', },
-          { description: 'Aenean ac nunc dolor tristique', },
-          { description: 'Cras scelerisque accumsan lib', },
-          { description: 'In hac habitasse', },
+          { description: 'Etiam in libero, et volutpat' },
+          { description: 'Aenean ac nunc dolor tristique' },
+          { description: 'Cras scelerisque accumsan lib' },
+          { description: 'In hac habitasse' },
         ],
       },
       {
@@ -83,10 +83,10 @@ const repairPrices = [
         subtitle: 'Pour voile de parapente et paramoteur',
         price: 180,
         items: [
-          { description: 'Etiam in libero, et volutpat', },
-          { description: 'Aenean ac nunc dolor tristique', },
-          { description: 'Cras scelerisque accumsan lib', },
-          { description: 'In hac habitasse', },
+          { description: 'Etiam in libero, et volutpat' },
+          { description: 'Aenean ac nunc dolor tristique' },
+          { description: 'Cras scelerisque accumsan lib' },
+          { description: 'In hac habitasse' },
         ],
       },
       {
@@ -94,10 +94,10 @@ const repairPrices = [
         subtitle: 'Pour voile de parapente et paramoteur',
         price: 195,
         items: [
-          { description: 'Etiam in libero, et volutpat', },
-          { description: 'Aenean ac nunc dolor tristique', },
-          { description: 'Cras scelerisque accumsan lib', },
-          { description: 'In hac habitasse', },
+          { description: 'Etiam in libero, et volutpat' },
+          { description: 'Aenean ac nunc dolor tristique' },
+          { description: 'Cras scelerisque accumsan lib' },
+          { description: 'In hac habitasse' },
         ],
       },
     ]}
@@ -107,5 +107,4 @@ const repairPrices = [
   <PriceTable title="Inspections au détail" items={inspectionDetails} />
   <PriceTable title="Pliage de parachute de secours" items={parachuteFoldingPrices} />
   <PriceTable title="Réparation" items={repairPrices} />
-
 </Layout>

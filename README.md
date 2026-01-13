@@ -57,6 +57,7 @@ Le serveur de développement sera accessible sur `http://localhost:4321`
 ## ⚙️ Configuration
 
 La configuration principale se trouve dans `src/config.yaml` :
+
 - Informations du site (nom, URL)
 - Métadonnées SEO
 - Configuration du blog
