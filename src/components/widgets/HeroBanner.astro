@@ -1,6 +1,7 @@
 ---
 import type { CallToAction } from '~/types';
 import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 
 interface Props {
   title: string;
@@ -40,7 +41,7 @@ const { title, subtitle, image, actions = [] } = Astro.props as Props;
           {title}
         </h1>
 
-        {subtitle && <p set:html={subtitle} class="mt-6 text-base sm:text-lg text-white/90"></p>}
+        {subtitle && <p set:html={subtitle} class="mt-6 text-base sm:text-lg text-white/90" />}
 
         {
           actions.length > 0 && (
