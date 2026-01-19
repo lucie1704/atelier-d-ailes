@@ -12,7 +12,14 @@ import { CREATION_DATE } from '../constants/shop';
 
 const metadata = {
   title: "Atelier d'Ailes — Contrôle, révision et réparation d'ailes de parapente et paramoteur.",
+  description:
+    "Révision, réparation et entretien de vos ailes de parapente et paramoteur. Plus de 30 ans d'expérience. Atelier certifié ParachecK® en Seine-et-Marne.",
   ignoreTitleTemplate: true,
+  canonical: 'https://atelierdailes.fr',
+  openGraph: {
+    type: 'website',
+    locale: 'fr_FR',
+  },
 };
 
 const yearsSinceCreation = (() => {
@@ -33,6 +40,7 @@ const yearsSinceCreation = (() => {
 
 <Layout metadata={metadata}>
   <HeroBanner
+    id="atelier-banner"
     title="Atelier d’Ailes"
     subtitle={`
         Contrôle, révision et réparation d'ailes de parapente et paramoteur.<br />
@@ -55,6 +63,7 @@ const yearsSinceCreation = (() => {
   />
 
   <Features2
+    id="services"
     title="Les prestations de l’atelier"
     subtitle="Un accompagnement complet pour l’entretien, la réparation et la sécurité de vos ailes de parapente et paramoteur."
     items={[
@@ -84,7 +93,7 @@ const yearsSinceCreation = (() => {
   </Features2>
 
   <Content
-    id="about"
+    id="christophe-godard"
     columns={2}
     isReversed
     image={{
@@ -109,7 +118,7 @@ const yearsSinceCreation = (() => {
   </Content>
 
   <Steps
-    id="parcours"
+    id="experience"
     title="Un parcours au service de vos ailes"
     items={[
       {
@@ -137,17 +146,18 @@ const yearsSinceCreation = (() => {
   </Steps>
 
   <Content
+    id="paracheck"
     items={[
       {
         title: 'Révision Périodique ParachecK®',
         description:
-          "La Révision Périodique ParachecK® est le contrôle le plus complet pour évaluer l'état réel de votre aile : porosité et résistance du tissu, résistance des suspentes, contrôle du calage, inspection visuelle approfondie. Un rapport détaillé vous est remis, établi selon le cahier des charges de la charte.",
+          "La <a href='https://parapente.ffvl.fr/revision-voiles' target='_blank' rel='noopener noreferrer' class='text-primary hover:underline'>Révision Périodique ParachecK®</a>  est le contrôle le plus complet pour évaluer l'état réel de votre aile : porosité et résistance du tissu, résistance des suspentes, contrôle du calage, inspection visuelle approfondie. Un rapport détaillé vous est remis, établi selon le cahier des charges de la charte.",
         icon: 'tabler:certificate',
       },
       {
         title: 'Normes et sécurité',
         description:
-          "Seule cette révision périodique, exigée par la norme EN 926-2, vous informe avec certitude de la capacité de votre aile à voler en sécurité à un instant donné. Elle est également recommandée lors de l'achat ou de la vente d'une aile d'occasion.",
+          "Seule cette révision périodique, exigée par la norme <a href='https://parapente.ffvl.fr/sites/parapente.ffvl.fr/files/Norme%20CEN%20-%20pr%C3%A9sentation%20EN%20926-2%20cF06%20modif%20AD_0.pdf' target='_blank' rel='noopener noreferrer' class='text-primary hover:underline'>EN 926-2</a>, vous informe avec certitude de la capacité de votre aile à voler en sécurité à un instant donné. Elle est également recommandée lors de l'achat ou de la vente d'une aile d'occasion.",
         icon: 'tabler:shield-check',
       },
     ]}
@@ -161,13 +171,23 @@ const yearsSinceCreation = (() => {
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Certifié ParachecK®</h3>
       <p class="text-lg text-muted dark:text-slate-400 mt-2">
-        L'atelier est adhérent à la charte ParachecK® de la FFVL, garantissant des révisions conformes aux standards
-        officiels.
+        L'atelier est adhérent à la <a
+          href="https://parapente.ffvl.fr/sites/parapente.ffvl.fr/files/Charte%20FFVL%20ParachecK%20V2_03.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-primary hover:underline">charte ParachecK®</a
+        > de la <a
+          href="https://federation.ffvl.fr/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-primary hover:underline">FFVL</a
+        >, garantissant des révisions conformes aux standards officiels.
       </p>
     </Fragment>
   </Content>
 
   <Testimonials
+    id="reviews"
     title="Le travail de l’atelier selon les pilotes"
     testimonials={[
       {

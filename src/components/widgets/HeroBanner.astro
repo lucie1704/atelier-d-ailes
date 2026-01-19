@@ -4,19 +4,23 @@ import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
+  id?: string,
   title: string;
   subtitle?: string;
   image?: {
     src: ImageMetadata;
     alt: string;
   };
-  actions?: CallToAction[]; // { text, href, variant? }
+  actions?: CallToAction[];
 }
 
-const { title, subtitle, image, actions = [] } = Astro.props as Props;
+const { id, title, subtitle, image, actions = [] } = Astro.props as Props;
 ---
 
-<section class="relative w-full h-[65vh] min-h-[600px]">
+<section
+  {...(id ? { id } : {})}
+  class="relative w-full h-[65vh] min-h-[600px]"
+>
   {
     image && (
       <Image
