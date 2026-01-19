@@ -28,6 +28,10 @@
   .btn-hero-banner {
     @apply btn border-white text-white bg-white/10 backdrop-blur-sm hover:bg-white hover:text-gray-900 hover:border-white focus:ring-white/40;
   }
+
+  .external-link {
+    @apply text-secondary font-semibold hover:underline hover:text-primary;
+  }
 }
 
 a:not(.btn):focus {
