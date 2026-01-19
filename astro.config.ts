@@ -32,6 +32,7 @@ export default defineConfig({
     mdx(),
     icon({
       include: {
+        lucide: ['*'],
         tabler: ['*'],
         'flat-color-icons': [
           'template',
