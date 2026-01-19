@@ -3,6 +3,7 @@ import { SITE } from 'astrowind:config';
 import { getHomePermalink } from '~/utils/permalinks';
 import logo from '~/assets/images/logo.png';
 import ShopStatus from '~/components/widgets/ShopStatus.astro';
+import { Image } from 'astro:assets';
 ---
 
 <footer class="relative border-t border-gray-200">
@@ -14,7 +15,12 @@ import ShopStatus from '~/components/widgets/ShopStatus.astro';
       <div class="col-span-12 lg:col-span-4">
         <div class="mb-2">
           <a class="inline-block font-bold text-xl" href={getHomePermalink()}>
-            <img src={logo.src} alt={SITE.name} class="h-12 w-auto" />
+            <Image 
+              src={logo} 
+              alt={SITE.name} 
+              class="h-12 w-auto" 
+              loading="lazy"
+            />
           </a>
         </div>
         <span class="text-muted text-sm">© {new Date().getFullYear()} {SITE?.name}</span>

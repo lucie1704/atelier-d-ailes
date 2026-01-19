@@ -1,7 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import HeroBanner from '~/components/widgets/HeroBanner.astro';
-import Image from '~/components/common/Image.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
@@ -10,7 +9,6 @@ import heroImage from '~/assets/images/atelier-hero-image.png';
 import paracheckImage from '~/assets/images/paracheck.png';
 import christopheImage from '~/assets/images/christophe-image.png';
 import { CREATION_DATE } from '../constants/shop';
-import Image from '../components/common/Image.astro';
 
 const metadata = {
   title: "Atelier d'Ailes — Contrôle, révision et réparation d'ailes de parapente et paramoteur.",
@@ -92,7 +90,6 @@ const yearsSinceCreation = (() => {
     image={{
       src: christopheImage,
       alt: 'Christophe Godard profil',
-      loading: 'eager',
     }}
   >
     <Fragment slot="content">
@@ -104,7 +101,8 @@ const yearsSinceCreation = (() => {
         <p>
           « Je contrôle des ailes depuis plus de 30 ans. Anciennement basé à Paris dans la boutique de VLD (Vol Libre
           Diffusion), mon atelier est désormais installé en Seine-et-Marne depuis {yearsSinceCreation} ans où je mets mon
-          expérience à votre service. Passionné par tout ce qui vole, j’entretiens vos ailes de parapente et paramoteur. »
+          expérience à votre service. Passionné par tout ce qui vole, j’entretiens vos ailes de parapente et paramoteur.
+          »
         </p>
       </div>
     </Fragment>
@@ -152,13 +150,13 @@ const yearsSinceCreation = (() => {
           "Seule cette révision périodique, exigée par la norme EN 926-2, vous informe avec certitude de la capacité de votre aile à voler en sécurité à un instant donné. Elle est également recommandée lors de l'achat ou de la vente d'une aile d'occasion.",
         icon: 'tabler:shield-check',
       },
-    ]},
+    ]}
+    ,
     image={{
       src: paracheckImage,
-      alt: "Certification ParachecK®",
-      height: 450,
-      layout: 'contained',
-      class: "mt-8"
+      alt: 'Certification ParachecK®',
+      width: 300,
+      class: 'mt-10 object-contain mx-auto',
     }}
   >
     <Fragment slot="content">

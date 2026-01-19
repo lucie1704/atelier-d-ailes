@@ -1,6 +1,6 @@
 ---
 import type { CallToAction } from '~/types';
-import Image from '~/components/common/Image.astro';
+import { Image } from 'astro:assets';
 
 interface Props {
   title: string;
@@ -16,15 +16,18 @@ const { title, subtitle, image, actions = [] } = Astro.props as Props;
 ---
 
 <section class="relative w-full h-[65vh] min-h-[600px]">
-  {image && (
-    <Image
-      src={image.src}
-      alt={image.alt}
-      class="absolute inset-0 h-full w-full object-cover"
-      width={1600}
-      height={900}
-    />
-  )}
+  {
+    image && (
+      <Image
+        src={image.src}
+        alt={image.alt}
+        class="absolute inset-0 h-full w-full object-cover"
+        width={1600}
+        height={900}
+        loading="eager"
+      />
+    )
+  }
 
   {/* Overlay */}
   <div class="absolute inset-0 bg-black/20"></div>
@@ -37,25 +40,19 @@ const { title, subtitle, image, actions = [] } = Astro.props as Props;
           {title}
         </h1>
 
-        {subtitle && (
-          <p 
-            set:html={subtitle} 
-            class="mt-6 text-base sm:text-lg text-white/90">
-          </p>
-        )}
+        {subtitle && <p set:html={subtitle} class="mt-6 text-base sm:text-lg text-white/90"></p>}
 
-        {actions.length > 0 && (
-          <div class="mt-8 flex flex-col sm:flex-row sm:flex-wrap sm:justify-start items-center gap-4 sm:gap-6">
-            {actions.map((action) => (
-              <a
-                href={action.href}
-                class={action.variant ?? 'btn-hero-banner'}
-              >
-                {action.text}
-              </a>
-            ))}
-          </div>
-        )}
+        {
+          actions.length > 0 && (
+            <div class="mt-8 flex flex-col sm:flex-row sm:flex-wrap sm:justify-start items-center gap-4 sm:gap-6">
+              {actions.map((action) => (
+                <a href={action.href} class={action.variant ?? 'btn-hero-banner'}>
+                  {action.text}
+                </a>
+              ))}
+            </div>
+          )
+        }
       </div>
     </div>
   </div>
