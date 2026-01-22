@@ -1,6 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import HeroText from '~/components/widgets/HeroText.astro';
+import Hero from '~/components/widgets/Hero.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import ShopStatus from '~/components/widgets/ShopStatus.astro';
 
@@ -11,7 +11,11 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <!-- Hero Title -->
-  <HeroText tagline="Me contacter" />
+  <Hero
+    tagline="Contact"
+    title="Prendre rendez-vous"
+    subtitle="Pour toute demande de révision, réparation ou conseil"
+  />
 
   <!-- Contact cards -->
   <Features2
@@ -47,5 +51,9 @@ const metadata = {
         },
       },
     ]}
-  />
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
 </Layout>

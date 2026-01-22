@@ -7,9 +7,10 @@ import type { MetaData } from '~/types';
 
 export interface Props {
   metadata?: MetaData;
+  ctaBanner?: boolean;
 }
 
-const { metadata } = Astro.props;
+const { metadata, ctaBanner = false } = Astro.props;
 ---
 
 <Layout metadata={metadata}>
@@ -20,6 +21,6 @@ const { metadata } = Astro.props;
     <slot />
   </main>
   <slot name="footer">
-    <Footer />
+    <Footer ctaBanner={ctaBanner} />
   </slot>
 </Layout>

@@ -1,13 +1,17 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import HeroText from '~/components/widgets/HeroText.astro';
+import Hero from '~/components/widgets/Hero.astro';
 
 const metadata = {
   title: 'Conseils',
 };
 ---
 
-<Layout metadata={metadata}>
+<Layout metadata={metadata} ctaBanner>
   <!-- Hero Title -->
-  <HeroText tagline="Conseils" />
+  <Hero
+    tagline="Conseils"
+    title="Prendre soin de son aile"
+    subtitle="Recommandations pour préserver la sécurité et la longévité de votre matériel"
+  />
 </Layout>

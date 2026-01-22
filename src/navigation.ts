@@ -8,7 +8,7 @@ export const headerData = {
     },
     {
       text: "Les services de l'atelier",
-      href: getPermalink('/about'),
+      href: getPermalink('/services'),
     },
     {
       text: 'Conseils',

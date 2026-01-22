@@ -4,7 +4,31 @@ import { getHomePermalink } from '~/utils/permalinks';
 import logo from '~/assets/images/logo.png';
 import ShopStatus from '~/components/widgets/ShopStatus.astro';
 import { Image } from 'astro:assets';
+import CallToAction from '~/components/CallToAction.astro';
+import ctaBannerImage from '~/assets/images/cta-banner.png';
+
+const { ctaBanner = false } = Astro.props;
 ---
+
+{
+  ctaBanner && (
+    <CallToAction
+      id="cta-services"
+      title="Besoin d'un service pour votre matériel ?"
+      subtitle="L'entretien régulier de votre aile contribue à voler en toute sécurité.<br />Contactez l'atelier pour toute demande."
+      image={{
+        src: ctaBannerImage,
+        alt: 'Atelier – réparation d’ailes',
+      }}
+      actions={[
+        {
+          text: 'Prendre rendez-vous',
+          href: '/contact',
+        },
+      ]}
+    />
+  )
+}
 
 <footer class="relative border-t border-gray-200">
   <div
@@ -57,15 +81,20 @@ import { Image } from 'astro:assets';
         <div>
           <div class="font-medium mb-2">Explorer</div>
           <ul class="text-sm flex flex-col gap-2">
-            <li><a href="/about#repair" class="hover:underline">Réparation de parapente et paramoteur</a></li>
-            <li><a href="/about#maintenance" class="hover:underline">Contrôle et entretien</a></li>
             <li>
-              <a href="/about#reserve-parachute-packing" class="hover:underline">Pliage de parachute de secours</a>
+              <a href="/services#maintenance" class="hover:underline"> Révision périodique </a>
+            </li>
+            <li>
+              <a href="/services#repair" class="hover:underline"> Réparation de votre aile </a>
+            </li>
+            <li>
+              <a href="/services#reserve-parachute-packing" class="hover:underline"> Pliage de parachute de secours </a>
             </li>
             <li><a href="/advices" class="hover:underline">Conseils</a></li>
             <li><a href="/#christophe-godard" class="hover:underline">À propos de Christophe</a></li>
             <li><a href="/#paracheck" class="hover:underline">ParachecK®</a></li>
             <li><a href="/#reviews" class="hover:underline">Avis des pilotes</a></li>
+            <li><a href="/pricing" class="hover:underline">Tarifs</a></li>
           </ul>
         </div>
       </div>

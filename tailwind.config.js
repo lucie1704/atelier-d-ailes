@@ -8,7 +8,7 @@ export default {
     extend: {
       colors: {
         primary: 'rgb(221 104 39)',
-        secondary: 'rgb(190 88 30)',
+        secondary: 'rgb(185,86,29)',
         accent: 'rgb(221 104 39)',
         default: 'rgb(16 16 16)',
         muted: 'rgb(16 16 16 / 0.66)',

@@ -1,0 +1,54 @@
+---
+import type { CallToAction } from '~/types';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  id?: string;
+  title: string;
+  subtitle?: string;
+  image?: {
+    src: ImageMetadata;
+    alt: string;
+  };
+  actions?: CallToAction[];
+}
+
+const { id, title, subtitle, image, actions = [] } = Astro.props as Props;
+---
+
+<section {...id ? { id } : {}} class="relative w-full">
+  {
+    image && (
+      <Image src={image.src} alt={image.alt} class="absolute inset-0 h-full w-full object-cover" loading="eager" />
+    )
+  }
+
+  {/* Overlay */}
+  <div class="absolute inset-0 bg-black/20"></div>
+
+  {/* Content */}
+  <div class="relative z-10 flex h-full items-center py-16">
+    <div class="mx-auto w-full max-w-7xl px-4 md:px-8">
+      <div class="max-w-2xl text-center md:text-left text-white">
+        <h3 class="text-4xl font-bold tracking-tight leading-tight">
+          {title}
+        </h3>
+
+        {subtitle && <p set:html={subtitle} class="mt-6 text-base sm:text-lg text-white/90" />}
+
+        {
+          actions.length > 0 && (
+            <div class="mt-8 flex flex-col sm:flex-row sm:flex-wrap sm:justify-start items-center gap-4 sm:gap-6">
+              {actions.map((action) => (
+                <a href={action.href} class={action.variant ?? 'btn-hero-banner'}>
+                  {action.text}
+                </a>
+              ))}
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,215 @@
+---
+import Hero from '~/components/widgets/Hero.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Content from '~/components/widgets/Content.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import FeaturesImages from '~/components/widgets/FeaturesImages.astro';
+
+// Images
+import maintenanceImage from '~/assets/images/maintenance.jpg';
+import reserveParachutePackingImage from '~/assets/images/reserve-parachute-packing.jpg';
+import repairImage from '~/assets/images/repair.jpg';
+import repairImageExample1 from '~/assets/images/repair-example-1.jpg';
+import repairImageExample2 from '~/assets/images/repair-example-2.jpg';
+import repairImageExample3 from '~/assets/images/repair-example-3.jpg';
+import repairImageExample4 from '~/assets/images/repair-example-4.jpg';
+import repairImageExample5 from '~/assets/images/repair-example-5.jpg';
+import repairImageExample6 from '~/assets/images/repair-example-6.jpg';
+
+const metadata = {
+  title: "Les services de l'atelier - Réparation et entretien parapente",
+};
+---
+
+<Layout metadata={metadata} ctaBanner>
+  <!-- Hero -->
+  <Hero
+    tagline="Les services de l'atelier"
+    title="Révision, réparation et pliage de parachute de secours"
+    subtitle="Gardez votre matériel en parfait état de vol"
+  />
+
+  <!-- Section Révision périodique -->
+  <Content
+    id="maintenance"
+    items={[
+      {
+        title: 'Tous les 2 ans',
+        description:
+          'Révision recommandée tous les 2 ans pour une aile récente et annuellement pour une aile ancienne.',
+        icon: 'lucide:timer-reset',
+      },
+      {
+        title: 'Rapport détaillé',
+        description:
+          "Un rapport complet vous est remis avec toutes les données de contrôle et les préconisations d'entretien.",
+        icon: 'lucide:clipboard-check',
+      },
+    ]}
+    image={{
+      src: maintenanceImage,
+      alt: 'Révision parapente',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-4xl mb-2">Révision périodique</h2>
+      <p class="text-lg text-muted">
+        Inspection complète selon les standards officiels
+        <a
+          href="https://parapente.ffvl.fr/revision-voiles"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="external-link">ParachecK®</a
+        > de la
+        <a href="https://federation.ffvl.fr/" target="_blank" rel="noopener noreferrer" class="external-link">FFVL</a>
+        pour évaluer l'état réel de votre matériel et voler en sécurité.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <Features3
+    title="Contrôles effectués lors de la révision"
+    subtitle="Chaque révision inclut une batterie de tests et mesures pour garantir votre sécurité"
+    columns={3}
+    isBeforeContent={true}
+    classes={{ container: 'mb-10' }}
+    items={[
+      {
+        title: 'Mesures de porosité des tissus',
+        description: "5 mesures en extrados pour vérifier le vieillissement du tissu et sa perméabilité à l'air.",
+        icon: 'tabler:select-all',
+      },
+      {
+        title: 'Tests de résistance des tissus',
+        description: `Contrôle de la résistance mécanique :
+            <ul class="mt-1 list-disc list-inside space-y-1 text-muted ml-6"> 
+              <li>1 mesure en extrados</li>
+              <li>1 mesure en intrados</li>
+              <li>1 mesure sur cloison (profil)</li>
+            </ul>
+          `,
+        icon: 'lucide:shield-check',
+      },
+      {
+        title: 'Tests de résistance suspentes',
+        description: 'Test sur chaque étage de suspentes. Les suspentes testées sont systématiquement changées à neuf.',
+        icon: 'lucide:chart-no-axes-gantt',
+      },
+      {
+        title: 'Mesures dimensionnelles du suspentage',
+        description:
+          "L'ensemble du suspentage est mesuré des élévateurs jusqu'à la voile, freins compris, pour vérifier la géométrie.",
+        icon: 'tabler:ruler-measure',
+      },
+      {
+        title: 'Inspection visuelle et tactile complète',
+        description:
+          "Contrôle minutieux de la voile, élévateurs, maillons, poulies, suspentes, points d'attache et tissus.",
+        icon: 'tabler:eye-check',
+      },
+    ]}
+  />
+
+  <!-- Section Réparation -->
+  <Content
+    id="repair"
+    isReversed
+    image={{
+      src: repairImage,
+      alt: 'Réparation aile de parapente',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-4xl mb-2">Réparation de votre aile</h3>
+      <p class="text-lg text-muted mb-3">
+        Suite à un incident, réparation et remise en ordre de vol de votre aile de parapente ou paramoteur. Types de
+        réparations :
+      </p>
+      <ul class="list-disc list-inside space-y-1 text-muted ml-6">
+        <li>Couture</li>
+        <li>Changement de panneau</li>
+        <li>Changement de profil</li>
+        <li>Pièce tissu en plein</li>
+        <li>Pièce tissu simple</li>
+        <li>Patch autocollant</li>
+        <li>Suspentes gainées ou non</li>
+        <li>Changement de suspentage complet</li>
+      </ul>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <FeaturesImages
+    title="Pièces de tissus en plein (Panneau partiel)"
+    items={[
+      {
+        image: repairImageExample1,
+        alt: 'Réparation avec pièce de tissus en plein (Panneau partiel)',
+      },
+      {
+        image: repairImageExample2,
+        alt: 'Réparation avec pièce de tissus en plein (Panneau partiel)',
+      },
+      {
+        image: repairImageExample3,
+        alt: 'Réparation avec pièce de tissus en plein (Panneau partiel)',
+      },
+    ]}
+  />
+
+  <FeaturesImages
+    title="Pièces de tissus simple"
+    items={[
+      {
+        image: repairImageExample4,
+        alt: 'Réparation avec pièce de tissus simple',
+      },
+      {
+        image: repairImageExample5,
+        alt: 'Réparation avec pièce de tissus simple',
+      },
+      {
+        image: repairImageExample6,
+        alt: 'Réparation avec pièce de tissus simple',
+      },
+    ]}
+  />
+
+  <!-- Section Pliage parachute de secours -->
+  <Content
+    id="reserve-parachute-packing"
+    items={[
+      {
+        title: 'Tous les ans',
+        description:
+          "Il est recommandé d'effectuer le pliage de parachute de secours une fois par an afin d’éviter, entre autres, que les élastiques ne se détériorent ou s’incrustent dans les suspentes, et que les panneaux ne restent collés.",
+        icon: 'lucide:timer-reset',
+      },
+    ]}
+    image={{
+      src: reserveParachutePackingImage,
+      alt: 'Pliage de parachute de secours',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-4xl mb-2">Pliage de parachute de secours</h3>
+      <p class="text-muted">
+        Votre parachute de secours est ventilé, aéré, avec remplacement systématique des élastiques et contrôle visuel
+        pour garantir une utilisation optimale. Il est ensuite replié selon les normes constructeur pour assurer votre
+        sécurité.
+      </p>
+      <p class="text-muted font-semibold mb-4">Pour monoplace, biplace, avec ou sans container</p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+</Layout>

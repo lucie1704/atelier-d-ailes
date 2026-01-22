@@ -1,7 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import HeroText from '~/components/widgets/HeroText.astro';
-import Prices from '~/components/Pricing.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Prices from '~/components/Prices.astro';
 import PriceTable from '~/components/PriceTable.astro';
 
 const metadata = {
@@ -58,14 +58,12 @@ const repairPrices = [
 ];
 ---
 
-<Layout metadata={metadata}>
+<Layout metadata={metadata} ctaBanner>
   <!-- Hero Title -->
-  <HeroText tagline="Tarifs" />
+  <Hero tagline="Tarifs" title="Détail des tarifs par prestation" subtitle="Hors frais de port" />
 
   <!-- Prices card -->
   <Prices
-    title="Tarifs"
-    subtitle="*Hors frais de port"
     prices={[
       {
         title: 'Pliage de parachute de secours',
@@ -101,7 +99,11 @@ const repairPrices = [
         ],
       },
     ]}
-  />
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Prices>
 
   <!-- Prices table -->
   <PriceTable title="Inspections au détail" items={inspectionDetails} />

@@ -37,7 +37,7 @@ const allRows = flattenItems(items);
 ---
 
 <section class="max-w-4xl mx-auto my-16 px-4">
-  <h2 class="text-2xl font-semibold mb-6 text-gray-900">
+  <h2 class="text-4xl font-bold tracking-tighter mb-6 font-heading text-center">
     {title}
   </h2>
 
@@ -59,8 +59,16 @@ const allRows = flattenItems(items);
             return (
               <tr class="hover:bg-gray-50 transition-colors">
                 <td class={`py-3 ${paddingClass} ${fontClass}`}>{item.title}</td>
+
                 <td class="px-4 py-3">
-                  {item.price && (item.price === 'quote' ? <strong>Sur&nbsp;devis</strong> : `${item.price}\u00A0€`)}
+                  {item.price &&
+                    (item.price === 'quote' ? (
+                      <span class="inline-flex items-center rounded-md px-2 py-1 text-base font-semibold max-w-max bg-primary/10 text-primary shadow-[inset_0_0_0_1px_rgb(221_104_39/0.2)]">
+                        Sur devis
+                      </span>
+                    ) : (
+                      `${item.price}\u00A0€`
+                    ))}
                 </td>
               </tr>
             );

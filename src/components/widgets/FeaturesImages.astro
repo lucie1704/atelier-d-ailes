@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Item {
+  image: ImageMetadata;
+  alt: string;
+}
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  items: Item[];
+}
+
+const { title, subtitle, items } = Astro.props;
+---
+
+<section class="my-16 px-4">
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="mb-12 text-center">
+      <h2 class="text-4xl font-bold tracking-tighter mb-4 font-heading text-center">
+        {title}
+      </h2>
+
+      {subtitle && <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">{subtitle}</p>}
+    </div>
+
+    <!-- Grid -->
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        items.map((item) => (
+          <Image
+            src={item.image}
+            alt={item.alt}
+            class="w-full h-auto rounded-xl object-cover shadow-md"
+            loading="lazy"
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
