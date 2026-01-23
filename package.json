@@ -1,8 +1,12 @@
 {
   "name": "atelier-d-ailes",
-  "version": "1.0.0-beta.52",
-  "description": "AstroWind: A free template using Astro 5.0 and Tailwind CSS. Astro starter theme.",
+  "version": "0.0.0",
+  "description": "Contrôle, révision et réparation d'ailes de parapente et paramoteur.",
   "type": "module",
+  "license": "MIT",
+  "author": {
+    "name": "Lucie Godard"
+  },
   "engines": {
     "node": "^18.17.1 || ^20.3.0 || >= 21.0.0"
   },
