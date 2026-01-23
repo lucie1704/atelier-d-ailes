@@ -62,12 +62,7 @@ const allRows = flattenItems(items);
                 <td class={`py-3 ${paddingClass} ${fontClass}`}>{item.title}</td>
 
                 <td class="px-4 py-3">
-                  {item.price &&
-                    (item.price === 'quote' ? (
-                      <Tag>Sur devis</Tag>
-                    ) : (
-                      `${item.price}\u00A0€`
-                    ))}
+                  {item.price && (item.price === 'quote' ? <Tag>Sur devis</Tag> : `${item.price}\u00A0€`)}
                 </td>
               </tr>
             );
