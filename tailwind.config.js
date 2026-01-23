@@ -18,15 +18,6 @@ export default {
         serif: ['Inter Variable', ...defaultTheme.fontFamily.serif],
         heading: ['Inter Variable', ...defaultTheme.fontFamily.sans],
       },
-      animation: {
-        fade: 'fadeInUp 1s both',
-      },
-      keyframes: {
-        fadeInUp: {
-          '0%': { opacity: 0, transform: 'translateY(2rem)' },
-          '100%': { opacity: 1, transform: 'translateY(0)' },
-        },
-      },
     },
   },
   plugins: [

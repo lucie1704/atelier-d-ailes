@@ -1,5 +1,6 @@
 ---
 import { OPEN_DAYS, OPEN_HOUR, CLOSE_HOUR } from '~/constants/shop';
+import Tag from '~/components/ui/Tag.astro'
 
 const isShopOpen = (): boolean => {
   const now = new Date();
@@ -12,13 +13,6 @@ const isShopOpen = (): boolean => {
 const open = isShopOpen();
 ---
 
-<span
-  class={`inline-flex items-center rounded-md px-2 py-1 text-sm font-semibold max-w-max
-    ${
-      open
-        ? 'bg-green-100/20 text-green-800 shadow-[inset_0_0_0_1px_rgb(22_163_74/0.2)]'
-        : 'bg-red-100/20 text-red-800 shadow-[inset_0_0_0_1px_rgb(220_38_38/0.2)]'
-    }`}
->
+<Tag variant={open ? 'success' : 'danger'}>
   {open ? 'Ouvert actuellement' : 'Fermé actuellement'}
-</span>
+</Tag>
