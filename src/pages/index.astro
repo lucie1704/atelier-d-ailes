@@ -7,7 +7,7 @@ import Testimonials from '~/components/widgets/Testimonials.astro';
 import Content from '~/components/widgets/Content.astro';
 import heroImage from '~/assets/images/atelier-hero-image.png';
 import paracheckImage from '~/assets/images/paracheck.png';
-import christopheImage from '~/assets/images/christophe-image.png';
+import christopheImage from '~/assets/images/christophe-profile-1.png';
 import { CREATION_DATE } from '../constants/shop';
 
 const metadata = {
@@ -92,13 +92,15 @@ const yearsSinceCreation = (() => {
     </Fragment>
   </Features2>
 
+  <!-- @TODO: Change to new profile pic when profile picture is done and remove class overload -->
   <Content
     id="christophe-godard"
     columns={2}
     isReversed
     image={{
       src: christopheImage,
-      alt: 'Christophe Godard profil',
+      alt: 'Photo de profil de Christophe Godard',
+      class: 'rounded-full mx-auto bg-gray-500 shadow-lg',
     }}
   >
     <Fragment slot="content">

@@ -25,6 +25,28 @@ const { language, textDirection } = I18N;
     <Metadata {...metadata} />
     <SiteVerification />
     <Analytics />
+
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'LocalBusiness',
+        name: "Atelier d'Ailes",
+        url: 'https://www.atelier-d-ailes.fr',
+        logo: 'https://www.atelier-d-ailes.fr/logo.png',
+        description:
+          'Atelier de révision et de réparation de parapentes et de matériel de vol libre en Seine-et-Marne.',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Sablonnières',
+          addressRegion: 'Île-de-France',
+          postalCode: '77510',
+          addressCountry: 'FR',
+        },
+        hasMap: 'https://maps.app.goo.gl/rmL7RkrNxnhrHjAn6',
+      })}
+    />
   </head>
 
   <body class="antialiased text-default bg-page tracking-tight">

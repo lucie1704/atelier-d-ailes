@@ -1,14 +1,20 @@
 # Atelier d'Ailes
 
-Site web développé avec [Astro](https://astro.build/) et le thème [AstroWind](https://github.com/arthelokyo/astrowind), utilisant [Tailwind CSS](https://tailwindcss.com/) pour le styling.
+Atelier de révision et répération de voiles de parapente et paramoteur basé en Seine-et-Marne. L'Atelier d'Ailes est créé en 2015 et tenu depuis par Christophe GODARD.
+
+Ce site vitrine réalisé pour l'atelier vise à répondre aux exigences suivantes :
+
+- Des informations claires ordonnées
+- Une navigation fluide et rapide autant sur desktop que mobile
+- Une accessibilité irréprochable pour pouvoir être lu et compris de tous
+- Un SEO efficace pour un bon référencement
+- Un projet léger, simple à prendre en main, à maintenir et à déployer
 
 ## 🚀 Technologies
 
-- **Astro 5.0** - Framework web moderne et performant
-- **AstroWind** - Thème Astro avec composants pré-construits
-- **Tailwind CSS** - Framework CSS utility-first
-- **TypeScript** - Typage statique
-- **MDX** - Support Markdown avec composants
+Le site est développé en [Astro](https://astro.build/) car suffisant pour un site static, léger et facile à appréhender
+
+avec l'utilisation du thème [AstroWind](https://github.com/arthelokyo/astrowind) pour ne pas avoir à refaire la roue et partir sur une base et architecture qui couvre un large évential des besoins en termes de composant, thème, ui etc tout en étant customisable et adaptable à nos propres besoins
 
 ## 📦 Installation
 
@@ -20,19 +26,19 @@ npm install
 ## 🛠️ Commandes
 
 ```bash
-# Démarrer le serveur de développement
+# Démarre le serveur de développement sur localhost:4321
 npm run dev
 
-# Construire pour la production
+# Build pour la production dans le /dist
 npm run build
 
-# Prévisualiser le build de production
+# Prévisule le build de production sur localhost:4322
 npm run preview
 
 # Vérifier le code (Astro, ESLint, Prettier)
 npm run check
 
-# Corriger automatiquement les erreurs
+# Corriger automatiquement les erreurs de format/lint
 npm run fix
 ```
 
@@ -60,7 +66,6 @@ La configuration principale se trouve dans `src/config.yaml` :
 
 - Informations du site (nom, URL)
 - Métadonnées SEO
-- Configuration du blog
 - Analytics
 - Thème
 
@@ -68,14 +73,4 @@ Les styles personnalisés sont dans `src/assets/styles/tailwind.css`.
 
 ## 🚢 Déploiement
 
-```bash
-# Build de production
-npm run build
-```
-
-Les fichiers générés se trouvent dans le dossier `dist/`, prêts à être déployés sur n'importe quel hébergeur statique (Netlify, Vercel, GitHub Pages, etc.).
-
-## 📝 Notes
-
-- Les pages sont créées automatiquement à partir des fichiers dans `src/pages/`
-- Les images peuvent être placées dans `public/` (statiques) ou `src/assets/` (optimisées par Astro)
+TODO rédiger le process de déploiement quand yen aura un
