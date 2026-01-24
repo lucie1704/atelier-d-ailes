@@ -17,7 +17,7 @@ interface Props {
 const { id, title, subtitle, image, actions = [] } = Astro.props as Props;
 ---
 
-<section {...id ? { id } : {}} class="relative w-full">
+<section id={id} class="relative w-full">
   {
     image && (
       <Image src={image.src} alt={image.alt} class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
