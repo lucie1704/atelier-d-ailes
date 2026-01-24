@@ -11,17 +11,13 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <!-- Hero Title -->
-  <Hero
-    tagline="Contact"
-    title="Prendre rendez-vous"
-    subtitle="Pour toute demande de révision, réparation ou conseil"
-  />
+  <Hero tagline="Contact" title="Prendre rendez-vous" subtitle="Merci de prévenir avant tout passage à l'atelier" />
 
   <!-- Contact cards -->
   <Features2
     items={[
       {
-        title: 'Par téléphone',
+        title: 'Par téléphone ou SMS',
         description: '(+33) 06 81 30 85 58',
         icon: 'tabler:phone',
         callToAction: {
@@ -49,6 +45,19 @@ const metadata = {
         slotContent: {
           Component: ShopStatus,
         },
+      },
+      {
+        title: 'Contact',
+        description: 'Merci de ne pas laisser de message vocal, privilégiez <strong>les appels ou SMS</strong>.',
+      },
+      {
+        title: 'Accès',
+        description:
+          'Via <strong>Hautefeuille</strong> et <strong>route de la Noue</strong>. Attention : certains GPS proposent des itinéraires incorrects.',
+      },
+      {
+        title: 'Rendez-vous',
+        description: "Merci de prévenir avant tout passage à l'atelier pour vous assurer de notre disponibilité.",
       },
     ]}
   >
