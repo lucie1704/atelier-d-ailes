@@ -32,6 +32,22 @@
   .external-link {
     @apply text-secondary font-semibold hover:underline hover:text-primary;
   }
+
+  .tag {
+    @apply whitespace-nowrap inline-flex items-center rounded-md px-2 py-1 text-sm font-semibold max-w-max;
+  }
+
+  .tag-primary {
+    @apply tag bg-primary/5 text-primary shadow-[inset_0_0_0_1px_rgb(221_104_39/0.2)];
+  }
+
+  .tag-success {
+    @apply tag bg-green-100/20 text-green-800 shadow-[inset_0_0_0_1px_rgb(22_163_74/0.2)];
+  }
+
+  .tag-danger {
+    @apply tag bg-red-100/20 text-red-900 shadow-[inset_0_0_0_1px_rgb(220_38_38/0.2)];
+  }
 }
 
 a:not(.btn):focus {

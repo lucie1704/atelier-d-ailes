@@ -1,6 +1,5 @@
 ---
 import type { PriceItem } from '~/types';
-import Tag from './ui/Tag.astro';
 
 interface Props {
   id?: string;
@@ -65,8 +64,9 @@ const allRows = flattenItems(items);
               <tr class="hover:bg-gray-50 transition-colors">
                 <td class={`py-3 ${paddingClass} ${fontClass}`}>{item.title}</td>
 
-                <td class="px-4 py-3">
-                  {item.price && (item.price === 'quote' ? <Tag>Sur devis</Tag> : `${item.price}\u00A0€`)}
+                <td class="px-4 py-3 whitespace-nowrap">
+                  {item.price &&
+                    (item.price === 'quote' ? <span class="tag-primary text-base">Sur devis</span> : `${item.price} €`)}
                 </td>
               </tr>
             );

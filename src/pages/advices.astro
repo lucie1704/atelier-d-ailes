@@ -1,6 +1,15 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Features from '~/components/widgets/Features.astro';
+import { Icon } from 'astro-icon/components';
+import Content from '~/components/widgets/Content.astro';
+import advicesAttachPointImage from '~/assets/images/advices-attach-point.jpg';
+import advicesBreakLineImage from '~/assets/images/advices-break-line.jpg';
+import advicesLooseRiserMaillonsImage from '~/assets/images/advices-loose-riser-maillons.jpg';
+import advicesReserveParachuteMaillonImage from '~/assets/images/advices-reserve-parachute-maillon.png';
+import advicesWornPulleysImage from '~/assets/images/advices-worn-pulleys.jpg';
 
 const metadata = {
   title: 'Conseils',
@@ -14,4 +23,196 @@ const metadata = {
     title="Prendre soin de son aile"
     subtitle="Recommandations pour préserver la sécurité et la longévité de votre matériel"
   />
+
+  <!-- Inspections régulières -->
+  <Steps
+    title="Inspections régulières"
+    items={[
+      {
+        title: 'Inspecter votre aile lors des pliages',
+        description:
+          "Particulièrement après des incidents : arbrissage, barbelés, immersion dans l'eau, ou suspentes dans l'hélice.",
+        icon: 'tabler:eye',
+      },
+      {
+        title: 'Points de contrôle',
+        description:
+          "Vérifiez systématiquement les élévateurs, les suspentes et tous les points d'attache. Les points d'attache sont les zones qui subissent le plus de contraintes. (voir photo)",
+        icon: 'tabler:search',
+      },
+    ]}
+    image={{
+      src: advicesAttachPointImage,
+      alt: "Exemple de point d'attache d'une voile",
+      loading: 'eager',
+    }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Steps>
+
+  <!-- Protection contre les éléments -->
+  <Features
+    title="Protection et stockage"
+    subtitle="Comment protéger votre aile des agressions extérieures"
+    columns={2}
+    items={[
+      {
+        title: 'Exposition au soleil',
+        description:
+          "Ne pas laisser inutilement votre aile en plein soleil. Les UV dégradent progressivement les tissus et l'enduction.",
+        icon: 'tabler:sun-off',
+      },
+      {
+        title: 'Humidité et chaleur',
+        description:
+          "Évitez le combo humidité + température élevée. Exemple à proscrire : voile pliée humide dans le coffre d'une voiture en plein soleil. C'est très néfaste pour les tissus et l'enduction.",
+        icon: 'tabler:droplet-off',
+      },
+    ]}
+  />
+
+  <Content
+    title="Erreurs courantes à éviter"
+    subtitle="Exemples concrets et bonnes pratiques pour préserver votre équipement"
+    isReversed
+    image={{
+      src: advicesBreakLineImage,
+      alt: 'Exemple de drisses de freins mal bobinées',
+      width: 400,
+      class: 'mx-auto rounded-lg bg-gray-500 shadow-lg',
+    }}
+    classes={{
+      container: '!pb-5',
+    }}
+  >
+    <Fragment slot="content">
+      <div class="flex flex-col items-center md:items-start gap-3 mb-4">
+        <Icon name="tabler:alert-triangle" class="w-14 h-14 bg-amber-200/30 rounded-lg text-amber-600 p-3" />
+        <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl">Drisses de freins bobinées</h3>
+      </div>
+      <p>Ne jamais bobiner sur la drisse de frein. Perte de centimètres de course de frein et usure prématurée.</p>
+      <p class="mt-3">Voir photo : Drisses de freins bobinées sur 5cm</p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <Content
+    isReversed
+    image={{
+      src: advicesLooseRiserMaillonsImage,
+      alt: 'Exemple de maillons d’élévateurs désserrés',
+      width: 400,
+      class: 'mx-auto rounded-lg bg-gray-500 shadow-lg',
+    }}
+    classes={{
+      container: '!pt-0 !pb-5',
+    }}
+  >
+    <Fragment slot="content">
+      <div class="flex flex-col items-center md:items-start gap-3 mb-4">
+        <Icon name="tabler:alert-triangle" class="w-14 h-14 bg-amber-200/30 rounded-lg text-amber-600 p-3" />
+        <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl">Maillons d’élévateurs désserrés</h3>
+      </div>
+      <p>
+        Vérifiez le serrage de vos maillons à chaque vol. Bloquez fermement mais sans forcer et remettez des clips
+        plastiques ou joints toriques si perdus.
+      </p>
+      <p class="mt-3">Voir photo : maillon du bas désserré</p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <Content
+    isReversed
+    image={{
+      src: advicesReserveParachuteMaillonImage,
+      alt: 'Exemple de bonne et mauvaise position du maillon de parachute de secours',
+      width: 400,
+      class: 'mx-auto rounded-lg bg-gray-500 shadow-lg',
+    }}
+    classes={{
+      container: '!pt-0 !pb-5',
+    }}
+  >
+    <Fragment slot="content">
+      <div class="flex flex-col items-center md:items-start gap-3 mb-4">
+        <Icon name="tabler:alert-triangle" class="w-14 h-14 bg-amber-200/30 rounded-lg text-amber-600 p-3" />
+        <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl">
+          Maillon de parachute de secours mal positionné
+        </h3>
+      </div>
+      <p>
+        Maintenir dans la bonne position le maillon avec un morceau de chambre à air de vélo ou joints torique, éviter
+        le scotch.
+      </p>
+      <p class="mt-3">Voir photo :</p>
+      <ul class="mt-3 ml-6 space-y-2 list-disc list-inside">
+        <li>En haut : bonne position sécurisée</li>
+        <li>En bas : mal positionné (plus la même résistance dans cet axe)</li>
+      </ul>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <Content
+    isReversed
+    image={{
+      src: advicesWornPulleysImage,
+      alt: 'Poulies usées jusqu’à l’axe',
+      width: 400,
+      class: 'mx-auto rounded-lg bg-gray-500 shadow-lg',
+    }}
+    classes={{
+      container: '!pt-0 !pb-5',
+    }}
+  >
+    <Fragment slot="content">
+      <div class="flex flex-col items-center md:items-start gap-3 mb-4">
+        <Icon name="tabler:alert-triangle" class="w-14 h-14 bg-amber-200/30 rounded-lg text-amber-600 p-3" />
+        <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl">Poulies et anneaux de freins</h3>
+      </div>
+      <p>
+        Des drisses de freins dégainées indiquent une usure des poulies. Inspectez régulièrement poulies et anneaux. Si
+        une poulie est usée jusqu'à l'axe, remplacement immédiat obligatoire.
+      </p>
+      <p class="mt-3">Voir photo : poulies usées jusqu’à l’axe</p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <Content
+    isReversed
+    classes={{
+      container: '!pt-0 !pb-20',
+    }}
+  >
+    <Fragment slot="content">
+      <div class="flex flex-col items-center md:items-start gap-3 mb-4">
+        <Icon name="tabler:alert-triangle" class="w-14 h-14 bg-amber-200/30 rounded-lg text-amber-600 p-3" />
+        <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl">Gonflage croisé déconseillé</h3>
+      </div>
+      <p>
+        Le gonflage croisé peut provoquer des frottements entre les drisses de freins et les élévateurs/suspentes, les
+        usant ou les endommageant prématurément.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
 </Layout>

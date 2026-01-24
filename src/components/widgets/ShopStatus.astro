@@ -1,18 +1,53 @@
 ---
 import { OPEN_DAYS, OPEN_HOUR, CLOSE_HOUR } from '~/constants/shop';
-import Tag from '~/components/ui/Tag.astro';
 
-const isShopOpen = (): boolean => {
-  const now = new Date();
-  const day = now.getDay();
-  const time = now.getHours() + now.getMinutes() / 60;
+interface Props {
+  id?: string;
+}
 
-  return OPEN_DAYS.includes(day) && time >= OPEN_HOUR && time < CLOSE_HOUR;
-};
-
-const open = isShopOpen();
+const { id } = Astro.props;
 ---
 
-<Tag variant={open ? 'success' : 'danger'}>
-  {open ? 'Ouvert actuellement' : 'Fermé actuellement'}
-</Tag>
+<div
+  id={`shop-status-${id}`}
+  class="hidden"
+  data-open-days={JSON.stringify(OPEN_DAYS)}
+  data-open-hour={OPEN_HOUR}
+  data-close-hour={CLOSE_HOUR}
+>
+</div>
+
+<script>
+  /*
+    This vanilla JS script is used to make the "Open / Closed" status
+    reactive on the client side. Astro doesn’t support this natively,
+    and since this feature is very occasional in the project, 
+    using vanilla JS avoids adding heavier frameworks or libraries.
+  */
+
+  const elements = document.querySelectorAll('[id^="shop-status"]') as NodeListOf<HTMLElement>;
+
+  function updateShopStatus() {
+    const now = new Date();
+    const day = now.getDay();
+    const time = now.getHours() + now.getMinutes() / 60;
+
+    elements.forEach((el) => {
+      if (!el.dataset.openDays || !el.dataset.openHour || !el.dataset.closeHour) return;
+
+      const openDays = JSON.parse(el.dataset.openDays);
+      const openHour = parseFloat(el.dataset.openHour);
+      const closeHour = parseFloat(el.dataset.closeHour);
+
+      const open = openDays.includes(day) && time >= openHour && time < closeHour;
+
+      el.classList.toggle('tag-success', open);
+      el.classList.toggle('tag-danger', !open);
+      el.textContent = open ? 'Ouvert actuellement' : 'Fermé actuellement';
+      el.classList.remove('hidden');
+    });
+  }
+
+  updateShopStatus();
+  setInterval(updateShopStatus, 60_000);
+</script>
