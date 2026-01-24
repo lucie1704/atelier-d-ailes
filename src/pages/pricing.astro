@@ -59,43 +59,48 @@ const repairPrices = [
 ---
 
 <Layout metadata={metadata} ctaBanner>
-  <!-- Hero Title -->
   <Hero tagline="Tarifs" title="Détail des tarifs" subtitle="Hors frais de port" />
 
-  <!-- Prices card -->
   <Prices
     prices={[
       {
         title: 'Pliage de parachute de secours',
-        subtitle: 'Pour parapente et paramoteur',
-        price: '50 à 100',
+        subtitle: 'Monoplace, biplace, avec ou sans container',
+        price: '50 – 100',
         items: [
-          { description: 'Etiam in libero, et volutpat' },
-          { description: 'Aenean ac nunc dolor tristique' },
-          { description: 'Cras scelerisque accumsan lib' },
-          { description: 'In hac habitasse' },
+          { description: 'Ventilé et aéré' },
+          { description: 'Remplacement systématique des élastiques' },
+          { description: 'Contrôle visuel' },
+          { description: 'Replié selon les normes constructeur' },
         ],
+        callToAction: {
+          text: 'Voir le détail',
+          href: '/pricing#reserve-parachure-packing-price-details',
+          variant: 'secondary',
+        },
       },
       {
         title: 'Révision périodique monoplace',
-        subtitle: 'Pour voile de parapente et paramoteur',
+        subtitle: 'Pour parapente et paramoteur',
         price: 180,
         items: [
-          { description: 'Etiam in libero, et volutpat' },
-          { description: 'Aenean ac nunc dolor tristique' },
-          { description: 'Cras scelerisque accumsan lib' },
-          { description: 'In hac habitasse' },
+          { description: 'Mesures de porosité des tissus' },
+          { description: 'Tests de résistance des tissus' },
+          { description: 'Tests de résistance suspentes' },
+          { description: 'Mesures dimensionnelles du suspentage' },
+          { description: 'Inspection visuelle et tactile complète' },
         ],
       },
       {
-        title: 'Révision périodique biplace',
-        subtitle: 'Pour voile de parapente et paramoteur',
+        title: 'Révision périodique\nbiplace',
+        subtitle: 'Pour parapente et paramoteur',
         price: 195,
         items: [
-          { description: 'Etiam in libero, et volutpat' },
-          { description: 'Aenean ac nunc dolor tristique' },
-          { description: 'Cras scelerisque accumsan lib' },
-          { description: 'In hac habitasse' },
+          { description: 'Mesures de porosité des tissus' },
+          { description: 'Tests de résistance des tissus' },
+          { description: 'Tests de résistance suspentes' },
+          { description: 'Mesures dimensionnelles du suspentage' },
+          { description: 'Inspection visuelle et tactile complète' },
         ],
       },
     ]}
@@ -105,8 +110,16 @@ const repairPrices = [
     </Fragment>
   </Prices>
 
-  <!-- Prices table -->
-  <PriceTable title="Inspections au détail" items={inspectionDetails} />
-  <PriceTable title="Pliage de parachute de secours" items={parachuteFoldingPrices} />
-  <PriceTable title="Réparation" items={repairPrices} />
+  <PriceTable
+    id="repair-price-details"
+    title="Réparation"
+    subtitle="Chaque réparation est unique. <a href='/contact' class='external-link'>Contactez l’atelier</a> pour obtenir un devis personnalisé en fonction de l’état de votre aile, du type d’intervention et des réparations nécessaires."
+    items={repairPrices}
+  />
+  <PriceTable id="inspections-price-details" title="Inspections au détail" items={inspectionDetails} />
+  <PriceTable
+    id="reserve-parachure-packing-price-details"
+    title="Pliage de parachute de secours"
+    items={parachuteFoldingPrices}
+  />
 </Layout>

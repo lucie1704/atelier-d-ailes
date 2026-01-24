@@ -3,11 +3,13 @@ import type { PriceItem } from '~/types';
 import Tag from './ui/Tag.astro';
 
 interface Props {
-  title?: string;
+  id?: string;
+  title: string;
+  subtitle?: string;
   items?: PriceItem[];
 }
 
-const { title = 'Titre tableau', items = [] } = Astro.props;
+const { id, title, subtitle, items = [] } = Astro.props;
 
 interface RowData {
   item: PriceItem;
@@ -37,10 +39,12 @@ const getPaddingClass = (level: number): string => {
 const allRows = flattenItems(items);
 ---
 
-<section class="max-w-4xl mx-auto my-16 px-4">
+<section {...id && { id }} class="max-w-4xl mx-auto my-16 px-4 scroll-mt-24">
   <h2 class="text-3xl md:text-4xl font-bold tracking-tighter mb-6 font-heading text-center">
     {title}
   </h2>
+
+  {subtitle && <p class="mb-6 text-muted text-xl text-center mx-10" set:html={subtitle} />}
 
   <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
     <table class="min-w-full divide-y divide-gray-200">
