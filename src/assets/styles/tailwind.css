@@ -39,17 +39,22 @@ a:not(.btn):focus {
 }
 
 a.link {
-  @apply relative;
+  position: relative;
+}
 
-  /* Ligne animée */
-  &::after {
-    @apply absolute left-0 -bottom-2 h-[2px] w-0 bg-white transition-all duration-300;
-    content: '';
-  }
+a.link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.5rem;
+  height: 2px;
+  width: 0;
+  background-color: white;
+  transition: all 0.3s;
+}
 
-  &:hover::after {
-    @apply w-full;
-  }
+a.link:hover::after {
+  width: 100%;
 }
 
 #header {
