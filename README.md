@@ -112,7 +112,3 @@ npm run build
 
 # Le dossier dist/ contient tous les fichiers à déployer
 ```
-
----
-
-**Atelier d'Ailes** - Révision et réparation de parapentes et paramoteurs en Seine-et-Marne
