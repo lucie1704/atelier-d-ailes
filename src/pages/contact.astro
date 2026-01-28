@@ -3,6 +3,8 @@ import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import ShopStatus from '~/components/widgets/ShopStatus.astro';
+import { Image } from 'astro:assets';
+import shopMapImage from '~/assets/images/shop-map.jpeg';
 
 const metadata = {
   title: 'Contact',
@@ -69,4 +71,6 @@ const metadata = {
       <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
     </Fragment>
   </Features2>
+  
+  <Image src={shopMapImage} alt="Carte indiquant où se trouve l'atelier" loading="lazy"></Image>
 </Layout>
