@@ -1,0 +1,37 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+import Logo from '~/components/Logo.astro';
+import Hero from '~/components/widgets/Hero.astro';
+
+const title = `Maintenance`;
+---
+
+<Layout metadata={{ title }}>
+  <section class="fixed inset-0 flex items-center justify-center">
+    <div class="absolute">
+      <svg width="800" viewBox="0 0 4174 3170" xmlns="http://www.w3.org/2000/svg">
+        <path
+          fill="#F6FAFD"
+          d="M528.372 531.702C292.578 642.156 14.2948 921.143 0.287339 1621.79C-24.2129 2847.29 1524.8 3109.79 2064.79 3159.79C2604.79 3209.79 2974.8 3057.79 3127.29 2847.29C3137.74 2832.87 3147.47 2817.12 3156.53 2800.28C3313.8 2508.12 3639.66 2317.58 3927.27 2149.41L3940.3 2141.79C4259.51 1955.1 4158.29 1220.29 4158.29 1220.29C4158.29 859.453 3785.06 608.697 3429.11 667.931C3112.54 720.614 2761.77 722.638 2529.29 557.294C2459.59 507.72 2388.98 434.885 2326.34 360.691C2180.42 187.845 1988.83 51.8961 1765.73 14.5884L1738.46 10.0284C1503.29 -29.2959 1263.71 48.447 1096.44 218.362C945.121 372.08 723.706 440.202 528.372 531.702Z"
+        ></path>
+      </svg>
+    </div>
+
+    <div class="relative z-10 max-w-2xl text-center">
+      <Hero
+        tagline="Information"
+        subtitle="Le site de l'atelier fait peau neuve, nous serons de retour très bientôt ! Merci de votre patience."
+      >
+        <span slot="title" class="flex items-center justify-center gap-4">
+          <Icon name="tabler:tool" class="text-primary" size={60} />
+          <span>Maintenance en cours</span>
+        </span>
+      </Hero>
+
+      <div class="flex justify-center">
+        <Logo />
+      </div>
+    </div>
+  </section>
+</Layout>
