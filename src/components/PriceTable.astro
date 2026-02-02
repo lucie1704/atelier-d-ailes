@@ -47,7 +47,7 @@ const allRows = flattenItems(items);
 
   <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
     <table class="min-w-full divide-y divide-gray-200">
-      <thead class="bg-gray-100">
+      <thead class="bg-slate-50">
         <tr>
           <th></th>
           <th class="text-left px-4 py-3 font-semibold text-gray-700"> Prix </th>
@@ -61,7 +61,7 @@ const allRows = flattenItems(items);
             const fontClass = level === 0 && item.children ? 'font-semibold' : '';
 
             return (
-              <tr class="hover:bg-gray-50 transition-colors">
+              <tr class="hover:bg-slate-50 transition-colors">
                 <td class={`py-3 ${paddingClass} ${fontClass}`}>{item.title}</td>
 
                 <td class="px-4 py-3 whitespace-nowrap">
