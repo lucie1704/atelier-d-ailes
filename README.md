@@ -1,23 +1,22 @@
 # Atelier d'Ailes
 
-[![Lighthouse Performance](https://img.shields.io/badge/Lighthouse-Performance%3A%20100-brightgreen)](https://pagespeed.web.dev/)
-[![Lighthouse Accessibility](https://img.shields.io/badge/Lighthouse-Accessibility%3A%20100-brightgreen)](https://pagespeed.web.dev/)
-[![Lighthouse Best Practices](https://img.shields.io/badge/Lighthouse-Best%20Practices%3A%20100-brightgreen)](https://pagespeed.web.dev/)
-[![Lighthouse SEO](https://img.shields.io/badge/Lighthouse-SEO%3A%20100-brightgreen)](https://pagespeed.web.dev/)
 [![Astro](https://img.shields.io/badge/Astro-5.0-FF5D01?logo=astro)](https://astro.build/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?logo=typescript)](https://www.typescriptlang.org/)
+[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel)](https://vercel.com)
+[![CodeQL](https://github.com/lucie1704/atelier-d-ailes/workflows/CodeQL/badge.svg)](https://github.com/lucie1704/atelier-d-ailes/security/code-scanning)
 
-Site vitrine de l'**Atelier d'Ailes**, atelier de révision et réparation de voiles de parapente et paramoteur basé en Seine-et-Marne.
+Site vitrine de l'**Atelier d'Ailes**, atelier de révision et réparation de voiles de parapente et paramoteur basé en Seine-et-Marne (77).  
+À retrouver sur www.atelier-d-ailes.fr
 
 ## 📋 Table des matières
 
 - [Objectifs](#-objectifs)
-- [Technologies](#-technologies)
-- [Installation](#-installation)
-- [Commandes](#-commandes)
+- [Performance](#-performance)
+- [Installation et commandes](#-installation-et-commandes)
 - [Structure du projet](#-structure-du-projet)
-- [Configuration](#-configuration)
 - [Déploiement](#-déploiement)
+- [Ressources](#-ressources)
 
 ## 🎯 Objectifs
 
@@ -29,38 +28,26 @@ Ce site vitrine a été conçu pour répondre aux exigences suivantes :
 - ✅ **SEO efficace** - Optimisé pour un bon référencement naturel
 - ✅ **Projet léger et maintenable** - Simple à prendre en main, maintenir et déployer
 
-## 🚀 Technologies
+## 📈 Performance
 
-Le site est développé avec les technologies suivantes :
+Les scores lighthouse seront mis à jour une fois le site publié.
 
-- **[Astro 5.0](https://astro.build/)** - Framework web moderne, léger et performant pour sites statiques
-- **[AstroWind](https://github.com/arthelokyo/astrowind)** - Thème Astro offrant une base solide avec composants, thème et UI personnalisables
-- **[Tailwind CSS](https://tailwindcss.com/)** - Framework CSS utility-first pour un styling rapide et cohérent
-- **[TypeScript](https://www.typescriptlang.org/)** - Typage statique pour une meilleure maintenabilité
+## 🛠️ Installation et Commandes
 
-## 📦 Installation
+**Prérequis :** Node.js `^18.17.1 || ^20.3.0 || >= 21.0.0`
 
 ```bash
 # Installer les dépendances
 npm install
-```
 
-**Prérequis :** Node.js `^18.17.1 || ^20.3.0 || >= 21.0.0`
-
-## 🛠️ Commandes
-
-```bash
 # Démarrer le serveur de développement
 npm run dev
-# Le site sera accessible sur http://localhost:4321
 
 # Construire pour la production
 npm run build
-# Les fichiers générés seront dans le dossier /dist
 
 # Prévisualiser le build de production
 npm run preview
-# Le site sera accessible sur http://localhost:4322
 
 # Vérifier le code (Astro, ESLint, Prettier)
 npm run check
@@ -87,28 +74,15 @@ npm run fix
 
 **Note :** Astro génère automatiquement les routes à partir des fichiers dans `src/pages/`.
 
-## ⚙️ Configuration
-
-### Configuration principale
-
-Le fichier `src/config.yaml` contient :
-
-- **Informations du site** - Nom, URL, base path
-- **Métadonnées SEO** - Titre, description, Open Graph, Twitter Cards
-- **Analytics** - Configuration des outils d'analyse
-- **Thème** - Paramètres d'apparence (light/dark)
-
-### Styles personnalisés
-
-Les styles personnalisés se trouvent dans `src/assets/styles/tailwind.css`.
-
-Les couleurs et la typographie peuvent être personnalisées dans `tailwind.config.js`.
-
 ## 🚢 Déploiement
 
-```bash
-# Build de production
-npm run build
+Au merge sur main, le site est redéployé sur www.atelier-d-ailes.fr via Vercel
 
-# Le dossier dist/ contient tous les fichiers à déployer
-```
+Dans le cadre d'une maintenance, il est possible de déployer la branche `/maintenance` en changeant dans les paramètres Vercel :  
+`Settings > Environments > Production > Branch is > maintenance
+`
+
+## 📖 Ressources
+
+- **[Astro 5.0](https://astro.build/)**
+- **[AstroWind](https://github.com/arthelokyo/astrowind)**
