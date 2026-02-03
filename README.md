@@ -4,7 +4,6 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?logo=typescript)](https://www.typescriptlang.org/)
 [![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel)](https://vercel.com)
-[![CodeQL](https://github.com/lucie1704/atelier-d-ailes/workflows/CodeQL/badge.svg)](https://github.com/lucie1704/atelier-d-ailes/security/code-scanning)
 
 Site vitrine de l'**Atelier d'Ailes**, atelier de révision et réparation de voiles de parapente et paramoteur basé en Seine-et-Marne (77).  
 À retrouver sur www.atelier-d-ailes.fr
