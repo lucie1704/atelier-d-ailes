@@ -3,8 +3,10 @@ import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Features from '~/components/widgets/Features.astro';
-import { Icon } from 'astro-icon/components';
 import Content from '~/components/widgets/Content.astro';
+import { Icon } from 'astro-icon/components';
+
+// Images
 import advicesAttachPointImage from '~/assets/images/advices-attach-point.jpg';
 import advicesBreakLineImage from '~/assets/images/advices-break-line.jpg';
 import advicesLooseRiserMaillonsImage from '~/assets/images/advices-loose-riser-maillons.jpg';
@@ -19,14 +21,12 @@ const metadata = {
 ---
 
 <Layout metadata={metadata} ctaBanner>
-  <!-- Hero Title -->
   <Hero
     tagline="Conseils"
     title="Prendre soin de son aile"
     subtitle="Recommandations pour préserver la sécurité et la longévité de votre matériel"
   />
 
-  <!-- Inspections régulières -->
   <Steps
     title="Inspections régulières"
     items={[
@@ -50,11 +50,10 @@ const metadata = {
     }}
   >
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-slate-50"></div>
     </Fragment>
   </Steps>
 
-  <!-- Protection contre les éléments -->
   <Features
     title="Protection et stockage"
     subtitle="Comment protéger votre aile des agressions extérieures"
@@ -101,7 +100,7 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-slate-50"></div>
     </Fragment>
   </Content>
 
@@ -132,7 +131,7 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-slate-50"></div>
     </Fragment>
   </Content>
 
@@ -167,7 +166,7 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-slate-50"></div>
     </Fragment>
   </Content>
 
@@ -198,7 +197,7 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-slate-50"></div>
     </Fragment>
   </Content>
 
@@ -222,7 +221,7 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-slate-50"></div>
     </Fragment>
   </Content>
 </Layout>

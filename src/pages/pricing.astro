@@ -1,8 +1,8 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
-import Prices from '~/components/Prices.astro';
-import PriceTable from '~/components/PriceTable.astro';
+import Prices from '~/components/widgets/Prices.astro';
+import PriceTable from '~/components/widgets/PriceTable.astro';
 
 const metadata = {
   title: 'Tarifs',
@@ -107,7 +107,7 @@ const repairPrices = [
     ]}
   >
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-slate-50"></div>
     </Fragment>
   </Prices>
 

@@ -1,10 +1,9 @@
 ---
 import { SITE } from 'astrowind:config';
 import { getHomePermalink } from '~/utils/permalinks';
-import logo from '~/assets/images/logo.png';
+import Logo from '~/components/layout/Logo.astro';
 import ShopStatus from '~/components/widgets/ShopStatus.astro';
-import { Image } from 'astro:assets';
-import CallToAction from '~/components/CallToAction.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 import ctaBannerImage from '~/assets/images/cta-banner.png';
 
 const { ctaBanner = false } = Astro.props;
@@ -37,7 +36,7 @@ const { ctaBanner = false } = Astro.props;
       <div class="col-span-12 lg:col-span-4">
         <div class="mb-2">
           <a class="inline-block font-bold text-xl" href={getHomePermalink()}>
-            <Image src={logo} alt={SITE.name} class="h-12 w-auto" loading="lazy" />
+            <Logo />
           </a>
         </div>
         <span class="text-muted text-sm">© {new Date().getFullYear()} {SITE?.name}</span>

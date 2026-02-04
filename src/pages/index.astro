@@ -5,17 +5,19 @@ import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
 import Content from '~/components/widgets/Content.astro';
+import { CREATION_DATE } from '../constants/shop';
+
+// Images
 import heroImage from '~/assets/images/atelier-hero-image.png';
 import paracheckImage from '~/assets/images/paracheck.png';
 import christopheImage from '~/assets/images/christophe-profile-1.png';
-import { CREATION_DATE } from '../constants/shop';
 
 const metadata = {
   title: "Atelier d'Ailes — Contrôle, révision et réparation d'ailes de parapente et paramoteur.",
   description:
     "Révision, réparation et entretien de vos ailes de parapente et paramoteur. Plus de 30 ans d'expérience. Atelier certifié ParachecK® en Seine-et-Marne.",
   ignoreTitleTemplate: true,
-  canonical: 'https://atelierdailes.fr',
+  canonical: 'https://atelier-d-ailes.fr',
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
@@ -88,7 +90,7 @@ const yearsSinceCreation = (() => {
     ]}
   >
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-slate-50"></div>
     </Fragment>
   </Features2>
 
@@ -143,7 +145,7 @@ const yearsSinceCreation = (() => {
     classes={{ container: 'max-w-3xl' }}
   >
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-slate-50"></div>
     </Fragment>
   </Steps>
 
@@ -213,7 +215,7 @@ const yearsSinceCreation = (() => {
     }}
   >
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-slate-50"></div>
     </Fragment>
   </Testimonials>
 </Layout>
