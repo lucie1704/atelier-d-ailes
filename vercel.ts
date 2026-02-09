@@ -1,6 +1,13 @@
 import { type VercelConfig, deploymentEnv } from '@vercel/config/v1';
 
+/*
 const enableMaintenance = deploymentEnv('PUBLIC_ENABLE_MAINTENANCE') === 'true';
+*/
+
+const rawEnv = deploymentEnv('PUBLIC_ENABLE_MAINTENANCE');
+console.log('Env PUBLIC_ENABLE_MAINTENANCE raw value →', rawEnv);
+const enableMaintenance = rawEnv === 'true';
+console.log('enableMaintenance computed →', enableMaintenance);
 
 export const config: VercelConfig = {
   cleanUrls: true,
