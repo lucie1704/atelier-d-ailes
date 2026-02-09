@@ -13,7 +13,6 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "prebuild": "tsx ./scripts/generate-vercel-config.ts",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
