@@ -1,0 +1,39 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Markdown from '~/components/ui/Markdown.astro';
+import paragliderImage from '~/assets/images/paraglider.jpg';
+import announcement from '~/content/announcement.json';
+
+const metadata = {
+  title: 'Fermeture Exceptionnelle',
+  description: "Fermeture exceptionnelle de l'atelier",
+};
+
+if (import.meta.env.PUBLIC_ENABLE_ANNOUNCEMENT !== 'true') {
+  return new Response(null, { status: 404 });
+}
+---
+
+<Layout metadata={metadata}>
+  <Hero title={announcement.title} tagline={announcement.tagline} subtitle={announcement.subtitle} />
+
+  <Content
+    isReversed
+    image={{
+      src: paragliderImage,
+      alt: 'Photo de parapente dans le ciel bleu',
+    }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-slate-50"></div>
+    </Fragment>
+    <Fragment slot="content">
+      <div class="order-1 md:order-2">
+        <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">{announcement.content.title}</h2>
+        <Markdown content={announcement.content.description} />
+      </div>
+    </Fragment>
+  </Content>
+</Layout>

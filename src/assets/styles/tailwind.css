@@ -138,3 +138,24 @@ a.link:hover::after {
     opacity: 1;
   }
 }
+
+/* Announcement animation on mobile */
+@keyframes announcement {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-announcement {
+  animation: announcement 15s linear infinite;
+}
+
+/* Désactive l'animation sur desktop */
+@media (min-width: 768px) {
+  .animate-announcement {
+    animation: none;
+  }
+}
