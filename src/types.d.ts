@@ -289,3 +289,15 @@ export interface Content extends Omit<Headline, 'classes'>, Widget {
 }
 
 export interface Contact extends Omit<Headline, 'classes'>, Form, Widget {}
+
+type FooterLink = {
+  label?: string;
+  href?: string;
+  external?: boolean;
+  component?: string;
+};
+
+export type FooterSection = {
+  title: string;
+  links: FooterLink[];
+};

@@ -5,10 +5,11 @@ import Logo from '~/components/layout/Logo.astro';
 import ShopStatus from '~/components/widgets/ShopStatus.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import ctaBannerImage from '~/assets/images/cta-banner.png';
+import type { FooterSection } from '~/types';
 
 const { ctaBanner = false } = Astro.props;
 
-const footerSections = [
+const footerSections: FooterSection[] = [
   {
     title: 'Adresse & Horaires',
     links: [
