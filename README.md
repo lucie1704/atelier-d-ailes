@@ -59,10 +59,13 @@ npm run fix
 
 ```
 /
-├── public/              # Fichiers statiques (images, robots.txt, etc.)
+├── public/             # Fichiers statiques (images, robots.txt, etc.)
+├── scripts/            # Scripts (prebuild)
 ├── src/
 │   ├── assets/         # Assets (images, styles, favicons)
 │   ├── components/     # Composants Astro réutilisables
+│   ├── constants/      # Constantes (heures et jours d'ouverture, date de création)
+│   ├── content/        # Contenu de pages qui sont vouées à être modifiées
 │   ├── layouts/        # Layouts de pages
 │   ├── pages/          # Pages du site (routing automatique)
 │   ├── utils/          # Utilitaires et helpers
@@ -75,11 +78,43 @@ npm run fix
 
 ## 🚢 Déploiement
 
-Au merge sur main, le site est redéployé sur www.atelier-d-ailes.fr via Vercel
+Le site est automatiquement redéployé sur **www.atelier-d-ailes.fr** via Vercel à chaque merge sur `main`.
 
-Dans le cadre d'une maintenance, il est possible de déployer la branche `/maintenance` en changeant dans les paramètres Vercel :  
-`Settings > Environments > Production > Branch is > maintenance
-`
+### 🚧 Mode Maintenance
+
+Active une redirection globale vers la page `/maintenance` pour toutes les routes.
+
+**Activation :**
+
+1. Dans Vercel : `Settings > Environment Variables`
+2. Modifier la variable d'environnement `PUBLIC_ENABLE_MAINTENANCE=true`
+3. Redéployer
+
+**Désactivation :**
+
+1. Dans Vercel : `Settings > Environment Variables`
+2. Modifier la variable d'environnement `PUBLIC_ENABLE_MAINTENANCE=false`
+3. Redéployer
+
+**Note :** C'est le `vercel.json` qui gère la redirection vers `/maintenance` si `PUBLIC_ENABLE_MAINTENANCE=true`.  
+Ce fichier est généré dynamiquement lors du build en fonction de la variable d'environnement.
+
+### 📢 Bandeau d'Annonce
+
+Il est possible d'afficher un bandeau d'information en haut du site, par exemple pour des fermetures exceptionnelles ou autres informations éphémères liées à l'atelier.
+Pour configurer les détails de l'annonce, modifier, le fichier `src/content/announcement.json` et mettre à jour la variable d'environnement `PUBLIC_ENABLE_ANNOUNCEMENT`.
+
+**Activation :**
+
+1. Dans Vercel : `Settings > Environment Variables`
+2. Modifier la variable d'environnement `PUBLIC_ENABLE_ANNOUNCEMENT=true`
+3. Redéployer
+
+**Désactivation :**
+
+1. Dans Vercel : `Settings > Environment Variables`
+2. Modifier la variable d'environnement `PUBLIC_ENABLE_ANNOUNCEMENT=false`
+3. Redéployer
 
 ## 📖 Ressources
 
