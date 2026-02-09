@@ -1,6 +1,6 @@
 import type { VercelConfig } from '@vercel/config/v1';
 
-const enableMaintenance = process.env.PUBLIC_ENABLE_MAINTENANCE === 'true';
+const isMaintenanceEnabled = process.env.PUBLIC_ENABLE_MAINTENANCE === 'true';
 
 export const config: VercelConfig = {
   cleanUrls: true,
@@ -16,7 +16,7 @@ export const config: VercelConfig = {
       ],
     },
   ],
-  redirects: enableMaintenance
+  redirects: isMaintenanceEnabled
     ? [
         {
           source: '/((?!maintenance|_astro).*)',
