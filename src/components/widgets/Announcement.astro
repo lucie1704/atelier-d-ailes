@@ -10,28 +10,31 @@ const { title = 'Information', message, href } = Astro.props;
 const Tag = href ? 'a' : 'div';
 ---
 
-<Tag href={href} class="bg-accent text-white block overflow-hidden no-underline">
-  <div class="relative flex overflow-hidden md:justify-center">
-    <div class="flex whitespace-nowrap animate-announcement md:animate-none items-center gap-2 px-4 py-1">
-      <span class="font-semibold text-xs px-1 py-[0.1rem] bg-white/15 rounded uppercase shrink-0">
-        {title}
-      </span>
-      <span class="text-[0.9375rem] shrink-0">
-        {message}
-      </span>
-    </div>
+<Tag href={href} class="bg-accent text-white block no-underline relative">
+  <!-- Zone cliquable fixe -->
+  <div class="absolute inset-0 z-10"></div>
 
-    <!-- Duplicate pour l'animation sur mobile, caché sur desktop -->
-    <div
-      class="flex whitespace-nowrap animate-announcement md:hidden items-center gap-2 px-4 py-1 ml-12"
-      aria-hidden="true"
-    >
-      <span class="font-semibold text-xs px-1 py-[0.1rem] bg-white/15 rounded uppercase shrink-0">
-        {title}
-      </span>
-      <span class="text-[0.9375rem] shrink-0">
-        {message}
-      </span>
+  <!-- Conteneur d'animation -->
+  <div class="relative overflow-hidden md:flex md:justify-center pointer-events-none">
+    <div class="announcement-scroll flex md:contents">
+      <div class="flex items-center px-4 py-1 flex-nowrap">
+        <span class="font-semibold text-xs px-1 py-[0.1rem] bg-white/15 rounded uppercase">
+          {title}
+        </span>
+        <span class="text-[0.9375rem] ml-2">
+          {message}
+        </span>
+      </div>
+
+      <!-- Copie identique pour loop infini -->
+      <div class="flex items-center px-4 py-1 flex-nowrap md:hidden" aria-hidden="true">
+        <span class="font-semibold text-xs px-1 py-[0.1rem] bg-white/15 rounded uppercase">
+          {title}
+        </span>
+        <span class="text-[0.9375rem] ml-2">
+          {message}
+        </span>
+      </div>
     </div>
   </div>
 </Tag>

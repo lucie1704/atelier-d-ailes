@@ -140,22 +140,19 @@ a.link:hover::after {
 }
 
 /* Announcement animation on mobile */
-@keyframes announcement {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
+@keyframes scroll {
+  to {
+    transform: translateX(-50%);
   }
 }
 
-.animate-announcement {
-  animation: announcement 15s linear infinite;
+.announcement-scroll {
+  width: max-content;
+  animation: scroll 20s linear infinite;
 }
 
-/* Désactive l'animation sur desktop */
 @media (min-width: 768px) {
-  .animate-announcement {
+  .announcement-scroll {
     animation: none;
   }
 }

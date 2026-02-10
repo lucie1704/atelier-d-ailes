@@ -95,7 +95,7 @@ Active une redirection globale vers la page `/maintenance` pour toutes les route
 2. Modifier la variable d'environnement `PUBLIC_ENABLE_MAINTENANCE=false`
 3. Redéployer
 
-**Note :** C'est le `vercel.ts` qui gère la redirection vers `/maintenance` si `PUBLIC_ENABLE_MAINTENANCE=true`. 
+**Note :** C'est le `vercel.ts` qui gère la redirection vers `/maintenance` si `PUBLIC_ENABLE_MAINTENANCE=true`.
 
 ### 📢 Bandeau d'Annonce
 
