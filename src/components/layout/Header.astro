@@ -15,10 +15,12 @@ const announcementClasses = showAnnouncement ? 'mt-8 md:mt-0' : '';
 ---
 
 <header
-  class="flex-none mx-auto w-full border-b border-gray-50/0 transition-[opacity] ease-in-out"
+  class="sticky top-0 z-50 flex-none mx-auto w-full border-b border-gray-50/0 transition-[opacity] ease-in-out"
   data-aw-sticky-header
   id="header"
 >
+  <slot name="announcement" />
+
   <!-- Div for blured transparent backdrop on scroll -->
   <div class="absolute inset-0"></div>
 
@@ -42,9 +44,9 @@ const announcementClasses = showAnnouncement ? 'mt-8 md:mt-0' : '';
           headerData.links.map(({ text, href }) => (
             <li
               class:list={[
-                'mx-2 md:mx-0 px-4 py-5 md:py-3 transition-colors duration-200 border-b border-black/10 md:border-primary md:border-0 first:border-t first:md:border-t-0',
+                'mx-2 md:mx-0 px-4 py-5 md:py-3 transition-colors duration-200 border-b border-black/10 md:border-secondary md:border-0 first:border-t first:md:border-t-0',
                 {
-                  'text-primary font-semibold md:border-b-2 md:border-primary': href === currentPath,
+                  'text-secondary font-semibold md:border-b-2 md:border-secondary': href === currentPath,
                 },
               ]}
             >

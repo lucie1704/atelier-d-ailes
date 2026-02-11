@@ -74,7 +74,7 @@ a.link:hover::after {
 }
 
 #header {
-  @apply bg-page md:bg-white/80 md:backdrop-blur-md;
+  @apply bg-white/80 backdrop-blur-md;
 }
 
 #header.scroll > div:first-child {
@@ -107,6 +107,15 @@ a.link:hover::after {
 [data-aw-toggle-menu] path {
   @apply transition;
 }
+
+#header:has([data-aw-toggle-menu].expanded) {
+  @apply bg-page;
+}
+
+body:has([data-aw-toggle-menu].expanded) {
+  touch-action: none;
+}
+
 [data-aw-toggle-menu].expanded g > path:first-child {
   @apply -rotate-45 translate-y-[15px] translate-x-[-3px];
 }

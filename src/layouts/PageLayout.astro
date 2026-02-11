@@ -2,7 +2,7 @@
 import Layout from '~/layouts/Layout.astro';
 import Header from '~/components/layout/Header.astro';
 import Footer from '~/components/layout/Footer.astro';
-import Announcement from '~/components/widgets/Announcement.astro';
+import Announcement from '~/components/layout/Announcement.astro';
 import announcementContent from '~/content/announcement.json';
 
 import type { MetaData } from '~/types';
@@ -16,19 +16,15 @@ const { metadata, ctaBanner = false } = Astro.props;
 ---
 
 <Layout metadata={metadata}>
-  <div class="sticky top-0 z-50">
-    {
-      import.meta.env.PUBLIC_ENABLE_ANNOUNCEMENT === 'true' && (
-        <slot name="announcement">
-          <Announcement message={announcementContent.message} href={announcementContent.href} />
-        </slot>
-      )
-    }
-
-    <slot name="header">
-      <Header />
-    </slot>
-  </div>
+  <slot name="header">
+    <Header>
+      {
+        import.meta.env.PUBLIC_ENABLE_ANNOUNCEMENT === 'true' && (
+          <Announcement slot="announcement" message={announcementContent.message} href={announcementContent.href} />
+        )
+      }
+    </Header>
+  </slot>
   <main>
     <slot />
   </main>
