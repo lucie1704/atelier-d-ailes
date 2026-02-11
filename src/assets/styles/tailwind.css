@@ -13,24 +13,12 @@
     @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base text-default leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:outline-none focus:ring-primary/50 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 cursor-pointer;
   }
 
-  .btn-primary {
-    @apply btn font-semibold bg-primary text-white border-primary hover:bg-primary/90 hover:border-primary/90 hover:text-white;
-  }
-
   .btn-secondary {
-    @apply btn;
-  }
-
-  .btn-tertiary {
-    @apply btn border-none shadow-none text-muted hover:text-gray-900;
-  }
-
-  .btn-hero-banner {
     @apply btn border-white text-white bg-white/10 backdrop-blur-sm hover:bg-white hover:text-gray-900 hover:border-white focus:ring-white/40;
   }
 
   .external-link {
-    @apply text-secondary font-semibold hover:underline hover:text-primary;
+    @apply text-primary font-semibold hover:underline;
   }
 
   .tag {
@@ -38,7 +26,7 @@
   }
 
   .tag-primary {
-    @apply tag bg-primary/5 text-primary shadow-[inset_0_0_0_1px_rgb(221_104_39/0.2)];
+    @apply tag bg-orange-100/20 text-primary shadow-[inset_0_0_0_1px_rgb(198_83_16/0.2)];
   }
 
   .tag-success {
@@ -50,10 +38,12 @@
   }
 }
 
+/* for keyboard navigation */
 a:not(.btn):focus {
   @apply outline-primary;
 }
 
+/* btn link */
 a.link {
   position: relative;
 }
@@ -73,7 +63,8 @@ a.link:hover::after {
   width: 100%;
 }
 
-#header {
+/* header backdrop blured */
+#header > div:first-child {
   @apply bg-white/80 backdrop-blur-md;
 }
 
@@ -81,6 +72,7 @@ a.link:hover::after {
   box-shadow: 0 0.375rem 1.5rem 0 rgb(140 152 164 / 13%);
 }
 
+/* header position */
 #header.expanded nav {
   position: fixed;
   top: 70px;
@@ -88,12 +80,6 @@ a.link:hover::after {
   right: 0;
   bottom: 70px !important;
   padding: 0 5px;
-}
-
-.dropdown:focus .dropdown-menu,
-.dropdown:focus-within .dropdown-menu,
-.dropdown:hover .dropdown-menu {
-  display: block;
 }
 
 [astro-icon].icon-light > * {
@@ -107,27 +93,12 @@ a.link:hover::after {
 [data-aw-toggle-menu] path {
   @apply transition;
 }
-
-#header:has([data-aw-toggle-menu].expanded) {
-  @apply bg-page;
-}
-
-body:has([data-aw-toggle-menu].expanded) {
-  touch-action: none;
-}
-
 [data-aw-toggle-menu].expanded g > path:first-child {
   @apply -rotate-45 translate-y-[15px] translate-x-[-3px];
 }
 
 [data-aw-toggle-menu].expanded g > path:last-child {
   @apply rotate-45 translate-y-[-8px] translate-x-[14px];
-}
-
-/* To deprecated */
-
-.dd *:first-child {
-  margin-top: 0;
 }
 
 /* Animation pour le menu mobile */

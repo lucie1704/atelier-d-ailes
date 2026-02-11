@@ -1,10 +1,31 @@
 ---
-import Logo from '~/components/layout/Logo.astro';
+import Logo from '~/components/widgets/Logo.astro';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
 import Button from '~/components/ui/Button.astro';
-import { headerData } from '~/navigation';
+
 import { getHomePermalink } from '~/utils/permalinks';
 import { trimSlash } from '~/utils/permalinks';
+import type { CallToAction } from '~/types';
+
+interface Link {
+  text?: string;
+  href?: string;
+  ariaLabel?: string;
+  icon?: string;
+}
+
+interface MenuLink extends Link {
+  links?: Array<MenuLink>;
+}
+
+export interface Props {
+  links?: Array<MenuLink>;
+  actions?: Array<CallToAction>;
+  position?: string;
+  isSticky?: boolean;
+}
+
+const { links = [], actions = [], position = 'center', isSticky = true } = Astro.props;
 
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 
@@ -15,18 +36,29 @@ const announcementClasses = showAnnouncement ? 'mt-8 md:mt-0' : '';
 ---
 
 <header
-  class="sticky top-0 z-50 flex-none mx-auto w-full border-b border-gray-50/0 transition-[opacity] ease-in-out"
-  data-aw-sticky-header
+  class:list={[
+    { sticky: isSticky, relative: !isSticky },
+    'top-0 z-40 flex-none mx-auto w-full border-b border-gray-50/0 transition-[opacity] ease-in-out',
+  ]}
+  {...isSticky ? { 'data-aw-sticky-header': true } : {}}
   id="header"
 >
-  <slot name="announcement" />
-
-  <!-- Div for blured transparent backdrop on scroll -->
   <div class="absolute inset-0"></div>
 
-  <div class="relative text-default py-3 px-3 md:px-6 mx-auto w-full md:grid md:grid-cols-3 md:items-center max-w-7xl">
-    <!-- Logo + Mobile Toggle -->
-    <div class="flex justify-between">
+  <slot name="announcement" />
+
+  <div
+    class:list={[
+      'relative text-default py-3 px-3 md:px-6 mx-auto w-full max-w-7xl',
+      {
+        'md:flex md:justify-between': position !== 'center',
+      },
+      {
+        'md:grid md:grid-cols-3 md:items-center': position === 'center',
+      },
+    ]}
+  >
+    <div class:list={[{ 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' }, 'flex justify-between']}>
       <a class="flex items-center" href={getHomePermalink()}>
         <Logo />
       </a>
@@ -35,18 +67,17 @@ const announcementClasses = showAnnouncement ? 'mt-8 md:mt-0' : '';
       </div>
     </div>
 
-    <!-- Navigation -->
     <nav class={`${baseClasses} ${announcementClasses}`} aria-label="Main navigation">
       <ul
         class="flex flex-col md:flex-row md:self-center w-full md:w-auto text-[0.9375rem] tracking-[0.01rem] font-medium md:justify-center mt-1 md:mt-0"
       >
         {
-          headerData.links.map(({ text, href }) => (
+          links.map(({ text, href }) => (
             <li
               class:list={[
-                'mx-2 md:mx-0 px-4 py-5 md:py-3 transition-colors duration-200 border-b border-black/10 md:border-secondary md:border-0 first:border-t first:md:border-t-0',
+                'mx-2 md:mx-0 px-4 py-5 md:py-3 transition-colors duration-200 border-b border-black/10 md:border-primary md:border-0 first:border-t first:md:border-t-0',
                 {
-                  'text-secondary font-semibold md:border-b-2 md:border-secondary': href === currentPath,
+                  'text-primary font-semibold md:border-b-2 md:border-primary': href === currentPath,
                 },
               ]}
             >
@@ -59,15 +90,17 @@ const announcementClasses = showAnnouncement ? 'mt-8 md:mt-0' : '';
       </ul>
     </nav>
 
-    <!-- Actions -->
     <div
-      class="hidden md:self-center md:flex items-center md:mb-0 fixed w-full md:w-auto md:static justify-end left-0 bottom-0 p-3 md:p-0 md:justify-self-end"
+      class:list={[
+        { 'ml-auto rtl:ml-0 rtl:mr-auto': position === 'left' },
+        'hidden md:self-center md:flex items-center md:mb-0 fixed w-full md:w-auto md:static justify-end left-0 rtl:left-auto rtl:right-0 bottom-0 p-3 md:p-0 md:justify-self-end',
+      ]}
     >
       <div class="items-center flex justify-center w-full md:w-auto">
         {
-          headerData.actions?.length ? (
+          actions?.length ? (
             <span>
-              {headerData.actions.map((btnProps) => (
+              {actions.map((btnProps) => (
                 <Button
                   {...btnProps}
                   class="py-3 px-6 text-md md:py-2.5 md:px-5.5 md:text-sm font-semibold shadow-none w-auto"

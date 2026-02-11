@@ -1,10 +1,11 @@
 ---
 import Layout from '~/layouts/Layout.astro';
-import Header from '~/components/layout/Header.astro';
-import Footer from '~/components/layout/Footer.astro';
-import Announcement from '~/components/layout/Announcement.astro';
+import Header from '~/components/widgets/Header.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import Announcement from '~/components/widgets/Announcement.astro';
 import announcementContent from '~/content/announcement.json';
 
+import { headerData } from '../navigation';
 import type { MetaData } from '~/types';
 
 export interface Props {
@@ -17,7 +18,7 @@ const { metadata, ctaBanner = false } = Astro.props;
 
 <Layout metadata={metadata}>
   <slot name="header">
-    <Header>
+    <Header {...headerData}>
       {
         import.meta.env.PUBLIC_ENABLE_ANNOUNCEMENT === 'true' && (
           <Announcement slot="announcement" message={announcementContent.message} href={announcementContent.href} />

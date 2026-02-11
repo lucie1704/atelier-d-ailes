@@ -48,7 +48,7 @@ const { id, title, subtitle, image, actions = [] } = Astro.props as Props;
           actions.length > 0 && (
             <div class="mt-8 flex flex-col sm:flex-row sm:flex-wrap sm:justify-start items-center gap-4 sm:gap-6">
               {actions.map((action) => (
-                <a href={action.href} class={action.variant ?? 'btn-hero-banner'}>
+                <a href={action.href} class={action.variant ?? 'btn-secondary'}>
                   {action.text}
                 </a>
               ))}
