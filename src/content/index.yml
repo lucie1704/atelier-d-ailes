@@ -1,37 +1,48 @@
 banner:
   baseline: |
     Contrôle, révision et réparation d'ailes de parapente et paramoteur.
-    Une exigence et un savoir-faire au service de votre sécurité.
+    Une exigence njhhet un savoir-faire au service de votre sécurité.
   links:
     contact: Demander une révision
     service: Voir les services de l'atelier
   image: /src/assets/images/atelier-hero-image.png
-  
 services:
   title: Les prestations de l’atelier
-  subtitle: Un accompagnement complet pour l’entretien, la réparation et la sécurité de vos ailes de parapente et paramoteur.
+  subtitle: Un accompagnement complet pour l’entretien, la réparation et la
+    sécurité de vos ailes de parapente et paramoteur.
   cards:
     - title: Révision périodique
-      description: Contrôle périodique et révision complète de vos ailes de parapente et paramoteur, réalisés dans le respect des procédures et recommandations des constructeurs.
+      description: Contrôle périodique et révision complète de vos ailes de parapente
+        et paramoteur, réalisés dans le respect des procédures et
+        recommandations des constructeurs.
     - title: Réparation
-      description: |
-        Accroc, déchirure, suspente ou couture endommagée : chaque aile est évaluée avec soin afin de proposer une réparation adaptée, durable et conforme aux standards de sécurité.
+      description: >
+        Accroc, déchirure, suspente ou couture endommagée : chaque aile est
+        évaluée avec soin afin de proposer une réparation adaptée, durable et
+        conforme aux standards de sécurité.
     - title: Pliage de parachute de secours
-      description: Aération, ventilation et pliage de votre parachute de secours selon les spécifications constructeur, pour garantir un fonctionnement optimal en situation d’urgence.
-
+      description: Aération, ventilation et pliage de votre parachute de secours selon
+        les spécifications constructeur, pour garantir un fonctionnement optimal
+        en situation d’urgence.
 profile:
   name: Christophe GODARD
   position: Auto-entrepreneur de l’Atelier d’ailes
-  quote: Je contrôle des ailes depuis plus de 30 ans. Anciennement basé à Paris dans la boutique de VLD (Vol Libre Diffusion), mon atelier est désormais installé en Seine-et-Marne depuis 10 ans où je mets mon expérience à votre service. Passionné par tout ce qui vole, j’entretiens vos ailes de parapente et paramoteur.
+  quote: Je contrôle des ailes depuis plus de 30 ans. Anciennement basé à Paris
+    dans la boutique de VLD (Vol Libre Diffusion), mon atelier est désormais
+    installé en Seine-et-Marne depuis 10 ans où je mets mon expérience à votre
+    service. Passionné par tout ce qui vole, j’entretiens vos ailes de parapente
+    et paramoteur.
   experiences:
     title: Un parcours au service de vos ailes
     list:
       - title: Atelier d’Ailes
         position: Auto-entrepreneur – Seine et Marne
         date: 2015 - Aujourd'hui
-        description: |
+        description: >
           Contrôle, révision et réparation d’ailes de parapente et paramoteur.
+
           Chaque aile est prise en charge personnellement, avec une approche rigoureuse et artisanale.
+
           L’expérience acquise au fil des années permet un diagnostic précis et des interventions adaptées.
       - title: Vol Libre Diffusion (VLD)
         position: Atelier parapente – Paris
@@ -40,7 +51,5 @@ profile:
           Contrôle et entretien d’ailes au sein de la boutique VLD à Paris.
           Travail quotidien sur des ailes de différents constructeurs et usages.
           Une longue expérience technique acquise au contact direct des pilotes.
-
 paracheck:
   title: Certifié ParachecK®
-
