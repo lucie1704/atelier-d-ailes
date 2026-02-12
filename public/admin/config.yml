@@ -1,0 +1,89 @@
+backend:
+  name: github
+  repo: lucie1704/atelier-d-ailes
+  branch: feat/011
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+media_folder: 'src/assets/images'
+public_folder: '/_astro'
+
+collections:
+  - name: 'pages'
+    label: 'Pages'
+    files:
+      - label: 'Accueil'
+        name: 'home'
+        file: 'src/content/index.yml'
+        fields:
+          - label: 'Banner'
+            name: 'banner'
+            widget: 'object'
+            fields:
+              - { label: 'Baseline', name: 'baseline', widget: 'text' }
+              - label: 'Liens'
+                name: 'links'
+                widget: 'object'
+                fields:
+                  - { label: 'Texte bouton contact', name: 'contact', widget: 'string' }
+                  - { label: 'Texte bouton services', name: 'service', widget: 'string' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+
+          - label: 'Services'
+            name: 'services'
+            widget: 'object'
+            fields:
+              - { label: 'Titre', name: 'title', widget: 'string' }
+              - { label: 'Sous-titre', name: 'subtitle', widget: 'text' }
+              - label: 'Cartes de services'
+                name: 'cards'
+                widget: 'list'
+                fields:
+                  - { label: 'Titre', name: 'title', widget: 'string' }
+                  - { label: 'Description', name: 'description', widget: 'text' }
+
+          - label: 'Profil'
+            name: 'profile'
+            widget: 'object'
+            fields:
+              - { label: 'Nom', name: 'name', widget: 'string' }
+              - { label: 'Poste', name: 'position', widget: 'string' }
+              - { label: 'Citation', name: 'quote', widget: 'text' }
+              - label: 'Expériences'
+                name: 'experiences'
+                widget: 'object'
+                fields:
+                  - { label: 'Titre section', name: 'title', widget: 'string' }
+                  - label: 'Liste des expériences'
+                    name: 'list'
+                    widget: 'list'
+                    fields:
+                      - { label: 'Titre', name: 'title', widget: 'string' }
+                      - { label: 'Poste', name: 'position', widget: 'string' }
+                      - { label: 'Date', name: 'date', widget: 'string' }
+                      - { label: 'Description', name: 'description', widget: 'text' }
+
+          - label: 'Paracheck'
+            name: 'paracheck'
+            widget: 'object'
+            fields:
+              - { label: 'Titre', name: 'title', widget: 'string' }
+
+      - label: 'À Propos'
+        name: 'about'
+        file: 'src/pages/services.yml' 
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'text' }
+          - { label: 'Image', name: 'image', widget: 'image', required: false }
+          - { label: 'Content', name: 'body', widget: 'markdown' }
+
+      - label: 'Contact'
+        name: 'contact'
+        file: 'src/pages/contact.yml'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'text' }
+          - { label: 'Email', name: 'email', widget: 'string' }
+          - { label: 'Téléphone', name: 'phone', widget: 'string', required: false }
+          - { label: 'Content', name: 'body', widget: 'markdown' }
