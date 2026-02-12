@@ -5,7 +5,7 @@ banner:
   links:
     contact: Demander une révision
     service: Voir les services de l'atelier
-  image: /images/atelier-hero-image.png
+  image: /src/assets/images/atelier-hero-image.png
   
 services:
   title: Les prestations de l’atelier
