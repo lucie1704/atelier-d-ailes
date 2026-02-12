@@ -1,5 +1,6 @@
 ---
 import { OPEN_DAYS, OPEN_HOUR, CLOSE_HOUR } from '~/constants/shop';
+import { t } from 'i18n:astro';
 
 interface Props {
   id?: string;
@@ -14,6 +15,8 @@ const { id } = Astro.props;
   data-open-days={JSON.stringify(OPEN_DAYS)}
   data-open-hour={OPEN_HOUR}
   data-close-hour={CLOSE_HOUR}
+  data-label-open={t('shopStatus.open')}
+  data-label-closed={t('shopStatus.closed')}
 >
 </div>
 
@@ -43,7 +46,7 @@ const { id } = Astro.props;
 
       el.classList.toggle('tag-success', open);
       el.classList.toggle('tag-danger', !open);
-      el.textContent = open ? 'Ouvert actuellement' : 'Fermé actuellement';
+      el.textContent = open ? el.dataset.labelOpen! : el.dataset.labelClosed!;
       el.classList.remove('hidden');
     });
   }

@@ -134,6 +134,8 @@ export interface Stat {
 
 export interface Item {
   title?: string;
+  subtitle?: string;
+  lead?: string;
   description?: string;
   icon?: string;
   classes?: Record<string, string>;
@@ -300,4 +302,26 @@ type FooterLink = {
 export type FooterSection = {
   title: string;
   links: FooterLink[];
+};
+
+interface Link {
+  text?: string;
+  href?: string;
+  ariaLabel?: string;
+  icon?: string;
+}
+
+export interface MenuLink extends Link {
+  links?: Array<MenuLink>;
+}
+
+type GuideEntry = {
+  title: string;
+  description: string;
+  image: string | null;
+  imageAlt: string;
+};
+
+export type GuideWithImage = GuideEntry & {
+  imageModule: string | null;
 };

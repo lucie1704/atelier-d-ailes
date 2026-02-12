@@ -3,10 +3,17 @@ import Layout from '~/layouts/Layout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
 import Announcement from '~/components/widgets/Announcement.astro';
-import announcementContent from '~/content/announcement.json';
-
-import { headerData } from '../navigation';
+import { reader } from '~/utils/keystatic';
 import type { MetaData } from '~/types';
+import { getLocalePath, getLocale, t } from 'i18n:astro';
+import { ADDRESS, FIRSTNAME, FULLNAME, PHONE } from '~/constants/contact';
+
+const locale = getLocale();
+
+const activeAnnouncementConfig = await reader.singletons[`${locale}_active_announcement`].read();
+const currentAnnouncement = activeAnnouncementConfig?.announcement
+  ? await reader.collections[`${locale}_announcement`].read(activeAnnouncementConfig.announcement)
+  : undefined;
 
 export interface Props {
   metadata?: MetaData;
@@ -14,14 +21,74 @@ export interface Props {
 }
 
 const { metadata, ctaBanner = false } = Astro.props;
+
+const headerData = {
+  links: [
+    { text: t('header.links.home'), href: getLocalePath('/') },
+    { text: t('header.links.services'), href: getLocalePath('/les-services-de-l-atelier') },
+    { text: t('header.links.guides'), href: getLocalePath('/conseils') },
+    { text: t('header.links.pricing'), href: getLocalePath('/tarifs') },
+  ],
+  actions: [{ text: t('header.actions.contact'), href: getLocalePath('/contact') }],
+};
+
+const footerData = [
+  {
+    title: t('footer.information.title'),
+    links: [
+      {
+        label: ADDRESS,
+        href: "https://www.google.com/maps/dir/?api=1&destination=Atelier+d'Ailes",
+        external: true,
+      },
+      { label: t('footer.information.links.openDays') },
+      { label: t('footer.information.links.openHours') },
+      { component: 'shopStatus' },
+    ],
+  },
+  {
+    title: t('footer.contact.title'),
+    links: [
+      { label: FULLNAME },
+      { label: PHONE.FORMAT_INTL, href: `tel:${PHONE.E164}` },
+      { label: t('footer.contact.links.legal'), href: getLocalePath('/mentions-legales') },
+    ],
+  },
+  {
+    title: t('footer.explore.title'),
+    links: [
+      {
+        label: t('footer.explore.links.servicesMaintenance'),
+        href: `${getLocalePath('/les-services-de-l-atelier')}#maintenance`,
+      },
+      {
+        label: t('footer.explore.links.servicesRepair'),
+        href: `${getLocalePath('/les-services-de-l-atelier')}#${t('anchors.repair')}`,
+      },
+      {
+        label: t('footer.explore.links.servicesReserveParachutePacking'),
+        href: `${getLocalePath('/les-services-de-l-atelier')}#${t('anchors.reserveParachutePacking')}`,
+      },
+      { label: t('footer.explore.links.guides'), href: getLocalePath('/conseils') },
+      {
+        label: t('footer.explore.links.about', { firstname: FIRSTNAME }),
+        href: `${getLocalePath('/')}#christophe-godard`,
+      },
+      { label: t('footer.explore.links.paracheck'), href: `${getLocalePath('/')}#paracheck` },
+      { label: t('footer.explore.links.reviews'), href: `${getLocalePath('/')}#${t('anchors.reviews')}` },
+      { label: t('footer.explore.links.pricing'), href: getLocalePath('/tarifs') },
+      { label: t('footer.explore.links.contact'), href: getLocalePath('/contact') },
+    ],
+  },
+];
 ---
 
 <Layout metadata={metadata}>
   <slot name="header">
-    <Header {...headerData}>
+    <Header links={headerData.links} actions={headerData.actions}>
       {
-        import.meta.env.PUBLIC_ENABLE_ANNOUNCEMENT === 'true' && (
-          <Announcement slot="announcement" message={announcementContent.message} href={announcementContent.href} />
+        activeAnnouncementConfig?.active && currentAnnouncement && (
+          <Announcement slot="announcement" message={currentAnnouncement.message} href={getLocalePath('/annonce')} />
         )
       }
     </Header>
@@ -30,6 +97,6 @@ const { metadata, ctaBanner = false } = Astro.props;
     <slot />
   </main>
   <slot name="footer">
-    <Footer ctaBanner={ctaBanner} />
+    <Footer dataSections={footerData} ctaBanner={ctaBanner} />
   </slot>
 </Layout>

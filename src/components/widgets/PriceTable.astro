@@ -1,5 +1,7 @@
 ---
 import type { PriceItem } from '~/types';
+import Markdown from '../ui/Markdown.astro';
+import { t } from 'i18n:astro';
 
 interface Props {
   id?: string;
@@ -43,7 +45,7 @@ const allRows = flattenItems(items);
     {title}
   </h2>
 
-  {subtitle && <p class="mb-6 text-muted text-xl text-center mx-10" set:html={subtitle} />}
+  {subtitle && <Markdown class="mb-6 text-muted text-xl text-center mx-10" content={subtitle} />}
 
   <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
     <table class="min-w-full divide-y divide-gray-200">
@@ -66,7 +68,11 @@ const allRows = flattenItems(items);
 
                 <td class="px-4 py-3 whitespace-nowrap">
                   {item.price &&
-                    (item.price === 'quote' ? <span class="tag-primary text-base">Sur devis</span> : `${item.price} €`)}
+                    (item.price === 'quote' ? (
+                      <span class="tag-primary text-base">{t('onQuote')}</span>
+                    ) : (
+                      `${item.price} €`
+                    ))}
                 </td>
               </tr>
             );

@@ -6,41 +6,44 @@ import ShopStatus from '~/components/widgets/ShopStatus.astro';
 import { Image } from 'astro:assets';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import shopMapImage from '~/assets/images/shop-map.jpeg';
+import { PHONE } from '~/constants/contact';
+import { ADDRESS } from '~/constants/contact';
+import { t } from 'i18n:astro';
 
 const metadata = {
-  title: 'Contact',
-  description: "Prenez rendez-vous par téléphone ou SMS. Merci de prévenir avant tout passage à l'atelier.",
+  title: t('contact:meta.title'),
+  description: t('contact:meta.description'),
 };
 ---
 
 <Layout metadata={metadata}>
-  <Hero tagline="Contact" title="Prendre rendez-vous" subtitle="Merci de prévenir avant tout passage à l'atelier" />
+  <Hero tagline={t('contact:hero.tagline')} title={t('contact:hero.title')} subtitle={t('contact:hero.subtitle')} />
 
   <Features2
     items={[
       {
-        title: 'Par téléphone ou SMS',
-        description: '(+33) 06 81 30 85 58',
+        title: t('contact:phone.title'),
+        description: PHONE.FORMAT_INTL,
         icon: 'tabler:phone',
         callToAction: {
-          text: 'Téléphoner',
-          href: 'tel:+33681308558',
+          text: t('contact:phone.cta'),
+          href: `tel:${PHONE.E164}`,
           target: '_blank',
         },
       },
       {
-        title: 'Adresse',
-        description: '23 Hautefeuille, 77510 Sablonnières',
+        title: t('contact:address.title'),
+        description: ADDRESS,
         icon: 'tabler:map-pin',
         callToAction: {
-          text: "S'y rendre",
+          text: t('contact:address.cta'),
           href: "https://www.google.com/maps/dir/?api=1&destination=Atelier+d'Ailes",
           target: '_blank',
         },
       },
       {
-        title: "Horaires d'ouverture",
-        description: 'Du mardi au samedi, de 9h à 18h',
+        title: t('contact:opening.title'),
+        description: t('contact:opening.description'),
         icon: 'tabler:calendar',
         slotContent: {
           Component: ShopStatus,
@@ -50,17 +53,16 @@ const metadata = {
         },
       },
       {
-        title: 'Contact',
-        description: 'Merci de ne pas laisser de message vocal, privilégiez <strong>les appels ou SMS</strong>.',
+        title: t('contact:helper.contact.title'),
+        description: t('contact:helper.contact.description'),
       },
       {
-        title: 'Accès',
-        description:
-          'Via <strong>Hautefeuille</strong> et <strong>route de la Noue</strong>. Attention, certains GPS proposent des itinéraires incorrects.',
+        title: t('contact:helper.access.title'),
+        description: t('contact:helper.access.description'),
       },
       {
-        title: 'Rendez-vous',
-        description: "Merci de prévenir avant tout passage à l'atelier pour vous assurer de notre disponibilité.",
+        title: t('contact:helper.rendezVous.title'),
+        description: t('contact:helper.rendezVous.description'),
       },
     ]}
   >
@@ -72,7 +74,7 @@ const metadata = {
   <WidgetWrapper>
     <Image
       src={shopMapImage}
-      alt="Carte indiquant où se trouve l'atelier"
+      alt={t('contact:mapImage.alt')}
       loading="lazy"
       class="mx-auto w-full rounded-lg bg-gray-500 shadow-lg"
     />

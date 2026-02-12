@@ -1,0 +1,22 @@
+---
+import MarkdownLayout from '~/layouts/MarkdownLayout.astro';
+import { FULLNAME, ADDRESS, PHONE } from '~/constants/contact';
+import { SITE } from 'astrowind:config';
+import { t } from 'i18n:astro';
+
+const frontmatter = {
+  title: t('legal:frontmatter.title'),
+  tagline: t('legal:frontmatter.tagline'),
+  subtitle: t('legal:frontmatter.subtitle'),
+};
+---
+
+<MarkdownLayout
+  frontmatter={frontmatter}
+  content={t('legal:content', {
+    fullName: FULLNAME,
+    siteName: SITE.name,
+    address: ADDRESS,
+    phone: PHONE.FORMAT_INTL ?? '',
+  })}
+/>

@@ -3,11 +3,22 @@ import Layout from '~/layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
 import Logo from '~/components/widgets/Logo.astro';
 import Hero from '~/components/widgets/Hero.astro';
+import { getSystemTranslator } from '~/utils/system-i18n';
 
-const title = `Maintenance`;
+if (import.meta.env.PUBLIC_ENABLE_MAINTENANCE === 'false') {
+  return Astro.redirect('/', 404);
+}
+
+export const prerender = false;
+
+const t = getSystemTranslator(Astro.preferredLocale, 'maintenance');
+
+const metadata = {
+  title: t('maintenance:meta.title'),
+};
 ---
 
-<Layout metadata={{ title }}>
+<Layout metadata={metadata}>
   <section class="fixed inset-0 flex items-center justify-center">
     <div class="absolute">
       <svg width="800" viewBox="0 0 4174 3170" xmlns="http://www.w3.org/2000/svg">
@@ -18,14 +29,11 @@ const title = `Maintenance`;
       </svg>
     </div>
 
-    <div class="relative z-10 max-w-2xl text-center">
-      <Hero
-        tagline="Information"
-        subtitle="Le site de l'atelier fait peau neuve, nous serons de retour très bientôt ! Merci de votre patience."
-      >
-        <span slot="title" class="flex items-center justify-center gap-4">
+    <div class="relative z-10 max-w-4xl text-center">
+      <Hero tagline={t('tagline')} subtitle={t('subtitle')}>
+        <span slot="title" class="flex flex-col md:flex-row items-center justify-center gap-4 mt-4 md:mt-0">
           <Icon name="tabler:tool" class="text-primary" size={60} />
-          <span>Maintenance en cours</span>
+          <span>{t('heading')}</span>
         </span>
       </Hero>
 

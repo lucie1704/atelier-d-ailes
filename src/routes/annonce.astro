@@ -1,0 +1,48 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import { reader } from '~/utils/keystatic';
+import ContentBlock from '~/components/widgets/ContentBlock.astro';
+import { getLocale } from 'i18n:astro';
+import { getImageModule } from '~/utils/images';
+
+const locale = getLocale();
+
+const activeAnnouncementConfig = await reader.singletons[`${locale}_active_announcement`].read();
+const currentAnnouncement = activeAnnouncementConfig?.announcement
+  ? await reader.collections[`${locale}_announcement`].read(activeAnnouncementConfig.announcement)
+  : undefined;
+
+if (!activeAnnouncementConfig?.active || !activeAnnouncementConfig?.announcement || !currentAnnouncement) {
+  return Astro.redirect('/', '404');
+}
+
+const announcementImages = import.meta.glob<{ default: string }>(
+  '/src/assets/images/announcements/**/*.{jpg,jpeg,png,webp}'
+);
+const currentAnnouncementImageModule = await getImageModule(announcementImages, currentAnnouncement.image);
+
+const metadata = {
+  title: currentAnnouncement.title,
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero
+    title={currentAnnouncement.title}
+    tagline={currentAnnouncement.tagline}
+    subtitle={currentAnnouncement.subtitle}
+  />
+
+  <ContentBlock
+    title={currentAnnouncement.contentTitle}
+    content={currentAnnouncement.contentDescription}
+    {...currentAnnouncementImageModule
+      ? { image: { src: currentAnnouncementImageModule, alt: currentAnnouncement.imageAlt ?? '' } }
+      : {}}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-slate-50"></div>
+    </Fragment>
+  </ContentBlock>
+</Layout>

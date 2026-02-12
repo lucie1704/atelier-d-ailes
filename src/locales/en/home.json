@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "title": "Inspection, maintenance, and repair of paragliding and paramotor wings.",
+    "description": "Inspection, repair, and maintenance of your paragliding and paramotor wings. Over 30 years of experience. Atelier certified ParachecK® in Seine-et-Marne."
+  },
+  "banner": {
+    "baseline": "Inspection, maintenance, and repair of paragliding and paramotor wings.\nExpertise and know-how dedicated to your safety.",
+    "heroImage": {
+      "alt": "Paragliding wing being serviced in the atelier"
+    },
+    "actions": {
+      "contact": "Request an inspection",
+      "services": "See our services"
+    }
+  },
+  "services": {
+    "title": "Our services",
+    "subtitle": "Complete care for your paragliding and paramotor wings.",
+    "items": {
+      "maintenance": {
+        "title": "Periodic inspection",
+        "description": "Periodic control and full inspection of your paragliding and paramotor wings, carried out following the procedures and recommendations of the manufacturers."
+      },
+      "repair": {
+        "title": "Repair",
+        "description": "Tears, rips, line or seam damage: each wing is carefully evaluated to provide a suitable, durable repair that meets safety standards."
+      },
+      "parachutePacking": {
+        "title": "Reserve parachute packing",
+        "description": "Aeration, ventilation, and packing of your reserve parachute according to manufacturer specifications, ensuring optimal functionality in emergency situations."
+      }
+    }
+  },
+  "profile": {
+    "position": "Founder of Atelier d’Ailes",
+    "quote": "I have been inspecting wings for over 30 years. Formerly based in Paris at VLD (Vol Libre Diffusion), my atelier is now located in Seine-et-Marne for {{yearsSinceCreation}} years where I bring my experience to your service. Passionate about everything that flies, I maintain your paragliding and paramotor wings."
+  },
+  "experience": {
+    "title": "A career dedicated to your wings",
+    "items": {
+      "atelier": {
+        "title": "Atelier d’Ailes",
+        "role": "Founder – Seine-et-Marne",
+        "period": "2015 - Present",
+        "description": "Inspection, maintenance, and repair of paragliding and paramotor wings.\nEach wing is personally handled with a rigorous and artisanal approach.\nExperience gained over the years allows for precise diagnostics and tailored interventions."
+      },
+      "vld": {
+        "title": "Vol Libre Diffusion (VLD)",
+        "role": "Paragliding shop – Paris",
+        "period": "Over 20 years",
+        "description": "Wing inspection and maintenance at VLD shop in Paris.\nDaily work on wings from various manufacturers and uses.\nExtensive technical experience gained directly from pilots."
+      }
+    }
+  },
+  "paracheck": {
+    "title": "ParachecK® Certified",
+    "description": "The atelier adheres to the [ParachecK® charter](https://parapente.ffvl.fr/sites/parapente.ffvl.fr/files/Charte%20FFVL%20ParachecK%20V2_03.pdf) of the [FFVL](https://federation.ffvl.fr/), ensuring inspections meet official standards.",
+    "image": {
+      "alt": "ParachecK® Certification"
+    },
+    "items": {
+      "maintenance": {
+        "title": "ParachecK® Periodic Inspection",
+        "description": "The [ParachecK® Periodic Inspection](https://parapente.ffvl.fr/revision-voiles) is the most complete check to assess the actual condition of your wing: fabric porosity and strength, line tension, alignment, and thorough visual inspection. A detailed report is provided according to the charter specifications."
+      },
+      "security": {
+        "title": "Standards and safety",
+        "description": "Only this inspection, required by the [EN 926-2](https://parapente.ffvl.fr/sites/parapente.ffvl.fr/files/Norme%20CEN%20-%20pr%C3%A9sentation%20EN%20926-2%20cF06%20modif%20AD_0.pdf) standard, informs you with certainty of your wing's ability to fly safely at a given time. It is also recommended when buying or selling a second-hand wing."
+      }
+    }
+  },
+  "reviews": {
+    "title": "Feedback from pilots",
+    "action": "Leave a review",
+    "testimonials": [
+      {
+        "name": "Thierry G.",
+        "testimonial": "High-quality work done by a passionate professional. I felt confident flying under my wing repaired by him. You might have to wait a bit, but serious work that I recommend."
+      },
+      {
+        "name": "Henriette H.",
+        "testimonial": "Great contact, meticulous and high-quality work. Christophe takes the time to explain his interventions. Solo wing and reserve parachute inspected with complete confidence."
+      },
+      {
+        "name": "Client",
+        "testimonial": "Expertise and know-how built over a long experience. Meticulous work and great mastery. Undoubtedly a reference."
+      }
+    ]
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "title": "Les services de l'atelier",
+    "description": "Révision, réparation et pliage de parachute de secours pour gardez votre matériel en parfait état de vol."
+  },
+  "hero": {
+    "tagline": "Les services de l'atelier",
+    "title": "Révision, réparation et pliage de parachute de secours",
+    "subtitle": "Gardez votre matériel en parfait état de vol"
+  },
+  "maintenance": {
+    "title": "Révision périodique",
+    "description": "Inspection complète selon les standards officiels [ParachecK®](https://parapente.ffvl.fr/revision-voiles) de la [FFVL](https://federation.ffvl.fr/) pour évaluer l'état réel de votre matériel et voler en sécurité.",
+    "image": {
+      "alt": "Test de porosité d'une voile de parapente effectué dans l'atelier"
+    },
+    "items": {
+      "frequency": {
+        "title": "Tous les 2 ans",
+        "description": "Révision recommandée tous les 2 ans pour une aile récente et annuellement pour une aile ancienne."
+      },
+      "report": {
+        "title": "Rapport détaillé",
+        "description": "Un rapport complet vous est remis avec toutes les données de contrôle et les préconisations d'entretien."
+      }
+    }
+  },
+  "controls": {
+    "title": "Contrôles effectués lors de la révision",
+    "subtitle": "Chaque révision inclut une batterie de tests et mesures pour garantir votre sécurité",
+    "items": {
+      "porosity": {
+        "title": "Mesures de porosité des tissus",
+        "description": "5 mesures en extrados pour vérifier le vieillissement du tissu et sa perméabilité à l'air."
+      },
+      "fabricResistance": {
+        "title": "Tests de résistance des tissus",
+        "description": "Contrôle de la résistance mécanique :\n\n- 1 mesure en extrados\n- 1 mesure en intrados\n- 1 mesure sur cloison (profil)"
+      },
+      "suspenseResistance": {
+        "title": "Tests de résistance suspentes",
+        "description": "Test sur chaque étage de suspentes. Les suspentes testées sont systématiquement changées à neuf."
+      },
+      "measures": {
+        "title": "Mesures dimensionnelles du suspentage",
+        "description": "L'ensemble du suspentage est mesuré des élévateurs jusqu'à la voile, freins compris, pour vérifier la géométrie."
+      },
+      "inspection": {
+        "title": "Inspection visuelle et tactile complète",
+        "description": "Contrôle minutieux de la voile, élévateurs, maillons, poulies, suspentes, points d'attache et tissus."
+      }
+    }
+  },
+  "repair": {
+    "title": "Réparation de votre aile",
+    "description": "Suite à un incident, réparation et remise en ordre de vol de votre aile de parapente ou paramoteur. Types de réparations :\n\n- Couture\n- Changement de panneau\n- Changement de profil\n- Pièce tissu en plein\n- Pièce tissu simple\n- Patch autocollant\n- Suspentes gainées ou non\n- Changement de suspentage complet",
+    "image": {
+      "alt": "Réparation de suspentes de parapente en atelier"
+    },
+    "examples": {
+      "full": {
+        "title": "Pièces de tissus en plein (Panneau partiel)",
+        "image": {
+          "alt": "Réparation avec pièce de tissus en plein (Panneau partiel)"
+        }
+      },
+      "simple": {
+        "title": "Pièces de tissus simple",
+        "image": {
+          "alt": "Réparation avec pièce de tissus simple"
+        }
+      }
+    }
+  },
+  "reserveParachutePacking": {
+    "title": "Pliage de parachute de secours",
+    "description": "Votre parachute de secours est ventilé, aéré, avec remplacement systématique des élastiques et contrôle visuel pour garantir une utilisation optimale. Il est ensuite replié selon les normes constructeur pour assurer votre sécurité.\n\n**Pour monoplace, biplace, avec ou sans container**",
+    "image": {
+      "alt": "Parachute de secours ventilé dans l'atelier"
+    },
+    "items": {
+      "frequency": {
+        "title": "Tous les ans",
+        "description": "Il est recommandé d'effectuer le pliage de parachute de secours une fois par an afin d'éviter, entre autres, que les élastiques ne se détériorent ou s'incrustent dans les suspentes, et que les panneaux ne restent collés."
+      }
+    }
+  }
+}

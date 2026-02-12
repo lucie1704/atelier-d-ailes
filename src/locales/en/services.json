@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "title": "Our services",
+    "description": "Inspection, repair and reserve parachute packing to keep your equipment in perfect flying condition."
+  },
+  "hero": {
+    "tagline": "Our services",
+    "title": "Inspection, repair and reserve parachute packing",
+    "subtitle": "Keep your equipment in perfect flying condition"
+  },
+  "maintenance": {
+    "title": "Periodic inspection",
+    "description": "Complete inspection according to the official [ParachecK®](https://parapente.ffvl.fr/revision-voiles) standards of the [FFVL](https://federation.ffvl.fr/) to assess the actual condition of your equipment and fly safely.",
+    "image": {
+      "alt": "Porosity test on a paraglider wing performed in the atelier"
+    },
+    "items": {
+      "frequency": {
+        "title": "Every 2 years",
+        "description": "Inspection recommended every 2 years for a recent wing and annually for an older wing."
+      },
+      "report": {
+        "title": "Detailed report",
+        "description": "A complete report is provided with all control data and maintenance recommendations."
+      }
+    }
+  },
+  "controls": {
+    "title": "Checks performed during inspection",
+    "subtitle": "Each inspection includes a battery of tests and measurements to guarantee your safety",
+    "items": {
+      "porosity": {
+        "title": "Fabric porosity measurements",
+        "description": "5 measurements on the upper surface to check fabric ageing and air permeability."
+      },
+      "fabricResistance": {
+        "title": "Fabric resistance tests",
+        "description": "Mechanical resistance check:\n\n- 1 measurement on upper surface\n- 1 measurement on lower surface\n- 1 measurement on rib (profile)"
+      },
+      "suspenseResistance": {
+        "title": "Line resistance tests",
+        "description": "Test on each line cascade. Tested lines are systematically replaced with new ones."
+      },
+      "measures": {
+        "title": "Line geometry measurements",
+        "description": "The entire line set is measured from risers to the wing, including brakes, to verify the geometry."
+      },
+      "inspection": {
+        "title": "Complete visual and tactile inspection",
+        "description": "Thorough inspection of the wing, risers, maillons, pulleys, lines, attachment points and fabric."
+      }
+    }
+  },
+  "repair": {
+    "title": "Wing repair",
+    "description": "Following an incident, repair and return to flying condition of your paraglider or paramotor wing. Types of repairs:\n\n- Stitching\n- Panel replacement\n- Profile replacement\n- Full fabric patch\n- Simple fabric patch\n- Self-adhesive patch\n- Sheathed or unsheathed lines\n- Complete line set replacement",
+    "image": {
+      "alt": "Paraglider line repair in the atelier"
+    },
+    "examples": {
+      "full": {
+        "title": "Full fabric patches (Partial panel)",
+        "image": {
+          "alt": "Repair with full fabric patch (Partial panel)"
+        }
+      },
+      "simple": {
+        "title": "Simple fabric patches",
+        "image": {
+          "alt": "Repair with simple fabric patch"
+        }
+      }
+    }
+  },
+  "reserveParachutePacking": {
+    "title": "Reserve parachute packing",
+    "description": "Your reserve parachute is aired and ventilated, with systematic replacement of elastics and visual inspection to ensure optimal use. It is then repacked according to manufacturer standards to ensure your safety.\n\n**For single, tandem, with or without container**",
+    "image": {
+      "alt": "Reserve parachute being aired in the atelier"
+    },
+    "items": {
+      "frequency": {
+        "title": "Every year",
+        "description": "It is recommended to repack the reserve parachute once a year to prevent, among other things, elastics from deteriorating or becoming embedded in the lines, and panels from sticking together."
+      }
+    }
+  }
+}
