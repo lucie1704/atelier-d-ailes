@@ -1,48 +1,54 @@
 ---
 import { SITE } from 'astrowind:config';
 import { getHomePermalink } from '~/utils/permalinks';
+import { useTranslations } from '~/utils/i18n';
 import Logo from '~/components/widgets/Logo.astro';
 import ShopStatus from '~/components/widgets/ShopStatus.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import ctaBannerImage from '~/assets/images/cta-banner.png';
 import type { FooterSection } from '~/types';
+import { PHONE, ADDRESS, FULLNAME, FIRSTNAME } from '~/constants/contact';
 
 const { ctaBanner = false } = Astro.props;
+const { t } = useTranslations(Astro.currentLocale);
 
 const footerSections: FooterSection[] = [
   {
-    title: 'Adresse & Horaires',
+    title: t('layout.footer.information.title'),
     links: [
       {
-        label: '23 Hautefeuille, 77510 Sablonnières',
+        label: ADDRESS,
         href: "https://www.google.com/maps/dir/?api=1&destination=Atelier+d'Ailes",
         external: true,
       },
-      { label: 'Du mardi au samedi' },
-      { label: 'De 9h à 18h' },
+      { label: t('layout.footer.information.links.openDays') },
+      { label: t('layout.footer.information.links.openHours') },
       { component: 'shopStatus' },
     ],
   },
   {
-    title: 'Contact',
+    title: t('layout.footer.contact.title'),
     links: [
-      { label: 'Christophe GODARD' },
-      { label: '(+33) 06 81 30 85 58', href: 'tel:+33681308558' },
-      { label: 'Mentions légales', href: '/legal' },
+      { label: FULLNAME },
+      { label: PHONE.INTL, href: `tel:${PHONE.E164}` },
+      { label: t('layout.footer.contact.links.legal'), href: '/legal' },
     ],
   },
   {
-    title: 'Explorer',
+    title: t('layout.footer.explore.title'),
     links: [
-      { label: 'Révision périodique', href: '/services#maintenance' },
-      { label: 'Réparation de votre aile', href: '/services#repair' },
-      { label: 'Pliage de parachute de secours', href: '/services#reserve-parachute-packing' },
-      { label: 'Conseils', href: '/advices' },
-      { label: 'À propos de Christophe', href: '/#christophe-godard' },
-      { label: 'Certifié ParachecK®', href: '/#paracheck' },
-      { label: 'Avis des pilotes', href: '/#reviews' },
-      { label: 'Tarifs', href: '/pricing' },
-      { label: 'Prendre rendez-vous', href: '/contact' },
+      { label: t('layout.footer.explore.links.servicesMaintenance'), href: '/services#maintenance' },
+      { label: t('layout.footer.explore.links.servicesRepair'), href: '/services#repair' },
+      {
+        label: t('layout.footer.explore.links.servicesReserveParachutePacking'),
+        href: '/services#reserve-parachute-packing',
+      },
+      { label: t('layout.footer.explore.links.advices'), href: '/advices' },
+      { label: t('layout.footer.explore.links.about', { firstname: FIRSTNAME }), href: '/#christophe-godard' },
+      { label: t('layout.footer.explore.links.paracheck'), href: '/#paracheck' },
+      { label: t('layout.footer.explore.links.reviews'), href: '/#reviews' },
+      { label: t('layout.footer.explore.links.pricing'), href: '/pricing' },
+      { label: t('layout.footer.explore.links.contact'), href: '/contact' },
     ],
   },
 ];
@@ -52,15 +58,15 @@ const footerSections: FooterSection[] = [
   ctaBanner && (
     <CallToAction
       id="cta-services"
-      title="Besoin d'un service pour votre matériel ?"
-      subtitle="L'entretien régulier de votre aile contribue à voler en toute sécurité.<br />Contactez l'atelier pour toute demande."
+      title={t('layout.cta.title')}
+      subtitle={t('layout.cta.subtitle')}
       image={{
         src: ctaBannerImage,
-        alt: 'Parapente volant dans le ciel bleu',
+        alt: t('layout.cta.image.alt'),
       }}
       actions={[
         {
-          text: 'Prendre rendez-vous',
+          text: t('layout.cta.actions.contact'),
           href: '/contact',
         },
       ]}

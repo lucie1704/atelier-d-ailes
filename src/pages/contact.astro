@@ -6,6 +6,7 @@ import ShopStatus from '~/components/widgets/ShopStatus.astro';
 import { Image } from 'astro:assets';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import shopMapImage from '~/assets/images/shop-map.jpeg';
+import { PHONE } from '~/constants/contact';
 
 const metadata = {
   title: 'Contact',
@@ -20,11 +21,11 @@ const metadata = {
     items={[
       {
         title: 'Par téléphone ou SMS',
-        description: '(+33) 06 81 30 85 58',
+        description: PHONE.INTL,
         icon: 'tabler:phone',
         callToAction: {
           text: 'Téléphoner',
-          href: 'tel:+33681308558',
+          href: `tel:${PHONE.E164}`,
           target: '_blank',
         },
       },

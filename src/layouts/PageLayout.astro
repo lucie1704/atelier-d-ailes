@@ -5,13 +5,15 @@ import Footer from '~/components/widgets/Footer.astro';
 import Announcement from '~/components/widgets/Announcement.astro';
 import announcementContent from '~/content/announcement.json';
 
-import { headerData } from '../navigation';
+import { getHeaderData } from '../navigation';
 import type { MetaData } from '~/types';
 
 export interface Props {
   metadata?: MetaData;
   ctaBanner?: boolean;
 }
+
+const headerData = getHeaderData(Astro.currentLocale);
 
 const { metadata, ctaBanner = false } = Astro.props;
 ---

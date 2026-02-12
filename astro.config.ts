@@ -9,11 +9,15 @@ import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
 import compress from 'astro-compress';
+import astrowind from './vendor/integration';
+import keystatic from '@keystatic/astro';
+import node from '@astrojs/node';
+import yaml from '@rollup/plugin-yaml';
 import type { AstroIntegration } from 'astro';
 
-import astrowind from './vendor/integration';
-
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
+
+import react from '@astrojs/react';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -23,8 +27,10 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
 
 export default defineConfig({
   output: 'static',
-
+  adapter: node({ mode: 'middleware' }),
   integrations: [
+    react(),
+    keystatic(),
     tailwind({
       applyBaseStyles: false,
     }),
@@ -47,13 +53,11 @@ export default defineConfig({
         ],
       },
     }),
-
     ...whenExternalScripts(() =>
       partytown({
         config: { forward: ['dataLayer.push'] },
       })
     ),
-
     compress({
       CSS: true,
       HTML: {
@@ -66,22 +70,23 @@ export default defineConfig({
       SVG: false,
       Logger: 1,
     }),
-
     astrowind({
       config: './src/config.yaml',
     }),
   ],
-
-  image: {
-    domains: ['cdn.pixabay.com'],
-  },
 
   markdown: {
     remarkPlugins: [readingTimeRemarkPlugin],
     rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
   },
 
+  i18n: {
+    defaultLocale: 'fr',
+    locales: ['fr', 'en'],
+  },
+
   vite: {
+    plugins: [yaml()],
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './src'),

@@ -23,7 +23,7 @@ const {
 {
   items && items.length > 0 && (
     <div class={containerClass}>
-      {items.map(({ title, description, icon, classes: itemClasses = {} }, index = 0) => (
+      {items.map(({ title, subtitle, lead, description, icon, classes: itemClasses = {} }, index = 0) => (
         <div class={twMerge('flex', panelClass, itemClasses?.panel)}>
           <div class="flex flex-col items-center mr-4 rtl:mr-0 rtl:ml-4">
             <div>
@@ -40,6 +40,8 @@ const {
           </div>
           <div class={`pt-1 ${index !== items.length - 1 ? 'pb-8' : ''}`}>
             {title && <p class={twMerge('text-xl font-bold', titleClass, itemClasses?.title)} set:html={title} />}
+            {subtitle && <p class="text-xl mb-2" set:html={subtitle} />}
+            {lead && <p class="text-sm" set:html={lead} />}
             {description && (
               <p
                 class={twMerge('text-muted mt-2', descriptionClass, itemClasses?.description)}

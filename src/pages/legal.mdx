@@ -5,12 +5,15 @@ subtitle: 'Dernière mise à jour le 24 janvier 2026'
 layout: '~/layouts/MarkdownLayout.astro'
 ---
 
+import { FULLNAME, ADDRESS, PHONE } from '../constants/contact';
+import { SITE } from 'astrowind:config';
+
 ## Identification de l'entreprise
 
-**Nom commercial :** Atelier d'Ailes  
+**Nom commercial :** {SITE.name}   
 **Forme juridique :** Entrepreneur individuel  
-**Adresse :** 23 Hautefeuille, 77510 Sablonnières  
-**Téléphone :** (+33) 06 81 30 85 58
+**Adresse :** {ADDRESS}  
+**Téléphone :** {PHONE.INTL}
 
 **SIRET :** 810 972 844 00023  
 **Numéro d'immatriculation RNE :** 810 972 844  
@@ -18,7 +21,7 @@ layout: '~/layouts/MarkdownLayout.astro'
 
 ## Directeur de la publication
 
-Christophe GODARD
+<p>{FULLNAME}</p>
 
 ## Hébergement du site
 
@@ -37,3 +40,4 @@ Les photographies et illustrations présentes sur ce site sont utilisées avec l
 Ce site est purement informatif et ne collecte aucune donnée personnelle. Aucun formulaire de contact n'est présent sur le site et aucun cookie n'est utilisé.
 
 Pour toute question, vous pouvez nous contacter directement par téléphone aux coordonnées indiquées ci-dessus.
+

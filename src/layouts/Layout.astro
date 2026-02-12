@@ -1,6 +1,6 @@
 ---
 import '~/assets/styles/tailwind.css';
-import { I18N } from 'astrowind:config';
+import { I18N, SITE } from 'astrowind:config';
 import CommonMeta from '~/components/common/CommonMeta.astro';
 import Favicons from '~/components/widgets/Favicons.astro';
 import Metadata from '~/components/common/Metadata.astro';
@@ -32,7 +32,7 @@ const { language, textDirection } = I18N;
       set:html={JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'LocalBusiness',
-        name: "Atelier d'Ailes",
+        name: SITE.name,
         url: 'https://www.atelier-d-ailes.fr',
         logo: 'https://www.atelier-d-ailes.fr/logo.png',
         description:

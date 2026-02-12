@@ -1,0 +1,45 @@
+header:
+  links:
+    home: Accueil
+    services: Les services de l'atelier
+    advices: Conseils
+    pricing: Tarifs
+  actions:
+    contact: Me contacter
+
+footer:
+  information:
+    title: Adresse & Horaires
+    links:
+      openDays: Du mardi au samedi
+      openHours: De 9h à 18h
+  contact:
+    title: Contact
+    links:
+      legal: Mentions légales
+  explore:
+    title: Explorer
+    links:
+      servicesMaintenance: Révision périodique
+      servicesRepair: Réparation de votre aile
+      servicesReserveParachutePacking: Pliage de parachute de secours
+      advices: Conseils
+      about: À propos de {firstname}
+      paracheck: Certifié ParachecK®
+      reviews: Avis des pilotes
+      pricing: Tarifs
+      contact: Prendre rendez-vous
+      
+cta:
+  title: Besoin d'un service pour votre matériel ?
+  subtitle: |
+    L'entretien régulier de votre aile contribue à voler en toute sécurité.
+    Contactez l'atelier pour toute demande.
+  image:
+    alt: Parapente volant dans le ciel bleu
+  actions:
+    contact: Prendre rendez-vous
+
+shopStatus:
+  open: Ouvert actuellement
+  closed: Fermé actuellement

@@ -1,28 +1,16 @@
-import { getPermalink } from './utils/permalinks';
+import { getPermalink } from '~/utils/permalinks';
+import { useTranslations } from '~/utils/i18n';
 
-export const headerData = {
-  links: [
-    {
-      text: 'Accueil',
-      href: getPermalink('/'),
-    },
-    {
-      text: "Les services de l'atelier",
-      href: getPermalink('/services'),
-    },
-    {
-      text: 'Conseils',
-      href: getPermalink('/advices'),
-    },
-    {
-      text: 'Tarifs',
-      href: getPermalink('/pricing'),
-    },
-  ],
-  actions: [
-    {
-      text: 'Me contacter',
-      href: getPermalink('/contact'),
-    },
-  ],
+export const getHeaderData = (locale: string | undefined) => {
+  const { t } = useTranslations(locale);
+
+  return {
+    links: [
+      { text: t('layout.header.links.home'), href: getPermalink('/') },
+      { text: t('layout.header.links.services'), href: getPermalink('/services') },
+      { text: t('layout.header.links.advices'), href: getPermalink('/advices') },
+      { text: t('layout.header.links.pricing'), href: getPermalink('/pricing') },
+    ],
+    actions: [{ text: t('layout.header.actions.contact'), href: getPermalink('/contact') }],
+  };
 };

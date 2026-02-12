@@ -5,6 +5,8 @@ import Steps from '~/components/widgets/Steps.astro';
 import Features from '~/components/widgets/Features.astro';
 import Content from '~/components/widgets/Content.astro';
 import { Icon } from 'astro-icon/components';
+const { currentLocale } = Astro;
+import { reader } from '~/utils/keystatic';
 
 // Images
 import advicesAttachPointImage from '~/assets/images/advices-attach-point.jpg';
@@ -12,12 +14,22 @@ import advicesBreakLineImage from '~/assets/images/advices-break-line.jpg';
 import advicesLooseRiserMaillonsImage from '~/assets/images/advices-loose-riser-maillons.jpg';
 import advicesReserveParachuteMaillonImage from '~/assets/images/advices-reserve-parachute-maillon.png';
 import advicesWornPulleysImage from '~/assets/images/advices-worn-pulleys.jpg';
+import Markdown from '../components/ui/Markdown.astro';
 
 const metadata = {
   title: 'Conseils',
   description:
     'Prendre soin de son aile. Recommandations pour préserver la sécurité et la longévité de votre matériel.',
 };
+
+const advices = await Promise.all(
+  (await reader.collections[`${currentLocale}_advice`].all()).map(
+    async (advice) => ({
+      ...advice,
+      rendered: await advice.entry.description(),
+    })
+  )
+);
 ---
 
 <Layout metadata={metadata} ctaBanner>
@@ -74,6 +86,14 @@ const metadata = {
     ]}
   />
 
+
+  {advices.map((advice) => (
+    <div>
+      <h2>{advice.entry.title}</h2>
+      <Markdown content={advice.rendered}></Markdown>
+    </div>
+  ))}
+  
   <Content
     title="Erreurs courantes à éviter"
     subtitle="Exemples concrets et bonnes pratiques pour préserver votre équipement"
@@ -90,7 +110,9 @@ const metadata = {
   >
     <Fragment slot="content">
       <div class="flex flex-col items-center md:items-start gap-3 mb-4">
-        <Icon name="tabler:alert-triangle" class="w-14 h-14 bg-amber-200/30 rounded-lg text-amber-600 p-3" />
+        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+          <Icon name="tabler:alert-triangle" class="w-6 h-6 text-primary" />
+        </div>
         <h3 class="text-center md:text-left text-2xl font-bold tracking-tight dark:text-white sm:text-3xl">
           Drisses de freins bobinées
         </h3>
@@ -118,7 +140,9 @@ const metadata = {
   >
     <Fragment slot="content">
       <div class="flex flex-col items-center md:items-start gap-3 mb-4">
-        <Icon name="tabler:alert-triangle" class="w-14 h-14 bg-amber-200/30 rounded-lg text-amber-600 p-3" />
+        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+          <Icon name="tabler:alert-triangle" class="w-6 h-6 text-primary" />
+        </div>
         <h3 class="text-center md:text-left text-2xl font-bold tracking-tight dark:text-white sm:text-3xl">
           Maillons d’élévateurs désserrés
         </h3>
@@ -149,7 +173,9 @@ const metadata = {
   >
     <Fragment slot="content">
       <div class="flex flex-col items-center md:items-start gap-3 mb-4">
-        <Icon name="tabler:alert-triangle" class="w-14 h-14 bg-amber-200/30 rounded-lg text-amber-600 p-3" />
+        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+          <Icon name="tabler:alert-triangle" class="w-6 h-6 text-primary" />
+        </div>
         <h3 class="text-center md:text-left text-2xl font-bold tracking-tight dark:text-white sm:text-3xl">
           Maillon de parachute de secours mal positionné
         </h3>
@@ -184,7 +210,9 @@ const metadata = {
   >
     <Fragment slot="content">
       <div class="flex flex-col items-center md:items-start gap-3 mb-4">
-        <Icon name="tabler:alert-triangle" class="w-14 h-14 bg-amber-200/30 rounded-lg text-amber-600 p-3" />
+        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+          <Icon name="tabler:alert-triangle" class="w-6 h-6 text-primary" />
+        </div>
         <h3 class="text-center md:text-left text-2xl font-bold tracking-tight dark:text-white sm:text-3xl">
           Poulies et anneaux de freins
         </h3>
@@ -209,7 +237,9 @@ const metadata = {
   >
     <Fragment slot="content">
       <div class="flex flex-col items-center md:items-start gap-3 mb-4">
-        <Icon name="tabler:alert-triangle" class="w-14 h-14 bg-amber-200/30 rounded-lg text-amber-600 p-3" />
+        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+          <Icon name="tabler:alert-triangle" class="w-6 h-6 text-primary" />
+        </div>
         <h3 class="text-center md:text-left text-2xl font-bold tracking-tight dark:text-white sm:text-3xl">
           Gonflage croisé déconseillé
         </h3>
