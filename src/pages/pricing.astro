@@ -3,22 +3,38 @@ import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Prices from '~/components/widgets/Prices.astro';
 import PriceTable from '~/components/widgets/PriceTable.astro';
+import { useTranslations } from '~/utils/i18n';
+
+const { t, tr } = useTranslations(Astro.currentLocale);
 
 const metadata = {
-  title: 'Tarifs',
-  description: "Détail des tarifs des prestations de l'atelier, hors frais de port, pour parapente et paramoteur",
+  title: t('pricing.meta.title'),
+  description: t('pricing.meta.description'),
 };
 
+const repairPrices = [
+  { title: t('pricing.tables.repair.items.sewingHourlyRate'), price: '50' },
+  { title: t('pricing.tables.repair.items.panelChange'), price: 'quote' },
+  { title: t('pricing.tables.repair.items.profileChange'), price: 'quote' },
+  { title: t('pricing.tables.repair.items.fullFabricPatch'), price: 'quote' },
+  { title: t('pricing.tables.repair.items.simpleFabricPatch'), price: 'quote' },
+  { title: t('pricing.tables.repair.items.selfAdhesivePatch'), price: 'quote' },
+  { title: t('pricing.tables.repair.items.sheathedHangerInstalled'), price: '17' },
+  { title: t('pricing.tables.repair.items.sheathedHangerNotInstalled'), price: '13' },
+  { title: t('pricing.tables.repair.items.splicedHangerInstalled'), price: '25' },
+  { title: t('pricing.tables.repair.items.splicedHangerNotInstalled'), price: '20' },
+];
+
 const inspectionDetails = [
-  { title: 'Inspection de porosité', price: '40' },
-  { title: 'Inspection géométrique du suspentage (tarif selon correction)', price: '40' },
-  { title: 'Inspection visuelle de la voile', price: '100' },
-  { title: 'Inspection de la résistance tissu', price: '100' },
+  { title: t('pricing.tables.inspections.items.porosity'), price: '40' },
+  { title: t('pricing.tables.inspections.items.suspenseGeometry'), price: '40' },
+  { title: t('pricing.tables.inspections.items.visual'), price: '100' },
+  { title: t('pricing.tables.inspections.items.fabricResistance'), price: '100' },
   {
-    title: 'Inspection de résistance suspente',
+    title: t('pricing.tables.inspections.items.suspenseResistance.title'),
     children: [
       {
-        title: 'Suspente gainée',
+        title: t('pricing.tables.inspections.items.suspenseResistance.sheathed'),
         children: [
           { title: 'x1', price: '20' },
           { title: 'x2', price: '40' },
@@ -26,7 +42,7 @@ const inspectionDetails = [
         ],
       },
       {
-        title: 'Suspente non gainée',
+        title: t('pricing.tables.inspections.items.suspenseResistance.nonSheathed'),
         children: [
           { title: 'x1', price: '25' },
           { title: 'x2', price: '50' },
@@ -38,70 +54,40 @@ const inspectionDetails = [
 ];
 
 const parachuteFoldingPrices = [
-  { title: 'Monoplace sans sellette', price: '50' },
-  { title: 'Monoplace avec installation dans la sellette ou container', price: '55' },
-  { title: 'Biplace sans sellette', price: '55' },
-  { title: 'Biplace avec installation dans la sellette', price: '60' },
-  { title: 'Rogallo', price: '100' },
-];
-
-const repairPrices = [
-  { title: 'Tarif horaire couture', price: '50' },
-  { title: 'Changement de panneau (intrados ou extrados)', price: 'quote' },
-  { title: 'Changement de profil', price: 'quote' },
-  { title: 'Pièce tissu en plein', price: 'quote' },
-  { title: 'Pièce tissu simple', price: 'quote' },
-  { title: 'Patch autocollant', price: 'quote' },
-  { title: 'Suspente gainée posée', price: '17' },
-  { title: 'Suspente gainée non posée', price: '13' },
-  { title: 'Suspente épissurée posée', price: '25' },
-  { title: 'Suspente épissurée non posée', price: '20' },
+  { title: t('pricing.tables.parachute.items.singleSeatWithoutHarness'), price: '50' },
+  { title: t('pricing.tables.parachute.items.singleSeatWithHarness'), price: '55' },
+  { title: t('pricing.tables.parachute.items.twoSeatWithoutHarness'), price: '55' },
+  { title: t('pricing.tables.parachute.items.twoSeatWithHarness'), price: '60' },
+  { title: t('pricing.tables.parachute.items.rogallo'), price: '100' },
 ];
 ---
 
 <Layout metadata={metadata} ctaBanner>
-  <Hero tagline="Tarifs" title="Détail des tarifs" subtitle="Hors frais de port" />
+  <Hero tagline={t('pricing.hero.tagline')} title={t('pricing.hero.title')} subtitle={t('pricing.hero.subtitle')} />
 
   <Prices
     prices={[
       {
-        title: 'Pliage de parachute de secours',
-        subtitle: 'Monoplace, biplace, avec ou sans container',
+        title: t('pricing.cards.parachute.title'),
+        subtitle: t('pricing.cards.parachute.subtitle'),
         price: '50 – 100',
-        items: [
-          { description: 'Ventilé et aéré' },
-          { description: 'Remplacement des élastiques' },
-          { description: 'Contrôle visuel' },
-          { description: 'Replié selon les normes constructeur' },
-        ],
+        items: tr<Array<{ description: string }>>('pricing.cards.parachute.items'),
         callToAction: {
-          text: 'Voir le détail',
+          text: t('pricing.cards.parachute.cta'),
           href: '/pricing#reserve-parachure-packing-price-details',
         },
       },
       {
-        title: 'Révision périodique monoplace',
-        subtitle: 'ParachecK®',
+        title: t('pricing.cards.maintenanceSingleSeat.title'),
+        subtitle: t('pricing.cards.maintenanceSingleSeat.subtitle'),
         price: 180,
-        items: [
-          { description: 'Mesures de porosité des tissus' },
-          { description: 'Tests de résistance des tissus' },
-          { description: 'Tests de résistance suspentes' },
-          { description: 'Mesures dimensionnelles du suspentage' },
-          { description: 'Inspection visuelle et tactile complète' },
-        ],
+        items: tr<Array<{ description: string }>>('pricing.cards.maintenanceSingleSeat.items'),
       },
       {
-        title: 'Révision périodique\nbiplace',
-        subtitle: 'ParachecK®',
+        title: t('pricing.cards.maintenanceTwoSeat.title'),
+        subtitle: t('pricing.cards.maintenanceTwoSeat.subtitle'),
         price: 195,
-        items: [
-          { description: 'Mesures de porosité des tissus' },
-          { description: 'Tests de résistance des tissus' },
-          { description: 'Tests de résistance suspentes' },
-          { description: 'Mesures dimensionnelles du suspentage' },
-          { description: 'Inspection visuelle et tactile complète' },
-        ],
+        items: tr<Array<{ description: string }>>('pricing.cards.maintenanceTwoSeat.items'),
       },
     ]}
   >
@@ -112,14 +98,18 @@ const repairPrices = [
 
   <PriceTable
     id="repair-price-details"
-    title="Réparation"
-    subtitle="Chaque réparation est unique. <a href='/contact' class='external-link'>Contactez l’atelier</a> pour obtenir un devis personnalisé en fonction de l’état de votre aile, du type d’intervention et des réparations nécessaires."
+    title={t('pricing.tables.repair.title')}
+    subtitle={t('pricing.tables.repair.subtitle')}
     items={repairPrices}
   />
-  <PriceTable id="inspections-price-details" title="Inspections au détail" items={inspectionDetails} />
+  <PriceTable 
+    id="inspections-price-details" 
+    title={t('pricing.tables.inspections.title')}
+    items={inspectionDetails} 
+  />
   <PriceTable
     id="reserve-parachure-packing-price-details"
-    title="Pliage de parachute de secours"
+    title={t('pricing.tables.parachute.title')}
     items={parachuteFoldingPrices}
   />
 </Layout>

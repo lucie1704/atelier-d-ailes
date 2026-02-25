@@ -1,5 +1,6 @@
 ---
 import type { PriceItem } from '~/types';
+import Markdown from '../ui/Markdown.astro';
 
 interface Props {
   id?: string;
@@ -43,7 +44,7 @@ const allRows = flattenItems(items);
     {title}
   </h2>
 
-  {subtitle && <p class="mb-6 text-muted text-xl text-center mx-10" set:html={subtitle} />}
+  {subtitle && <Markdown class="mb-6 text-muted text-xl text-center mx-10" content={subtitle}></Markdown>}
 
   <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
     <table class="min-w-full divide-y divide-gray-200">

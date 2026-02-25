@@ -114,19 +114,19 @@ const metadata = {
   </Content>
 
   <FeaturesImages
-    title={t('services.repair.examples.plain.title')}
+    title={t('services.repair.examples.full.title')}
     items={[
       {
         image: repairImageExample1,
-        alt: t('services.repair.examples.plain.image.alt'),
+        alt: t('services.repair.examples.full.image.alt'),
       },
       {
         image: repairImageExample2,
-        alt: t('services.repair.examples.plain.image.alt'),
+        alt: t('services.repair.examples.full.image.alt'),
       },
       {
         image: repairImageExample3,
-        alt: t('services.repair.examples.plain.image.alt'),
+        alt: t('services.repair.examples.full.image.alt'),
       },
     ]}
   />
@@ -154,7 +154,7 @@ const metadata = {
     items={[
       {
         title: t('services.reserveParachutePacking.items.frequency.title'),
-        description:  t('services.reserveParachutePacking.items.frequency.description'),
+        description: t('services.reserveParachutePacking.items.frequency.description'),
         icon: 'lucide:timer-reset',
       },
     ]}
@@ -164,7 +164,9 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl mb-2">{t('services.reserveParachutePacking.title')}</h3>
+      <h3 class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl mb-2">
+        {t('services.reserveParachutePacking.title')}
+      </h3>
       <Markdown class="text-muted" content={t('services.reserveParachutePacking.description')} />
     </Fragment>
 

@@ -68,7 +68,7 @@ repair:
   image:
     alt: Réparation de suspentes de parapente en atelier
   examples:
-    plain:
+    full:
       title: Pièces de tissus en plein (Panneau partiel)
       image:
         alt: Réparation avec pièce de tissus en plein (Panneau partiel)

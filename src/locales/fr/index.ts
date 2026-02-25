@@ -5,6 +5,7 @@ import home from './home.yaml';
 import layout from './layout.yaml';
 import legal from './legal.yaml';
 import maintenance from './maintenance.yaml';
+import pricing from './pricing.yaml';
 import services from './services.yaml';
 
 export default {
@@ -15,5 +16,6 @@ export default {
   layout,
   legal,
   maintenance,
+  pricing,
   services,
 };
