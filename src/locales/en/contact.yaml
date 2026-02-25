@@ -1,34 +1,34 @@
 meta:
   title: Contact
   description: Prenez rendez-vous par téléphone ou SMS. Merci de prévenir avant tout passage à l'atelier.
-    
+
 hero:
   tagline: Contact
   title: Prendre rendez-vous
   subtitle: Merci de prévenir avant tout passage à l'atelier
-  
+
 phone:
   title: Par téléphone ou SMS
   cta: Téléphoner
-  
-address: 
+
+address:
   title: Adresse
   cta: S'y rendre
-  
+
 opening:
   title: Horaires d'ouverture
   description: Du mardi au samedi, de 9h à 18h
-  
+
 helper:
   contact:
     title: Contact
-    description:  >-
+    description: >-
       Merci de ne pas laisser de message vocal, privilégiez **les appels ou SMS**
   access:
     title: Accès
-    description:  >-
+    description: >-
       Via **Hautefeuille** et **route de la Noue**. Attention, certains GPS proposent des itinéraires incorrects.
-  rendezVous: 
+  rendezVous:
     title: Rendez-vous
     description: Merci de prévenir avant tout passage à l'atelier pour vous assurer de notre disponibilité.
 

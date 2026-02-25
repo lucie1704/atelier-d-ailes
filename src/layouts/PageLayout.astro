@@ -8,11 +8,12 @@ import { reader } from '~/utils/keystatic';
 const locale = Astro.currentLocale;
 
 const activeAnnouncementConfig = await reader.singletons[`${locale}_active_announcement`].read();
-const currentAnnouncement = await reader.collections[`${locale}_announcement`].read(activeAnnouncementConfig.announcement);
+const currentAnnouncement = await reader.collections[`${locale}_announcement`].read(
+  activeAnnouncementConfig.announcement
+);
 
-const isAnnouncementEnabled = activeAnnouncementConfig?.active 
-  && activeAnnouncementConfig?.announcement 
-  && currentAnnouncement
+const isAnnouncementEnabled =
+  activeAnnouncementConfig?.active && activeAnnouncementConfig?.announcement && currentAnnouncement;
 
 import { getHeaderData } from '../navigation';
 import type { MetaData } from '~/types';

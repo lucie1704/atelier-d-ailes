@@ -4,7 +4,8 @@
 
 @layer base {
   /* to handle \n in text block */
-  p, span {
+  p,
+  span {
     @apply whitespace-pre-line;
   }
 }

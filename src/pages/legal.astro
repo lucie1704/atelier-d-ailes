@@ -13,11 +13,12 @@ const frontmatter = {
 };
 ---
 
-<MarkdownLayout 
-  frontmatter={frontmatter} 
-  content={t('legal.content', { 
-    fullName: FULLNAME, 
-    siteName: SITE.name, 
-    address: ADDRESS, 
-    phone: PHONE.FORMAT_INTL ?? '' 
-  })} />
+<MarkdownLayout
+  frontmatter={frontmatter}
+  content={t('legal.content', {
+    fullName: FULLNAME,
+    siteName: SITE.name,
+    address: ADDRESS,
+    phone: PHONE.FORMAT_INTL ?? '',
+  })}
+/>

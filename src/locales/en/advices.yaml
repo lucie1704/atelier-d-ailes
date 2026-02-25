@@ -20,7 +20,7 @@ inspections:
       title: Points de contrôle
       description: Vérifiez systématiquement les élévateurs, les suspentes et tous les points d'attache. Les points d'attache sont les zones qui subissent le plus de contraintes. (voir photo),
 
-storage: 
+storage:
   title: Protection et stockage
   subtitle: Comment protéger votre aile des agressions extérieures
   items:

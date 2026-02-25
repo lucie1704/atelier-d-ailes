@@ -1,7 +1,7 @@
 meta:
   title: Les services de l'atelier
   description: Révision, réparation et pliage de parachute de secours pour gardez votre matériel en parfait état de vol.
-  
+
 hero:
   tagline: Les services de l'atelier
   title: Révision, réparation et pliage de parachute de secours
@@ -35,7 +35,7 @@ controls:
       title: Tests de résistance des tissus
       description: >
         Contrôle de la résistance mécanique :
-        
+
           - 1 mesure en extrados
           - 1 mesure en intrados
           - 1 mesure sur cloison (profil)
@@ -51,12 +51,12 @@ controls:
       title: Inspection visuelle et tactile complète
       description: >
         Contrôle minutieux de la voile, élévateurs, maillons, poulies, suspentes, points d'attache et tissus.
-        
+
 repair:
   title: Réparation de votre aile
   description: >
     Suite à un incident, réparation et remise en ordre de vol de votre aile de parapente ou paramoteur. Types de réparations :
-    
+
       - Couture
       - Changement de panneau
       - Changement de profil
@@ -76,12 +76,12 @@ repair:
       title: Pièces de tissus simple
       image:
         alt: Réparation avec pièce de tissus simple
-    
+
 reserveParachutePacking:
   title: Pliage de parachute de secours
   description: >
     Votre parachute de secours est ventilé, aéré, avec remplacement systématique des élastiques et contrôle visuel pour garantir une utilisation optimale. Il est ensuite replié selon les normes constructeur pour assurer votre sécurité.
-    
+
     **Pour monoplace, biplace, avec ou sans container**
   image:
     alt: Parachute de secours ventilé dans l’atelier

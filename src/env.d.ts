@@ -5,11 +5,11 @@
 /// <reference types="../vendor/integration/types.d.ts" />
 
 declare module '*.yaml' {
-  const value: any;
+  const value: unknown;
   export default value;
 }
 
 declare module '*.yml' {
-  const value: any;
+  const value: unknown;
   export default value;
 }

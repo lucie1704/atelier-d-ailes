@@ -38,7 +38,6 @@ Ce site vitrine a été conçu pour répondre aux exigences suivantes :
 - **Vercel** : déploiement et hosting
 - **Keystatic** : CMS pour la gestion du contenu éditorial
 
-
 ## 📈 Performance
 
 Les scores lighthouse seront mis à jour une fois le site publié.
@@ -113,14 +112,15 @@ Active une redirection globale vers la page `/maintenance` pour toutes les route
 
 ### 📝 CMS Keystatic
 
-Le CMS Keystatic a été intégré pour la gestion du contenu éditorial du site : 
-  - Les annonces
-  - Les blocs "Erreurs courantes à éviter" de la page Conseil
+Le CMS Keystatic a été intégré pour la gestion du contenu éditorial du site :
+
+- Les annonces
+- Les blocs "Erreurs courantes à éviter" de la page Conseil
 
 Le CMS est accessible en se rendant sur l'url suivant http://atelier-d-ailes.fr/keystatic et en se connectant via GitHub (seul ce présent compte y a accès).  
-À la sauvegarde le nouveau contenu sera push sous forme de commit sur une branche `/cms` avant de pouvoir être validé et mergé sur main pour mettre à jour le site. 
+À la sauvegarde le nouveau contenu sera push sous forme de commit sur une branche `/cms` avant de pouvoir être validé et mergé sur main pour mettre à jour le site.
 
-Le contenu éditorial est organisé par langue dans `src/content`, chaque langue ayant sa propre version des annonces et des blocs conseils. On peut par exemple afficher uniquement une annonce pour la langue anglaise ou inversement. On pourrait également afficher des conseils différents selon la langue ou simplement les traduires.  
+Le contenu éditorial est organisé par langue dans `src/content`, chaque langue ayant sa propre version des annonces et des blocs conseils. On peut par exemple afficher uniquement une annonce pour la langue anglaise ou inversement. On pourrait également afficher des conseils différents selon la langue ou simplement les traduires.
 
 ```
 ├── src/
@@ -154,9 +154,10 @@ Le contenu Markdown est rendu via un composant `Markdown` utilisant la librairie
 ### Annonces
 
 Il est possible d'afficher un bandeau d'information en haut du site lié à une page de détail d'annonce, par exemple pour des fermetures exceptionnelles ou autres informations éphémères liées à l'atelier.
-En accédant à Keystatic il vous suffira de configurer deux contenus : 
-  - Active annonce : pour déterminer si on veut que l'annonce soit active ou non et choisir ensuite parmi les annonces existantes celle à afficher
-  - Les annonces : une collection d'annonces permettant d'ajouter ou de modifier une annonce pour une future information exceptionnelle à transmettre
+En accédant à Keystatic il vous suffira de configurer deux contenus :
+
+- Active annonce : pour déterminer si on veut que l'annonce soit active ou non et choisir ensuite parmi les annonces existantes celle à afficher
+- Les annonces : une collection d'annonces permettant d'ajouter ou de modifier une annonce pour une future information exceptionnelle à transmettre
 
 ### Blocs Conseils
 
@@ -164,8 +165,9 @@ Les blocs sous "Erreurs courantes à éviter" de la page Conseil sont également
 
 ## 🌐 Internationalisation (i18n)
 
-Le site est conçu pour supporter **plusieurs langues** (actuellement Français et Anglais) via une configuration i18n dans `src/utils/i18n.ts` 
-- `t` permet de traduire 
+Le site est conçu pour supporter **plusieurs langues** (actuellement Français et Anglais) via une configuration i18n dans `src/utils/i18n.ts`
+
+- `t` permet de traduire
 - `tr` permet de traduire des listes depuis le yaml en retournant des tableaux typés
 
 Le contenu static du site est donc disponibles par langue dans `src/locales`.

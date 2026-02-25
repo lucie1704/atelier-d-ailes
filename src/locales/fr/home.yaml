@@ -3,25 +3,25 @@ meta:
   description: Révision, réparation et entretien de vos ailes de parapente et paramoteur. Plus de 30 ans d'expérience. Atelier certifié ParachecK® en Seine-et-Marne.
 
 banner:
-  baseline: | 
+  baseline: |
     Contrôle, révision et réparation d'ailes de parapente et paramoteur.
     Une exigence et un savoir-faire au service de votre sécurité.
-  heroImage: 
+  heroImage:
     alt: Aile de parapente en révision dans l'atelier
   actions:
     contact: Demander une révision
     services: Voir les services de l'atelier
-    
+
 services:
   title: Les prestations de l’atelier
   subtitle: Un accompagnement complet pour l’entretien, la réparation et la sécurité de vos ailes de parapente et paramoteur.
-  items: 
+  items:
     maintenance:
       title: Révision périodique
       description: Contrôle périodique et révision complète de vos ailes de parapente et paramoteur, réalisés dans le respect des procédures et recommandations des constructeurs.
     repair:
       title: Réparation
-      description: | 
+      description: |
         Accroc, déchirure, suspente ou couture endommagée : chaque aile est évaluée avec soin afin de proposer une réparation adaptée, durable et conforme aux standards de sécurité.
     parachutePacking:
       title: Pliage de parachute de secours
@@ -36,7 +36,7 @@ profile:
 experience:
   title: Un parcours au service de vos ailes
   items:
-    atelier: 
+    atelier:
       title: Atelier d’Ailes
       role: Auto-entrepreneur – Seine-et-Marne
       period: 2015 - Aujourd’hui

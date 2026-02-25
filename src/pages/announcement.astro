@@ -1,15 +1,15 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
-import Content from '~/components/widgets/Content.astro';
-import Markdown from '~/components/ui/Markdown.astro';
 import { reader } from '~/utils/keystatic';
 import ContentBlock from '../components/widgets/ContentBlock.astro';
 
 const locale = Astro.currentLocale;
 
 const activeAnnouncementConfig = await reader.singletons[`${locale}_active_announcement`].read();
-const currentAnnouncement = await reader.collections[`${locale}_announcement`].read(activeAnnouncementConfig.announcement);
+const currentAnnouncement = await reader.collections[`${locale}_announcement`].read(
+  activeAnnouncementConfig.announcement
+);
 
 if (!activeAnnouncementConfig?.active || !activeAnnouncementConfig?.announcement || !currentAnnouncement) {
   return new Response(null, { status: 404 });
@@ -21,12 +21,18 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <Hero title={currentAnnouncement.title} tagline={currentAnnouncement.tagline} subtitle={currentAnnouncement.subtitle} />
+  <Hero
+    title={currentAnnouncement.title}
+    tagline={currentAnnouncement.tagline}
+    subtitle={currentAnnouncement.subtitle}
+  />
 
   <ContentBlock
     title={currentAnnouncement.contentTitle}
     content={currentAnnouncement.contentDescription}
-    {...(currentAnnouncement.contentImage ? { image: { src: currentAnnouncement.contentImage, alt: currentAnnouncement.contentImageAlt ?? '' } } : {})}
+    {...currentAnnouncement.contentImage
+      ? { image: { src: currentAnnouncement.contentImage, alt: currentAnnouncement.contentImageAlt ?? '' } }
+      : {}}
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-slate-50"></div>

@@ -29,7 +29,7 @@ const { id } = Astro.props;
     and since this feature is very occasional in the project, 
     using vanilla JS avoids adding heavier frameworks or libraries.
   */
-  
+
   const elements = document.querySelectorAll('[id^="shop-status"]') as NodeListOf<HTMLElement>;
 
   function updateShopStatus() {
