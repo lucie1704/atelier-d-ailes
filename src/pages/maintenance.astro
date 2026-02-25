@@ -3,11 +3,16 @@ import Layout from '~/layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
 import Logo from '~/components/widgets/Logo.astro';
 import Hero from '~/components/widgets/Hero.astro';
+import { useTranslations } from '~/utils/i18n';
 
-const title = `Maintenance`;
+const { t } = useTranslations(Astro.currentLocale);
+
+const metadata = {
+  title: t('maintenance.meta.title'),
+};
 ---
 
-<Layout metadata={{ title }}>
+<Layout metadata={metadata}>
   <section class="fixed inset-0 flex items-center justify-center">
     <div class="absolute">
       <svg width="800" viewBox="0 0 4174 3170" xmlns="http://www.w3.org/2000/svg">
@@ -19,13 +24,10 @@ const title = `Maintenance`;
     </div>
 
     <div class="relative z-10 max-w-2xl text-center">
-      <Hero
-        tagline="Information"
-        subtitle="Le site de l'atelier fait peau neuve, nous serons de retour très bientôt ! Merci de votre patience."
-      >
+      <Hero tagline={t('maintenance.tagline')} subtitle={t('maintenance.subtitle')}>
         <span slot="title" class="flex items-center justify-center gap-4">
           <Icon name="tabler:tool" class="text-primary" size={60} />
-          <span>Maintenance en cours</span>
+          <span>{t('maintenance.heading')}</span>
         </span>
       </Hero>
 

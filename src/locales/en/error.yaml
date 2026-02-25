@@ -1,0 +1,9 @@
+404:
+  meta:
+    title: Error 404
+
+  heading: "404"
+  heading_sr: Error
+  title: Sorry, we couldn't find this page.
+  description: But don't worry, you can find plenty of other things on our homepage.
+  cta: Back to home

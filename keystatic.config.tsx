@@ -34,12 +34,22 @@ export default config({
     },
   },
 
-  storage: { kind: 'local' },
+  storage:
+    process.env.NODE_ENV === 'dev'
+      ? { kind: 'local' }
+      : {
+          kind: 'github',
+          repo: {
+            owner: 'lucie1704',
+            name: 'atelier-d-ailes',
+          },
+          branchPrefix: 'cms/',
+        },
 
   singletons: {
     fr_active_announcement: singleton({
       label: 'Annonce active',
-      path: 'src/content/fr_active-announcement',
+      path: 'src/content/fr/active-announcement',
       format: { data: 'yaml' },
       schema: {
         active: fields.checkbox({ label: 'Afficher une annonce', defaultValue: false }),
@@ -52,7 +62,7 @@ export default config({
     }),
     en_active_announcement: singleton({
       label: 'Active announcement',
-      path: 'src/content/en_active-announcement',
+      path: 'src/content/en/active-announcement',
       format: { data: 'yaml' },
       schema: {
         active: fields.checkbox({ label: 'Afficher une annonce', defaultValue: false }),
@@ -68,28 +78,28 @@ export default config({
   collections: {
     fr_announcement: collection({
       label: 'Annonces',
-      path: 'src/content/fr_announcements/*',
+      path: 'src/content/fr/announcements/*',
       format: { data: 'yaml' },
       slugField: 'title',
       schema: announcementSchema,
     }),
     en_announcement: collection({
       label: 'Announcements',
-      path: 'src/content/en_announcements/*',
+      path: 'src/content/en/announcements/*',
       format: { data: 'yaml' },
       slugField: 'title',
       schema: announcementSchema,
     }),
     fr_advice: collection({
       label: 'Conseils',
-      path: 'src/content/fr_advices/*',
+      path: 'src/content/fr/advices/*',
       format: { data: 'yaml' },
       slugField: 'title',
       schema: adviceSchema,
     }),
     en_advice: collection({
       label: 'Advice',
-      path: 'src/content/en_advices/*',
+      path: 'src/content/en/advices/*',
       format: { data: 'yaml' },
       slugField: 'title',
       schema: adviceSchema,
