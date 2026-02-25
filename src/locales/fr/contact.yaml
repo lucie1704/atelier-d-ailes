@@ -22,11 +22,11 @@ opening:
 helper:
   contact:
     title: Contact
-    description:  >-
+    description:  >
       Merci de ne pas laisser de message vocal, privilégiez **les appels ou SMS**
   access:
     title: Accès
-    description:  >-
+    description:  >
       Via **Hautefeuille** et **route de la Noue**. Attention, certains GPS proposent des itinéraires incorrects.
   rendezVous: 
     title: Rendez-vous

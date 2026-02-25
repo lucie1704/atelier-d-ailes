@@ -62,11 +62,11 @@ paracheck:
   items:
     maintenance:
       title: Révision Périodique ParachecK®
-      description: >-
+      description: >
         La [Révision Périodique ParachecK®](https://parapente.ffvl.fr/revision-voiles) est le contrôle le plus complet pour évaluer l'état réel de votre aile : porosité et résistance du tissu, résistance des suspentes, contrôle du calage, inspection visuelle approfondie. Un rapport détaillé vous est remis, établi selon le cahier des charges de la charte.
     security:
       title: Normes et sécurité
-      description: >-
+      description: >
         Seule cette révision, exigée par la norme [EN 926-2](https://parapente.ffvl.fr/sites/parapente.ffvl.fr/files/Norme%20CEN%20-%20pr%C3%A9sentation%20EN%20926-2%20cF06%20modif%20AD_0.pdf), vous informe avec certitude de la capacité de votre aile à voler en sécurité à un instant donné. Elle est également recommandée lors de l'achat ou de la vente d'une aile d'occasion.
 
 reviews:
