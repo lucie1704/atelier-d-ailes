@@ -3,7 +3,16 @@ import Layout from '~/layouts/Layout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
 import Announcement from '~/components/widgets/Announcement.astro';
-import announcementContent from '~/content/announcement.json';
+import { reader } from '~/utils/keystatic';
+
+const locale = Astro.currentLocale;
+
+const activeAnnouncementConfig = await reader.singletons[`${locale}_active_announcement`].read();
+const currentAnnouncement = await reader.collections[`${locale}_announcement`].read(activeAnnouncementConfig.announcement);
+
+const isAnnouncementEnabled = activeAnnouncementConfig?.active 
+  && activeAnnouncementConfig?.announcement 
+  && currentAnnouncement
 
 import { getHeaderData } from '../navigation';
 import type { MetaData } from '~/types';
@@ -22,8 +31,8 @@ const { metadata, ctaBanner = false } = Astro.props;
   <slot name="header">
     <Header {...headerData}>
       {
-        import.meta.env.PUBLIC_ENABLE_ANNOUNCEMENT === 'true' && (
-          <Announcement slot="announcement" message={announcementContent.message} href={announcementContent.href} />
+        isAnnouncementEnabled && (
+          <Announcement slot="announcement" message={currentAnnouncement.message} href="/announcement" />
         )
       }
     </Header>

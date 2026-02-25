@@ -10,12 +10,14 @@ Site vitrine de l'**Atelier d'Ailes**, atelier de révision et réparation de vo
 
 ## 📋 Table des matières
 
+- [Technologies utilisées](#-technologies-utilisées)
 - [Objectifs](#-objectifs)
 - [Performance](#-performance)
 - [Installation et commandes](#-installation-et-commandes)
 - [Structure du projet](#-structure-du-projet)
 - [Déploiement](#-déploiement)
-- [Ressources](#-ressources)
+- [CMS Keystatic](#-cms-keystatic)
+- [Internationalisation](#-internationalisation-i18n)
 
 ## 🎯 Objectifs
 
@@ -27,13 +29,23 @@ Ce site vitrine a été conçu pour répondre aux exigences suivantes :
 - ✅ **SEO efficace** - Optimisé pour un bon référencement naturel
 - ✅ **Projet léger et maintenable** - Simple à prendre en main, maintenir et déployer
 
+## 🛠️ Technologies utilisées
+
+- **Astro 5** : framework de build statique
+- **Astro Wind** : thème Astro
+- **Tailwind CSS 3.4** : utility-first CSS
+- **TypeScript 5** : typage et sécurité
+- **Vercel** : déploiement et hosting
+- **Keystatic** : CMS pour la gestion du contenu éditorial
+
+
 ## 📈 Performance
 
 Les scores lighthouse seront mis à jour une fois le site publié.
 
 ## 🛠️ Installation et Commandes
 
-**Prérequis :** Node.js `^18.17.1 || ^20.3.0 || >= 21.0.0`
+**Prérequis :** Node.js `^20.x`
 
 ```bash
 # Installer les dépendances
@@ -59,18 +71,20 @@ npm run fix
 
 ```
 /
-├── public/             # Fichiers statiques (images, robots.txt, etc.)
+├── public/               # Fichiers statiques (images, robots.txt, etc.)
 ├── src/
-│   ├── assets/         # Assets (images, styles, favicons)
-│   ├── components/     # Composants Astro réutilisables
-│   ├── constants/      # Constantes (heures et jours d'ouverture, date de création)
-│   ├── content/        # Contenu de pages qui sont vouées à être modifiées
-│   ├── layouts/        # Layouts de pages
-│   ├── pages/          # Pages du site (routing automatique)
-│   ├── utils/          # Utilitaires et helpers
-│   └── config.yaml     # Configuration principale du site
-├── astro.config.ts     # Configuration Astro
-└── tailwind.config.js  # Configuration Tailwind CSS
+│   ├── assets/           # Assets (images, styles, favicons)
+│   ├── components/       # Composants Astro réutilisables
+│   ├── constants/        # Constantes (heures et jours d'ouverture, date de création)
+│   ├── content/          # Contenu éditorial du site (Annonces et blocs conseils)
+│   ├── layouts/          # Layouts de pages
+│   ├── locales/          # Traduction des éléments statics du site
+│   ├── pages/            # Pages du site (routing automatique)
+│   ├── utils/            # Utilitaires et helpers
+│   └── config.yaml       # Configuration principale du site
+├── astro.config.ts       # Configuration Astro
+├── keystatic.config.tsx  # Configuration Keystatic
+└── tailwind.config.js    # Configuration Tailwind CSS
 ```
 
 **Note :** Astro génère automatiquement les routes à partir des fichiers dans `src/pages/`.
@@ -97,24 +111,62 @@ Active une redirection globale vers la page `/maintenance` pour toutes les route
 
 **Note :** C'est le `vercel.ts` qui gère la redirection vers `/maintenance` si `PUBLIC_ENABLE_MAINTENANCE=true`.
 
-### 📢 Bandeau d'Annonce
+### 📝 CMS Keystatic
 
-Il est possible d'afficher un bandeau d'information en haut du site, par exemple pour des fermetures exceptionnelles ou autres informations éphémères liées à l'atelier.
-Pour configurer les détails de l'annonce, modifier, le fichier `src/content/announcement.json` et mettre à jour la variable d'environnement `PUBLIC_ENABLE_ANNOUNCEMENT`.
+Le CMS Keystatic a été intégré pour la gestion du contenu éditorial du site : 
+  - Les annonces
+  - Les blocs "Erreurs courantes à éviter" de la page Conseil
 
-**Activation :**
+Le CMS est accessible en se rendant sur l'url suivant http://atelier-d-ailes.fr/keystatic et en se connectant via GitHub (seul ce présent compte y a accès).  
+À la sauvegarde le nouveau contenu sera push sous forme de commit sur une branche `/cms` avant de pouvoir être validé et mergé sur main pour mettre à jour le site. 
 
-1. Dans Vercel : `Settings > Environment Variables`
-2. Modifier la variable d'environnement `PUBLIC_ENABLE_ANNOUNCEMENT=true`
-3. Redéployer
+Le contenu éditorial est organisé par langue dans `src/content`, chaque langue ayant sa propre version des annonces et des blocs conseils. On peut par exemple afficher uniquement une annonce pour la langue anglaise ou inversement. On pourrait également afficher des conseils différents selon la langue ou simplement les traduires.  
 
-**Désactivation :**
+```
+├── src/
+│   ├── content/
+│   │   ├── fr/
+│   │   │   ├── advices/
+│   │   │   │   ├── advice-1.yaml
+│   │   │   │   ├── advice-2.yaml
+│   │   │   │   ├── advice-2.yaml
+│   │   │   ├── announcements/
+│   │   │   │   ├── announcement-1.yaml
+│   │   │   │   ├── announcement-2.yaml
+│   │   │   │   ├── announcement-3.yaml
+│   │   └── active-announcement.yaml
+│   │   ├── en/
+│   │   │   ├── advices/
+│   │   │   │   ├── advice-1.yaml
+│   │   │   │   ├── advice-2.yaml
+│   │   │   │   ├── advice-2.yaml
+│   │   │   ├── announcements/
+│   │   │   │   ├── announcement-1.yaml
+│   │   │   │   ├── announcement-2.yaml
+│   │   │   │   ├── announcement-3.yaml
+│   │   └── active-announcement.yaml
+│   ...
+└── keystatic.config.tsx     # Configuration Keystatic
+```
 
-1. Dans Vercel : `Settings > Environment Variables`
-2. Modifier la variable d'environnement `PUBLIC_ENABLE_ANNOUNCEMENT=false`
-3. Redéployer
+Le contenu Markdown est rendu via un composant `Markdown` utilisant la librairie `marked`.
 
-## 📖 Ressources
+### Annonces
 
-- **[Astro 5.0](https://astro.build/)**
-- **[AstroWind](https://github.com/arthelokyo/astrowind)**
+Il est possible d'afficher un bandeau d'information en haut du site lié à une page de détail d'annonce, par exemple pour des fermetures exceptionnelles ou autres informations éphémères liées à l'atelier.
+En accédant à Keystatic il vous suffira de configurer deux contenus : 
+  - Active annonce : pour déterminer si on veut que l'annonce soit active ou non et choisir ensuite parmi les annonces existantes celle à afficher
+  - Les annonces : une collection d'annonces permettant d'ajouter ou de modifier une annonce pour une future information exceptionnelle à transmettre
+
+### Blocs Conseils
+
+Les blocs sous "Erreurs courantes à éviter" de la page Conseil sont également éditables via la collection Conseils du CMS.
+
+## 🌐 Internationalisation (i18n)
+
+Le site est conçu pour supporter **plusieurs langues** (actuellement Français et Anglais) via une configuration i18n dans `src/utils/i18n.ts` 
+- `t` permet de traduire 
+- `tr` permet de traduire des listes depuis le yaml en retournant des tableaux typés
+
+Le contenu static du site est donc disponibles par langue dans `src/locales`.
+Le site se base sur la locale courante d'Astro `Astro.currentLocale` pour gérer la langue courante d'affichage pour les traductions et le contenus éditorial.

@@ -1,14 +1,28 @@
 import { config, singleton, collection, fields } from '@keystatic/core';
 import React from 'react';
+import { SITE } from 'astrowind:config';
+
+const storage = import.meta.env.DEV
+  ? ({ kind: 'local' } as const)
+  : ({
+      kind: 'github',
+      repo: 'lucie1704/atelier-d-ailes',
+      branchPrefix: 'cms/',
+    } as const);
 
 const announcementSchema = {
+  message: fields.text({ label: 'Message' }),
+  tagline: fields.text({ label: 'Tagline' }),
   title: fields.slug({ name: { label: 'Title' } }),
-  description: fields.mdx.inline({ label: 'Description' }),
-  image: fields.image({
-    label: 'Image',
+  subtitle: fields.text({ label: 'Subtitle' }),
+  contentTitle: fields.text({ label: 'Content title' }),
+  contentDescription: fields.mdx.inline({ label: 'Content description' }),
+  contentImage: fields.image({
+    label: 'Content image',
     directory: 'src/assets/images/announcement',
     publicPath: '/src/assets/images/announcement',
   }),
+  contentImageAlt: fields.text({ label: 'Content image alt' }),
 };
 
 const adviceSchema = {
@@ -25,7 +39,7 @@ const adviceSchema = {
 export default config({
   ui: {
     brand: {
-      name: "Atelier d'Ailes",
+      name: SITE.name,
       mark: () => <img src="/src/assets/favicons/favicon.ico" height={24} alt="Atelier d'Ailes Logo" />,
     },
     navigation: {
@@ -34,17 +48,7 @@ export default config({
     },
   },
 
-  storage:
-    process.env.NODE_ENV === 'dev'
-      ? { kind: 'local' }
-      : {
-          kind: 'github',
-          repo: {
-            owner: 'lucie1704',
-            name: 'atelier-d-ailes',
-          },
-          branchPrefix: 'cms/',
-        },
+  storage: storage,
 
   singletons: {
     fr_active_announcement: singleton({
