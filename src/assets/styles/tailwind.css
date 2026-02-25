@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  /* to handle \n in text block */
+  p, span {
+    @apply whitespace-pre-line;
+  }
+}
+
 @layer utilities {
   .bg-page {
     background-color: white;
@@ -15,10 +22,6 @@
 
   .btn-secondary {
     @apply btn border-white text-white bg-white/10 backdrop-blur-sm hover:bg-white hover:text-gray-900 hover:border-white focus:ring-white/40;
-  }
-
-  .external-link {
-    @apply text-primary font-semibold hover:underline;
   }
 
   .tag {

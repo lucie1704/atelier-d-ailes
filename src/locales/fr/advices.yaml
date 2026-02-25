@@ -1,0 +1,37 @@
+meta:
+  title: Conseils
+  description: Prendre soin de son aile. Recommandations pour préserver la sécurité et la longévité de votre matériel.
+
+hero:
+  tagline: Conseils
+  title: Prendre soin de son aile
+  subtitle: Recommandations pour préserver la sécurité et la longévité de votre matériel
+
+inspections:
+  title: Inspections régulières
+  image:
+    alt: Exemple de point d'attache d'une voile
+  items:
+    inspect:
+      title: Inspecter votre aile lors des pliages
+      description: |
+        Particulièrement après des incidents : arbrissage, barbelés, immersion dans l'eau, ou suspentes dans l'hélice.
+    control:
+      title: Points de contrôle
+      description: Vérifiez systématiquement les élévateurs, les suspentes et tous les points d'attache. Les points d'attache sont les zones qui subissent le plus de contraintes. (voir photo)
+
+storage: 
+  title: Protection et stockage
+  subtitle: Comment protéger votre aile des agressions extérieures
+  items:
+    sunExposure:
+      title: Exposition au soleil
+      description: Ne pas laisser inutilement votre aile en plein soleil. Les UV dégradent progressivement les tissus et l'enduction.
+    humidity:
+      title: Humidité et chaleur
+      description: |
+        Évitez le combo humidité + température élevée. Exemple à proscrire : voile pliée humide dans le coffre d'une voiture en plein soleil le temps d'un restaurant le midi. C'est très néfaste pour les tissus et l'enduction.
+
+avoidableMistakes:
+  title: Erreurs courantes à éviter
+  subtitle: Exemples concrets et bonnes pratiques pour préserver votre équipement

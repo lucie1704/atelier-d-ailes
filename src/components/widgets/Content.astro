@@ -5,6 +5,7 @@ import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import { Image } from 'astro:assets';
 import Button from '~/components/ui/Button.astro';
 import ItemGrid from '~/components/ui/ItemGrid.astro';
+import Markdown from '../ui/Markdown.astro';
 
 const {
   title = await Astro.slots.render('title'),
@@ -44,8 +45,8 @@ const {
   <div class="mx-auto max-w-7xl p-4 md:px-8">
     <div class={`md:flex ${isReversed ? 'md:flex-row-reverse' : ''} md:gap-16`}>
       <div class="md:basis-1/2 self-center">
-        {content && <div class="text-lg dark:text-slate-400" set:html={content} />}
-
+        {content && <Markdown class="text-lg" content={content} />}
+        
         {
           callToAction && (
             <div class="mt-[-40px] mb-8 text-primary">

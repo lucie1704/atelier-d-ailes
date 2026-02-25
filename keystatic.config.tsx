@@ -1,82 +1,26 @@
 import { config, singleton, collection, fields } from '@keystatic/core';
 import React from 'react';
 
-const locales = {
-  fr: { label: 'Français', announcement: 'Annonces', advice: 'Conseils', activeAnnouncement: 'Annonce active' },
-  en: { label: 'Anglais', announcement: 'Announcements', advice: 'Advice', activeAnnouncement: 'Active announcement' },
-} as const;
-
-const announcementSchema = () => ({
+const announcementSchema = {
   title: fields.slug({ name: { label: 'Title' } }),
-  description: fields.mdx({ label: 'Description' }),
+  description: fields.mdx.inline({ label: 'Description' }),
   image: fields.image({
     label: 'Image',
     directory: 'src/assets/images/announcement',
     publicPath: '/src/assets/images/announcement',
   }),
-});
+};
 
-const adviceSchema = () => ({
+const adviceSchema = {
   title: fields.slug({ name: { label: 'Title' } }),
-  description: fields.mdx({ label: 'Description' }),
+  description: fields.mdx.inline({ label: 'Description' }),
   image: fields.image({
-    label: 'Image',
+    label: 'Image source',
     directory: 'src/assets/images/advices',
     publicPath: '/src/assets/images/advices',
   }),
-});
-
-const collectionsConfig = {
-  announcement: {
-    schema: announcementSchema,
-    path: 'announcements',
-    getLabel: (locale: keyof typeof locales) => locales[locale].announcement,
-  },
-  advice: {
-    schema: adviceSchema,
-    path: 'advices',
-    getLabel: (locale: keyof typeof locales) => locales[locale].advice,
-  },
-} as const;
-
-const makeCollections = () =>
-  Object.fromEntries(
-    Object.entries(locales).flatMap(([locale]) =>
-      Object.entries(collectionsConfig).map(([key, { schema, path, getLabel }]) => [
-        `${locale}_${key}`,
-        collection({
-          label: getLabel(locale as keyof typeof locales),
-          path: `src/content/${locale}/${path}/*`,
-          format: { data: 'yaml' },
-          slugField: 'title',
-          schema: schema(),
-        }),
-      ])
-    )
-  );
-
-const makeSingletons = () =>
-  Object.fromEntries(
-    Object.entries(locales).map(([locale, { activeAnnouncement }]) => [
-      `${locale}_active_announcement`,
-      singleton({
-        label: activeAnnouncement,
-        path: `src/content/${locale}/active-announcement`,
-        format: { data: 'yaml' },
-        schema: {
-          active: fields.checkbox({
-            label: 'Afficher une annonce',
-            defaultValue: false,
-          }),
-          announcement: fields.relationship({
-            label: 'Annonce active',
-            description: "Sélectionner l'annonce à afficher",
-            collection: `${locale}_announcement`,
-          }),
-        },
-      }),
-    ])
-  );
+  imageAlt: fields.text({ label: 'Image alt' }),
+};
 
 export default config({
   ui: {
@@ -93,10 +37,62 @@ export default config({
   storage: { kind: 'local' },
 
   singletons: {
-    ...makeSingletons(),
+    fr_active_announcement: singleton({
+      label: 'Annonce active',
+      path: 'src/content/fr_active-announcement',
+      format: { data: 'yaml' },
+      schema: {
+        active: fields.checkbox({ label: 'Afficher une annonce', defaultValue: false }),
+        announcement: fields.relationship({
+          label: 'Annonce active',
+          description: "Sélectionner l'annonce à afficher",
+          collection: 'fr_announcement',
+        }),
+      },
+    }),
+    en_active_announcement: singleton({
+      label: 'Active announcement',
+      path: 'src/content/en_active-announcement',
+      format: { data: 'yaml' },
+      schema: {
+        active: fields.checkbox({ label: 'Afficher une annonce', defaultValue: false }),
+        announcement: fields.relationship({
+          label: 'Active announcement',
+          description: 'Select the announcement to display',
+          collection: 'en_announcement',
+        }),
+      },
+    }),
   },
 
   collections: {
-    ...makeCollections(),
+    fr_announcement: collection({
+      label: 'Annonces',
+      path: 'src/content/fr_announcements/*',
+      format: { data: 'yaml' },
+      slugField: 'title',
+      schema: announcementSchema,
+    }),
+    en_announcement: collection({
+      label: 'Announcements',
+      path: 'src/content/en_announcements/*',
+      format: { data: 'yaml' },
+      slugField: 'title',
+      schema: announcementSchema,
+    }),
+    fr_advice: collection({
+      label: 'Conseils',
+      path: 'src/content/fr_advices/*',
+      format: { data: 'yaml' },
+      slugField: 'title',
+      schema: adviceSchema,
+    }),
+    en_advice: collection({
+      label: 'Advice',
+      path: 'src/content/en_advices/*',
+      format: { data: 'yaml' },
+      slugField: 'title',
+      schema: adviceSchema,
+    }),
   },
 });

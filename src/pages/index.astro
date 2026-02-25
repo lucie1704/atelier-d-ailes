@@ -5,10 +5,10 @@ import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
 import Content from '~/components/widgets/Content.astro';
+import Markdown from '~/components/ui/Markdown.astro';
 import { CREATION_DATE } from '~/constants/shop';
 import { SITE } from 'astrowind:config';
 import { useTranslations } from '~/utils/i18n';
-import { md } from '~/utils/marked';
 import { FULLNAME } from '~/constants/contact';
 
 // Images
@@ -147,12 +147,12 @@ const yearsSinceCreation = (() => {
     items={[
       {
         title: t('home.paracheck.items.maintenance.title'),
-        description: md(t('home.paracheck.items.maintenance.description')),
+        description: t('home.paracheck.items.maintenance.description'),
         icon: 'tabler:certificate',
       },
       {
         title: t('home.paracheck.items.security.title'),
-        description: md(t('home.paracheck.items.security.description')),
+        description: t('home.paracheck.items.security.description'),
         icon: 'tabler:shield-check',
       },
     ]}
@@ -164,8 +164,8 @@ const yearsSinceCreation = (() => {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">{t('home.paracheck.title')}</h3>
-      <p class="text-lg text-muted dark:text-slate-400 mt-2" set:html={md(t('home.paracheck.description'))} />
+      <h3 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2">{t('home.paracheck.title')}</h3>
+      <Markdown class="text-lg text-muted mt-2" content={t('home.paracheck.description')} />
     </Fragment>
   </Content>
 
