@@ -19,7 +19,17 @@ const metadata = {
   description: t('advices.meta.description'),
 };
 
-const advices = await reader.collections[`${Astro.currentLocale}_advice`].all();
+// TODO essayer de récup le bon type via keystatic
+interface Advice {
+  entry: {
+    title: string;
+    description: string;
+    image: string;
+    imageAlt: string;
+  };
+}
+
+const advices: Advice[] = await reader.collections[`${Astro.currentLocale}_advice`].all();
 ---
 
 <Layout metadata={metadata} ctaBanner>
