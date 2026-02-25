@@ -76,7 +76,7 @@ const advices = await reader.collections[`${Astro.currentLocale}_advice`].all();
   </WidgetWrapper>
 
   {
-    advices.map((advice, index) => (
+    advices.map((advice, index: number) => (
       <ContentBlock
         title={advice.entry.title}
         icon="tabler:alert-triangle"

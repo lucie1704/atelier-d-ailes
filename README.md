@@ -10,8 +10,8 @@ Site vitrine de l'**Atelier d'Ailes**, atelier de révision et réparation de vo
 
 ## 📋 Table des matières
 
-- [Technologies utilisées](#-technologies-utilisées)
 - [Objectifs](#-objectifs)
+- [Technologies utilisées](#-technologies-utilisées)
 - [Performance](#-performance)
 - [Installation et commandes](#-installation-et-commandes)
 - [Structure du projet](#-structure-du-projet)
@@ -110,7 +110,7 @@ Active une redirection globale vers la page `/maintenance` pour toutes les route
 
 **Note :** C'est le `vercel.ts` qui gère la redirection vers `/maintenance` si `PUBLIC_ENABLE_MAINTENANCE=true`.
 
-### 📝 CMS Keystatic
+## 📝 CMS Keystatic
 
 Le CMS Keystatic a été intégré pour la gestion du contenu éditorial du site :
 
