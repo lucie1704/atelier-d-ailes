@@ -1,4 +1,4 @@
 import { createReader } from '@keystatic/core/reader';
-import keystaticConfig from '../../keystatic.config.tsx';
+import keystaticConfig from '~/../keystatic.config.tsx';
 
 export const reader = createReader(process.cwd(), keystaticConfig);

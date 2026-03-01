@@ -53,7 +53,7 @@ export default config({
   singletons: {
     fr_active_announcement: singleton({
       label: 'Annonce active',
-      path: 'src/content/fr/active-announcement',
+      path: 'src/cms/fr/active-announcement',
       format: { data: 'json' },
       schema: {
         active: fields.checkbox({ label: 'Afficher une annonce', defaultValue: false }),
@@ -66,7 +66,7 @@ export default config({
     }),
     en_active_announcement: singleton({
       label: 'Active announcement',
-      path: 'src/content/en/active-announcement',
+      path: 'src/cms/en/active-announcement',
       format: { data: 'json' },
       schema: {
         active: fields.checkbox({ label: 'Afficher une annonce', defaultValue: false }),
@@ -82,28 +82,28 @@ export default config({
   collections: {
     fr_announcement: collection({
       label: 'Annonces',
-      path: 'src/content/fr/announcements/*',
+      path: 'src/cms/fr/announcements/*',
       format: { data: 'json' },
       slugField: 'title',
       schema: announcementSchema,
     }),
     en_announcement: collection({
       label: 'Announcements',
-      path: 'src/content/en/announcements/*',
+      path: 'src/cms/en/announcements/*',
       format: { data: 'json' },
       slugField: 'title',
       schema: announcementSchema,
     }),
     fr_guide: collection({
       label: 'Conseils',
-      path: 'src/content/fr/guides/*',
+      path: 'src/cms/fr/guides/*',
       format: { data: 'json' },
       slugField: 'title',
       schema: guidesSchema,
     }),
     en_guide: collection({
       label: 'Guides',
-      path: 'src/content/en/guides/*',
+      path: 'src/cms/en/guides/*',
       format: { data: 'json' },
       slugField: 'title',
       schema: guidesSchema,

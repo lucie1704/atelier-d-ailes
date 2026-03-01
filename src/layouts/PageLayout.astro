@@ -24,60 +24,60 @@ const { metadata, ctaBanner = false } = Astro.props;
 
 const headerData = {
   links: [
-    { text: t('layout:header.links.home'), href: getLocalePath('/') },
-    { text: t('layout:header.links.services'), href: getLocalePath('/les-services-de-l-atelier') },
-    { text: t('layout:header.links.guides'), href: getLocalePath('/conseils') },
-    { text: t('layout:header.links.pricing'), href: getLocalePath('/tarifs') },
+    { text: t('common:header.links.home'), href: getLocalePath('/') },
+    { text: t('common:header.links.services'), href: getLocalePath('/les-services-de-l-atelier') },
+    { text: t('common:header.links.guides'), href: getLocalePath('/conseils') },
+    { text: t('common:header.links.pricing'), href: getLocalePath('/tarifs') },
   ],
-  actions: [{ text: t('layout:header.actions.contact'), href: getLocalePath('/contact') }],
+  actions: [{ text: t('common:header.actions.contact'), href: getLocalePath('/contact') }],
 };
 
 const footerData = [
   {
-    title: t('layout:footer.information.title'),
+    title: t('common:footer.information.title'),
     links: [
       {
         label: ADDRESS,
         href: "https://www.google.com/maps/dir/?api=1&destination=Atelier+d'Ailes",
         external: true,
       },
-      { label: t('layout:footer.information.links.openDays') },
-      { label: t('layout:footer.information.links.openHours') },
+      { label: t('common:footer.information.links.openDays') },
+      { label: t('common:footer.information.links.openHours') },
       { component: 'shopStatus' },
     ],
   },
   {
-    title: t('layout:footer.contact.title'),
+    title: t('common:footer.contact.title'),
     links: [
       { label: FULLNAME },
       { label: PHONE.FORMAT_INTL, href: `tel:${PHONE.E164}` },
-      { label: t('layout:footer.contact.links.legal'), href: getLocalePath('/mentions-legales') },
+      { label: t('common:footer.contact.links.legal'), href: getLocalePath('/mentions-legales') },
     ],
   },
   {
-    title: t('layout:footer.explore.title'),
+    title: t('common:footer.explore.title'),
     links: [
       {
-        label: t('layout:footer.explore.links.servicesMaintenance'),
+        label: t('common:footer.explore.links.servicesMaintenance'),
         href: `${getLocalePath('/les-services-de-l-atelier')}#maintenance`,
       },
       {
-        label: t('layout:footer.explore.links.servicesRepair'),
-        href: `${getLocalePath('/les-services-de-l-atelier')}#${t('layout:anchors.repair')}`,
+        label: t('common:footer.explore.links.servicesRepair'),
+        href: `${getLocalePath('/les-services-de-l-atelier')}#${t('common:anchors.repair')}`,
       },
       {
-        label: t('layout:footer.explore.links.servicesReserveParachutePacking'),
-        href: `${getLocalePath('/les-services-de-l-atelier')}#${t('layout:anchors.reserveParachutePacking')}`,
+        label: t('common:footer.explore.links.servicesReserveParachutePacking'),
+        href: `${getLocalePath('/les-services-de-l-atelier')}#${t('common:anchors.reserveParachutePacking')}`,
       },
-      { label: t('layout:footer.explore.links.guides'), href: getLocalePath('/conseils') },
+      { label: t('common:footer.explore.links.guides'), href: getLocalePath('/conseils') },
       {
-        label: t('layout:footer.explore.links.about', { firstname: FIRSTNAME }),
+        label: t('common:footer.explore.links.about', { firstname: FIRSTNAME }),
         href: `${getLocalePath('/')}#christophe-godard`,
       },
-      { label: t('layout:footer.explore.links.paracheck'), href: `${getLocalePath('/')}#paracheck` },
-      { label: t('layout:footer.explore.links.reviews'), href: `${getLocalePath('/')}#${t('layout:anchors.reviews')}` },
-      { label: t('layout:footer.explore.links.pricing'), href: getLocalePath('/tarifs') },
-      { label: t('layout:footer.explore.links.contact'), href: getLocalePath('/contact') },
+      { label: t('common:footer.explore.links.paracheck'), href: `${getLocalePath('/')}#paracheck` },
+      { label: t('common:footer.explore.links.reviews'), href: `${getLocalePath('/')}#${t('common:anchors.reviews')}` },
+      { label: t('common:footer.explore.links.pricing'), href: getLocalePath('/tarifs') },
+      { label: t('common:footer.explore.links.contact'), href: getLocalePath('/contact') },
     ],
   },
 ];
