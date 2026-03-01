@@ -57,11 +57,23 @@ const footerData = [
   {
     title: t('layout:footer.explore.title'),
     links: [
-      { label: t('layout:footer.explore.links.servicesMaintenance'), href: `${getLocalePath('/les-services-de-l-atelier')}#maintenance` },
-      { label: t('layout:footer.explore.links.servicesRepair'), href: `${getLocalePath('/les-services-de-l-atelier')}#${t('layout:anchors.repair')}` },
-      { label: t('layout:footer.explore.links.servicesReserveParachutePacking'), href: `${getLocalePath('/les-services-de-l-atelier')}#${t('layout:anchors.reserveParachutePacking')}` },
+      {
+        label: t('layout:footer.explore.links.servicesMaintenance'),
+        href: `${getLocalePath('/les-services-de-l-atelier')}#maintenance`,
+      },
+      {
+        label: t('layout:footer.explore.links.servicesRepair'),
+        href: `${getLocalePath('/les-services-de-l-atelier')}#${t('layout:anchors.repair')}`,
+      },
+      {
+        label: t('layout:footer.explore.links.servicesReserveParachutePacking'),
+        href: `${getLocalePath('/les-services-de-l-atelier')}#${t('layout:anchors.reserveParachutePacking')}`,
+      },
       { label: t('layout:footer.explore.links.guides'), href: getLocalePath('/conseils') },
-      { label: t('layout:footer.explore.links.about', { firstname: FIRSTNAME }), href: `${getLocalePath('/')}#christophe-godard`  },
+      {
+        label: t('layout:footer.explore.links.about', { firstname: FIRSTNAME }),
+        href: `${getLocalePath('/')}#christophe-godard`,
+      },
       { label: t('layout:footer.explore.links.paracheck'), href: `${getLocalePath('/')}#paracheck` },
       { label: t('layout:footer.explore.links.reviews'), href: `${getLocalePath('/')}#${t('layout:anchors.reviews')}` },
       { label: t('layout:footer.explore.links.pricing'), href: getLocalePath('/tarifs') },

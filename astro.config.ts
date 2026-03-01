@@ -13,6 +13,7 @@ import astrowind from './vendor/integration';
 import keystatic from '@keystatic/astro';
 import i18n from '@astrolicious/i18n';
 import react from '@astrojs/react';
+import vercel from '@astrojs/vercel';
 import type { AstroIntegration } from 'astro';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
@@ -24,7 +25,7 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
-  output: 'static',
+  adapter: vercel(),
 
   integrations: [
     react(),

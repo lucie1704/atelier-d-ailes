@@ -65,14 +65,14 @@ const guides = await reader.collections[`${getLocale()}_guide`].all();
       },
     ]}
   />
-  
+
   {
     guides.length && (
       <>
         <WidgetWrapper containerClass="max-w-5xl !pb-5">
           <Headline title={t('guides:avoidableMistakes.title')} subtitle={t('guides:avoidableMistakes.subtitle')} />
           <Fragment slot="bg">
-            <div class="absolute inset-0 bg-slate-50"></div>
+            <div class="absolute inset-0 bg-slate-50" />
           </Fragment>
         </WidgetWrapper>
 
