@@ -11,7 +11,9 @@ const { content, class: extraClass = '' } = Astro.props;
 const renderer = new Renderer();
 
 renderer.link = ({ href, text }) => {
-  return `<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-primary font-semibold hover:underline">${text}</a>`;
+  const isExternal = href?.startsWith('http');
+  const targetAttr = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
+  return `<a href="${href}" ${targetAttr} class="text-primary font-semibold hover:underline">${text}</a>`;
 };
 
 const html = marked.parse(content ?? '', {

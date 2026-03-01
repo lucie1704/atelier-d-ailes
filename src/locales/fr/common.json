@@ -2,7 +2,8 @@
   "anchors": {
     "reviews": "avis-des-pilotes",
     "repair": "reparation",
-    "reserveParachutePacking": "pliage-parachute-secours"
+    "reserveParachutePacking": "pliage-parachute-secours",
+    "reserveParachutePackingPriceDetails": "pliage-parachute-secours-detail-des-prix"
   },
   "header": {
     "links": {

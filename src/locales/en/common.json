@@ -2,7 +2,8 @@
   "anchors": {
     "reviews": "reviews",
     "repair": "repair",
-    "reserveParachutePacking": "reserve-parachute-packing"
+    "reserveParachutePacking": "reserve-parachute-packing",
+    "reserveParachutePackingPriceDetails": "reserve-parachute-packing-price-details"
   },
   "header": {
     "links": {

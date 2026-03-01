@@ -9,7 +9,7 @@ import Markdown from '~/components/ui/Markdown.astro';
 import { CREATION_DATE } from '~/constants/shop';
 import { SITE } from 'astrowind:config';
 import { FULLNAME } from '~/constants/contact';
-import { t } from 'i18n:astro';
+import { getLocalePath, t } from 'i18n:astro';
 
 // Images
 import heroImage from '~/assets/images/atelier-hero-image.png';
@@ -50,11 +50,11 @@ const yearsSinceCreation = (() => {
     actions={[
       {
         text: t('home:banner.actions.contact'),
-        href: '/contact',
+        href: getLocalePath('/contact'),
       },
       {
         text: t('home:banner.actions.services'),
-        href: '/services',
+        href: getLocalePath('/les-services-de-l-atelier'),
         variant: 'link',
       },
     ]}

@@ -46,7 +46,7 @@
   "tables": {
     "repair": {
       "title": "Repair",
-      "subtitle": "Each repair is unique. [Contact the workshop](/contact) for a personalised quote based on the condition of your wing, the type of work and repairs required.",
+      "subtitle": "Each repair is unique. [Contact the workshop]({{contactLink}}) for a personalised quote based on the condition of your wing, the type of work and repairs required.",
       "items": {
         "sewingHourlyRate": "Sewing hourly rate",
         "panelChange": "Panel replacement (lower or upper surface)",

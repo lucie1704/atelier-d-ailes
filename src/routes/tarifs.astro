@@ -3,7 +3,8 @@ import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Prices from '~/components/widgets/Prices.astro';
 import PriceTable from '~/components/widgets/PriceTable.astro';
-import { t } from 'i18n:astro';
+import { getLocalePath, t } from 'i18n:astro';
+import { getLocaleByPath } from 'astro/virtual-modules/i18n';
 
 const metadata = {
   title: t('pricing:meta.title'),
@@ -72,7 +73,7 @@ const parachuteFoldingPrices = [
         items: t('pricing:cards.parachute.items', { returnObjects: true }),
         callToAction: {
           text: t('pricing:cards.parachute.cta'),
-          href: '/pricing#reserve-parachure-packing-price-details',
+          href: `${getLocalePath('/tarifs')}#${t('common:anchors.reserveParachutePackingPriceDetails')}`,
         },
       },
       {
@@ -95,14 +96,13 @@ const parachuteFoldingPrices = [
   </Prices>
 
   <PriceTable
-    id="repair-price-details"
     title={t('pricing:tables.repair.title')}
-    subtitle={t('pricing:tables.repair.subtitle')}
+    subtitle={t('pricing:tables.repair.subtitle', { contactLink: getLocalePath('/contact') })}
     items={repairPrices}
   />
   <PriceTable id="inspections-price-details" title={t('pricing:tables.inspections.title')} items={inspectionDetails} />
   <PriceTable
-    id="reserve-parachure-packing-price-details"
+    id={t('common:anchors.reserveParachutePackingPriceDetails')}
     title={t('pricing:tables.parachute.title')}
     items={parachuteFoldingPrices}
   />

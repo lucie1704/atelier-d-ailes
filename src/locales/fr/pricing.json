@@ -46,7 +46,7 @@
   "tables": {
     "repair": {
       "title": "Réparation",
-      "subtitle": "Chaque réparation est unique. [Contactez l'atelier](/contact) pour obtenir un devis personnalisé en fonction de l'état de votre aile, du type d'intervention et des réparations nécessaires.",
+      "subtitle": "Chaque réparation est unique. [Contactez l'atelier]({{contactLink}}) pour obtenir un devis personnalisé en fonction de l'état de votre aile, du type d'intervention et des réparations nécessaires.",
       "items": {
         "sewingHourlyRate": "Tarif horaire couture",
         "panelChange": "Changement de panneau (intrados ou extrados)",
