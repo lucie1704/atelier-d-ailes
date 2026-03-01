@@ -1,5 +1,4 @@
 import { config, singleton, collection, fields } from '@keystatic/core';
-import React from 'react';
 import { SITE } from 'astrowind:config';
 
 const storage = import.meta.env.DEV
