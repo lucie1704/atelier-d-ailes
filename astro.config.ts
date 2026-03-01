@@ -24,6 +24,9 @@ const hasExternalScripts = false;
 const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroIntegration)[] = []) =>
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
+const defaultLocale = 'fr';
+const locales = ['fr', 'en'];
+
 export default defineConfig({
   adapter: vercel(),
 
@@ -35,7 +38,7 @@ export default defineConfig({
     }),
     sitemap({
       i18n: {
-        defaultLocale: 'fr',
+        defaultLocale: defaultLocale,
         locales: {
           fr: 'fr-FR',
           en: 'en-US',
@@ -50,8 +53,8 @@ export default defineConfig({
       },
     }),
     i18n({
-      defaultLocale: 'fr',
-      locales: ['fr', 'en'],
+      defaultLocale: defaultLocale,
+      locales: locales,
       pages: {
         '/annonce': {
           en: '/announcement',
@@ -99,6 +102,12 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [readingTimeRemarkPlugin],
     rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
+  },
+
+  // for Astro.preferredLocale for 404 and maintenance pages
+  i18n: {
+    defaultLocale: defaultLocale,
+    locales: locales,
   },
 
   vite: {

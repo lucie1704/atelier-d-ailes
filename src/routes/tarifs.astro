@@ -72,7 +72,7 @@ const parachuteFoldingPrices = [
         items: t('pricing:cards.parachute.items', { returnObjects: true }),
         callToAction: {
           text: t('pricing:cards.parachute.cta'),
-          href: `${getLocalePath('/tarifs')}#${t('common:anchors.reserveParachutePackingPriceDetails')}`,
+          href: `${getLocalePath('/tarifs')}#${t('anchors.reserveParachutePackingPriceDetails')}`,
         },
       },
       {
@@ -101,7 +101,7 @@ const parachuteFoldingPrices = [
   />
   <PriceTable id="inspections-price-details" title={t('pricing:tables.inspections.title')} items={inspectionDetails} />
   <PriceTable
-    id={t('common:anchors.reserveParachutePackingPriceDetails')}
+    id={t('anchors.reserveParachutePackingPriceDetails')}
     title={t('pricing:tables.parachute.title')}
     items={parachuteFoldingPrices}
   />

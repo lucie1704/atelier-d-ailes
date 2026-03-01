@@ -165,7 +165,7 @@ Les blocs sous "Erreurs courantes à éviter" de la page Conseil sont également
 
 ## 🌐 Internationalisation (i18n)
 
-Le site est conçu pour supporter **plusieurs langues** (actuellement Français et Anglais) via une configuration i18n dans `src/utils/i18n.ts`
+Le site est conçu pour supporter **plusieurs langues** (actuellement Français et Anglais) via une configuration i18n dans `src/utils/system-i18n.ts`
 
 - `t` permet de traduire
 - `tr` permet de traduire des listes depuis le yaml en retournant des tableaux typés

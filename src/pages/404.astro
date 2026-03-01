@@ -1,0 +1,24 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import { getSystemTranslator } from '../utils/system-i18n';
+
+export const prerender = false;
+
+const t = getSystemTranslator(Astro.preferredLocale, 'error');
+---
+
+<Layout metadata={{ title: t('404.meta.title') }}>
+  <section class="flex items-center h-full p-16">
+    <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
+      <div class="max-w-md text-center">
+        <h2 class="mb-8 font-bold text-9xl">
+          <span class="sr-only">{t('404.heading_sr')}</span>
+          <span class="text-primary">{t('404.heading')}</span>
+        </h2>
+        <p class="text-3xl font-semibold md:text-3xl">{t('404.title')}</p>
+        <p class="mt-4 mb-8 text-lg text-muted">{t('404.description')}</p>
+        <a rel="noopener noreferrer" href={'/'} class="btn ml-4">{t('404.cta')}</a>
+      </div>
+    </div>
+  </section>
+</Layout>

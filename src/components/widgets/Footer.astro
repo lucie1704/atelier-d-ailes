@@ -19,16 +19,16 @@ const { dataSections, ctaBanner = false } = Astro.props;
   ctaBanner && (
     <CallToAction
       id="cta-services"
-      title={t('common:cta.title')}
-      subtitle={t('common:cta.subtitle')}
+      title={t('cta.title')}
+      subtitle={t('cta.subtitle')}
       image={{
         src: ctaBannerImage,
-        alt: t('common:cta.image.alt'),
+        alt: t('cta.image.alt'),
       }}
       actions={[
         {
-          text: t('common:cta.actions.contact'),
-          href: '/contact',
+          text: t('cta.actions.contact'),
+          href: getLocalePath('/contact'),
         },
       ]}
     />
