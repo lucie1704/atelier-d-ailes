@@ -1,0 +1,82 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import ShopStatus from '~/components/widgets/ShopStatus.astro';
+import { Image } from 'astro:assets';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import shopMapImage from '~/assets/images/shop-map.jpeg';
+import { PHONE } from '~/constants/contact';
+import { ADDRESS } from '~/constants/contact';
+import { t } from 'i18n:astro';
+
+const metadata = {
+  title: t('contact:meta.title'),
+  description: t('contact:meta.description'),
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero tagline={t('contact:hero.tagline')} title={t('contact:hero.title')} subtitle={t('contact:hero.subtitle')} />
+
+  <Features2
+    items={[
+      {
+        title: t('contact:phone.title'),
+        description: PHONE.FORMAT_INTL,
+        icon: 'tabler:phone',
+        callToAction: {
+          text: t('contact:phone.cta'),
+          href: `tel:${PHONE.E164}`,
+          target: '_blank',
+        },
+      },
+      {
+        title: t('contact:address.title'),
+        description: ADDRESS,
+        icon: 'tabler:map-pin',
+        callToAction: {
+          text: t('contact:address.cta'),
+          href: "https://www.google.com/maps/dir/?api=1&destination=Atelier+d'Ailes",
+          target: '_blank',
+        },
+      },
+      {
+        title: t('contact:opening.title'),
+        description: t('contact:opening.description'),
+        icon: 'tabler:calendar',
+        slotContent: {
+          Component: ShopStatus,
+          props: {
+            id: 'contact',
+          },
+        },
+      },
+      {
+        title: t('contact:helper.contact:title'),
+        description: t('contact:helper.contact:description'),
+      },
+      {
+        title: t('contact:helper.access.title'),
+        description: t('contact:helper.access.description'),
+      },
+      {
+        title: t('contact:helper.rendezVous.title'),
+        description: t('contact:helper.rendezVous.description'),
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-slate-50"></div>
+    </Fragment>
+  </Features2>
+
+  <WidgetWrapper>
+    <Image
+      src={shopMapImage}
+      alt={t('contact:mapImage.alt')}
+      loading="lazy"
+      class="mx-auto w-full rounded-lg bg-gray-500 shadow-lg"
+    />
+  </WidgetWrapper>
+</Layout>

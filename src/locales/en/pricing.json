@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "title": "Pricing",
+    "description": "Detailed pricing for workshop services, excluding shipping, for paraglider and paramotor"
+  },
+  "hero": {
+    "tagline": "Pricing",
+    "title": "Detailed pricing",
+    "subtitle": "Excluding shipping"
+  },
+  "cards": {
+    "parachute": {
+      "title": "Reserve parachute packing",
+      "subtitle": "Single, tandem, with or without container",
+      "cta": "See details",
+      "items": [
+        { "description": "Aired and ventilated" },
+        { "description": "Elastic replacement" },
+        { "description": "Visual inspection" },
+        { "description": "Repacked according to manufacturer standards" }
+      ]
+    },
+    "maintenanceSingleSeat": {
+      "title": "Single seat periodic inspection",
+      "subtitle": "ParachecK®",
+      "items": [
+        { "description": "Fabric porosity measurements" },
+        { "description": "Fabric resistance tests" },
+        { "description": "Line resistance tests" },
+        { "description": "Line geometry measurements" },
+        { "description": "Complete visual and tactile inspection" }
+      ]
+    },
+    "maintenanceTwoSeat": {
+      "title": "Tandem periodic inspection",
+      "subtitle": "ParachecK®",
+      "items": [
+        { "description": "Fabric porosity measurements" },
+        { "description": "Fabric resistance tests" },
+        { "description": "Line resistance tests" },
+        { "description": "Line geometry measurements" },
+        { "description": "Complete visual and tactile inspection" }
+      ]
+    }
+  },
+  "tables": {
+    "repair": {
+      "title": "Repair",
+      "subtitle": "Each repair is unique. [Contact the workshop](/contact) for a personalised quote based on the condition of your wing, the type of work and repairs required.",
+      "items": {
+        "sewingHourlyRate": "Sewing hourly rate",
+        "panelChange": "Panel replacement (lower or upper surface)",
+        "profileChange": "Profile replacement",
+        "fullFabricPatch": "Full fabric patch",
+        "simpleFabricPatch": "Simple fabric patch",
+        "selfAdhesivePatch": "Self-adhesive patch",
+        "sheathedHangerInstalled": "Sheathed line installed",
+        "sheathedHangerNotInstalled": "Sheathed line not installed",
+        "splicedHangerInstalled": "Spliced line installed",
+        "splicedHangerNotInstalled": "Spliced line not installed"
+      }
+    },
+    "inspections": {
+      "title": "Individual inspections",
+      "items": {
+        "porosity": "Porosity inspection",
+        "suspenseGeometry": "Line geometry inspection (price depending on correction)",
+        "visual": "Visual wing inspection",
+        "fabricResistance": "Fabric resistance inspection",
+        "suspenseResistance": {
+          "title": "Line resistance inspection",
+          "sheathed": "Sheathed line",
+          "nonSheathed": "Unsheathed line"
+        }
+      }
+    },
+    "parachute": {
+      "title": "Reserve parachute packing",
+      "items": {
+        "singleSeatWithoutHarness": "Single seat without harness",
+        "singleSeatWithHarness": "Single seat with harness or container installation",
+        "twoSeatWithoutHarness": "Tandem without harness",
+        "twoSeatWithHarness": "Tandem with harness installation",
+        "rogallo": "Rogallo"
+      }
+    }
+  }
+}

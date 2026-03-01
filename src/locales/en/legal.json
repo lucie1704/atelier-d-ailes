@@ -1,0 +1,8 @@
+{
+  "frontmatter": {
+    "title": "Legal notice",
+    "tagline": "Information",
+    "subtitle": "Last updated on January 24, 2026"
+  },
+  "content": "## Company identification\n\n**Trade name:** {{siteName}}  \n**Legal form:** Sole trader  \n**Address:** {{address}}  \n**Phone:** {{phone}}  \n\n**SIRET:** 810 972 844 00023\n**RNE registration number:** 810 972 844\n**APE code:** 9529Z\n\n## Publication director\n\n{{fullName}}\n\n## Website hosting\n\n**Host:** Vercel Inc.  \n**Address:** 440 N Barranca Ave #4133, Covina, CA 91723, United States  \n**Website:** https://vercel.com\n\n## Intellectual property\n\nAll content on this site (texts, images, logos) is the exclusive property of Atelier d'Ailes. Any reproduction, even partial, is prohibited without prior authorization.\n\nThe photographs and illustrations on this site are used with the permission of their authors or come from royalty-free image banks.\n\n## Personal data protection\n\nThis site is purely informational and does not collect any personal data. No contact form is present on the site and no cookies are used.\n\nFor any questions, you can contact us directly by phone at the details indicated above."
+}

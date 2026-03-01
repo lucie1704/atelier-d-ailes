@@ -1,0 +1,8 @@
+{
+  "frontmatter": {
+    "title": "Mentions légales",
+    "tagline": "Informations",
+    "subtitle": "Dernière mise à jour le 24 janvier 2026"
+  },
+  "content": "## Identification de l'entreprise\n\n**Nom commercial :** {{siteName}}  \n**Forme juridique :** Entrepreneur individuel  \n**Adresse :** {{address}}  \n**Téléphone :** {{phone}}  \n\n**SIRET :** 810 972 844 00023\n**Numéro d'immatriculation RNE :** 810 972 844\n**Code APE :** 9529Z\n\n## Directeur de la publication\n\n{{fullName}}\n\n## Hébergement du site\n\n**Hébergeur :** Vercel Inc.  \n**Adresse :** 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis  \n**Site web :** https://vercel.com\n\n## Propriété intellectuelle\n\nL'ensemble du contenu de ce site (textes, images, logos) est la propriété exclusive de l'Atelier d'Ailes. Toute reproduction, même partielle, est interdite sans autorisation préalable.\n\nLes photographies et illustrations présentes sur ce site sont utilisées avec l'autorisation de leurs auteurs ou proviennent de banques d'images libres de droits.\n\n## Protection des données personnelles\n\nCe site est purement informatif et ne collecte aucune donnée personnelle. Aucun formulaire de contact n'est présent sur le site et aucun cookie n'est utilisé.\n\nPour toute question, vous pouvez nous contacter directement par téléphone aux coordonnées indiquées ci-dessus."
+}

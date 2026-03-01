@@ -303,3 +303,14 @@ export type FooterSection = {
   title: string;
   links: FooterLink[];
 };
+
+interface Link {
+  text?: string;
+  href?: string;
+  ariaLabel?: string;
+  icon?: string;
+}
+
+export interface MenuLink extends Link {
+  links?: Array<MenuLink>;
+}

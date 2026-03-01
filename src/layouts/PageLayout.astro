@@ -4,35 +4,78 @@ import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
 import Announcement from '~/components/widgets/Announcement.astro';
 import { reader } from '~/utils/keystatic';
+import type { MetaData } from '~/types';
+import { getLocalePath, getLocale, t } from 'i18n:astro';
+import { ADDRESS, FIRSTNAME, FULLNAME, PHONE } from '~/constants/contact';
 
-const locale = Astro.currentLocale;
+const locale = getLocale();
 
 const activeAnnouncementConfig = await reader.singletons[`${locale}_active_announcement`].read();
-const currentAnnouncement = await reader.collections[`${locale}_announcement`].read(
-  activeAnnouncementConfig.announcement
-);
-
-const isAnnouncementEnabled =
-  activeAnnouncementConfig?.active && activeAnnouncementConfig?.announcement && currentAnnouncement;
-
-import { getHeaderData } from '../navigation';
-import type { MetaData } from '~/types';
+const currentAnnouncement = activeAnnouncementConfig?.announcement
+  ? await reader.collections[`${locale}_announcement`].read(activeAnnouncementConfig.announcement)
+  : undefined;
 
 export interface Props {
   metadata?: MetaData;
   ctaBanner?: boolean;
 }
 
-const headerData = getHeaderData(Astro.currentLocale);
-
 const { metadata, ctaBanner = false } = Astro.props;
+
+const headerData = {
+  links: [
+    { text: t('layout:header.links.home'), href: getLocalePath('/') },
+    { text: t('layout:header.links.services'), href: getLocalePath('/les-services-de-l-atelier') },
+    { text: t('layout:header.links.guides'), href: getLocalePath('/conseils') },
+    { text: t('layout:header.links.pricing'), href: getLocalePath('/tarifs') },
+  ],
+  actions: [{ text: t('layout:header.actions.contact'), href: getLocalePath('/contact') }],
+};
+
+const footerData = [
+  {
+    title: t('layout:footer.information.title'),
+    links: [
+      {
+        label: ADDRESS,
+        href: "https://www.google.com/maps/dir/?api=1&destination=Atelier+d'Ailes",
+        external: true,
+      },
+      { label: t('layout:footer.information.links.openDays') },
+      { label: t('layout:footer.information.links.openHours') },
+      { component: 'shopStatus' },
+    ],
+  },
+  {
+    title: t('layout:footer.contact.title'),
+    links: [
+      { label: FULLNAME },
+      { label: PHONE.FORMAT_INTL, href: `tel:${PHONE.E164}` },
+      { label: t('layout:footer.contact.links.legal'), href: getLocalePath('/mentions-legales') },
+    ],
+  },
+  {
+    title: t('layout:footer.explore.title'),
+    links: [
+      { label: t('layout:footer.explore.links.servicesMaintenance'), href: `${getLocalePath('/les-services-de-l-atelier')}#maintenance` },
+      { label: t('layout:footer.explore.links.servicesRepair'), href: `${getLocalePath('/les-services-de-l-atelier')}#${t('layout:anchors.repair')}` },
+      { label: t('layout:footer.explore.links.servicesReserveParachutePacking'), href: `${getLocalePath('/les-services-de-l-atelier')}#${t('layout:anchors.reserveParachutePacking')}` },
+      { label: t('layout:footer.explore.links.guides'), href: getLocalePath('/conseils') },
+      { label: t('layout:footer.explore.links.about', { firstname: FIRSTNAME }), href: `${getLocalePath('/')}#christophe-godard`  },
+      { label: t('layout:footer.explore.links.paracheck'), href: `${getLocalePath('/')}#paracheck` },
+      { label: t('layout:footer.explore.links.reviews'), href: `${getLocalePath('/')}#${t('layout:anchors.reviews')}` },
+      { label: t('layout:footer.explore.links.pricing'), href: getLocalePath('/tarifs') },
+      { label: t('layout:footer.explore.links.contact'), href: getLocalePath('/contact') },
+    ],
+  },
+];
 ---
 
 <Layout metadata={metadata}>
   <slot name="header">
-    <Header {...headerData}>
+    <Header links={headerData.links} actions={headerData.actions}>
       {
-        isAnnouncementEnabled && (
+        activeAnnouncementConfig?.active && currentAnnouncement && (
           <Announcement slot="announcement" message={currentAnnouncement.message} href="/announcement" />
         )
       }
@@ -42,6 +85,6 @@ const { metadata, ctaBanner = false } = Astro.props;
     <slot />
   </main>
   <slot name="footer">
-    <Footer ctaBanner={ctaBanner} />
+    <Footer dataSections={footerData} ctaBanner={ctaBanner} />
   </slot>
 </Layout>

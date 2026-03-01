@@ -1,8 +1,6 @@
 ---
 import { OPEN_DAYS, OPEN_HOUR, CLOSE_HOUR } from '~/constants/shop';
-import { useTranslations } from '~/utils/i18n';
-
-const { t } = useTranslations(Astro.currentLocale);
+import { t } from 'i18n:astro';
 
 interface Props {
   id?: string;
@@ -17,8 +15,8 @@ const { id } = Astro.props;
   data-open-days={JSON.stringify(OPEN_DAYS)}
   data-open-hour={OPEN_HOUR}
   data-close-hour={CLOSE_HOUR}
-  data-label-open={t('layout.shopStatus.open')}
-  data-label-closed={t('layout.shopStatus.closed')}
+  data-label-open={t('layout:shopStatus.open')}
+  data-label-closed={t('layout:shopStatus.closed')}
 >
 </div>
 

@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "title": "Guides",
+    "description": "Taking care of your wing. Recommendations to preserve the safety and longevity of your equipment."
+  },
+  "hero": {
+    "tagline": "Guides",
+    "title": "Taking care of your wing",
+    "subtitle": "Recommendations to preserve the safety and longevity of your equipment"
+  },
+  "inspections": {
+    "title": "Regular inspections",
+    "image": {
+      "alt": "Example of a wing attachment point"
+    },
+    "items": {
+      "inspect": {
+        "title": "Inspect your wing when packing",
+        "description": "Especially after incidents: tree landings, barbed wire, water immersion, or lines in the propeller."
+      },
+      "control": {
+        "title": "Control points",
+        "description": "Systematically check risers, lines and all attachment points. Attachment points are the areas that experience the most stress. (see photo)"
+      }
+    }
+  },
+  "storage": {
+    "title": "Protection and storage",
+    "subtitle": "How to protect your wing from external damage",
+    "items": {
+      "sunExposure": {
+        "title": "Sun exposure",
+        "description": "Do not leave your wing unnecessarily in direct sunlight. UV rays progressively degrade the fabric and coating."
+      },
+      "humidity": {
+        "title": "Humidity and heat",
+        "description": "Avoid the combination of humidity and high temperature. Example to avoid: a wet folded wing in the trunk of a car in direct sunlight during a lunch break. This is very harmful to the fabric and coating."
+      }
+    }
+  },
+  "avoidableMistakes": {
+    "title": "Common mistakes to avoid",
+    "subtitle": "Concrete examples and best practices to preserve your equipment"
+  }
+}

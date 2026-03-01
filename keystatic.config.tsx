@@ -25,13 +25,13 @@ const announcementSchema = {
   contentImageAlt: fields.text({ label: 'Content image alt' }),
 };
 
-const adviceSchema = {
+const guidesSchema = {
   title: fields.slug({ name: { label: 'Title' } }),
   description: fields.mdx.inline({ label: 'Description' }),
   image: fields.image({
     label: 'Image source',
-    directory: 'src/assets/images/advices',
-    publicPath: '/src/assets/images/advices',
+    directory: 'src/assets/images/guides',
+    publicPath: '/src/assets/images/guides',
   }),
   imageAlt: fields.text({ label: 'Image alt' }),
 };
@@ -43,8 +43,8 @@ export default config({
       mark: () => <img src="/src/assets/favicons/favicon.ico" height={24} alt="Atelier d'Ailes Logo" />,
     },
     navigation: {
-      FR: ['fr_active_announcement', 'fr_announcement', 'fr_advice'],
-      EN: ['en_active_announcement', 'en_announcement', 'en_advice'],
+      FR: ['fr_active_announcement', 'fr_announcement', 'fr_guide'],
+      EN: ['en_active_announcement', 'en_announcement', 'en_guide'],
     },
   },
 
@@ -54,7 +54,7 @@ export default config({
     fr_active_announcement: singleton({
       label: 'Annonce active',
       path: 'src/content/fr/active-announcement',
-      format: { data: 'yaml' },
+      format: { data: 'json' },
       schema: {
         active: fields.checkbox({ label: 'Afficher une annonce', defaultValue: false }),
         announcement: fields.relationship({
@@ -67,7 +67,7 @@ export default config({
     en_active_announcement: singleton({
       label: 'Active announcement',
       path: 'src/content/en/active-announcement',
-      format: { data: 'yaml' },
+      format: { data: 'json' },
       schema: {
         active: fields.checkbox({ label: 'Afficher une annonce', defaultValue: false }),
         announcement: fields.relationship({
@@ -83,30 +83,30 @@ export default config({
     fr_announcement: collection({
       label: 'Annonces',
       path: 'src/content/fr/announcements/*',
-      format: { data: 'yaml' },
+      format: { data: 'json' },
       slugField: 'title',
       schema: announcementSchema,
     }),
     en_announcement: collection({
       label: 'Announcements',
       path: 'src/content/en/announcements/*',
-      format: { data: 'yaml' },
+      format: { data: 'json' },
       slugField: 'title',
       schema: announcementSchema,
     }),
-    fr_advice: collection({
+    fr_guide: collection({
       label: 'Conseils',
-      path: 'src/content/fr/advices/*',
-      format: { data: 'yaml' },
+      path: 'src/content/fr/guides/*',
+      format: { data: 'json' },
       slugField: 'title',
-      schema: adviceSchema,
+      schema: guidesSchema,
     }),
-    en_advice: collection({
-      label: 'Advice',
-      path: 'src/content/en/advices/*',
-      format: { data: 'yaml' },
+    en_guide: collection({
+      label: 'Guides',
+      path: 'src/content/en/guides/*',
+      format: { data: 'json' },
       slugField: 'title',
-      schema: adviceSchema,
+      schema: guidesSchema,
     }),
   },
 });

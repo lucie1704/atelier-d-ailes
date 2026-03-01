@@ -4,7 +4,6 @@ const isMaintenanceEnabled = process.env.PUBLIC_ENABLE_MAINTENANCE === 'true';
 
 export const config: VercelConfig = {
   cleanUrls: true,
-  trailingSlash: false,
   headers: [
     {
       source: '/_astro/(.*)',

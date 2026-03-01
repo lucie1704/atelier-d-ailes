@@ -11,13 +11,11 @@ import icon from 'astro-icon';
 import compress from 'astro-compress';
 import astrowind from './vendor/integration';
 import keystatic from '@keystatic/astro';
-import node from '@astrojs/node';
-import yaml from '@rollup/plugin-yaml';
+import i18n from '@astrolicious/i18n';
+import react from '@astrojs/react';
 import type { AstroIntegration } from 'astro';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
-
-import react from '@astrojs/react';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -27,30 +25,52 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
 
 export default defineConfig({
   output: 'static',
-  adapter: node({ mode: 'middleware' }),
+
   integrations: [
     react(),
     keystatic(),
     tailwind({
       applyBaseStyles: false,
     }),
-    sitemap(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'fr',
+        locales: {
+          fr: 'fr-FR',
+          en: 'en-US',
+        },
+      },
+    }),
     mdx(),
     icon({
       include: {
         lucide: ['*'],
         tabler: ['*'],
-        'flat-color-icons': [
-          'template',
-          'gallery',
-          'approval',
-          'document',
-          'advertising',
-          'currency-exchange',
-          'voice-presentation',
-          'business-contact',
-          'database',
-        ],
+      },
+    }),
+    i18n({
+      defaultLocale: 'fr',
+      locales: ['fr', 'en'],
+      pages: {
+        '/annonce': {
+          en: '/announcement',
+        },
+        '/conseils': {
+          en: '/guides',
+        },
+        'les-services-de-l-atelier': {
+          en: '/our-services',
+        },
+        '/mentions-legales': {
+          en: '/legal',
+        },
+        '/tarifs': {
+          en: '/pricing',
+        },
+      },
+      client: {
+        data: true,
+        paths: true,
       },
     }),
     ...whenExternalScripts(() =>
@@ -80,13 +100,7 @@ export default defineConfig({
     rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
   },
 
-  i18n: {
-    defaultLocale: 'fr',
-    locales: ['fr', 'en'],
-  },
-
   vite: {
-    plugins: [yaml()],
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './src'),

@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "title": "Contact",
+    "description": "Book an appointment by phone or SMS. Please let us know before visiting the workshop."
+  },
+  "hero": {
+    "tagline": "Contact",
+    "title": "Book an appointment",
+    "subtitle": "Please let us know before visiting the workshop"
+  },
+  "phone": {
+    "title": "By phone or SMS",
+    "cta": "Call"
+  },
+  "address": {
+    "title": "Address",
+    "cta": "Get directions"
+  },
+  "opening": {
+    "title": "Opening hours",
+    "description": "Tuesday to Saturday, 9am to 6pm"
+  },
+  "helper": {
+    "contact": {
+      "title": "Contact",
+      "description": "Please do not leave voicemails, prefer **calls or SMS**"
+    },
+    "access": {
+      "title": "Access",
+      "description": "Via **Hautefeuille** and **route de la Noue**. Note that some GPS may suggest incorrect routes."
+    },
+    "rendezVous": {
+      "title": "Appointment",
+      "description": "Please let us know before visiting the workshop to ensure our availability."
+    }
+  },
+  "mapImage": {
+    "alt": "Map showing where the workshop is located"
+  }
+}

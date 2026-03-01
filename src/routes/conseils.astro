@@ -1,0 +1,96 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Features from '~/components/widgets/Features.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
+import ContentBlock from '~/components/widgets/ContentBlock.astro';
+import { reader } from '~/utils/keystatic';
+import { getLocale, t } from 'i18n:astro';
+
+// Images
+import guidesAttachPointImage from '~/assets/images/guides-attach-point.jpg';
+
+const metadata = {
+  title: t('guides:meta.title'),
+  description: t('guides:meta.description'),
+};
+
+const guides = await reader.collections[`${getLocale()}_guide`].all();
+---
+
+<Layout metadata={metadata} ctaBanner>
+  <Hero tagline={t('guides:hero.tagline')} title={t('guides:hero.title')} subtitle={t('guides:hero.subtitle')} />
+
+  <Steps
+    title={t('guides:inspections.title')}
+    items={[
+      {
+        title: t('guides:inspections.items.inspect.title'),
+        description: t('guides:inspections.items.inspect.description'),
+        icon: 'tabler:eye',
+      },
+      {
+        title: t('guides:inspections.items.control.title'),
+        description: t('guides:inspections.items.control.description'),
+        icon: 'tabler:search',
+      },
+    ]}
+    image={{
+      src: guidesAttachPointImage,
+      alt: t('guides:inspections.image.alt'),
+      loading: 'eager',
+    }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-slate-50"></div>
+    </Fragment>
+  </Steps>
+
+  <Features
+    title={t('guides:storage.title')}
+    subtitle={t('guides:storage.subtitle')}
+    columns={2}
+    items={[
+      {
+        title: t('guides:storage.items.sunExposure.title'),
+        description: t('guides:storage.items.sunExposure.description'),
+        icon: 'tabler:sun-off',
+      },
+      {
+        title: t('guides:storage.items.humidity.title'),
+        description: t('guides:storage.items.humidity.description'),
+        icon: 'tabler:droplet-off',
+      },
+    ]}
+  />
+  
+  {
+    guides.length && (
+      <>
+        <WidgetWrapper containerClass="max-w-5xl !pb-5">
+          <Headline title={t('guides:avoidableMistakes.title')} subtitle={t('guides:avoidableMistakes.subtitle')} />
+          <Fragment slot="bg">
+            <div class="absolute inset-0 bg-slate-50"></div>
+          </Fragment>
+        </WidgetWrapper>
+
+        {guides.map((guide, index: number) => (
+          <ContentBlock
+            title={guide.entry.title}
+            icon="tabler:alert-triangle"
+            content={guide.entry.description}
+            {...(guide.entry.image ? { image: { src: guide.entry.image, alt: guide.entry.imageAlt ?? '' } } : {})}
+          >
+            {index % 2 !== 0 && (
+              <Fragment slot="bg">
+                <div class="absolute inset-0 bg-slate-50" />
+              </Fragment>
+            )}
+          </ContentBlock>
+        ))}
+      </>
+    )
+  }
+</Layout>

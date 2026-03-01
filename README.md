@@ -126,20 +126,20 @@ Le contenu éditorial est organisé par langue dans `src/content`, chaque langue
 ├── src/
 │   ├── content/
 │   │   ├── fr/
-│   │   │   ├── advices/
-│   │   │   │   ├── advice-1.yaml
-│   │   │   │   ├── advice-2.yaml
-│   │   │   │   ├── advice-2.yaml
+│   │   │   ├── guides/
+│   │   │   │   ├── guide-1.yaml
+│   │   │   │   ├── guide-2.yaml
+│   │   │   │   ├── guide-2.yaml
 │   │   │   ├── announcements/
 │   │   │   │   ├── announcement-1.yaml
 │   │   │   │   ├── announcement-2.yaml
 │   │   │   │   ├── announcement-3.yaml
 │   │   └── active-announcement.yaml
 │   │   ├── en/
-│   │   │   ├── advices/
-│   │   │   │   ├── advice-1.yaml
-│   │   │   │   ├── advice-2.yaml
-│   │   │   │   ├── advice-2.yaml
+│   │   │   ├── guides/
+│   │   │   │   ├── guide-1.yaml
+│   │   │   │   ├── guide-2.yaml
+│   │   │   │   ├── guide-2.yaml
 │   │   │   ├── announcements/
 │   │   │   │   ├── announcement-1.yaml
 │   │   │   │   ├── announcement-2.yaml

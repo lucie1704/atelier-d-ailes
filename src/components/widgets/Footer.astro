@@ -1,72 +1,33 @@
 ---
 import { SITE } from 'astrowind:config';
-import { getHomePermalink } from '~/utils/permalinks';
-import { useTranslations } from '~/utils/i18n';
 import Logo from '~/components/widgets/Logo.astro';
 import ShopStatus from '~/components/widgets/ShopStatus.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import ctaBannerImage from '~/assets/images/cta-banner.png';
+import { getLocalePath, t } from 'i18n:astro';
 import type { FooterSection } from '~/types';
-import { PHONE, ADDRESS, FULLNAME, FIRSTNAME } from '~/constants/contact';
 
-const { ctaBanner = false } = Astro.props;
-const { t } = useTranslations(Astro.currentLocale);
+export interface Props {
+  dataSections: FooterSection[];
+  ctaBanner?: boolean;
+}
 
-const footerSections: FooterSection[] = [
-  {
-    title: t('layout.footer.information.title'),
-    links: [
-      {
-        label: ADDRESS,
-        href: "https://www.google.com/maps/dir/?api=1&destination=Atelier+d'Ailes",
-        external: true,
-      },
-      { label: t('layout.footer.information.links.openDays') },
-      { label: t('layout.footer.information.links.openHours') },
-      { component: 'shopStatus' },
-    ],
-  },
-  {
-    title: t('layout.footer.contact.title'),
-    links: [
-      { label: FULLNAME },
-      { label: PHONE.FORMAT_INTL, href: `tel:${PHONE.E164}` },
-      { label: t('layout.footer.contact.links.legal'), href: '/legal' },
-    ],
-  },
-  {
-    title: t('layout.footer.explore.title'),
-    links: [
-      { label: t('layout.footer.explore.links.servicesMaintenance'), href: '/services#maintenance' },
-      { label: t('layout.footer.explore.links.servicesRepair'), href: '/services#repair' },
-      {
-        label: t('layout.footer.explore.links.servicesReserveParachutePacking'),
-        href: '/services#reserve-parachute-packing',
-      },
-      { label: t('layout.footer.explore.links.advices'), href: '/advices' },
-      { label: t('layout.footer.explore.links.about', { firstname: FIRSTNAME }), href: '/#christophe-godard' },
-      { label: t('layout.footer.explore.links.paracheck'), href: '/#paracheck' },
-      { label: t('layout.footer.explore.links.reviews'), href: '/#reviews' },
-      { label: t('layout.footer.explore.links.pricing'), href: '/pricing' },
-      { label: t('layout.footer.explore.links.contact'), href: '/contact' },
-    ],
-  },
-];
+const { dataSections, ctaBanner = false } = Astro.props;
 ---
 
 {
   ctaBanner && (
     <CallToAction
       id="cta-services"
-      title={t('layout.cta.title')}
-      subtitle={t('layout.cta.subtitle')}
+      title={t('layout:cta.title')}
+      subtitle={t('layout:cta.subtitle')}
       image={{
         src: ctaBannerImage,
-        alt: t('layout.cta.image.alt'),
+        alt: t('layout:cta.image.alt'),
       }}
       actions={[
         {
-          text: t('layout.cta.actions.contact'),
+          text: t('layout:cta.actions.contact'),
           href: '/contact',
         },
       ]}
@@ -80,7 +41,7 @@ const footerSections: FooterSection[] = [
       <!-- Logo & credits -->
       <div class="col-span-12 lg:col-span-4">
         <div class="mb-2">
-          <a class="inline-block font-bold text-xl" href={getHomePermalink()}>
+          <a class="inline-block font-bold text-xl" href={getLocalePath('/')}>
             <Logo />
           </a>
         </div>
@@ -90,7 +51,7 @@ const footerSections: FooterSection[] = [
       <!-- Sections -->
       <div class="col-span-12 lg:col-span-8 flex flex-col md:flex-row justify-between gap-6">
         {
-          footerSections.map((section) => (
+          dataSections.map((section) => (
             <div>
               <div class="font-medium mb-2">{section.title}</div>
 
