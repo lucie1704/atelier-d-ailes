@@ -171,28 +171,31 @@ Le site prend en charge **plusieurs langues** (actuellement Français et Anglais
 - **i18next** : gestion des traductions et du contenu multilingue.
 - **@astrolicious/i18n** : gestion du routing et de la navigation basée sur la langue.
 
-Les textes statiques du site sont organisés par langue dans `src/locales/`.  
+Les textes statiques du site sont organisés par langue dans `src/locales/`.
 
 `src/routes/` → contient les pages nécessitant un routing différent selon la langue.  
 Exemple : `src/routes/conseils.astro` un seul fichier par page mais avec un routing différent selon la langue
+
 - `fr` → `/conseils`
 - `en` → `/en/guides`
 
 La customisation des slugs des pages par langue se fait dans le `astro.config.ts`. La langue par défaut garde le nom du fichier astro comme slug, les autres langues peuvent elles être personnalisées via :
-``` ts
+
+```ts
 integrations: [
-   i18n({
-      pages: {
-         '/conseils': {
-            en: '/guides',
-         }
+  i18n({
+    pages: {
+      '/conseils': {
+        en: '/guides',
       },
-   }),
-]
+    },
+  }),
+];
 ```
 
 `src/pages/` → Pages uniques indépendantes de la langue choisie
-  - Page 404
-  - Page de maintenance
+
+- Page 404
+- Page de maintenance
 
 Ces pages sont traduites à partir de la langue du navigateur de l'utilisateur grâce à `Astro.preferredLocale`.
