@@ -18,7 +18,7 @@ export const config: VercelConfig = {
   redirects: isMaintenanceEnabled
     ? [
         {
-          source: '/((?!maintenance|_astro).*)',
+          source: '/((?!maintenance|_astro|favicon|logo|robots\\.txt|sitemap).*)',
           destination: '/maintenance',
           permanent: false,
         },
