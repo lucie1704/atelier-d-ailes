@@ -1,4 +1,5 @@
 {
+  "onQuote": "On quote",
   "anchors": {
     "reviews": "reviews",
     "repair": "repair",
@@ -8,7 +9,7 @@
   "header": {
     "links": {
       "home": "Home",
-      "services": "Workshop services",
+      "services": "Our services",
       "guides": "Guides",
       "pricing": "Pricing"
     },
@@ -47,7 +48,7 @@
   },
   "cta": {
     "title": "Need a service for your equipment?",
-    "subtitle": "Regular maintenance of your wing contributes to safe flying.\nContact the workshop for any request.",
+    "subtitle": "Regular maintenance of your wing contributes to safe flying.\nContact the atelier for any request.",
     "image": {
       "alt": "Paraglider flying in the blue sky"
     },

@@ -1,12 +1,12 @@
 {
   "meta": {
     "title": "Contact",
-    "description": "Book an appointment by phone or SMS. Please let us know before visiting the workshop."
+    "description": "Book an appointment by phone or SMS. Please let us know before visiting the atelier."
   },
   "hero": {
     "tagline": "Contact",
     "title": "Book an appointment",
-    "subtitle": "Please let us know before visiting the workshop"
+    "subtitle": "Please let us know before visiting the atelier"
   },
   "phone": {
     "title": "By phone or SMS",
@@ -31,10 +31,10 @@
     },
     "rendezVous": {
       "title": "Appointment",
-      "description": "Please let us know before visiting the workshop to ensure our availability."
+      "description": "Please let us know before visiting the atelier to ensure our availability."
     }
   },
   "mapImage": {
-    "alt": "Map showing where the workshop is located"
+    "alt": "Map showing where the atelier is located"
   }
 }

@@ -1,10 +1,10 @@
 {
   "meta": {
-    "title": "Workshop services",
+    "title": "Our services",
     "description": "Inspection, repair and reserve parachute packing to keep your equipment in perfect flying condition."
   },
   "hero": {
-    "tagline": "Workshop services",
+    "tagline": "Our services",
     "title": "Inspection, repair and reserve parachute packing",
     "subtitle": "Keep your equipment in perfect flying condition"
   },
@@ -12,7 +12,7 @@
     "title": "Periodic inspection",
     "description": "Complete inspection according to the official [ParachecK®](https://parapente.ffvl.fr/revision-voiles) standards of the [FFVL](https://federation.ffvl.fr/) to assess the actual condition of your equipment and fly safely.",
     "image": {
-      "alt": "Porosity test on a paraglider wing performed in the workshop"
+      "alt": "Porosity test on a paraglider wing performed in the atelier"
     },
     "items": {
       "frequency": {
@@ -55,7 +55,7 @@
     "title": "Wing repair",
     "description": "Following an incident, repair and return to flying condition of your paraglider or paramotor wing. Types of repairs:\n\n- Stitching\n- Panel replacement\n- Profile replacement\n- Full fabric patch\n- Simple fabric patch\n- Self-adhesive patch\n- Sheathed or unsheathed lines\n- Complete line set replacement",
     "image": {
-      "alt": "Paraglider line repair in the workshop"
+      "alt": "Paraglider line repair in the atelier"
     },
     "examples": {
       "full": {
@@ -76,7 +76,7 @@
     "title": "Reserve parachute packing",
     "description": "Your reserve parachute is aired and ventilated, with systematic replacement of elastics and visual inspection to ensure optimal use. It is then repacked according to manufacturer standards to ensure your safety.\n\n**For single, tandem, with or without container**",
     "image": {
-      "alt": "Reserve parachute being aired in the workshop"
+      "alt": "Reserve parachute being aired in the atelier"
     },
     "items": {
       "frequency": {

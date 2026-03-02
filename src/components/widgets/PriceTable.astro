@@ -1,6 +1,7 @@
 ---
 import type { PriceItem } from '~/types';
 import Markdown from '../ui/Markdown.astro';
+import { t } from 'i18n:astro';
 
 interface Props {
   id?: string;
@@ -67,7 +68,11 @@ const allRows = flattenItems(items);
 
                 <td class="px-4 py-3 whitespace-nowrap">
                   {item.price &&
-                    (item.price === 'quote' ? <span class="tag-primary text-base">Sur devis</span> : `${item.price} €`)}
+                    (item.price === 'quote' ? (
+                      <span class="tag-primary text-base">{t('onQuote')}</span>
+                    ) : (
+                      `${item.price} €`
+                    ))}
                 </td>
               </tr>
             );
