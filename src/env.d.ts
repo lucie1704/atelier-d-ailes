@@ -6,13 +6,3 @@
 /// <reference types="vite/client" />
 /// <reference types="../vendor/integration/types.d.ts" />
 /// <reference types="@astrolicious/i18n/client" />
-
-declare module '*.yaml' {
-  const value: unknown;
-  export default value;
-}
-
-declare module '*.yml' {
-  const value: unknown;
-  export default value;
-}

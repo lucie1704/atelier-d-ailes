@@ -23,11 +23,11 @@ Site vitrine de l'**Atelier d'Ailes**, atelier de révision et réparation de vo
 
 Ce site vitrine a été conçu pour répondre aux exigences suivantes :
 
-- ✅ **Informations claires et organisées** - Présentation structurée des services et informations
-- ✅ **Navigation fluide et rapide** - Optimisé pour desktop et mobile
-- ✅ **Accessibilité irréprochable** - Accessible à tous les utilisateurs
-- ✅ **SEO efficace** - Optimisé pour un bon référencement naturel
-- ✅ **Projet léger et maintenable** - Simple à prendre en main, maintenir et déployer
+- ✅ **Informations claires et organisées**
+- ✅ **Navigation fluide et rapide** pour desktop et mobile
+- ✅ **Accessibilité** pour tous les utilisateurs
+- ✅ **SEO efficace** pour un bon référencement naturel
+- ✅ **Projet maintenable**, simple à prendre en main, maintenir et déployer
 
 ## 🛠️ Technologies utilisées
 
@@ -75,10 +75,11 @@ npm run fix
 │   ├── assets/           # Assets (images, styles, favicons)
 │   ├── components/       # Composants Astro réutilisables
 │   ├── constants/        # Constantes (heures et jours d'ouverture, date de création)
-│   ├── content/          # Contenu éditorial du site (Annonces et blocs conseils)
+│   ├── cms/              # Contenu éditorial du site (Annonces et blocs conseils)
 │   ├── layouts/          # Layouts de pages
 │   ├── locales/          # Traduction des éléments statics du site
-│   ├── pages/            # Pages du site (routing automatique)
+│   ├── pages/            # Pages statiques / routing automatique
+│   ├── routes/           # Pages avec routing par langue
 │   ├── utils/            # Utilitaires et helpers
 │   └── config.yaml       # Configuration principale du site
 ├── astro.config.ts       # Configuration Astro
@@ -120,11 +121,11 @@ Le CMS Keystatic a été intégré pour la gestion du contenu éditorial du site
 Le CMS est accessible en se rendant sur l'url suivant http://atelier-d-ailes.fr/keystatic et en se connectant via GitHub (seul ce présent compte y a accès).  
 À la sauvegarde le nouveau contenu sera push sous forme de commit sur une branche `/cms` avant de pouvoir être validé et mergé sur main pour mettre à jour le site.
 
-Le contenu éditorial est organisé par langue dans `src/content`, chaque langue ayant sa propre version des annonces et des blocs conseils. On peut par exemple afficher uniquement une annonce pour la langue anglaise ou inversement. On pourrait également afficher des conseils différents selon la langue ou simplement les traduires.
+Le contenu éditorial est organisé par langue dans `src/cms`, chaque langue ayant sa propre version des annonces et des blocs conseils. On peut par exemple afficher uniquement une annonce pour la langue anglaise ou inversement. On pourrait également afficher des conseils différents selon la langue ou simplement les traduires.
 
 ```
 ├── src/
-│   ├── content/
+│   ├── cms/
 │   │   ├── fr/
 │   │   │   ├── guides/
 │   │   │   │   ├── guide-1.yaml
@@ -165,10 +166,33 @@ Les blocs sous "Erreurs courantes à éviter" de la page Conseil sont également
 
 ## 🌐 Internationalisation (i18n)
 
-Le site est conçu pour supporter **plusieurs langues** (actuellement Français et Anglais) via une configuration i18n dans `src/utils/system-i18n.ts`
+Le site prend en charge **plusieurs langues** (actuellement Français et Anglais) grâce à une configuration combinant :
 
-- `t` permet de traduire
-- `tr` permet de traduire des listes depuis le yaml en retournant des tableaux typés
+- **i18next** : gestion des traductions et du contenu multilingue.
+- **@astrolicious/i18n** : gestion du routing et de la navigation basée sur la langue.
 
-Le contenu static du site est donc disponibles par langue dans `src/locales`.
-Le site se base sur la locale courante d'Astro `Astro.currentLocale` pour gérer la langue courante d'affichage pour les traductions et le contenus éditorial.
+Les textes statiques du site sont organisés par langue dans `src/locales/`.  
+
+`src/routes/` → contient les pages nécessitant un routing différent selon la langue.  
+Exemple : `src/routes/conseils.astro` un seul fichier par page mais avec un routing différent selon la langue
+- `fr` → `/conseils`
+- `en` → `/en/guides`
+
+La customisation des slugs des pages par langue se fait dans le `astro.config.ts`. La langue par défaut garde le nom du fichier astro comme slug, les autres langues peuvent elles être personnalisées via :
+``` ts
+integrations: [
+   i18n({
+      pages: {
+         '/conseils': {
+            en: '/guides',
+         }
+      },
+   }),
+]
+```
+
+`src/pages/` → Pages uniques indépendantes de la langue choisie
+  - Page 404
+  - Page de maintenance
+
+Ces pages sont traduites à partir de la langue du navigateur de l'utilisateur grâce à `Astro.preferredLocale`.
