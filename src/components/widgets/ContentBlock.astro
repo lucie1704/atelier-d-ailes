@@ -2,21 +2,16 @@
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
-import Markdown from '../ui/Markdown.astro';
+import Markdown from '~/components/ui/Markdown.astro';
 
-interface Props {
-  title?: string;
-  content?: string;
-  icon?: string;
-  image?: {
-    src: string;
-    alt: string;
-  };
-  id?: string;
-  bg?: string;
-}
-
-const { title, content, icon, image, id, bg = await Astro.slots.render('bg') } = Astro.props;
+const {
+  title,
+  content,
+  icon,
+  image = await Astro.slots.render('image'),
+  id,
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
 ---
 
 <WidgetWrapper id={id} containerClass="max-w-5xl" bg={bg}>

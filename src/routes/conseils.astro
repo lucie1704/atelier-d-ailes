@@ -18,6 +18,20 @@ const metadata = {
 };
 
 const guides = await reader.collections[`${getLocale()}_guide`].all();
+
+const guidesWithImages = await Promise.all(
+  guides.map(async (guide) => {
+    let imageModule = null;
+    if (guide.entry.image) {
+      try {
+        imageModule = (await import(guide.entry.image)).default;
+      } catch (error) {
+        console.warn(`Image not found: ${guide.entry.image}`, error);
+      }
+    }
+    return { ...guide, imageModule };
+  })
+);
 ---
 
 <Layout metadata={metadata} ctaBanner>
@@ -76,12 +90,12 @@ const guides = await reader.collections[`${getLocale()}_guide`].all();
           </Fragment>
         </WidgetWrapper>
 
-        {guides.map((guide, index: number) => (
+        {guidesWithImages.map((guide, index) => (
           <ContentBlock
             title={guide.entry.title}
             icon="tabler:alert-triangle"
             content={guide.entry.description}
-            {...(guide.entry.image ? { image: { src: guide.entry.image, alt: guide.entry.imageAlt ?? '' } } : {})}
+            {...(guide.imageModule ? { image: { src: guide.imageModule, alt: guide.entry.imageAlt ?? '' } } : {})}
           >
             {index % 2 !== 0 && (
               <Fragment slot="bg">
