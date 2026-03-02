@@ -314,3 +314,14 @@ interface Link {
 export interface MenuLink extends Link {
   links?: Array<MenuLink>;
 }
+
+type GuideEntry = {
+  title: string;
+  description: string;
+  image: string | null;
+  imageAlt: string;
+};
+
+export type GuideWithImage = GuideEntry & {
+  imageModule: string | null;
+};

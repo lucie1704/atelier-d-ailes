@@ -4,6 +4,7 @@ import Hero from '~/components/widgets/Hero.astro';
 import { reader } from '~/utils/keystatic';
 import ContentBlock from '~/components/widgets/ContentBlock.astro';
 import { getLocale } from 'i18n:astro';
+import { getImageModule } from '~/utils/images';
 
 const locale = getLocale();
 
@@ -15,6 +16,8 @@ const currentAnnouncement = activeAnnouncementConfig?.announcement
 if (!activeAnnouncementConfig?.active || !activeAnnouncementConfig?.announcement || !currentAnnouncement) {
   return Astro.redirect('/', '404');
 }
+
+const currentAnnouncementImagModule = await getImageModule('announcements', currentAnnouncement.contentImage);
 
 const metadata = {
   title: currentAnnouncement.title,
@@ -31,8 +34,8 @@ const metadata = {
   <ContentBlock
     title={currentAnnouncement.contentTitle}
     content={currentAnnouncement.contentDescription}
-    {...currentAnnouncement.contentImage
-      ? { image: { src: currentAnnouncement.contentImage, alt: currentAnnouncement.contentImageAlt ?? '' } }
+    {...currentAnnouncementImagModule
+      ? { image: { src: currentAnnouncementImagModule, alt: currentAnnouncement.contentImageAlt ?? '' } }
       : {}}
   >
     <Fragment slot="bg">
