@@ -17,7 +17,8 @@ if (!activeAnnouncementConfig?.active || !activeAnnouncementConfig?.announcement
   return Astro.redirect('/', '404');
 }
 
-const currentAnnouncementImagModule = await getImageModule('announcements', currentAnnouncement.contentImage);
+const announcementImages = import.meta.glob<{ default: string }>('/src/assets/images/announcements/**/*.{jpg,jpeg,png,webp}');
+const currentAnnouncementImageModule = await getImageModule(announcementImages, currentAnnouncement.image);
 
 const metadata = {
   title: currentAnnouncement.title,
@@ -34,8 +35,8 @@ const metadata = {
   <ContentBlock
     title={currentAnnouncement.contentTitle}
     content={currentAnnouncement.contentDescription}
-    {...currentAnnouncementImagModule
-      ? { image: { src: currentAnnouncementImagModule, alt: currentAnnouncement.contentImageAlt ?? '' } }
+    {...currentAnnouncementImageModule
+      ? { image: { src: currentAnnouncementImageModule, alt: currentAnnouncement.imageAlt ?? '' } }
       : {}}
   >
     <Fragment slot="bg">

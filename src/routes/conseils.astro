@@ -9,7 +9,6 @@ import ContentBlock from '~/components/widgets/ContentBlock.astro';
 import { reader } from '~/utils/keystatic';
 import { getLocale, t } from 'i18n:astro';
 import { getImageModule } from '~/utils/images';
-import type { GuideWithImage } from '~/types';
 
 // Images
 import guidesAttachPointImage from '~/assets/images/guides-attach-point.jpg';
@@ -21,10 +20,11 @@ const metadata = {
 
 const guides = await reader.collections[`${getLocale()}_guide`].all();
 
-const guidesWithImages: GuideWithImage[] = await Promise.all(
+const guideImages = import.meta.glob<{ default: string }>('/src/assets/images/guides/**/*.{jpg,jpeg,png,webp}');
+const guidesWithImages = await Promise.all(
   guides.map(async ({ entry }) => ({
     ...entry,
-    imageModule: await getImageModule('guides', entry.image),
+    imageModule: await getImageModule(guideImages, entry.image),
   }))
 );
 ---

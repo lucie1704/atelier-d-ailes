@@ -111,14 +111,23 @@ export const adaptOpenGraphImages = async (
   return { ...openGraph, ...(adaptedImages ? { images: adaptedImages } : {}) };
 };
 
-export async function getImageModule(folder: string, imagePath: string | null | undefined): Promise<string | null> {
+type ImageLoader = () => Promise<{ default: string }>;
+
+/**
+ * Dynamic import cms content images through import.meta.glob
+ */
+export async function getImageModule(
+  images: Record<string, ImageLoader>,
+  imagePath: string | null | undefined
+): Promise<string | null> {
   if (!imagePath) return null;
 
-  try {
-    const module = await import(`~/assets/images/${folder}/${imagePath}`);
-    return module.default ?? null;
-  } catch (err) {
-    console.warn(`[getImageModule] Failed to load ${folder}/${imagePath}`, err);
+  const loader = images[imagePath];
+  if (!loader) {
+    console.warn(`[getImageModule] Image not found: ${imagePath}`);
     return null;
   }
+
+  const module = await loader();
+  return module.default ?? null;
 }

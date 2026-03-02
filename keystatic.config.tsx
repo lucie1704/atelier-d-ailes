@@ -16,12 +16,12 @@ const announcementSchema = {
   subtitle: fields.text({ label: 'Subtitle' }),
   contentTitle: fields.text({ label: 'Content title' }),
   contentDescription: fields.mdx.inline({ label: 'Content description' }),
-  contentImage: fields.image({
+  image: fields.image({
     label: 'Content image',
-    directory: 'src/assets/images/announcement',
-    publicPath: '/src/assets/images/announcement',
+    directory: 'src/assets/images/announcements',
+    publicPath: '/src/assets/images/announcements',
   }),
-  contentImageAlt: fields.text({ label: 'Content image alt' }),
+  imageAlt: fields.text({ label: 'Content image alt' }),
 };
 
 const guidesSchema = {
