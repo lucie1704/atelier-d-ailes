@@ -17,18 +17,13 @@ const metadata = {
   description: t('guides:meta.description'),
 };
 
+const allGuidesImages = import.meta.glob('/src/assets/images/guides/**/*.{jpg,jpeg,png,webp}');
+
 const guides = await reader.collections[`${getLocale()}_guide`].all();
 
 const guidesWithImages = await Promise.all(
   guides.map(async (guide) => {
-    let imageModule = null;
-    if (guide.entry.image) {
-      try {
-        imageModule = (await import(guide.entry.image)).default;
-      } catch (error) {
-        console.warn(`Image not found: ${guide.entry.image}`, error);
-      }
-    }
+    const imageModule = guide.entry.image ? ((await allGuidesImages[guide.entry.image]?.())?.default ?? null) : null;
     return { ...guide, imageModule };
   })
 );
