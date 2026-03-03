@@ -34,7 +34,8 @@
       "description": "Merci de prévenir avant tout passage à l'atelier pour vous assurer de notre disponibilité."
     }
   },
-  "mapImage": {
-    "alt": "Carte indiquant où se trouve l'atelier"
+  "bonus": {
+    "title": "Merci de votre visite !",
+    "description": "C'est un plaisir de vous recevoir à l'atelier. Votre matériel est entre de bonnes mains, Baloo, notre acolyte à quatre pattes, y veille aussi à sa façon.\n\nEn vous souhaitant de très beaux vols !"
   }
 }

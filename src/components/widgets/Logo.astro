@@ -13,7 +13,7 @@ const { usePublicLogo = false } = Astro.props;
 <span class="flex ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap">
   {
     usePublicLogo ? (
-      <img src="/logo.png" alt={SITE.name} class="h-12 w-auto" loading="eager" />
+      <img src="/logo.png" alt={SITE.name} class="h-12 w-auto" />
     ) : (
       <Image src={logo} alt={SITE.name} class="h-12 w-auto" loading="eager" />
     )

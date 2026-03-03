@@ -53,7 +53,7 @@
   },
   "repair": {
     "title": "Réparation de votre aile",
-    "description": "Suite à un incident, réparation et remise en ordre de vol de votre aile de parapente ou paramoteur. Types de réparations :\n\n- Couture\n- Changement de panneau\n- Changement de profil\n- Pièce tissu en plein\n- Pièce tissu simple\n- Patch autocollant\n- Suspentes gainées ou non\n- Changement de suspentage complet",
+    "description": "Suite à un incident, réparation et remise en ordre de vol de votre aile de parapente ou paramoteur.\n\n Types de réparations :\n\n- Couture\n- Changement de panneau\n- Changement de profil\n- Pièce tissu en plein\n- Pièce tissu simple\n- Patch autocollant\n- Suspentes gainées ou non\n- Changement de suspentage complet",
     "image": {
       "alt": "Réparation de suspentes de parapente en atelier"
     },

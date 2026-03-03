@@ -7,9 +7,9 @@ import FeaturesImages from '~/components/widgets/FeaturesImages.astro';
 import { t } from 'i18n:astro';
 
 // Images
-import maintenanceImage from '~/assets/images/maintenance.jpg';
+import maintenanceImage from '~/assets/images/maintenance.jpeg';
 import reserveParachutePackingImage from '~/assets/images/reserve-parachute-packing.jpg';
-import repairImage from '~/assets/images/repair.jpg';
+import repairImage from '~/assets/images/repair.jpeg';
 import repairImageExample1 from '~/assets/images/repair-example-1.jpg';
 import repairImageExample2 from '~/assets/images/repair-example-2.jpg';
 import repairImageExample3 from '~/assets/images/repair-example-3.jpg';
@@ -99,6 +99,8 @@ const metadata = {
     image={{
       src: repairImage,
       alt: t('services:repair.image.alt'),
+      width: 400,
+      class: 'rounded-lg mx-auto bg-gray-500 shadow-lg',
     }}
   >
     <Fragment slot="content">

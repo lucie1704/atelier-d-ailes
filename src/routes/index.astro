@@ -14,7 +14,7 @@ import { getLocalePath, t } from 'i18n:astro';
 // Images
 import heroImage from '~/assets/images/atelier-hero-image.png';
 import paracheckImage from '~/assets/images/paracheck.png';
-import christopheImage from '~/assets/images/christophe-profile-1.png';
+import christopheImage from '~/assets/images/christophe-profile.jpeg';
 
 const metadata = {
   title: `${SITE.name} — ${t('home:meta.title')}`,
@@ -94,16 +94,15 @@ const yearsSinceCreation = (() => {
     image={{
       src: christopheImage,
       alt: 'Photo de profil de Christophe Godard',
-      class: 'rounded-full mx-auto bg-gray-500 shadow-lg',
     }}
   >
     <Fragment slot="content">
       <div class="order-1 md:order-2">
-        <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        <h2 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2">
           {FULLNAME}
         </h2>
 
-        <h3 class="text-xl tracking-tight dark:text-white mb-4">
+        <h3 class="text-xl tracking-tight mb-4">
           {t('home:profile.position')}
         </h3>
 

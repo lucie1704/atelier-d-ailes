@@ -3,12 +3,12 @@ import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import ShopStatus from '~/components/widgets/ShopStatus.astro';
-import { Image } from 'astro:assets';
-import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-import shopMapImage from '~/assets/images/shop-map.jpeg';
 import { PHONE } from '~/constants/contact';
 import { ADDRESS } from '~/constants/contact';
 import { t } from 'i18n:astro';
+import Content from '~/components/widgets/Content.astro';
+import bonusImage from '~/assets/images/bonus.jpeg';
+import Markdown from '~/components/ui/Markdown.astro';
 
 const metadata = {
   title: t('contact:meta.title'),
@@ -71,12 +71,19 @@ const metadata = {
     </Fragment>
   </Features2>
 
-  <WidgetWrapper>
-    <Image
-      src={shopMapImage}
-      alt={t('contact:mapImage.alt')}
-      loading="lazy"
-      class="mx-auto w-full rounded-lg bg-gray-500 shadow-lg"
-    />
-  </WidgetWrapper>
+  <Content
+    columns={2}
+    isReversed
+    image={{
+      src: bonusImage,
+      alt: 'Photo de Christophe avec son chien Baloo',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl mb-2">
+        {t('contact:bonus.title')}
+      </h2>
+      <Markdown class="text-muted" content={t('contact:bonus.description')} />
+    </Fragment>
+  </Content>
 </Layout>

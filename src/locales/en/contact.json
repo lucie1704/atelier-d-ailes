@@ -34,7 +34,8 @@
       "description": "Please let us know before visiting the atelier to ensure our availability."
     }
   },
-  "mapImage": {
-    "alt": "Map showing where the atelier is located"
+  "bonus": {
+    "title": "Thank you for your visit!",
+    "description": "It’s a pleasure to welcome you to the atelier. Your equipment is in good hands, Baloo, our four-legged companion, is keeping an eye on it in his own way.\n\nWishing you many wonderful flights!"
   }
 }
