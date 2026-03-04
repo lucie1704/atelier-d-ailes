@@ -56,9 +56,6 @@ npm run dev
 # Construire pour la production
 npm run build
 
-# Prévisualiser le build de production
-npm run preview
-
 # Vérifier le code (Astro, ESLint, Prettier)
 npm run check
 
@@ -87,8 +84,6 @@ npm run fix
 └── tailwind.config.js    # Configuration Tailwind CSS
 ```
 
-**Note :** Astro génère automatiquement les routes à partir des fichiers dans `src/pages/`.
-
 ## 🚢 Déploiement
 
 Le site est automatiquement redéployé sur **www.atelier-d-ailes.fr** via Vercel à chaque merge sur `main`.
@@ -116,7 +111,7 @@ Active une redirection globale vers la page `/maintenance` pour toutes les route
 Le CMS Keystatic a été intégré pour la gestion du contenu éditorial du site :
 
 - Les annonces
-- Les blocs "Erreurs courantes à éviter" de la page Conseil
+- Les blocs "Erreurs courantes à éviter" de la page Conseils
 
 Le CMS est accessible en se rendant sur l'url suivant http://atelier-d-ailes.fr/keystatic et en se connectant via GitHub (seul ce présent compte y a accès).  
 À la sauvegarde le nouveau contenu sera push sous forme de commit sur une branche `/cms` avant de pouvoir être validé et mergé sur main pour mettre à jour le site.
@@ -150,19 +145,17 @@ Le contenu éditorial est organisé par langue dans `src/cms`, chaque langue aya
 └── keystatic.config.tsx     # Configuration Keystatic
 ```
 
-Le contenu Markdown est rendu via un composant `Markdown` utilisant la librairie `marked`.
-
 ### Annonces
 
 Il est possible d'afficher un bandeau d'information en haut du site lié à une page de détail d'annonce, par exemple pour des fermetures exceptionnelles ou autres informations éphémères liées à l'atelier.
 En accédant à Keystatic il vous suffira de configurer deux contenus :
 
-- Active annonce : pour déterminer si on veut que l'annonce soit active ou non et choisir ensuite parmi les annonces existantes celle à afficher
-- Les annonces : une collection d'annonces permettant d'ajouter ou de modifier une annonce pour une future information exceptionnelle à transmettre
+- Annonce active : pour déterminer si on veut que l'annonce soit active ou non et choisir ensuite parmi les annonces existantes celle à afficher
+- Les annonces : une collection d'annonces permettant d'ajouter ou de modifier une annonce
 
 ### Blocs Conseils
 
-Les blocs sous "Erreurs courantes à éviter" de la page Conseil sont également éditables via la collection Conseils du CMS.
+Les blocs sous "Erreurs courantes à éviter" de la page Conseil sont également éditables via la collection "Conseils" du CMS.
 
 ## 🌐 Internationalisation (i18n)
 
@@ -174,7 +167,7 @@ Le site prend en charge **plusieurs langues** (actuellement Français et Anglais
 Les textes statiques du site sont organisés par langue dans `src/locales/`.
 
 `src/routes/` → contient les pages nécessitant un routing différent selon la langue.  
-Exemple : `src/routes/conseils.astro` un seul fichier par page mais avec un routing différent selon la langue
+Exemple : `src/routes/conseils.astro` un seul fichier pour les deux langues mais avec des slugs différents selon la langue choisie :
 
 - `fr` → `/conseils`
 - `en` → `/en/guides`
