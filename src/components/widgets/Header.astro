@@ -12,18 +12,17 @@ export interface Props {
   actions?: Array<CallToAction>;
   position?: string;
   isSticky?: boolean;
+  isAnnouncementActive?: boolean;
 }
 
-const hasAnnouncement = Astro.slots.has('announcement');
-
-const { links = [], actions = [], position = 'center', isSticky = true } = Astro.props;
+const { links = [], actions = [], position = 'center', isSticky = true, isAnnouncementActive = false } = Astro.props;
 
 const currentPathname = `/${trimSlash(new URL(Astro.url).pathname)}`;
 const toPathname = (href?: string) => `/${trimSlash(href ?? '')}`;
 
 const baseClasses =
   'items-center w-full md:w-auto hidden md:flex md:mx-5 text-default overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:justify-self-center';
-const announcementClasses = hasAnnouncement ? 'mt-8 md:mt-0' : '';
+const announcementClasses = isAnnouncementActive ? 'mt-8 md:mt-0' : '';
 ---
 
 <header

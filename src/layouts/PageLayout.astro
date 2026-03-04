@@ -14,6 +14,7 @@ const activeAnnouncementConfig = await reader.singletons[`${locale}_active_annou
 const currentAnnouncement = activeAnnouncementConfig?.announcement
   ? await reader.collections[`${locale}_announcement`].read(activeAnnouncementConfig.announcement)
   : undefined;
+const showAnnouncement = !!(activeAnnouncementConfig?.active && currentAnnouncement);
 
 export interface Props {
   metadata?: MetaData;
@@ -85,9 +86,9 @@ const footerData = [
 
 <Layout metadata={metadata}>
   <slot name="header">
-    <Header links={headerData.links} actions={headerData.actions}>
+    <Header links={headerData.links} actions={headerData.actions} isAnnouncementActive={showAnnouncement}>
       {
-        activeAnnouncementConfig?.active && currentAnnouncement && (
+        showAnnouncement && (
           <Announcement slot="announcement" message={currentAnnouncement.message} href={getLocalePath('/annonce')} />
         )
       }
