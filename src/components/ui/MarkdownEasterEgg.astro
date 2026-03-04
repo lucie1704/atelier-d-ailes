@@ -1,0 +1,56 @@
+---
+import Markdown from './Markdown.astro';
+
+interface Props {
+  content: string;
+  class?: string;
+}
+
+const { content, class: extraClass = '' } = Astro.props;
+
+const parsedContent = content.replace(/\bBaloo\b/g, '<span data-baloo>Baloo</span>');
+---
+
+<Markdown content={parsedContent} class={extraClass} />
+
+<script>
+  import type confettiType from 'canvas-confetti';
+
+  let confettiModule: { default: typeof confettiType } | undefined;
+
+  document.addEventListener('click', async (e) => {
+    const target = e.target as HTMLElement | null;
+    if (!target) return;
+
+    const element = target.closest('[data-baloo]');
+    if (!element) return;
+
+    if (!confettiModule) {
+      confettiModule = await import('canvas-confetti');
+    }
+
+    const confetti = confettiModule.default;
+
+    const rect = element.getBoundingClientRect();
+    const heart = confetti.shapeFromText({ text: '❤️', scalar: 2 });
+    const heart2 = confetti.shapeFromText({ text: '💖', scalar: 2 });
+    const heart3 = confetti.shapeFromText({ text: '💗', scalar: 2 });
+    const heart4 = confetti.shapeFromText({ text: '💓', scalar: 2 });
+    const heart5 = confetti.shapeFromText({ text: '💞', scalar: 2 });
+
+    await confetti({
+      particleCount: 20,
+      shapes: [heart, heart2, heart3, heart4, heart5],
+      scalar: 2,
+      startVelocity: 15,
+      spread: 90,
+      ticks: 300,
+      flat: true,
+      origin: {
+        x: (rect.left + rect.width / 2) / window.innerWidth,
+        y: (rect.top + rect.height / 2) / window.innerHeight,
+      },
+      colors: ['#ff69b4', '#ff1493', '#ff0000'],
+    });
+  });
+</script>

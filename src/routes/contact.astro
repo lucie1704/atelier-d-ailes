@@ -8,7 +8,7 @@ import { ADDRESS } from '~/constants/contact';
 import { t } from 'i18n:astro';
 import Content from '~/components/widgets/Content.astro';
 import bonusImage from '~/assets/images/bonus.jpeg';
-import Markdown from '~/components/ui/Markdown.astro';
+import MarkdownEasterEgg from '~/components/ui/MarkdownEasterEgg.astro';
 
 const metadata = {
   title: t('contact:meta.title'),
@@ -18,7 +18,6 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <Hero tagline={t('contact:hero.tagline')} title={t('contact:hero.title')} subtitle={t('contact:hero.subtitle')} />
-
   <Features2
     items={[
       {
@@ -83,7 +82,7 @@ const metadata = {
       <h2 class="text-3xl font-bold tracking-tight sm:text-4xl mb-2">
         {t('contact:bonus.title')}
       </h2>
-      <Markdown class="text-muted" content={t('contact:bonus.description')} />
+      <MarkdownEasterEgg class="text-muted" content={t('contact:bonus.description')} />
     </Fragment>
   </Content>
 </Layout>
