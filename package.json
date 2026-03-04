@@ -1,6 +1,6 @@
 {
   "name": "atelier-d-ailes",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Contrôle, révision et réparation d'ailes de parapente et paramoteur.",
   "type": "module",
   "license": "MIT",
