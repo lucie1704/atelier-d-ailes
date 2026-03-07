@@ -42,7 +42,14 @@ const { id, title, subtitle, image, actions = [] } = Astro.props as Props;
           {title}
         </h1>
 
-        {subtitle && <p set:html={subtitle} class="mt-6 text-base sm:text-lg text-white/90" />}
+        {
+          subtitle && (
+            <p
+              set:html={subtitle}
+              class="mt-6 text-base sm:text-lg text-white/90 max-w-72 md:max-w-none mx-auto md:mx-0"
+            />
+          )
+        }
 
         {
           actions.length > 0 && (

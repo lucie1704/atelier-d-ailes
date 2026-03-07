@@ -39,7 +39,7 @@ export default config({
   ui: {
     brand: {
       name: SITE.name,
-      mark: () => <img src="/favicon.ico" height={24} alt="Atelier d'Ailes Logo" />,
+      mark: () => <img src="/favicon.ico" height={24} alt="Atelier d'ailes Logo" />,
     },
     navigation: {
       FR: ['fr_active_announcement', 'fr_announcement', 'fr_guide'],

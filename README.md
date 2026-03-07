@@ -1,11 +1,11 @@
-# Atelier d'Ailes
+# Atelier d'ailes
 
 [![Astro](https://img.shields.io/badge/Astro-5.0-FF5D01?logo=astro)](https://astro.build/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?logo=typescript)](https://www.typescriptlang.org/)
 [![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel)](https://vercel.com)
 
-Site vitrine de l'**Atelier d'Ailes**, atelier de révision et réparation de voiles de parapente et paramoteur basé en Seine-et-Marne (77).  
+Site vitrine de l'**Atelier d'ailes**, atelier de révision et réparation de voiles de parapente et paramoteur basé en Seine-et-Marne (77).  
 À retrouver sur www.atelier-d-ailes.fr
 
 ## 📋 Table des matières
@@ -40,7 +40,9 @@ Ce site vitrine a été conçu pour répondre aux exigences suivantes :
 
 ## 📈 Performance
 
-Les scores lighthouse seront mis à jour une fois le site publié.
+#### Scores Lighthouse :
+
+![Lighthouse Scores.png](src/assets/images/Lighthouse%20Scores.png)
 
 ## 🛠️ Installation et Commandes
 

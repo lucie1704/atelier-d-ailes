@@ -1,5 +1,5 @@
 site:
-  name: "Atelier d'Ailes"
+  name: "Atelier d'ailes"
   site: 'https://www.atelier-d-ailes.fr'
   base: '/'
 
@@ -8,15 +8,15 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: "Atelier d'Ailes"
-    template: "%s — Atelier d'Ailes"
+    default: "Atelier d'ailes"
+    template: "%s — Atelier d'ailes"
   description: 'Atelier de révision et de réparation de parapentes et de matériel de vol libre, basé en Seine et Marne (77).'
   canonical: 'https://www.atelier-d-ailes.fr'
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: "Atelier d'Ailes"
+    site_name: "Atelier d'ailes"
     images:
       - url: '~/assets/images/logo-with-white-background.png'
         width: 1200
