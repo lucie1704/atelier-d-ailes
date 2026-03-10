@@ -107,6 +107,10 @@ a.link:hover::after {
 
 /* Animation pour le menu mobile */
 @media (max-width: 768px) {
+  a.link::after {
+    width: 100%;
+  }
+
   #header.expanded nav {
     animation: slideInRight 0.3s ease-out forwards;
   }
