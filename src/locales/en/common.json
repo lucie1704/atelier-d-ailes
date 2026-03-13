@@ -59,5 +59,13 @@
   "shopStatus": {
     "open": "Currently open",
     "closed": "Currently closed"
+  },
+  "langPicker": {
+    "selectedLanguage": {
+      "accessible": "Current language : {{lang}}"
+    },
+    "options": {
+      "accessible": "Switch language to {{lang}}"
+    }
   }
 }

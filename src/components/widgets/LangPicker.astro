@@ -1,21 +1,24 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { getLocale, getSwitcherData } from 'i18n:astro';
+import { getLocale, getSwitcherData, t } from 'i18n:astro';
 
 const locale = getLocale();
 const switcherData = getSwitcherData();
 
-const flags: Record<string, string> = {
-  fr: '🇫🇷',
-  en: '🇬🇧',
+const flagIcons: Record<string, string> = {
+  fr: 'fi fi-fr',
+  en: 'fi fi-gb',
 };
 ---
 
 <details class="relative inline-block text-[0.9375rem]">
-  <summary class="flex items-center gap-2 cursor-pointer py-2 px-4 list-none">
-    <span>{flags[locale]}</span>
-    <span>{locale.toUpperCase()}</span>
-    <Icon name="lucide:chevron-down" class="w-4 h-4 transition-transform duration-200 [[open]_&]:rotate-180" />
+  <summary
+    class="flex items-center gap-2 cursor-pointer py-2 px-4 list-none"
+    aria-label={t('langPicker.selectedLanguage.accessible', { lang: locale.toUpperCase() })}
+  >
+    <span class={`${flagIcons[locale]} w-3 h-3`} aria-hidden="true"></span>
+    <span aria-hidden="true">{locale.toUpperCase()}</span>
+    <Icon name="lucide:chevron-down" class="w-4 h-4" aria-hidden="true" />
   </summary>
 
   <div
@@ -26,9 +29,11 @@ const flags: Record<string, string> = {
         <a
           href={option.href}
           class={`flex items-center gap-2 px-4 py-2 ${option.locale === locale ? 'bg-gray-100 rounded-md' : ''}`}
+          aria-current={option.locale === locale ? 'true' : undefined}
+          aria-label={t('langPicker.options.accessible', { lang: option.locale.toUpperCase() })}
         >
-          <span>{flags[option.locale]}</span>
-          <span>{option.locale.toUpperCase()}</span>
+          <span class={`${flagIcons[option.locale]} w-3 h-3`} aria-hidden="true" />
+          <span aria-hidden="true">{option.locale.toUpperCase()}</span>
         </a>
       ))
     }

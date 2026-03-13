@@ -5,17 +5,18 @@ import { Image } from 'astro:assets';
 
 interface Props {
   usePublicLogo?: boolean;
+  loading?: 'lazy' | 'eager';
 }
 
-const { usePublicLogo = false } = Astro.props;
+const { usePublicLogo = false, loading = 'eager' } = Astro.props;
 ---
 
 <span class="flex ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap">
   {
     usePublicLogo ? (
-      <img src="/logo.png" alt={SITE.name} class="h-12 w-auto" />
+      <img src="/logo.png" alt={SITE.name} class="h-12 w-auto" loading={loading} />
     ) : (
-      <Image src={logo} alt={SITE.name} class="h-12 w-auto" loading="eager" />
+      <Image src={logo} alt={SITE.name} class="h-12 w-auto" loading={loading} />
     )
   }
 </span>

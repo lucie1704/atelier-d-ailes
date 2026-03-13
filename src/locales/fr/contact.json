@@ -36,6 +36,9 @@
   },
   "bonus": {
     "title": "Merci de votre visite !",
-    "description": "C'est un plaisir de vous recevoir à l'atelier. Votre matériel est entre de bonnes mains, Baloo, notre acolyte à quatre pattes, y veille aussi à sa façon.\n\nEn vous souhaitant de très beaux vols !"
+    "description": "C'est un plaisir de vous recevoir à l'atelier. Votre matériel est entre de bonnes mains, Baloo, notre acolyte à quatre pattes, y veille aussi à sa façon.\n\nEn vous souhaitant de très beaux vols !",
+    "image": {
+      "alt": "Christophe avec son chien Baloo"
+    }
   }
 }

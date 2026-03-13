@@ -36,6 +36,9 @@
   },
   "bonus": {
     "title": "Thank you for your visit!",
-    "description": "It’s a pleasure to welcome you to the atelier. Your equipment is in good hands, Baloo, our four-legged companion, is keeping an eye on it in his own way.\n\nWishing you many wonderful flights!"
+    "description": "It’s a pleasure to welcome you to the atelier. Your equipment is in good hands, Baloo, our four-legged companion, is keeping an eye on it in his own way.\n\nWishing you many wonderful flights!",
+    "image": {
+      "alt": "Christophe with his dog Baloo"
+    }
   }
 }

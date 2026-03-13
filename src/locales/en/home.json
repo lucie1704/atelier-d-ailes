@@ -33,7 +33,10 @@
   },
   "profile": {
     "position": "Founder of Atelier d’Ailes",
-    "quote": "I have been inspecting wings for over 30 years. Formerly based in Paris at VLD (Vol Libre Diffusion), my atelier is now located in Seine-et-Marne for {{yearsSinceCreation}} years where I bring my experience to your service. Passionate about everything that flies, I maintain your paragliding and paramotor wings."
+    "quote": "I have been inspecting wings for over 30 years. Formerly based in Paris at VLD (Vol Libre Diffusion), my atelier is now located in Seine-et-Marne for {{yearsSinceCreation}} years where I bring my experience to your service. Passionate about everything that flies, I maintain your paragliding and paramotor wings.",
+    "image": {
+      "alt": "Portrait of Christophe, founder of Atelier d'Ailes"
+    }
   },
   "experience": {
     "title": "A career dedicated to your wings",

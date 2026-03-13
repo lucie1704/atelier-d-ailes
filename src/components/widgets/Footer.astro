@@ -42,7 +42,7 @@ const { dataSections, ctaBanner = false } = Astro.props;
       <div class="col-span-12 lg:col-span-4">
         <div class="mb-2">
           <a class="inline-block font-bold text-xl" href={getLocalePath('/')}>
-            <Logo />
+            <Logo loading="lazy" />
           </a>
         </div>
         <span class="text-muted text-sm">© {new Date().getFullYear()} {SITE?.name}</span>
