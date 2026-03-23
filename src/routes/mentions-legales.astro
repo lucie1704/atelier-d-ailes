@@ -2,7 +2,7 @@
 import MarkdownLayout from '~/layouts/MarkdownLayout.astro';
 import { FULLNAME, ADDRESS, PHONE } from '~/constants/contact';
 import { SITE } from 'astrowind:config';
-import { t } from 'i18n:astro';
+import { getLocalePath, t } from 'i18n:astro';
 
 const frontmatter = {
   title: t('legal:frontmatter.title'),
@@ -19,4 +19,5 @@ const frontmatter = {
     address: ADDRESS,
     phone: PHONE.FORMAT_INTL ?? '',
   })}
+  breadcrumbs={[{ name: t('legal:frontmatter.title'), url: getLocalePath('/mentions-legales') }]}
 />

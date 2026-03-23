@@ -4,11 +4,15 @@ import { AstroSeo } from '@astrolib/seo';
 
 import type { Props as AstroSeoProps } from '@astrolib/seo';
 
-import { SITE, METADATA, I18N } from 'astrowind:config';
+import { SITE, METADATA } from 'astrowind:config';
 import type { MetaData } from '~/types';
 import { getCanonical } from '~/utils/permalinks';
+import { getLocale, getLocalePath } from 'i18n:astro';
 
 import { adaptOpenGraphImages } from '~/utils/images';
+
+const locale = getLocale();
+const currentPath = Astro.url.pathname;
 
 export interface Props extends MetaData {
   dontUseTitleTemplate?: boolean;
@@ -36,7 +40,7 @@ const seoProps: AstroSeoProps = merge(
       url: canonical,
       site_name: SITE?.name,
       images: [],
-      locale: I18N?.language || 'en',
+      locale: locale === 'fr' ? 'fr_FR' : 'en_US',
       type: 'website',
     },
     twitter: {
@@ -63,6 +67,16 @@ const seoProps: AstroSeoProps = merge(
     twitter: twitter,
   }
 );
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 ---
 
 <AstroSeo {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site) }} />
+
+<link rel="alternate" hreflang="fr" href={`https://www.atelier-d-ailes.fr${getLocalePath(currentPath as any, 'fr')}`} />
+<link rel="alternate" hreflang="en" href={`https://www.atelier-d-ailes.fr${getLocalePath(currentPath as any, 'en')}`} />
+<link
+  rel="alternate"
+  hreflang="x-default"
+  href={`https://www.atelier-d-ailes.fr${getLocalePath(currentPath as any, 'fr')}`}
+/>

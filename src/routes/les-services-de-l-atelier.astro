@@ -1,10 +1,12 @@
 ---
+import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import Content from '~/components/widgets/Content.astro';
-import Layout from '~/layouts/PageLayout.astro';
 import FeaturesImages from '~/components/widgets/FeaturesImages.astro';
-import { t } from 'i18n:astro';
+import Markdown from '~/components/ui/Markdown.astro';
+import BreadcrumbsSEO from '~/components/common/BreadcrumbsSEO.astro';
+import { getLocalePath, t } from 'i18n:astro';
 
 // Images
 import maintenanceImage from '~/assets/images/maintenance.jpeg';
@@ -16,7 +18,6 @@ import repairImageExample3 from '~/assets/images/repair-example-3.jpg';
 import repairImageExample4 from '~/assets/images/repair-example-4.jpg';
 import repairImageExample5 from '~/assets/images/repair-example-5.jpg';
 import repairImageExample6 from '~/assets/images/repair-example-6.jpg';
-import Markdown from '~/components/ui/Markdown.astro';
 
 const metadata = {
   title: t('services:meta.title'),
@@ -25,6 +26,8 @@ const metadata = {
 ---
 
 <Layout metadata={metadata} ctaBanner>
+  <BreadcrumbsSEO items={[{ name: t('services:meta.title'), url: getLocalePath('/les-services-de-l-atelier') }]} />
+
   <Hero tagline={t('services:hero.tagline')} title={t('services:hero.title')} subtitle={t('services:hero.subtitle')} />
 
   <Content

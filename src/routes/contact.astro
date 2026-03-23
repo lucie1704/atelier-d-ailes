@@ -3,12 +3,13 @@ import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import ShopStatus from '~/components/widgets/ShopStatus.astro';
+import MarkdownEasterEgg from '~/components/ui/MarkdownEasterEgg.astro';
+import BreadcrumbsSEO from '~/components/common/BreadcrumbsSEO.astro';
 import { PHONE } from '~/constants/contact';
 import { ADDRESS } from '~/constants/contact';
-import { t } from 'i18n:astro';
+import { getLocalePath, t } from 'i18n:astro';
 import Content from '~/components/widgets/Content.astro';
 import bonusImage from '~/assets/images/bonus.jpeg';
-import MarkdownEasterEgg from '~/components/ui/MarkdownEasterEgg.astro';
 
 const metadata = {
   title: t('contact:meta.title'),
@@ -17,7 +18,10 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+  <BreadcrumbsSEO items={[{ name: t('contact:meta.title'), url: getLocalePath('/contact') }]} />
+
   <Hero tagline={t('contact:hero.tagline')} title={t('contact:hero.title')} subtitle={t('contact:hero.subtitle')} />
+
   <Features2
     items={[
       {

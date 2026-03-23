@@ -4,6 +4,7 @@ import Hero from '~/components/widgets/Hero.astro';
 
 import type { MetaData } from '~/types';
 import Markdown from '~/components/ui/Markdown.astro';
+import BreadcrumbsSEO from '~/components/common/BreadcrumbsSEO.astro';
 
 export interface Props {
   frontmatter: {
@@ -12,9 +13,10 @@ export interface Props {
     subtitle?: string;
   };
   content: string;
+  breadcrumbs?: { name: string; url: string }[];
 }
 
-const { frontmatter, content } = Astro.props;
+const { frontmatter, content, breadcrumbs } = Astro.props;
 
 const metadata: MetaData = {
   title: frontmatter?.title,
@@ -22,6 +24,8 @@ const metadata: MetaData = {
 ---
 
 <Layout metadata={metadata}>
+  {breadcrumbs && <BreadcrumbsSEO items={breadcrumbs} />}
+
   <Hero title={frontmatter.title} tagline={frontmatter.tagline} subtitle={frontmatter.subtitle} />
 
   <section class="p-4 mx-auto max-w-4xl mb-16 pb-16">

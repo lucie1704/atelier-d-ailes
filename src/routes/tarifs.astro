@@ -4,6 +4,7 @@ import Hero from '~/components/widgets/Hero.astro';
 import Prices from '~/components/widgets/Prices.astro';
 import PriceTable from '~/components/widgets/PriceTable.astro';
 import { getLocalePath, t } from 'i18n:astro';
+import BreadcrumbsSEO from '~/components/common/BreadcrumbsSEO.astro';
 
 const metadata = {
   title: t('pricing:meta.title'),
@@ -61,6 +62,8 @@ const parachuteFoldingPrices = [
 ---
 
 <Layout metadata={metadata} ctaBanner>
+  <BreadcrumbsSEO items={[{ name: t('pricing:meta.title'), url: getLocalePath('/tarifs') }]} />
+
   <Hero tagline={t('pricing:hero.tagline')} title={t('pricing:hero.title')} subtitle={t('pricing:hero.subtitle')} />
 
   <Prices

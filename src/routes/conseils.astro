@@ -6,8 +6,9 @@ import Features from '~/components/widgets/Features.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import Headline from '~/components/ui/Headline.astro';
 import ContentBlock from '~/components/widgets/ContentBlock.astro';
+import BreadcrumbsSEO from '~/components/common/BreadcrumbsSEO.astro';
 import { reader } from '~/utils/keystatic';
-import { getLocale, t } from 'i18n:astro';
+import { getLocale, getLocalePath, t } from 'i18n:astro';
 import { getImageModule } from '~/utils/images';
 
 // Images
@@ -30,6 +31,8 @@ const guidesWithImages = await Promise.all(
 ---
 
 <Layout metadata={metadata} ctaBanner>
+  <BreadcrumbsSEO items={[{ name: t('guides:meta.title'), url: getLocalePath('/conseils') }]} />
+
   <Hero tagline={t('guides:hero.tagline')} title={t('guides:hero.title')} subtitle={t('guides:hero.subtitle')} />
 
   <Steps

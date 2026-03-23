@@ -15,6 +15,8 @@ import i18n from '@astrolicious/i18n';
 import react from '@astrojs/react';
 import vercel from '@astrojs/vercel';
 import type { AstroIntegration } from 'astro';
+import { buildSitemapItem } from './src/utils/sitemap';
+import { pages } from './src/constants/i18n';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
 
@@ -44,6 +46,7 @@ export default defineConfig({
           en: 'en-US',
         },
       },
+      serialize: (item) => buildSitemapItem(item, 'https://www.atelier-d-ailes.fr'),
     }),
     mdx(),
     icon({
@@ -55,23 +58,7 @@ export default defineConfig({
     i18n({
       defaultLocale: defaultLocale,
       locales: locales,
-      pages: {
-        '/annonce': {
-          en: '/announcement',
-        },
-        '/conseils': {
-          en: '/guides',
-        },
-        'les-services-de-l-atelier': {
-          en: '/our-services',
-        },
-        '/mentions-legales': {
-          en: '/legal',
-        },
-        '/tarifs': {
-          en: '/pricing',
-        },
-      },
+      pages,
       client: {
         data: true,
         paths: true,
