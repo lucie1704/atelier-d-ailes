@@ -1,5 +1,6 @@
 ---
 import { SITE } from 'astrowind:config';
+import { t } from 'i18n:astro';
 
 interface Props {
   items?: { name: string; url: string }[];
@@ -22,6 +23,7 @@ const breadcrumbItems = [
   set:html={JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
+    name: t('breadcrumbs'),
     itemListElement: breadcrumbItems.map((item, i) => ({
       '@type': 'ListItem',
       position: i + 1,

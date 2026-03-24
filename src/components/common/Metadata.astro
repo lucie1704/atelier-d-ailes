@@ -73,10 +73,6 @@ const seoProps: AstroSeoProps = merge(
 
 <AstroSeo {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site) }} />
 
-<link rel="alternate" hreflang="fr" href={`https://www.atelier-d-ailes.fr${getLocalePath(currentPath as any, 'fr')}`} />
-<link rel="alternate" hreflang="en" href={`https://www.atelier-d-ailes.fr${getLocalePath(currentPath as any, 'en')}`} />
-<link
-  rel="alternate"
-  hreflang="x-default"
-  href={`https://www.atelier-d-ailes.fr${getLocalePath(currentPath as any, 'fr')}`}
-/>
+<link rel="alternate" hreflang="fr" href={SITE.site + getLocalePath(currentPath as any, 'fr')} />
+<link rel="alternate" hreflang="en" href={SITE.site + getLocalePath(currentPath as any, 'en')} />
+<link rel="alternate" hreflang="x-default" href={SITE.site + getLocalePath(currentPath as any, 'fr')} />

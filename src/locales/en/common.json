@@ -1,5 +1,6 @@
 {
   "onQuote": "Quote upon request",
+  "breadcrumbs": "Breadcrumbs",
   "anchors": {
     "reviews": "reviews",
     "repair": "repair",
