@@ -1,18 +1,16 @@
 ---
 import merge from 'lodash.merge';
 import { AstroSeo } from '@astrolib/seo';
-
+import { SITE, METADATA } from 'astrowind:config';
+import { getLocale, switchLocalePath } from 'i18n:astro';
+import { getCanonical } from '~/utils/permalinks';
+import { adaptOpenGraphImages } from '~/utils/images';
+import type { Locale } from 'i18n:astro';
+import type { MetaData } from '~/types';
 import type { Props as AstroSeoProps } from '@astrolib/seo';
 
-import { SITE, METADATA } from 'astrowind:config';
-import type { MetaData } from '~/types';
-import { getCanonical } from '~/utils/permalinks';
-import { getLocale, getLocalePath } from 'i18n:astro';
-
-import { adaptOpenGraphImages } from '~/utils/images';
-
 const locale = getLocale();
-const currentPath = Astro.url.pathname;
+const getAlternateHref = (locale: Locale) => SITE.site + switchLocalePath(locale);
 
 export interface Props extends MetaData {
   dontUseTitleTemplate?: boolean;
@@ -67,12 +65,10 @@ const seoProps: AstroSeoProps = merge(
     twitter: twitter,
   }
 );
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
 ---
 
 <AstroSeo {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site) }} />
 
-<link rel="alternate" hreflang="fr" href={SITE.site + getLocalePath(currentPath as any, 'fr')} />
-<link rel="alternate" hreflang="en" href={SITE.site + getLocalePath(currentPath as any, 'en')} />
-<link rel="alternate" hreflang="x-default" href={SITE.site + getLocalePath(currentPath as any, 'fr')} />
+<link rel="alternate" hreflang="fr" href={getAlternateHref('fr')} />
+<link rel="alternate" hreflang="en" href={getAlternateHref('en')} />
+<link rel="alternate" hreflang="x-default" href={getAlternateHref('fr')} />
