@@ -1,5 +1,5 @@
 ---
-import { OPEN_DAYS, OPEN_HOUR, CLOSE_HOUR } from '~/constants/shop';
+import { OPEN_DAYS, OPEN_HOUR, CLOSE_HOUR, SPECIAL_CLOSURE_START, SPECIAL_CLOSURE_END } from '~/constants/shop';
 import { t } from 'i18n:astro';
 
 interface Props {
@@ -15,15 +15,18 @@ const { id } = Astro.props;
   data-open-days={JSON.stringify(OPEN_DAYS)}
   data-open-hour={OPEN_HOUR}
   data-close-hour={CLOSE_HOUR}
+  data-closure-start={SPECIAL_CLOSURE_START}
+  data-closure-end={SPECIAL_CLOSURE_END}
   data-label-open={t('shopStatus.open')}
   data-label-closed={t('shopStatus.closed')}
+  data-label-closure={t('shopStatus.closure')}
 >
 </div>
 
 <script>
   /*
     This vanilla JS script is used to make the "Open / Closed" status
-    reactive on the client side. Astro doesn’t support this natively,
+    reactive on the client side. Astro doesn't support this natively,
     and since this feature is very occasional in the project, 
     using vanilla JS avoids adding heavier frameworks or libraries.
   */
@@ -41,6 +44,16 @@ const { id } = Astro.props;
       const openDays = JSON.parse(el.dataset.openDays);
       const openHour = parseFloat(el.dataset.openHour);
       const closeHour = parseFloat(el.dataset.closeHour);
+      const closureStart = el.dataset.closureStart ? new Date(el.dataset.closureStart) : null;
+      const closureEnd = el.dataset.closureEnd ? new Date(el.dataset.closureEnd) : null;
+
+      if (closureStart && closureEnd && now >= closureStart && now <= closureEnd) {
+        el.classList.add('tag-primary');
+        el.classList.remove('tag-success', 'tag-danger');
+        el.textContent = el.dataset.labelClosure!;
+        el.classList.remove('hidden');
+        return;
+      }
 
       const open = openDays.includes(day) && time >= openHour && time < closeHour;
 

@@ -24,11 +24,12 @@ const metadata = {
 
 const yearsSinceCreation = (() => {
   const today = new Date();
-  let years = today.getFullYear() - CREATION_DATE.getFullYear();
+  const creationDate = new Date(CREATION_DATE);
+  let years = today.getFullYear() - creationDate.getFullYear();
 
   const hasPassedAnniversary =
-    today.getMonth() > CREATION_DATE.getMonth() ||
-    (today.getMonth() === CREATION_DATE.getMonth() && today.getDate() >= CREATION_DATE.getDate());
+    today.getMonth() > creationDate.getMonth() ||
+    (today.getMonth() === creationDate.getMonth() && today.getDate() >= creationDate.getDate());
 
   if (!hasPassedAnniversary) {
     years -= 1;

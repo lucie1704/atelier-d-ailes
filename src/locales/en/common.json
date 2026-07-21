@@ -59,7 +59,8 @@
   },
   "shopStatus": {
     "open": "Currently open",
-    "closed": "Currently closed"
+    "closed": "Currently closed",
+    "closure": "Summer closure"
   },
   "langPicker": {
     "selectedLanguage": {
