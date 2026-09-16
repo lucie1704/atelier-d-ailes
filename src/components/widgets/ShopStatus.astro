@@ -45,7 +45,7 @@ const { id } = Astro.props;
       const openHour = parseFloat(el.dataset.openHour);
       const closeHour = parseFloat(el.dataset.closeHour);
       const closureStart = el.dataset.closureStart ? new Date(el.dataset.closureStart) : null;
-      const closureEnd = el.dataset.closureEnd ? new Date(el.dataset.closureEnd) : null;
+      const closureEnd = el.dataset.closureEnd ? new Date(`${el.dataset.closureEnd}T23:59:59.999`) : null;
 
       if (closureStart && closureEnd && now >= closureStart && now <= closureEnd) {
         el.classList.add('tag-primary');
