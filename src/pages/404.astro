@@ -1,10 +1,14 @@
 ---
 import Layout from '~/layouts/Layout.astro';
 import { getSystemTranslator } from '~/utils/system-i18n';
+import { getLocale } from '~/i18n';
+import { DEFAULT_LOCALE } from '~/constants/i18n';
 
 export const prerender = false;
 
-const t = getSystemTranslator(Astro.preferredLocale, 'error');
+// The URL locale (/en/...) first, then the browser language for unprefixed URLs
+const locale = getLocale() !== DEFAULT_LOCALE ? getLocale() : Astro.preferredLocale;
+const t = getSystemTranslator(locale, 'error');
 ---
 
 <Layout metadata={{ title: t('404.meta.title') }}>
