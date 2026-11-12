@@ -39,7 +39,7 @@ const instances = Object.fromEntries(
       resources,
       defaultNS: 'common',
       ns: Object.keys(resources[DEFAULT_LOCALE] ?? {}),
-      initImmediate: false,
+      initAsync: false,
     });
     return [locale, instance];
   })
