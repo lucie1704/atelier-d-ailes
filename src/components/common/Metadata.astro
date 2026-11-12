@@ -1,19 +1,28 @@
 ---
 import merge from 'lodash.merge';
-import { AstroSeo } from '@astrolib/seo';
 import { SITE, METADATA } from 'astrowind:config';
 import { getLocale, switchLocalePath } from '~/i18n';
 import { getCanonical } from '~/utils/permalinks';
 import { adaptOpenGraphImages } from '~/utils/images';
 import type { Locale } from '~/i18n';
-import type { MetaData } from '~/types';
-import type { Props as AstroSeoProps } from '@astrolib/seo';
+import type { MetaData, OpenGraph } from '~/types';
 
 const locale = getLocale();
 const getAlternateHref = (locale: Locale) => SITE.site + switchLocalePath(locale);
 
 export interface Props extends MetaData {
   dontUseTitleTemplate?: boolean;
+}
+
+interface SeoProps {
+  title?: string;
+  titleTemplate?: string;
+  canonical?: string;
+  noindex?: boolean;
+  nofollow?: boolean;
+  description?: string;
+  openGraph?: OpenGraph;
+  twitter?: { cardType?: string; site?: string; handle?: string };
 }
 
 const {
@@ -26,7 +35,7 @@ const {
   twitter = {},
 } = Astro.props;
 
-const seoProps: AstroSeoProps = merge(
+const seoProps: SeoProps = merge(
   {
     title: '',
     titleTemplate: '%s',
@@ -65,9 +74,42 @@ const seoProps: AstroSeoProps = merge(
     twitter: twitter,
   }
 );
+
+const { titleTemplate, canonical: canonicalUrl, noindex, nofollow, twitter: twitterCard } = seoProps;
+const pageTitle = seoProps.title;
+const pageDescription = seoProps.description;
+const robotsContent = [
+  ...(typeof noindex !== 'undefined' ? [noindex ? 'noindex' : 'index'] : []),
+  ...(typeof nofollow !== 'undefined' ? [nofollow ? 'nofollow' : 'follow'] : []),
+].join(',');
+const og = await adaptOpenGraphImages(seoProps.openGraph, Astro.site);
 ---
 
-<AstroSeo {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site) }} />
+{pageTitle && <title>{titleTemplate ? titleTemplate.replace('%s', pageTitle) : pageTitle}</title>}
+{pageDescription && <meta name="description" content={pageDescription} />}
+{robotsContent && <meta name="robots" content={robotsContent} />}
+{canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+
+{(og.title || pageTitle) && <meta property="og:title" content={og.title || pageTitle} />}
+{(og.description || pageDescription) && <meta property="og:description" content={og.description || pageDescription} />}
+{og.url && <meta property="og:url" content={og.url} />}
+{og.type && <meta property="og:type" content={og.type} />}
+{
+  og.images?.map((image) => (
+    <>
+      <meta property="og:image" content={image.url} />
+      {image.alt && <meta property="og:image:alt" content={image.alt} />}
+      {image.width && <meta property="og:image:width" content={String(image.width)} />}
+      {image.height && <meta property="og:image:height" content={String(image.height)} />}
+    </>
+  ))
+}
+{og.locale && <meta property="og:locale" content={og.locale} />}
+{og.site_name && <meta property="og:site_name" content={og.site_name} />}
+
+{twitterCard?.cardType && <meta name="twitter:card" content={twitterCard.cardType} />}
+{twitterCard?.site && <meta name="twitter:site" content={twitterCard.site} />}
+{twitterCard?.handle && <meta name="twitter:creator" content={twitterCard.handle} />}
 
 <link rel="alternate" hreflang="fr" href={getAlternateHref('fr')} />
 <link rel="alternate" hreflang="en" href={getAlternateHref('en')} />

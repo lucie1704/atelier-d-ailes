@@ -82,6 +82,17 @@ export interface MetaDataOpenGraph {
   type?: string;
 }
 
+// Open Graph data rendered by `src/components/common/Metadata.astro`
+export interface OpenGraph {
+  url?: string;
+  type?: string;
+  title?: string;
+  description?: string;
+  images?: Array<{ url: string; alt?: string; width?: number; height?: number }>;
+  locale?: string;
+  site_name?: string;
+}
+
 export interface MetaDataTwitter {
   handle?: string;
   site?: string;
