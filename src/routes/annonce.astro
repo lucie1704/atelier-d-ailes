@@ -14,9 +14,7 @@ const currentAnnouncement = activeAnnouncementConfig?.announcement
   : undefined;
 
 if (!activeAnnouncementConfig?.active || !activeAnnouncementConfig?.announcement || !currentAnnouncement) {
-  // No active announcement: the page is not generated at build time (Astro must not reroute to the
-  // on-demand 404 page while prerendering), so `/annonce` falls back to the 404 page in production
-  return new Response(null, { status: 404, headers: import.meta.env.PROD ? { 'X-Astro-Reroute': 'no' } : {} });
+  return new Response(null, { status: 404 });
 }
 
 const announcementImages = import.meta.glob<{ default: string }>(
