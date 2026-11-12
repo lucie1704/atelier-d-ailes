@@ -5,14 +5,7 @@ import VercelAnalytics from '@vercel/analytics/astro';
 import VercelSpeedInsights from '@vercel/speed-insights/astro';
 ---
 
-{
-  ANALYTICS?.vendors?.googleAnalytics?.id ? (
-    <GoogleAnalytics
-      id={String(ANALYTICS.vendors.googleAnalytics.id)}
-      partytown={ANALYTICS?.vendors?.googleAnalytics?.partytown}
-    />
-  ) : null
-}
+{ANALYTICS?.vendors?.googleAnalytics?.id ? <GoogleAnalytics id={String(ANALYTICS.vendors.googleAnalytics.id)} /> : null}
 
 <VercelAnalytics />
 <VercelSpeedInsights />

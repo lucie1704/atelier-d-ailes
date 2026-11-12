@@ -4,24 +4,18 @@ import { fileURLToPath } from 'url';
 import { defineConfig } from 'astro/config';
 
 import sitemap from '@astrojs/sitemap';
-import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
 import compress from 'astro-compress';
 import astrowind from './vendor/integration';
 import keystatic from '@keystatic/astro';
 import react from '@astrojs/react';
 import vercel from '@astrojs/vercel';
-import type { AstroIntegration } from 'astro';
 import { buildSitemapItem } from './src/utils/sitemap';
 import { hasActiveAnnouncement } from './src/utils/announcement';
 import i18nRoutes from './src/i18n/integration';
 import { DEFAULT_LOCALE, LOCALES } from './src/constants/i18n';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-const hasExternalScripts = false;
-const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroIntegration)[] = []) =>
-  hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 const defaultLocale = DEFAULT_LOCALE;
 const locales = [...LOCALES];
@@ -52,11 +46,6 @@ export default defineConfig({
       // Without active announcement, `/annonce` is not generated and falls back to the 404 page
       skipOnBuild: (route, locale) => route === '/annonce' && !hasActiveAnnouncement(locale),
     }),
-    ...whenExternalScripts(() =>
-      partytown({
-        config: { forward: ['dataLayer.push'] },
-      })
-    ),
     compress({
       CSS: true,
       HTML: {

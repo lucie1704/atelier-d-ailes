@@ -2,18 +2,14 @@
 // Google Analytics 4 snippet, as provided by Google: https://developers.google.com/tag-platform/gtagjs/install
 export interface Props {
   id: string;
-  /** Run the scripts in a web worker, requires the Partytown integration (`hasExternalScripts` in astro.config.ts) */
-  partytown?: boolean;
 }
 
-const { id, partytown = false } = Astro.props;
-
-const attrs = partytown ? { type: 'text/partytown' } : {};
+const { id } = Astro.props;
 ---
 
-<script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${id}`} {...attrs}></script>
+<script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${id}`}></script>
 
-<script is:inline define:vars={{ id }} {...attrs}>
+<script is:inline define:vars={{ id }}>
   window.dataLayer = window.dataLayer || [];
   function gtag() {
     // gtag requires the `arguments` object
