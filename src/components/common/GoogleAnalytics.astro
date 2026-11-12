@@ -1,10 +1,12 @@
 ---
+// Google Analytics 4 snippet, as provided by Google: https://developers.google.com/tag-platform/gtagjs/install
 export interface Props {
   id: string;
+  /** Run the scripts in a web worker, requires the Partytown integration (`hasExternalScripts` in astro.config.ts) */
   partytown?: boolean;
 }
 
-const { id = 'GA_MEASUREMENT_ID', partytown = false } = Astro.props;
+const { id, partytown = false } = Astro.props;
 
 const attrs = partytown ? { type: 'text/partytown' } : {};
 ---
