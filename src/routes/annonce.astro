@@ -14,7 +14,7 @@ const currentAnnouncement = activeAnnouncementConfig?.announcement
   : undefined;
 
 if (!activeAnnouncementConfig?.active || !activeAnnouncementConfig?.announcement || !currentAnnouncement) {
-  return Astro.redirect('/', '404');
+  return new Response(null, { status: 404 });
 }
 
 const announcementImages = import.meta.glob<{ default: string }>(

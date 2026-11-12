@@ -6,7 +6,7 @@ import Hero from '~/components/widgets/Hero.astro';
 import { getSystemTranslator } from '~/utils/system-i18n';
 
 if (import.meta.env.PUBLIC_ENABLE_MAINTENANCE === 'false') {
-  return Astro.redirect('/', 404);
+  return new Response(null, { status: 404 });
 }
 
 export const prerender = false;
