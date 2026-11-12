@@ -37,9 +37,9 @@ const metadata = {
   <ContentBlock
     title={currentAnnouncement.contentTitle}
     content={currentAnnouncement.contentDescription}
-    {...currentAnnouncementImageModule
+    {...(currentAnnouncementImageModule
       ? { image: { src: currentAnnouncementImageModule, alt: currentAnnouncement.imageAlt ?? '' } }
-      : {}}
+      : {})}
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-slate-50"></div>

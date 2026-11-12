@@ -87,11 +87,9 @@ const footerData = [
 <Layout metadata={metadata}>
   <slot name="header">
     <Header links={headerData.links} actions={headerData.actions} isAnnouncementActive={showAnnouncement}>
-      {
-        showAnnouncement && (
-          <Announcement slot="announcement" message={currentAnnouncement.message} href={getLocalePath('/annonce')} />
-        )
-      }
+      {showAnnouncement && (
+        <Announcement slot="announcement" message={currentAnnouncement.message} href={getLocalePath('/annonce')} />
+      )}
     </Header>
   </slot>
   <main>

@@ -18,18 +18,16 @@ const { id, title, subtitle, image, actions = [] } = Astro.props as Props;
 ---
 
 <section id={id} class="relative w-full h-[65vh] min-h-[600px]">
-  {
-    image && (
-      <Image
-        src={image.src}
-        alt={image.alt}
-        class="absolute inset-0 h-full w-full object-cover"
-        width={1600}
-        height={900}
-        loading="eager"
-      />
-    )
-  }
+  {image && (
+    <Image
+      src={image.src}
+      alt={image.alt}
+      class="absolute inset-0 h-full w-full object-cover"
+      width={1600}
+      height={900}
+      loading="eager"
+    />
+  )}
 
   {/* Overlay */}
   <div class="absolute inset-0 bg-black/20"></div>
@@ -42,26 +40,20 @@ const { id, title, subtitle, image, actions = [] } = Astro.props as Props;
           {title}
         </h1>
 
-        {
-          subtitle && (
-            <p
-              set:html={subtitle}
-              class="mt-6 text-base sm:text-lg text-white/90 max-w-72 md:max-w-none mx-auto md:mx-0"
-            />
-          )
-        }
+        {subtitle && (
+          <p
+            set:html={subtitle}
+            class="mt-6 text-base sm:text-lg text-white/90 max-w-72 md:max-w-none mx-auto md:mx-0"
+          />
+        )}
 
-        {
-          actions.length > 0 && (
-            <div class="mt-8 flex flex-col sm:flex-row sm:flex-wrap sm:justify-start items-center gap-4 sm:gap-6">
-              {actions.map((action) => (
-                <a href={action.href} class={action.variant ?? 'btn-secondary'}>
-                  {action.text}
-                </a>
-              ))}
-            </div>
-          )
-        }
+        {actions.length > 0 && <div
+          class="mt-8 flex flex-col sm:flex-row sm:flex-wrap sm:justify-start items-center gap-4 sm:gap-6"
+        >
+          {actions.map((action) => <a href={action.href} class={action.variant ?? 'btn-secondary'}>
+            {action.text}
+          </a>)}
+        </div>}
       </div>
     </div>
   </div>

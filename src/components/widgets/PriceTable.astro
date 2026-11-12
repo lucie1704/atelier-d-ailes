@@ -40,7 +40,7 @@ const getPaddingClass = (level: number): string => {
 const allRows = flattenItems(items);
 ---
 
-<section {...id && { id }} class="max-w-4xl mx-auto my-16 px-4 scroll-mt-24">
+<section {...(id && { id })} class="max-w-4xl mx-auto my-16 px-4 scroll-mt-24">
   <h2 class="text-3xl md:text-4xl font-bold tracking-tighter mb-6 font-heading text-center">
     {title}
   </h2>
@@ -52,32 +52,28 @@ const allRows = flattenItems(items);
       <thead class="bg-slate-50">
         <tr>
           <th></th>
-          <th class="text-left px-4 py-3 font-semibold text-gray-700"> Prix </th>
+          <th class="text-left px-4 py-3 font-semibold text-gray-700">Prix</th>
         </tr>
       </thead>
 
       <tbody class="bg-white divide-y divide-gray-200">
-        {
-          allRows.map(({ item, level }) => {
-            const paddingClass = getPaddingClass(level);
-            const fontClass = level === 0 && item.children ? 'font-semibold' : '';
+        {allRows.map(({ item, level }) => {
+          const paddingClass = getPaddingClass(level);
+          const fontClass = level === 0 && item.children ? 'font-semibold' : '';
 
-            return (
-              <tr class="hover:bg-slate-50 transition-colors">
-                <td class={`py-3 ${paddingClass} ${fontClass}`}>{item.title}</td>
+          return <tr class="hover:bg-slate-50 transition-colors">
+            <td class={`py-3 ${paddingClass} ${fontClass}`}>{item.title}</td>
 
-                <td class="px-4 py-3 whitespace-nowrap">
-                  {item.price &&
-                    (item.price === 'quote' ? (
-                      <span class="tag-primary text-base">{t('onQuote')}</span>
-                    ) : (
-                      `${item.price} €`
-                    ))}
-                </td>
-              </tr>
-            );
-          })
-        }
+            <td class="px-4 py-3 whitespace-nowrap">
+              {item.price &&
+                (item.price === 'quote' ? (
+                  <span class="tag-primary text-base">{t('onQuote')}</span>
+                ) : (
+                  `${item.price} €`
+                ))}
+            </td>
+          </tr>;
+        })}
       </tbody>
     </table>
   </div>

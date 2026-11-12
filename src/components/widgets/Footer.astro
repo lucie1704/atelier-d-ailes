@@ -15,25 +15,23 @@ export interface Props {
 const { dataSections, ctaBanner = false } = Astro.props;
 ---
 
-{
-  ctaBanner && (
-    <CallToAction
-      id="cta-services"
-      title={t('cta.title')}
-      subtitle={t('cta.subtitle')}
-      image={{
-        src: ctaBannerImage,
-        alt: t('cta.image.alt'),
-      }}
-      actions={[
-        {
-          text: t('cta.actions.contact'),
-          href: getLocalePath('/contact'),
-        },
-      ]}
-    />
-  )
-}
+{ctaBanner && (
+  <CallToAction
+    id="cta-services"
+    title={t('cta.title')}
+    subtitle={t('cta.subtitle')}
+    image={{
+      src: ctaBannerImage,
+      alt: t('cta.image.alt'),
+    }}
+    actions={[
+      {
+        text: t('cta.actions.contact'),
+        href: getLocalePath('/contact'),
+      },
+    ]}
+  />
+)}
 
 <footer class="relative border-t border-gray-200">
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
@@ -50,34 +48,28 @@ const { dataSections, ctaBanner = false } = Astro.props;
 
       <!-- Sections -->
       <div class="col-span-12 lg:col-span-8 flex flex-col md:flex-row justify-between gap-6">
-        {
-          dataSections.map((section) => (
-            <div>
-              <div class="font-medium mb-2">{section.title}</div>
+        {dataSections.map((section) => <div>
+          <div class="font-medium mb-2">{section.title}</div>
 
-              <ul class="text-sm flex flex-col gap-2">
-                {section.links.map((link) => (
-                  <li>
-                    {link.component === 'shopStatus' ? (
-                      <ShopStatus id="footer" />
-                    ) : link.href ? (
-                      <a
-                        href={link.href}
-                        class="hover:underline"
-                        target={link.external ? '_blank' : undefined}
-                        rel={link.external ? 'noopener noreferrer' : undefined}
-                      >
-                        {link.label}
-                      </a>
-                    ) : (
-                      <span>{link.label}</span>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))
-        }
+          <ul class="text-sm flex flex-col gap-2">
+            {section.links.map((link) => <li>
+              {link.component === 'shopStatus' ? (
+                <ShopStatus id="footer" />
+              ) : link.href ? (
+                <a
+                  href={link.href}
+                  class="hover:underline"
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <span>{link.label}</span>
+              )}
+            </li>)}
+          </ul>
+        </div>)}
       </div>
     </div>
   </div>

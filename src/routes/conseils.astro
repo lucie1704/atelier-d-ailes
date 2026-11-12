@@ -78,31 +78,25 @@ const guidesWithImages = await Promise.all(
     ]}
   />
 
-  {
-    guides.length && (
-      <>
-        <WidgetWrapper containerClass="max-w-5xl !pb-5">
-          <Headline title={t('guides:avoidableMistakes.title')} subtitle={t('guides:avoidableMistakes.subtitle')} />
-          <Fragment slot="bg">
-            <div class="absolute inset-0 bg-slate-50" />
-          </Fragment>
-        </WidgetWrapper>
+  {guides.length && (
+    <>
+      <WidgetWrapper containerClass="max-w-5xl !pb-5">
+        <Headline title={t('guides:avoidableMistakes.title')} subtitle={t('guides:avoidableMistakes.subtitle')} />
+        <Fragment slot="bg">
+          <div class="absolute inset-0 bg-slate-50" />
+        </Fragment>
+      </WidgetWrapper>
 
-        {guidesWithImages.map((guide, index) => (
-          <ContentBlock
-            title={guide.title}
-            icon="tabler:alert-triangle"
-            content={guide.description}
-            {...(guide.imageModule ? { image: { src: guide.imageModule, alt: guide.imageAlt ?? '' } } : {})}
-          >
-            {index % 2 !== 0 && (
-              <Fragment slot="bg">
-                <div class="absolute inset-0 bg-slate-50" />
-              </Fragment>
-            )}
-          </ContentBlock>
-        ))}
-      </>
-    )
-  }
+      {guidesWithImages.map((guide, index) => <ContentBlock
+        title={guide.title}
+        icon="tabler:alert-triangle"
+        content={guide.description}
+        {...(guide.imageModule ? { image: { src: guide.imageModule, alt: guide.imageAlt ?? '' } } : {})}
+      >
+        {index % 2 !== 0 && <Fragment slot="bg">
+          <div class="absolute inset-0 bg-slate-50" />
+        </Fragment>}
+      </ContentBlock>)}
+    </>
+  )}
 </Layout>

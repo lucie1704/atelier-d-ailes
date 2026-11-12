@@ -18,11 +18,9 @@ const { id, title, subtitle, image, actions = [] } = Astro.props as Props;
 ---
 
 <section id={id} class="relative w-full">
-  {
-    image && (
-      <Image src={image.src} alt={image.alt} class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-    )
-  }
+  {image && (
+    <Image src={image.src} alt={image.alt} class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+  )}
 
   {/* Overlay */}
   <div class="absolute inset-0 bg-black/20"></div>
@@ -37,17 +35,13 @@ const { id, title, subtitle, image, actions = [] } = Astro.props as Props;
 
         {subtitle && <p set:html={subtitle} class="mt-6 text-base sm:text-lg text-white/90" />}
 
-        {
-          actions.length > 0 && (
-            <div class="mt-8 flex flex-col sm:flex-row sm:flex-wrap sm:justify-start items-center gap-4 sm:gap-6">
-              {actions.map((action) => (
-                <a href={action.href} class="btn-secondary">
-                  {action.text}
-                </a>
-              ))}
-            </div>
-          )
-        }
+        {actions.length > 0 && <div
+          class="mt-8 flex flex-col sm:flex-row sm:flex-wrap sm:justify-start items-center gap-4 sm:gap-6"
+        >
+          {actions.map((action) => <a href={action.href} class="btn-secondary">
+            {action.text}
+          </a>)}
+        </div>}
       </div>
     </div>
   </div>

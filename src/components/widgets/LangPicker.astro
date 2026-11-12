@@ -24,18 +24,14 @@ const flagIcons: Record<string, string> = {
   <div
     class="absolute right-0 mr-3 bg-white rounded-lg shadow-lg bottom-full mb-2 md:bottom-auto md:top-full md:mt-2 md:mb-0"
   >
-    {
-      switcherData.map((option) => (
-        <a
-          href={option.href}
-          class={`flex items-center gap-2 px-4 py-2 ${option.locale === locale ? 'bg-gray-100 rounded-md' : ''}`}
-          aria-current={option.locale === locale ? 'true' : undefined}
-          aria-label={t('langPicker.options.accessible', { lang: option.locale.toUpperCase() })}
-        >
-          <span class={`${flagIcons[option.locale]} w-3 h-3`} aria-hidden="true" />
-          <span aria-hidden="true">{option.locale.toUpperCase()}</span>
-        </a>
-      ))
-    }
+    {switcherData.map((option) => <a
+      href={option.href}
+      class={`flex items-center gap-2 px-4 py-2 ${option.locale === locale ? 'bg-gray-100 rounded-md' : ''}`}
+      aria-current={option.locale === locale ? 'true' : undefined}
+      aria-label={t('langPicker.options.accessible', { lang: option.locale.toUpperCase() })}
+    >
+      <span class={`${flagIcons[option.locale]} w-3 h-3`} aria-hidden="true" />
+      <span aria-hidden="true">{option.locale.toUpperCase()}</span>
+    </a>)}
   </div>
 </details>

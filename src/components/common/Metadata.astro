@@ -94,16 +94,14 @@ const og = await adaptOpenGraphImages(seoProps.openGraph, Astro.site);
 {(og.description || pageDescription) && <meta property="og:description" content={og.description || pageDescription} />}
 {og.url && <meta property="og:url" content={og.url} />}
 {og.type && <meta property="og:type" content={og.type} />}
-{
-  og.images?.map((image) => (
-    <>
-      <meta property="og:image" content={image.url} />
-      {image.alt && <meta property="og:image:alt" content={image.alt} />}
-      {image.width && <meta property="og:image:width" content={String(image.width)} />}
-      {image.height && <meta property="og:image:height" content={String(image.height)} />}
-    </>
-  ))
-}
+{og.images?.map((image) => (
+  <>
+    <meta property="og:image" content={image.url} />
+    {image.alt && <meta property="og:image:alt" content={image.alt} />}
+    {image.width && <meta property="og:image:width" content={String(image.width)} />}
+    {image.height && <meta property="og:image:height" content={String(image.height)} />}
+  </>
+))}
 {og.locale && <meta property="og:locale" content={og.locale} />}
 {og.site_name && <meta property="og:site_name" content={og.site_name} />}
 
