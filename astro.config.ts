@@ -2,7 +2,6 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import { defineConfig } from 'astro/config';
-import { unified } from '@astrojs/markdown-remark';
 
 import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
@@ -17,8 +16,6 @@ import { buildSitemapItem } from './src/utils/sitemap';
 import { hasActiveAnnouncement } from './src/utils/announcement';
 import i18nRoutes from './src/i18n/integration';
 import { DEFAULT_LOCALE, LOCALES } from './src/constants/i18n';
-
-import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -77,13 +74,6 @@ export default defineConfig({
       config: './src/config.yaml',
     }),
   ],
-
-  markdown: {
-    processor: unified({
-      remarkPlugins: [readingTimeRemarkPlugin],
-      rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
-    }),
-  },
 
   // Astro 7 defaults to 'jsx', keep the previous HTML whitespace handling
   compressHTML: true,
