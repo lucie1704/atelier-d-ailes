@@ -3,7 +3,6 @@ import eslintPluginAstro from 'eslint-plugin-astro';
 import globals from 'globals';
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
-import typescriptParser from '@typescript-eslint/parser';
 
 export default [
   js.configs.recommended,
@@ -22,7 +21,7 @@ export default [
     languageOptions: {
       parser: astroEslintParser,
       parserOptions: {
-        parser: '@typescript-eslint/parser',
+        parser: tseslint.parser,
         extraFileExtensions: ['.astro'],
       },
     },
@@ -38,7 +37,7 @@ export default [
     // Script in `<script>` is assigned a virtual file name with the `.js` extension.
     files: ['**/*.{ts,tsx}', '**/*.astro/*.js'],
     languageOptions: {
-      parser: typescriptParser,
+      parser: tseslint.parser,
     },
     rules: {
       // Note: you must disable the base rule as it can report incorrect errors
