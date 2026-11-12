@@ -1,6 +1,6 @@
 ---
 import { SITE } from 'astrowind:config';
-import { t } from '~/i18n';
+import { getLocalePath, t } from '~/i18n';
 
 interface Props {
   items?: { name: string; url: string }[];
@@ -9,7 +9,7 @@ interface Props {
 const { items = [] } = Astro.props;
 
 const breadcrumbItems = [
-  { name: 'Accueil', url: SITE.site },
+  { name: t('header.links.home'), url: SITE.site + getLocalePath('/') },
   ...items.map((item) => ({
     ...item,
     url: item.url.startsWith('http') ? item.url : SITE.site + item.url,
