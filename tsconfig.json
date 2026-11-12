@@ -5,7 +5,8 @@
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["src/*"],
+      "@astrolib/*": ["vendor/astrolib/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"

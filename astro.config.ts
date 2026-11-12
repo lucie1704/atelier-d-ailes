@@ -100,6 +100,8 @@ export default defineConfig({
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './src'),
+        // Vendored copies of the unmaintained @astrolib packages
+        '@astrolib': path.resolve(__dirname, './vendor/astrolib'),
       },
     },
   },
