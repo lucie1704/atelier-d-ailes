@@ -5,7 +5,7 @@ import Footer from '~/components/widgets/Footer.astro';
 import Announcement from '~/components/widgets/Announcement.astro';
 import { reader } from '~/utils/keystatic';
 import type { MetaData } from '~/types';
-import { getLocalePath, getLocale, t } from 'i18n:astro';
+import { getLocalePath, getLocale, t } from '~/i18n';
 import { ADDRESS, FIRSTNAME, FULLNAME, PHONE } from '~/constants/contact';
 
 const locale = getLocale();

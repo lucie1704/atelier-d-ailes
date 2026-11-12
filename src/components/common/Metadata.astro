@@ -2,10 +2,10 @@
 import merge from 'lodash.merge';
 import { AstroSeo } from '@astrolib/seo';
 import { SITE, METADATA } from 'astrowind:config';
-import { getLocale, switchLocalePath } from 'i18n:astro';
+import { getLocale, switchLocalePath } from '~/i18n';
 import { getCanonical } from '~/utils/permalinks';
 import { adaptOpenGraphImages } from '~/utils/images';
-import type { Locale } from 'i18n:astro';
+import type { Locale } from '~/i18n';
 import type { MetaData } from '~/types';
 import type { Props as AstroSeoProps } from '@astrolib/seo';
 

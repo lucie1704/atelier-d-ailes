@@ -11,12 +11,12 @@ import icon from 'astro-icon';
 import compress from 'astro-compress';
 import astrowind from './vendor/integration';
 import keystatic from '@keystatic/astro';
-import i18n from '@astrolicious/i18n';
 import react from '@astrojs/react';
 import vercel from '@astrojs/vercel';
 import type { AstroIntegration } from 'astro';
 import { buildSitemapItem } from './src/utils/sitemap';
-import { pages } from './src/constants/i18n';
+import i18nRoutes from './src/i18n/integration';
+import { DEFAULT_LOCALE, LOCALES } from './src/constants/i18n';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
 
@@ -26,8 +26,8 @@ const hasExternalScripts = false;
 const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroIntegration)[] = []) =>
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
-const defaultLocale = 'fr';
-const locales = ['fr', 'en'];
+const defaultLocale = DEFAULT_LOCALE;
+const locales = [...LOCALES];
 
 export default defineConfig({
   adapter: vercel(),
@@ -55,15 +55,7 @@ export default defineConfig({
         tabler: ['*'],
       },
     }),
-    i18n({
-      defaultLocale: defaultLocale,
-      locales: locales,
-      pages,
-      client: {
-        data: true,
-        paths: true,
-      },
-    }),
+    i18nRoutes(),
     ...whenExternalScripts(() =>
       partytown({
         config: { forward: ['dataLayer.push'] },

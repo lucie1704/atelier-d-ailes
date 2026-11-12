@@ -1,8 +1,12 @@
+import { defineMiddleware, sequence } from 'astro:middleware';
+import { runWithI18n } from '~/i18n';
+
+// Makes the current locale available to the i18n helpers (`t`, `getLocale`...)
+const i18n = defineMiddleware((context, next) => runWithI18n(context.url.pathname, next));
+
 // from https://vedantbhagwat.com/blog/fixing-keystatic-oauth-redirect-uri-localhost-error
 
-import { defineMiddleware } from 'astro:middleware';
-
-export const onRequest = defineMiddleware(async (context, next) => {
+const keystaticOAuth = defineMiddleware(async (context, next) => {
   // Fix Keystatic redirect_uri by respecting forwarded headers
   // Workaround for https://github.com/Thinkmill/keystatic/issues/1022
   const isOAuthRoute =
@@ -42,3 +46,5 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
   return next();
 });
+
+export const onRequest = sequence(i18n, keystaticOAuth);
