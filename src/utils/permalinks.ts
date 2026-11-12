@@ -27,6 +27,9 @@ export const TAG_BASE = cleanSlug(APP_BLOG?.tag?.pathname) || 'tag';
 
 export const POST_PERMALINK_PATTERN = trimSlash(APP_BLOG?.post?.permalink || `${BLOG_BASE}/%slug%`);
 
+/** Absolute URL with a trailing slash, the form used by canonical, hreflang, sitemap and JSON-LD */
+export const getAbsoluteUrl = (path = '/'): string => new URL(path.endsWith('/') ? path : `${path}/`, SITE.site).href;
+
 /** */
 export const getCanonical = (path = ''): string | URL => {
   return new URL(path, SITE.site);

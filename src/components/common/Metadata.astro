@@ -2,13 +2,13 @@
 import merge from 'lodash.merge';
 import { SITE, METADATA } from 'astrowind:config';
 import { getLocale, switchLocalePath } from '~/i18n';
-import { getCanonical } from '~/utils/permalinks';
+import { getAbsoluteUrl, getCanonical } from '~/utils/permalinks';
 import { adaptOpenGraphImages } from '~/utils/images';
 import type { Locale } from '~/i18n';
 import type { MetaData, OpenGraph } from '~/types';
 
 const locale = getLocale();
-const getAlternateHref = (locale: Locale) => SITE.site + switchLocalePath(locale);
+const getAlternateHref = (locale: Locale) => getAbsoluteUrl(switchLocalePath(locale));
 
 export interface Props extends MetaData {
   dontUseTitleTemplate?: boolean;
