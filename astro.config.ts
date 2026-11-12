@@ -5,7 +5,6 @@ import { defineConfig } from 'astro/config';
 import { unified } from '@astrojs/markdown-remark';
 
 import sitemap from '@astrojs/sitemap';
-import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
 import compress from 'astro-compress';
@@ -46,7 +45,6 @@ export default defineConfig({
       },
       serialize: (item) => buildSitemapItem(item, 'https://www.atelier-d-ailes.fr'),
     }),
-    mdx(),
     icon({
       include: {
         lucide: ['*'],
