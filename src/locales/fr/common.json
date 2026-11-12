@@ -69,5 +69,8 @@
     "options": {
       "accessible": "Choisir la langue {{lang}}"
     }
+  },
+  "localBusiness": {
+    "description": "Atelier de révision et de réparation de parapentes et de matériel de vol libre en Seine-et-Marne."
   }
 }

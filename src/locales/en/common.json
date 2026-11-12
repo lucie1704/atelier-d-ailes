@@ -69,5 +69,8 @@
     "options": {
       "accessible": "Switch language to {{lang}}"
     }
+  },
+  "localBusiness": {
+    "description": "Paraglider and free flight equipment servicing and repair workshop in Seine-et-Marne, France."
   }
 }

@@ -9,7 +9,7 @@ import SiteVerification from '~/components/common/SiteVerification.astro';
 import Analytics from '~/components/common/Analytics.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
 import { I18N, SITE } from 'astrowind:config';
-import { getLocale } from '~/i18n';
+import { getLocale, t } from '~/i18n';
 import type { MetaData as MetaDataType } from '~/types';
 
 export interface Props {
@@ -38,8 +38,7 @@ const { textDirection } = I18N;
         name: SITE.name,
         url: SITE.site,
         logo: SITE.site + '/logo.png',
-        description:
-          'Atelier de révision et de réparation de parapentes et de matériel de vol libre en Seine-et-Marne.',
+        description: t('localBusiness.description'),
         address: {
           '@type': 'PostalAddress',
           addressLocality: 'Sablonnières',
