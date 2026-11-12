@@ -5,7 +5,6 @@ import { defineConfig } from 'astro/config';
 
 import sitemap from '@astrojs/sitemap';
 import icon from 'astro-icon';
-import compress from 'astro-compress';
 import astrowind from './vendor/integration';
 import keystatic from '@keystatic/astro';
 import react from '@astrojs/react';
@@ -45,19 +44,6 @@ export default defineConfig({
     i18nRoutes({
       // Without active announcement, `/annonce` is not generated and falls back to the 404 page
       skipOnBuild: (route, locale) => route === '/annonce' && !hasActiveAnnouncement(locale),
-    }),
-    compress({
-      CSS: true,
-      HTML: {
-        'html-minifier-terser': {
-          removeAttributeQuotes: false,
-          collapseWhitespace: false,
-        },
-      },
-      Image: false,
-      JavaScript: true,
-      SVG: false,
-      Logger: 1,
     }),
     astrowind({
       config: './src/config.yaml',
