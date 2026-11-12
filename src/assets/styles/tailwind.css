@@ -1,6 +1,76 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin '@tailwindcss/typography';
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant intersect (&:not([no-intersect]));
+
+@theme {
+  --color-primary: rgb(192, 81, 17);
+  --color-accent: rgb(32, 81, 122);
+  --color-default: rgb(16 16 16);
+  --color-muted: rgb(16 16 16 / 0.66);
+
+  /* Tailwind 3 palette for the colors used by the site (Tailwind 4 switched to oklch) */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+  --color-blue-100: #dbeafe;
+  --color-blue-700: #1d4ed8;
+  --color-green-100: #dcfce7;
+  --color-green-300: #86efac;
+  --color-green-700: #15803d;
+  --color-green-800: #166534;
+  --color-orange-100: #ffedd5;
+  --color-red-100: #fee2e2;
+  --color-red-900: #7f1d1d;
+
+  --font-sans:
+    'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  --font-serif: 'Inter Variable', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-heading:
+    'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+}
+
+/* Tailwind 3 defaults that changed in Tailwind 4, to keep the same look */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-gray-400);
+  }
+
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}
 
 @layer base {
   /* to handle \n in text block */
@@ -10,19 +80,17 @@
   }
 }
 
-@layer utilities {
-  .bg-page {
-    background-color: white;
-  }
+@utility bg-page {
+  background-color: white;
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base text-default leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:outline-none focus:ring-primary/50 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 cursor-pointer;
+    @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base text-default leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:outline-hidden focus:ring-primary/50 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 cursor-pointer;
   }
 
   .btn-secondary {
-    @apply btn border-white text-white bg-white/10 backdrop-blur-sm hover:bg-white hover:text-gray-900 hover:border-white focus:ring-white/40;
+    @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base text-default leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:outline-hidden focus:ring-primary/50 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 cursor-pointer border-white text-white bg-white/10 backdrop-blur-xs hover:bg-white hover:text-gray-900 hover:border-white focus:ring-white/40;
   }
 
   .tag {
@@ -30,15 +98,15 @@
   }
 
   .tag-primary {
-    @apply tag bg-orange-100/20 text-primary shadow-[inset_0_0_0_1px_rgb(198_83_16/0.2)];
+    @apply whitespace-nowrap inline-flex items-center rounded-md px-2 py-1 text-sm font-semibold max-w-max bg-orange-100/20 text-primary shadow-[inset_0_0_0_1px_rgb(198_83_16/0.2)];
   }
 
   .tag-success {
-    @apply tag bg-green-100/20 text-green-800 shadow-[inset_0_0_0_1px_rgb(22_163_74/0.2)];
+    @apply whitespace-nowrap inline-flex items-center rounded-md px-2 py-1 text-sm font-semibold max-w-max bg-green-100/20 text-green-800 shadow-[inset_0_0_0_1px_rgb(22_163_74/0.2)];
   }
 
   .tag-danger {
-    @apply tag bg-red-100/20 text-red-900 shadow-[inset_0_0_0_1px_rgb(220_38_38/0.2)];
+    @apply whitespace-nowrap inline-flex items-center rounded-md px-2 py-1 text-sm font-semibold max-w-max bg-red-100/20 text-red-900 shadow-[inset_0_0_0_1px_rgb(220_38_38/0.2)];
   }
 }
 

@@ -82,8 +82,7 @@ npm run fix
 │   ├── utils/            # Utilitaires et helpers
 │   └── config.yaml       # Configuration principale du site
 ├── astro.config.ts       # Configuration Astro
-├── keystatic.config.tsx  # Configuration Keystatic
-└── tailwind.config.js    # Configuration Tailwind CSS
+└── keystatic.config.tsx  # Configuration Keystatic
 ```
 
 ## 🚢 Déploiement
