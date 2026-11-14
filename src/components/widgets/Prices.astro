@@ -22,25 +22,25 @@ const {
   <div class="flex items-stretch justify-center">
     <div class="grid grid-cols-3 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
       {prices.map(({ title, subtitle, price, items, callToAction }) => <div
-        class="col-span-3 mx-auto flex w-full sm:col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1"
+        class="col-span-3 mx-auto grid w-full row-span-5 grid-rows-subgrid gap-y-0 sm:col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1"
       >
         <div
-          class="rounded-lg backdrop-blur-sm border border-gray-200 bg-white shadow-sm px-6 py-8 flex w-full max-w-sm flex-col text-center"
+          class="row-span-5 grid grid-rows-subgrid gap-y-0 rounded-lg backdrop-blur-sm border border-gray-200 bg-white shadow-sm px-6 py-8 w-full max-w-sm text-center"
         >
-          {title && <h2 class="text-center max-w-xs text-xl font-semibold uppercase leading-6 tracking-wider mb-2">
+          <h2 class="mx-auto text-center max-w-xs text-xl font-semibold uppercase leading-6 tracking-wider mb-2">
             {title}
-          </h2>}
-          {subtitle && <p class="font-light sm:text-lg text-gray-600">{subtitle}</p>}
+          </h2>
+          <p class="mt-7 font-light sm:text-lg text-gray-600">{subtitle}</p>
 
-          {price && <div class="my-8">
-            <div class="flex items-center justify-center text-center mb-1">
+          <div class="mt-1 mb-8">
+            {price && <div class="flex items-center justify-center text-center mb-1">
               <span class="text-5xl md:text-6xl font-extrabold">{price}</span>
               <span class="text-4xl md:text-5xl">€</span>
-            </div>
-          </div>}
+            </div>}
+          </div>
 
-          {items && items.length > 0 && <ul class="space-y-2 text-left">
-            {items.map(
+          <ul class="space-y-2 text-left">
+            {items?.map(
               ({ description, icon }) =>
                 description && <li class="flex items-start space-x-3 leading-7">
                   <div class="rounded-full bg-green-300/30 mt-1">
@@ -49,11 +49,11 @@ const {
                   <span>{description}</span>
                 </li>
             )}
-          </ul>}
+          </ul>
 
-          {callToAction && callToAction.href && <div class="flex justify-center mt-6">
-            <Button {...callToAction} />
-          </div>}
+          <div class="flex justify-center items-end mt-6">
+            {callToAction && callToAction.href && <Button {...callToAction} />}
+          </div>
         </div>
       </div>)}
     </div>

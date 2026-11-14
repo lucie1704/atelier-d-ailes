@@ -11,7 +11,6 @@
   "cards": {
     "parachute": {
       "title": "Pliage de parachute de secours",
-      "subtitle": "Monoplace, biplace, avec ou sans container",
       "cta": "Voir le détail",
       "items": [
         { "description": "Ventilé et aéré" },
@@ -21,27 +20,28 @@
       ]
     },
     "maintenanceSingleSeat": {
-      "title": "Révision périodique monoplace",
-      "subtitle": "ParachecK®",
+      "title": "Révision ParachecK® monoplace",
       "items": [
         { "description": "Mesures de porosité des tissus" },
         { "description": "Tests de résistance des tissus" },
         { "description": "Tests de résistance suspentes" },
         { "description": "Mesures dimensionnelles du suspentage" },
         { "description": "Inspection visuelle et tactile complète" }
-      ]
+      ],
+      "cta": "Voir le détail"
     },
     "maintenanceTwoSeat": {
-      "title": "Révision périodique biplace",
-      "subtitle": "ParachecK®",
+      "title": "Révision ParachecK® biplace",
       "items": [
         { "description": "Mesures de porosité des tissus" },
         { "description": "Tests de résistance des tissus" },
         { "description": "Tests de résistance suspentes" },
         { "description": "Mesures dimensionnelles du suspentage" },
         { "description": "Inspection visuelle et tactile complète" }
-      ]
-    }
+      ],
+      "cta": "Voir le détail"
+    },
+    "from": "À partir de"
   },
   "tables": {
     "repair": {
@@ -58,6 +58,15 @@
         "sheathedHangerNotInstalled": "Suspente gainée non posée",
         "splicedHangerInstalled": "Suspente épissurée posée",
         "splicedHangerNotInstalled": "Suspente épissurée non posée"
+      }
+    },
+    "maintenance": {
+      "title": "Révision ParachecK®",
+      "items": {
+        "singleSeatSheathed": "Monoplace – suspentage gainé",
+        "singleSeatNonSheathed": "Monoplace – suspentage tout non gainé",
+        "twoSeatSheathed": "Biplace – suspentage gainé",
+        "twoSeatNonSheathed": "Biplace – suspentage tout non gainé"
       }
     },
     "inspections": {

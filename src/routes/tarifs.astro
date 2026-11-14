@@ -52,6 +52,13 @@ const inspectionDetails = [
   },
 ];
 
+const maintenancePrices = [
+  { title: t('pricing:tables.maintenance.items.singleSeatSheathed'), price: '180' },
+  { title: t('pricing:tables.maintenance.items.singleSeatNonSheathed'), price: '190' },
+  { title: t('pricing:tables.maintenance.items.twoSeatSheathed'), price: '200' },
+  { title: t('pricing:tables.maintenance.items.twoSeatNonSheathed'), price: '220' },
+];
+
 const parachuteFoldingPrices = [
   { title: t('pricing:tables.parachute.items.singleSeatWithoutHarness'), price: '50' },
   { title: t('pricing:tables.parachute.items.singleSeatWithHarness'), price: '55' },
@@ -70,8 +77,8 @@ const parachuteFoldingPrices = [
     prices={[
       {
         title: t('pricing:cards.parachute.title'),
-        subtitle: t('pricing:cards.parachute.subtitle'),
-        price: '50 – 100',
+        subtitle: t('pricing:cards.from'),
+        price: 50,
         items: t('pricing:cards.parachute.items', { returnObjects: true }),
         callToAction: {
           text: t('pricing:cards.parachute.cta'),
@@ -80,15 +87,23 @@ const parachuteFoldingPrices = [
       },
       {
         title: t('pricing:cards.maintenanceSingleSeat.title'),
-        subtitle: t('pricing:cards.maintenanceSingleSeat.subtitle'),
+        subtitle: t('pricing:cards.from'),
         price: 180,
         items: t('pricing:cards.maintenanceSingleSeat.items', { returnObjects: true }),
+        callToAction: {
+          text: t('pricing:cards.maintenanceSingleSeat.cta'),
+          href: `${getLocalePath('/tarifs')}#${t('anchors.maintenancePriceDetails')}`,
+        },
       },
       {
         title: t('pricing:cards.maintenanceTwoSeat.title'),
-        subtitle: t('pricing:cards.maintenanceTwoSeat.subtitle'),
-        price: 195,
+        subtitle: t('pricing:cards.from'),
+        price: 200,
         items: t('pricing:cards.maintenanceTwoSeat.items', { returnObjects: true }),
+        callToAction: {
+          text: t('pricing:cards.maintenanceTwoSeat.cta'),
+          href: `${getLocalePath('/tarifs')}#${t('anchors.maintenancePriceDetails')}`,
+        },
       },
     ]}
   >
@@ -101,6 +116,11 @@ const parachuteFoldingPrices = [
     title={t('pricing:tables.repair.title')}
     subtitle={t('pricing:tables.repair.subtitle', { contactLink: getLocalePath('/contact') })}
     items={repairPrices}
+  />
+  <PriceTable
+    id={t('anchors.maintenancePriceDetails')}
+    title={t('pricing:tables.maintenance.title')}
+    items={maintenancePrices}
   />
   <PriceTable id="inspections-price-details" title={t('pricing:tables.inspections.title')} items={inspectionDetails} />
   <PriceTable

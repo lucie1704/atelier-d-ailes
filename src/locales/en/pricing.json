@@ -11,7 +11,6 @@
   "cards": {
     "parachute": {
       "title": "Reserve parachute packing",
-      "subtitle": "Single, tandem, with or without container",
       "cta": "See details",
       "items": [
         { "description": "Aired and ventilated" },
@@ -21,27 +20,28 @@
       ]
     },
     "maintenanceSingleSeat": {
-      "title": "Single seat periodic inspection",
-      "subtitle": "ParachecK®",
+      "title": "ParachecK® single seat inspection",
       "items": [
         { "description": "Fabric porosity measurements" },
         { "description": "Fabric resistance tests" },
         { "description": "Line resistance tests" },
         { "description": "Line geometry measurements" },
         { "description": "Complete visual and tactile inspection" }
-      ]
+      ],
+      "cta": "See details"
     },
     "maintenanceTwoSeat": {
-      "title": "Tandem periodic inspection",
-      "subtitle": "ParachecK®",
+      "title": "ParachecK® tandem inspection",
       "items": [
         { "description": "Fabric porosity measurements" },
         { "description": "Fabric resistance tests" },
         { "description": "Line resistance tests" },
         { "description": "Line geometry measurements" },
         { "description": "Complete visual and tactile inspection" }
-      ]
-    }
+      ],
+      "cta": "See details"
+    },
+    "from": "From"
   },
   "tables": {
     "repair": {
@@ -58,6 +58,15 @@
         "sheathedHangerNotInstalled": "Sheathed line not installed",
         "splicedHangerInstalled": "Spliced line installed",
         "splicedHangerNotInstalled": "Spliced line not installed"
+      }
+    },
+    "maintenance": {
+      "title": "ParachecK® periodic inspection",
+      "items": {
+        "singleSeatSheathed": "Single seat – sheathed lines",
+        "singleSeatNonSheathed": "Single seat – all unsheathed lines",
+        "twoSeatSheathed": "Tandem – sheathed lines",
+        "twoSeatNonSheathed": "Tandem – all unsheathed lines"
       }
     },
     "inspections": {
