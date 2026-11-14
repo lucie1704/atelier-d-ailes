@@ -6,7 +6,7 @@ import ShopStatus from '~/components/widgets/ShopStatus.astro';
 import MarkdownEasterEgg from '~/components/ui/MarkdownEasterEgg.astro';
 import BreadcrumbsSEO from '~/components/common/BreadcrumbsSEO.astro';
 import { PHONE } from '~/constants/contact';
-import { ADDRESS } from '~/constants/contact';
+import { ADDRESS, DIRECTIONS } from '~/constants/contact';
 import { getLocalePath, t } from '~/i18n';
 import Content from '~/components/widgets/Content.astro';
 import bonusImage from '~/assets/images/bonus.jpeg';
@@ -40,7 +40,7 @@ const metadata = {
         icon: 'tabler:map-pin',
         callToAction: {
           text: t('contact:address.cta'),
-          href: "https://www.google.com/maps/dir/?api=1&destination=Atelier+d'ailes",
+          href: DIRECTIONS.google,
           target: '_blank',
         },
       },

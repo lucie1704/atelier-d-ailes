@@ -75,5 +75,10 @@
   },
   "shareImage": {
     "alt": "Atelier d'ailes logo, paraglider servicing and repair workshop"
+  },
+  "directions": {
+    "title": "Open directions with",
+    "apple": "Apple Maps",
+    "cancel": "Cancel"
   }
 }

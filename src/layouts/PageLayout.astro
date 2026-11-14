@@ -6,7 +6,8 @@ import Announcement from '~/components/widgets/Announcement.astro';
 import { reader } from '~/utils/keystatic';
 import type { MetaData } from '~/types';
 import { getLocalePath, getLocale, t } from '~/i18n';
-import { ADDRESS, FIRSTNAME, FULLNAME, PHONE } from '~/constants/contact';
+import { ADDRESS, DIRECTIONS, FIRSTNAME, FULLNAME, PHONE } from '~/constants/contact';
+import DirectionsMenu from '~/components/common/DirectionsMenu.astro';
 
 const locale = getLocale();
 
@@ -39,7 +40,7 @@ const footerData = [
     links: [
       {
         label: ADDRESS,
-        href: "https://www.google.com/maps/dir/?api=1&destination=Atelier+d'ailes",
+        href: DIRECTIONS.google,
         external: true,
       },
       { label: t('footer.information.links.openDays') },
@@ -98,4 +99,5 @@ const footerData = [
   <slot name="footer">
     <Footer dataSections={footerData} ctaBanner={ctaBanner} />
   </slot>
+  <DirectionsMenu />
 </Layout>

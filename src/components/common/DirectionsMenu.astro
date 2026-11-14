@@ -1,0 +1,60 @@
+---
+import { DIRECTIONS } from '~/constants/contact';
+import { t } from '~/i18n';
+
+const apps = [
+  { id: 'apple', label: t('directions.apple'), href: DIRECTIONS.apple },
+  { id: 'google', label: 'Google Maps', href: DIRECTIONS.google },
+  { id: 'waze', label: 'Waze', href: DIRECTIONS.waze },
+];
+---
+
+<dialog
+  id="directions-menu"
+  class="m-0 mt-auto w-full max-w-none bg-transparent p-3 backdrop:bg-black/40"
+  aria-labelledby="directions-menu-title"
+>
+  <div class="mx-auto max-w-md overflow-hidden rounded-2xl bg-white text-center shadow-xl">
+    <p id="directions-menu-title" class="px-4 py-3 text-sm text-muted">{t('directions.title')}</p>
+    {apps.map((app) => <a
+      href={app.href}
+      data-directions-app={app.id}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="block border-t border-gray-200 py-3.5 text-lg font-medium text-primary"
+    >
+      {app.label}
+    </a>)}
+  </div>
+  <form method="dialog" class="mx-auto mt-2 max-w-md">
+    <button class="w-full rounded-2xl bg-white py-3.5 text-lg font-semibold text-default shadow-xl">
+      {t('directions.cancel')}
+    </button>
+  </form>
+</dialog>
+
+<script>
+  import { DIRECTIONS } from '~/constants/contact';
+
+  const menu = document.getElementById('directions-menu') as HTMLDialogElement | null;
+  const isTouch = window.matchMedia('(pointer: coarse)').matches;
+  const isApple =
+    !/Android/.test(navigator.userAgent) &&
+    (/iPhone|iPad|iPod/.test(navigator.userAgent) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1));
+
+  if (menu && isTouch) {
+    if (!isApple) menu.querySelector('[data-directions-app="apple"]')?.remove();
+
+    document.addEventListener('click', (event) => {
+      const link = (event.target as HTMLElement).closest(`a[href="${CSS.escape(DIRECTIONS.google)}"]`);
+      if (!link || menu.contains(link)) return;
+      event.preventDefault();
+      menu.showModal();
+    });
+
+    menu.addEventListener('click', (event) => {
+      if (event.target === menu || (event.target as HTMLElement).closest('[data-directions-app]')) menu.close();
+    });
+  }
+</script>

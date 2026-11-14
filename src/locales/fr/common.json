@@ -75,5 +75,10 @@
   },
   "shareImage": {
     "alt": "Logo de l'Atelier d'ailes, atelier de révision et de réparation de parapentes"
+  },
+  "directions": {
+    "title": "Ouvrir l'itinéraire avec",
+    "apple": "Plans",
+    "cancel": "Annuler"
   }
 }
