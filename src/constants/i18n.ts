@@ -3,7 +3,7 @@ export const LOCALES = ['fr', 'en'] as const;
 
 export type Locale = (typeof LOCALES)[number];
 
-// Translated paths, keyed by the default locale path (= file name in `src/routes`)
+// Translated paths, keyed by the file name in `src/routes`
 export const pages: Record<string, Partial<Record<Locale, string>>> = {
   '/annonce': { en: '/announcement' },
   '/conseils': { en: '/guides' },
@@ -13,5 +13,4 @@ export const pages: Record<string, Partial<Record<Locale, string>>> = {
   '/contact': { en: '/contact' },
 };
 
-// Every page of `src/routes`, in its default locale path
 export const ROUTES = ['/', ...Object.keys(pages)];

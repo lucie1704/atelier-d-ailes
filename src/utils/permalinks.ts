@@ -27,15 +27,12 @@ export const TAG_BASE = cleanSlug(APP_BLOG?.tag?.pathname) || 'tag';
 
 export const POST_PERMALINK_PATTERN = trimSlash(APP_BLOG?.post?.permalink || `${BLOG_BASE}/%slug%`);
 
-/** Absolute URL with a trailing slash, the form used by canonical, hreflang, sitemap and JSON-LD */
 export const getAbsoluteUrl = (path = '/'): string => new URL(path.endsWith('/') ? path : `${path}/`, SITE.site).href;
 
-/** */
 export const getCanonical = (path = ''): string | URL => {
   return new URL(path, SITE.site);
 };
 
-/** */
 export const getPermalink = (slug = '', type = 'page'): string => {
   let permalink: string;
 
@@ -83,13 +80,10 @@ export const getPermalink = (slug = '', type = 'page'): string => {
   return definitivePermalink(permalink);
 };
 
-/** */
 export const getHomePermalink = (): string => getPermalink('/');
 
-/** */
 export const getBlogPermalink = (): string => getPermalink(BLOG_BASE);
 
-/** */
 export const getAsset = (path: string): string =>
   '/' +
   [BASE_PATHNAME, path]
@@ -97,10 +91,8 @@ export const getAsset = (path: string): string =>
     .filter((el) => !!el)
     .join('/');
 
-/** */
 const definitivePermalink = (permalink: string): string => createPath(BASE_PATHNAME, permalink);
 
-/** */
 export const applyGetPermalinks = (menu: object = {}) => {
   if (Array.isArray(menu)) {
     return menu.map((item) => applyGetPermalinks(item));

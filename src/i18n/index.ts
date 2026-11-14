@@ -12,7 +12,6 @@ interface I18nContext {
 
 const storage = new AsyncLocalStorage<I18nContext>();
 
-/** Runs `fn` with the locale of `pathname`, used by the middleware for every request */
 export const runWithI18n = <T>(pathname: string, fn: () => T): T =>
   storage.run({ locale: getLocaleFromPathname(pathname), pathname }, fn);
 
@@ -22,7 +21,6 @@ const getContext = (): I18nContext => {
   return context;
 };
 
-// src/locales/{locale}/{namespace}.json
 const files = import.meta.glob<Record<string, unknown>>('/src/locales/*/*.json', { eager: true, import: 'default' });
 
 const resources: Resource = {};
@@ -47,14 +45,11 @@ const instances = Object.fromEntries(
 
 export const getLocale = (): Locale => getContext().locale;
 
-// Same signature as `i18next.t`, translation keys are typed in ./i18next.d.ts
 export const t = ((...args: unknown[]) =>
   (instances[getLocale()].t as (...args: unknown[]) => unknown)(...args)) as typeof i18next.t;
 
-/** `getLocalePath('/tarifs')` → `/en/pricing` on english pages */
 export const getLocalePath = (path: string, locale: Locale = getLocale()): string => localizePath(path, locale);
 
-/** Path of the current page in another locale */
 export const switchLocalePath = (locale: Locale): string => {
   const { locale: currentLocale, pathname } = getContext();
   return localizePath(getRouteFromPathname(pathname, currentLocale), locale);

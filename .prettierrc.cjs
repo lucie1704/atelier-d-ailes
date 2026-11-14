@@ -12,7 +12,7 @@ module.exports = {
   overrides: [
     {
       files: '*.astro',
-      // Same as `compressHTML` in astro.config.ts, so formatting never changes the rendered whitespace
+      // Must match `compressHTML` in astro.config.ts
       options: { parser: 'astro', astroCompressHTML: true },
     },
   ],

@@ -11,15 +11,7 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}): AstroIntegra
     name: 'astrowind-integration',
 
     hooks: {
-      'astro:config:setup': async ({
-        // command,
-        config,
-        // injectRoute,
-        // isRestart,
-        logger,
-        updateConfig,
-        addWatchFile,
-      }) => {
+      'astro:config:setup': async ({ config, logger, updateConfig, addWatchFile }) => {
         const buildLogger = logger.fork('astrowind');
 
         const virtualModuleId = 'astrowind:config';

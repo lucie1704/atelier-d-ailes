@@ -1,5 +1,4 @@
 ---
-// Google Analytics 4 snippet, as provided by Google: https://developers.google.com/tag-platform/gtagjs/install
 export interface Props {
   id: string;
 }
@@ -12,7 +11,6 @@ const { id } = Astro.props;
 <script is:inline define:vars={{ id }}>
   window.dataLayer = window.dataLayer || [];
   function gtag() {
-    // gtag requires the `arguments` object
     // eslint-disable-next-line prefer-rest-params
     window.dataLayer.push(arguments);
   }

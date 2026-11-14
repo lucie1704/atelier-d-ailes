@@ -1,13 +1,11 @@
 import { defineMiddleware, sequence } from 'astro:middleware';
 import { runWithI18n } from '~/i18n';
 
-// Makes the current locale available to the i18n helpers (`t`, `getLocale`...)
 const i18n = defineMiddleware((context, next) => runWithI18n(context.url.pathname, next));
 
 // from https://vedantbhagwat.com/blog/fixing-keystatic-oauth-redirect-uri-localhost-error
 
 const keystaticOAuth = defineMiddleware(async (context, next) => {
-  // Fix Keystatic redirect_uri by respecting forwarded headers
   // Workaround for https://github.com/Thinkmill/keystatic/issues/1022
   const isOAuthRoute =
     context.url.pathname.includes('/github/oauth/') || context.url.pathname.includes('/github/login');
@@ -17,12 +15,10 @@ const keystaticOAuth = defineMiddleware(async (context, next) => {
     const forwardedProto = context.request.headers.get('x-forwarded-proto');
 
     if (forwardedHost && forwardedProto) {
-      // Rewrite URL to use the correct public domain
       const correctUrl = new URL(context.url);
       correctUrl.protocol = forwardedProto;
       correctUrl.host = forwardedHost;
 
-      // Create new request with corrected URL
       const newRequest = new Request(correctUrl.toString(), {
         method: context.request.method,
         headers: context.request.headers,
@@ -31,7 +27,6 @@ const keystaticOAuth = defineMiddleware(async (context, next) => {
         duplex: 'half',
       });
 
-      // Update context with corrected values
       Object.defineProperty(context, 'url', {
         value: correctUrl,
         writable: false,

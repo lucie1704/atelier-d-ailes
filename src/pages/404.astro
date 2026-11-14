@@ -6,7 +6,6 @@ import { DEFAULT_LOCALE } from '~/constants/i18n';
 
 export const prerender = false;
 
-// The URL locale (/en/...) first, then the browser language for unprefixed URLs
 const locale = getLocale() !== DEFAULT_LOCALE ? getLocale() : Astro.preferredLocale;
 const t = getSystemTranslator(locale, 'error');
 ---

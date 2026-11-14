@@ -6,14 +6,9 @@ import { LOCALES, ROUTES, type Locale } from '../constants/i18n';
 import { getRouteFromFile, localizePath } from './paths';
 
 interface Options {
-  /** Routes not to generate at build time, e.g. a page without content for a locale */
   skipOnBuild?: (route: string, locale: Locale) => boolean;
 }
 
-/**
- * Injects every page of `src/routes` once per locale, with its translated path:
- * `src/routes/tarifs.astro` → `/tarifs` and `/en/pricing`.
- */
 export default function i18nRoutes({ skipOnBuild }: Options = {}): AstroIntegration {
   return {
     name: 'i18n-routes',

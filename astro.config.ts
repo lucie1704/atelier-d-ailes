@@ -43,7 +43,6 @@ export default defineConfig({
       },
     }),
     i18nRoutes({
-      // Without active announcement, `/annonce` is not generated and falls back to the 404 page
       skipOnBuild: (route, locale) => route === '/annonce' && !hasActiveAnnouncement(locale),
     }),
     astrowind({
@@ -51,7 +50,7 @@ export default defineConfig({
     }),
   ],
 
-  // Astro 7 defaults to 'jsx', keep the previous HTML whitespace handling
+  // Must match `astroCompressHTML` in .prettierrc.cjs
   compressHTML: true,
 
   // for Astro.preferredLocale for 404 and maintenance pages

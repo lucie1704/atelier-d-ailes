@@ -11,7 +11,7 @@
   --color-default: rgb(16 16 16);
   --color-muted: rgb(16 16 16 / 0.66);
 
-  /* Tailwind 3 palette for the colors used by the site (Tailwind 4 switched to oklch) */
+  /* Tailwind 3 palette, Tailwind 4 uses oklch colors */
   --color-gray-50: #f9fafb;
   --color-gray-100: #f3f4f6;
   --color-gray-200: #e5e7eb;
@@ -51,7 +51,7 @@
     'Noto Color Emoji';
 }
 
-/* Tailwind 3 defaults that changed in Tailwind 4, to keep the same look */
+/* Tailwind 3 defaults */
 @layer base {
   *,
   ::after,
@@ -115,7 +115,6 @@ a:not(.btn):focus {
   @apply outline-primary;
 }
 
-/* btn link */
 a.link {
   position: relative;
 }
@@ -135,7 +134,6 @@ a.link:hover::after {
   width: 100%;
 }
 
-/* header backdrop blured */
 #header > div:first-child {
   @apply bg-white/80 backdrop-blur-md;
 }
@@ -144,7 +142,6 @@ a.link:hover::after {
   box-shadow: 0 0.375rem 1.5rem 0 rgb(140 152 164 / 13%);
 }
 
-/* header position */
 #header.expanded nav {
   position: fixed;
   top: 70px;
@@ -173,7 +170,6 @@ a.link:hover::after {
   @apply rotate-45 translate-y-[-8px] translate-x-[14px];
 }
 
-/* Animation pour le menu mobile */
 @media (max-width: 768px) {
   a.link::after {
     width: 100%;
@@ -195,7 +191,6 @@ a.link:hover::after {
   }
 }
 
-/* Announcement animation on mobile */
 @keyframes scroll {
   to {
     transform: translateX(-50%);

@@ -3,7 +3,7 @@ import { UI } from 'astrowind:config';
 ---
 
 <script is:inline define:vars={{ defaultTheme: UI.theme }}>
-  // Explicit function scope so the script can `return` early (required by the Astro 7 compiler)
+  // Function scope required by Astro 7 to `return` early
   (() => {
     if (window.basic_script) {
       return;

@@ -34,7 +34,6 @@ export type ImagesOptimizer = (
   format?: string
 ) => Promise<Array<{ src: string; width: number }>>;
 
-/* ******* */
 const config = {
   // FIXME: Use this when image.width is minor than deviceSizes
   imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -211,7 +210,6 @@ const getBreakpoints = ({
   return [];
 };
 
-/* ** */
 export const astroAssetsOptimizer: ImagesOptimizer = async (
   image,
   breakpoints,
@@ -240,7 +238,6 @@ export const isUnpicCompatible = (image: string) => {
   return typeof parseUrl(image) !== 'undefined';
 };
 
-/* ** */
 export const unpicOptimizer: ImagesOptimizer = async (image, breakpoints, width, height, format = undefined) => {
   if (!image || typeof image !== 'string') {
     return [];
@@ -271,7 +268,6 @@ export const unpicOptimizer: ImagesOptimizer = async (image, breakpoints, width,
   );
 };
 
-/* ** */
 export async function getImagesOptimized(
   image: ImageMetadata | string,
   {

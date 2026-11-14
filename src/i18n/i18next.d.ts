@@ -1,4 +1,3 @@
-// Types translation keys of `t()` from the default locale files
 import type common from '../locales/fr/common.json';
 import type contact from '../locales/fr/contact.json';
 import type error from '../locales/fr/error.json';

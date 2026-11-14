@@ -36,7 +36,6 @@ const { dataSections, ctaBanner = false } = Astro.props;
 <footer class="relative border-t border-gray-200">
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
     <div class="grid grid-cols-12 gap-6 py-8 md:py-12">
-      <!-- Logo & credits -->
       <div class="col-span-12 lg:col-span-4">
         <div class="mb-2">
           <a class="inline-block font-bold text-xl" href={getLocalePath('/')}>
@@ -46,7 +45,6 @@ const { dataSections, ctaBanner = false } = Astro.props;
         <span class="text-muted text-sm">© {new Date().getFullYear()} {SITE?.name}</span>
       </div>
 
-      <!-- Sections -->
       <div class="col-span-12 lg:col-span-8 flex flex-col md:flex-row justify-between gap-6">
         {dataSections.map((section) => <div>
           <div class="font-medium mb-2">{section.title}</div>

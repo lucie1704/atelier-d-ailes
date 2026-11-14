@@ -18,27 +18,22 @@ const load = async function () {
 
 let _images: Record<string, () => Promise<unknown>> | undefined = undefined;
 
-/** */
 export const fetchLocalImages = async () => {
   _images = _images || (await load());
   return _images;
 };
 
-/** */
 export const findImage = async (
   imagePath?: string | ImageMetadata | null
 ): Promise<string | ImageMetadata | undefined | null> => {
-  // Not string
   if (typeof imagePath !== 'string') {
     return imagePath;
   }
 
-  // Absolute paths
   if (imagePath.startsWith('http://') || imagePath.startsWith('https://') || imagePath.startsWith('/')) {
     return imagePath;
   }
 
-  // Relative paths or not "~/assets/"
   if (!imagePath.startsWith('~/assets/images')) {
     return imagePath;
   }
@@ -51,7 +46,6 @@ export const findImage = async (
     : null;
 };
 
-/** */
 export const adaptOpenGraphImages = async (
   openGraph: OpenGraph = {},
   astroSite: URL | undefined = new URL('')
@@ -113,9 +107,6 @@ export const adaptOpenGraphImages = async (
 
 type ImageLoader = () => Promise<{ default: string }>;
 
-/**
- * Dynamic import cms content images through import.meta.glob
- */
 export async function getImageModule(
   images: Record<string, ImageLoader>,
   imagePath: string | null | undefined
