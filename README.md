@@ -1,8 +1,9 @@
 # Atelier d'ailes
 
-[![Astro](https://img.shields.io/badge/Astro-5.0-FF5D01?logo=astro)](https://astro.build/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?logo=typescript)](https://www.typescriptlang.org/)
+[![Astro](https://img.shields.io/badge/Astro-7-FF5D01?logo=astro)](https://astro.build/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-24-5FA04E?logo=nodedotjs)](https://nodejs.org/)
 [![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel)](https://vercel.com)
 
 Site vitrine de l'**Atelier d'ailes**, atelier de révision et réparation de voiles de parapente et paramoteur basé en Seine-et-Marne (77).  
@@ -16,6 +17,7 @@ Site vitrine de l'**Atelier d'ailes**, atelier de révision et réparation de vo
 - [Installation et commandes](#-installation-et-commandes)
 - [Structure du projet](#-structure-du-projet)
 - [Déploiement](#-déploiement)
+- [Feature flags](#-feature-flags)
 - [CMS Keystatic](#-cms-keystatic)
 - [Internationalisation](#-internationalisation-i18n)
 
@@ -31,12 +33,13 @@ Ce site vitrine a été conçu pour répondre aux exigences suivantes :
 
 ## 🛠️ Technologies utilisées
 
-- **Astro 5** : framework de build statique
-- **Astro Wind** : thème Astro
-- **Tailwind CSS 3.4** : utility-first CSS
+- **Astro 7** : framework de build, pages statiques + quelques routes rendues côté serveur (404, maintenance, Keystatic)
+- **Astro Wind** : thème Astro d'origine (son intégration de configuration vit dans `vendor/integration`)
+- **Tailwind CSS 4** : utility-first CSS, configuré directement en CSS dans `src/assets/styles/tailwind.css`
 - **TypeScript 5** : typage et sécurité
-- **Vercel** : déploiement et hosting
+- **i18next** : traductions, avec une petite intégration maison pour le routing par langue
 - **Keystatic** : CMS pour la gestion du contenu éditorial
+- **Vercel** : déploiement, hosting, Analytics et Speed Insights
 
 ## 📈 Performance
 
@@ -46,14 +49,20 @@ Ce site vitrine a été conçu pour répondre aux exigences suivantes :
 
 ## 🛠️ Installation et Commandes
 
-**Prérequis :** Node.js `^20.x`
+**Prérequis :** Node.js `24.x`
 
 ```bash
+# Utiliser la bonne version de Node.js
+nvm use
+
 # Installer les dépendances
 npm install
 
-# Démarrer le serveur de développement
+# Démarrer le serveur de développement (tourne en arrière-plan avec Astro 7)
 npm run dev
+
+# Arrêter le serveur de développement
+npx astro dev stop
 
 # Construire pour la production
 npm run build
@@ -69,43 +78,40 @@ npm run fix
 
 ```
 /
-├── public/               # Fichiers statiques (images, robots.txt, etc.)
+├── public/               # Fichiers statiques (robots.txt, etc.)
 ├── src/
 │   ├── assets/           # Assets (images, styles, favicons)
+│   ├── cms/              # Contenu éditorial du site (annonces et blocs conseils)
 │   ├── components/       # Composants Astro réutilisables
-│   ├── constants/        # Constantes (heures et jours d'ouverture, date de création)
-│   ├── cms/              # Contenu éditorial du site (Annonces et blocs conseils)
+│   ├── constants/        # Constantes (horaires, contact, langues et slugs traduits)
+│   ├── i18n/             # Intégration i18n maison (routing par langue, helpers de traduction)
 │   ├── layouts/          # Layouts de pages
-│   ├── locales/          # Traduction des éléments statics du site
-│   ├── pages/            # Pages statiques / routing automatique
+│   ├── locales/          # Traductions des éléments statiques du site
+│   ├── pages/            # Pages hors routing par langue (404, maintenance)
 │   ├── routes/           # Pages avec routing par langue
 │   ├── utils/            # Utilitaires et helpers
+│   ├── middleware.ts     # Langue de la requête + correctif OAuth Keystatic
 │   └── config.yaml       # Configuration principale du site
+├── vendor/integration/   # Intégration Astro Wind (lecture de config.yaml)
 ├── astro.config.ts       # Configuration Astro
-└── keystatic.config.tsx  # Configuration Keystatic
+├── keystatic.config.tsx  # Configuration Keystatic
+├── vercel.ts             # Configuration Vercel (headers, mode maintenance)
+└── .nvmrc                # Version de Node.js
 ```
 
 ## 🚢 Déploiement
 
-Le site est automatiquement redéployé sur **www.atelier-d-ailes.fr** via Vercel à chaque merge sur `main`.
+Le site est automatiquement redéployé sur **www.atelier-d-ailes.fr** via Vercel à chaque push sur `main`. Chaque branche poussée a aussi son déploiement de preview.
 
-### 🚧 Mode Maintenance
+## 🚩 Feature flags
 
-Active une redirection globale vers la page `/maintenance` pour toutes les routes.
+| Fonctionnalité               | Effet                                                                                                                                          | Activer / désactiver                                                                                                                                                             |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Mode maintenance**         | Redirige toutes les pages vers `/maintenance`                                                                                                  | Vercel → `Settings > Environment Variables` : `PUBLIC_ENABLE_MAINTENANCE=true` (ou `false`), puis redéployer                                                                     |
+| **Bandeau d'information**    | Affiche un bandeau en haut du site, lié à une page d'annonce (`/annonce`, `/en/announcement`)                                                  | Keystatic → **Annonce active** de la langue : cocher « Afficher une annonce » et choisir l'annonce, puis merger le commit `cms/...`                                              |
+| **Fermeture exceptionnelle** | Le statut de l'atelier (footer) affiche « Fermeture estivale » au lieu de Ouvert / Fermé, du premier jour jusqu'au dernier jour inclus (23h59) | `src/constants/shop.ts` : `SPECIAL_CLOSURE_START` et `SPECIAL_CLOSURE_END` au format `AAAA-MM-JJ`. Le libellé se modifie dans `src/locales/*/common.json` (`shopStatus.closure`) |
 
-**Activation :**
-
-1. Dans Vercel : `Settings > Environment Variables`
-2. Modifier la variable d'environnement `PUBLIC_ENABLE_MAINTENANCE=true`
-3. Redéployer
-
-**Désactivation :**
-
-1. Dans Vercel : `Settings > Environment Variables`
-2. Modifier la variable d'environnement `PUBLIC_ENABLE_MAINTENANCE=false`
-3. Redéployer
-
-**Note :** C'est le `vercel.ts` qui gère la redirection vers `/maintenance` si `PUBLIC_ENABLE_MAINTENANCE=true`.
+Les annonces se créent dans la collection **Annonces** de Keystatic, séparément pour chaque langue.
 
 ## 📝 CMS Keystatic
 
@@ -114,45 +120,32 @@ Le CMS Keystatic a été intégré pour la gestion du contenu éditorial du site
 - Les annonces
 - Les blocs "Erreurs courantes à éviter" de la page Conseils
 
-Le CMS est accessible en se rendant sur l'url suivant http://atelier-d-ailes.fr/keystatic et en se connectant via GitHub (seul ce présent compte y a accès).  
-À la sauvegarde le nouveau contenu sera push sous forme de commit sur une branche `/cms` avant de pouvoir être validé et mergé sur main pour mettre à jour le site.
+Le CMS est accessible en se rendant sur l'url suivant https://www.atelier-d-ailes.fr/keystatic et en se connectant via GitHub (seul le compte [@lucie1704](https://github.com/lucie1704) y a accès).  
+À la sauvegarde le nouveau contenu sera push sous forme de commit sur une branche `cms/...` avant de pouvoir être validé et mergé sur main pour mettre à jour le site.
 
-Le contenu éditorial est organisé par langue dans `src/cms`, chaque langue ayant sa propre version des annonces et des blocs conseils. On peut par exemple afficher uniquement une annonce pour la langue anglaise ou inversement. On pourrait également afficher des conseils différents selon la langue ou simplement les traduires.
+En local (`npm run dev`), Keystatic enregistre directement dans les fichiers du projet, sans passer par GitHub.
+
+Le contenu éditorial est organisé par langue dans `src/cms`, chaque langue ayant sa propre version des annonces et des blocs conseils. On peut par exemple afficher uniquement une annonce pour la langue anglaise ou inversement. On pourrait également afficher des conseils différents selon la langue ou simplement les traduire.
 
 ```
 ├── src/
 │   ├── cms/
 │   │   ├── fr/
-│   │   │   ├── guides/
-│   │   │   │   ├── guide-1.yaml
-│   │   │   │   ├── guide-2.yaml
-│   │   │   │   ├── guide-2.yaml
+│   │   │   ├── active-announcement.json
 │   │   │   ├── announcements/
-│   │   │   │   ├── announcement-1.yaml
-│   │   │   │   ├── announcement-2.yaml
-│   │   │   │   ├── announcement-3.yaml
-│   │   └── active-announcement.yaml
-│   │   ├── en/
-│   │   │   ├── guides/
-│   │   │   │   ├── guide-1.yaml
-│   │   │   │   ├── guide-2.yaml
-│   │   │   │   ├── guide-2.yaml
-│   │   │   ├── announcements/
-│   │   │   │   ├── announcement-1.yaml
-│   │   │   │   ├── announcement-2.yaml
-│   │   │   │   ├── announcement-3.yaml
-│   │   └── active-announcement.yaml
+│   │   │   │   └── fermeture-de-l-atelier.json
+│   │   │   └── guides/
+│   │   │       ├── drisses-de-freins-bobinees.json
+│   │   │       └── ...
+│   │   └── en/
+│   │       ├── active-announcement.json
+│   │       ├── announcements/
+│   │       │   └── summer-closure.json
+│   │       └── guides/
+│   │           └── ...
 │   ...
 └── keystatic.config.tsx     # Configuration Keystatic
 ```
-
-### Annonces
-
-Il est possible d'afficher un bandeau d'information en haut du site lié à une page de détail d'annonce, par exemple pour des fermetures exceptionnelles ou autres informations éphémères liées à l'atelier.
-En accédant à Keystatic il vous suffira de configurer deux contenus :
-
-- Annonce active : pour déterminer si on veut que l'annonce soit active ou non et choisir ensuite parmi les annonces existantes celle à afficher
-- Les annonces : une collection d'annonces permettant d'ajouter ou de modifier une annonce
 
 ### Blocs Conseils
 
@@ -160,36 +153,35 @@ Les blocs sous "Erreurs courantes à éviter" de la page Conseil sont également
 
 ## 🌐 Internationalisation (i18n)
 
-Le site prend en charge **plusieurs langues** (actuellement Français et Anglais) grâce à une configuration combinant :
+Le site prend en charge **plusieurs langues** (actuellement Français et Anglais) grâce à :
 
-- **i18next** : gestion des traductions et du contenu multilingue.
-- **@astrolicious/i18n** : gestion du routing et de la navigation basée sur la langue.
+- **i18next** : gestion des traductions et du contenu multilingue
+- **une intégration maison** (`src/i18n/`) : routing par langue avec des slugs traduits, sans dépendance externe
 
 Les textes statiques du site sont organisés par langue dans `src/locales/`.
 
-`src/routes/` → contient les pages nécessitant un routing différent selon la langue.  
+### Routing par langue
+
+`src/routes/` → contient les pages nécessitant un routing différent selon la langue. Chaque fichier est injecté une fois par langue.  
 Exemple : `src/routes/conseils.astro` un seul fichier pour les deux langues mais avec des slugs différents selon la langue choisie :
 
 - `fr` → `/conseils`
 - `en` → `/en/guides`
 
-La customisation des slugs des pages par langue se fait dans le `astro.config.ts`. La langue par défaut garde le nom du fichier astro comme slug, les autres langues peuvent elles être personnalisées via :
+Les langues et les slugs traduits se déclarent dans `src/constants/i18n.ts`. La langue par défaut garde le nom du fichier astro comme slug, les autres langues peuvent être personnalisées :
 
 ```ts
-integrations: [
-  i18n({
-    pages: {
-      '/conseils': {
-        en: '/guides',
-      },
-    },
-  }),
-];
+export const pages: Record<string, Partial<Record<Locale, string>>> = {
+  '/conseils': { en: '/guides' },
+  '/tarifs': { en: '/pricing' },
+};
 ```
+
+Toute page ajoutée dans `src/routes/` doit figurer dans `pages`, sinon le build échoue avec un message explicite.
+
+### Pages hors routing
 
 `src/pages/` → Pages uniques indépendantes de la langue choisie
 
-- Page 404
-- Page de maintenance
-
-Ces pages sont traduites à partir de la langue du navigateur de l'utilisateur grâce à `Astro.preferredLocale`.
+- Page 404 : en anglais pour les URL `/en/...`, sinon selon la langue du navigateur (`Astro.preferredLocale`)
+- Page de maintenance : selon la langue du navigateur
