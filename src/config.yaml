@@ -22,6 +22,9 @@ metadata:
         width: 1200
         height: 628
     type: website
+  twitter:
+    cardType: summary
+    image: '~/assets/images/logo-square.png'
   keywords:
     - parapente
     - révision parapente

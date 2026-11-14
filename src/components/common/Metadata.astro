@@ -22,7 +22,7 @@ interface SeoProps {
   nofollow?: boolean;
   description?: string;
   openGraph?: OpenGraph;
-  twitter?: { cardType?: string; site?: string; handle?: string };
+  twitter?: { cardType?: string; site?: string; handle?: string; image?: string };
 }
 
 const {
@@ -83,6 +83,9 @@ const robotsContent = [
   ...(typeof nofollow !== 'undefined' ? [nofollow ? 'nofollow' : 'follow'] : []),
 ].join(',');
 const og = await adaptOpenGraphImages(seoProps.openGraph, Astro.site);
+const twitterImage = twitterCard?.image
+  ? (await adaptOpenGraphImages({ images: [{ url: twitterCard.image }] }, Astro.site)).images?.[0]?.url
+  : undefined;
 ---
 
 {pageTitle && <title>{titleTemplate ? titleTemplate.replace('%s', pageTitle) : pageTitle}</title>}
@@ -106,6 +109,7 @@ const og = await adaptOpenGraphImages(seoProps.openGraph, Astro.site);
 {og.site_name && <meta property="og:site_name" content={og.site_name} />}
 
 {twitterCard?.cardType && <meta name="twitter:card" content={twitterCard.cardType} />}
+{twitterImage && <meta name="twitter:image" content={twitterImage} />}
 {twitterCard?.site && <meta name="twitter:site" content={twitterCard.site} />}
 {twitterCard?.handle && <meta name="twitter:creator" content={twitterCard.handle} />}
 
