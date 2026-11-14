@@ -1,13 +1,15 @@
 ---
 import merge from 'lodash.merge';
 import { SITE, METADATA } from 'astrowind:config';
-import { getLocale, switchLocalePath } from '~/i18n';
+import { getLocale, switchLocalePath, t } from '~/i18n';
+import { LOCALES } from '~/constants/i18n';
 import { getAbsoluteUrl, getCanonical } from '~/utils/permalinks';
 import { adaptOpenGraphImages } from '~/utils/images';
 import type { Locale } from '~/i18n';
 import type { MetaData, OpenGraph } from '~/types';
 
 const locale = getLocale();
+const ogLocales: Record<Locale, string> = { fr: 'fr_FR', en: 'en_US' };
 const getAlternateHref = (locale: Locale) => getAbsoluteUrl(switchLocalePath(locale));
 
 export interface Props extends MetaData {
@@ -47,7 +49,7 @@ const seoProps: SeoProps = merge(
       url: canonical,
       site_name: SITE?.name,
       images: [],
-      locale: locale === 'fr' ? 'fr_FR' : 'en_US',
+      locale: ogLocales[locale],
       type: 'website',
     },
     twitter: {
@@ -82,34 +84,40 @@ const robotsContent = [
   ...(typeof noindex !== 'undefined' ? [noindex ? 'noindex' : 'index'] : []),
   ...(typeof nofollow !== 'undefined' ? [nofollow ? 'nofollow' : 'follow'] : []),
 ].join(',');
+const fullTitle = pageTitle && titleTemplate ? titleTemplate.replace('%s', pageTitle) : pageTitle;
+const imageAlt = t('shareImage.alt');
 const og = await adaptOpenGraphImages(seoProps.openGraph, Astro.site);
 const twitterImage = twitterCard?.image
   ? (await adaptOpenGraphImages({ images: [{ url: twitterCard.image }] }, Astro.site)).images?.[0]?.url
   : undefined;
 ---
 
-{pageTitle && <title>{titleTemplate ? titleTemplate.replace('%s', pageTitle) : pageTitle}</title>}
+{fullTitle && <title>{fullTitle}</title>}
 {pageDescription && <meta name="description" content={pageDescription} />}
 {robotsContent && <meta name="robots" content={robotsContent} />}
 {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 
-{(og.title || pageTitle) && <meta property="og:title" content={og.title || pageTitle} />}
+{(og.title || fullTitle) && <meta property="og:title" content={og.title || fullTitle} />}
 {(og.description || pageDescription) && <meta property="og:description" content={og.description || pageDescription} />}
 {og.url && <meta property="og:url" content={og.url} />}
 {og.type && <meta property="og:type" content={og.type} />}
 {og.images?.map((image) => (
   <>
     <meta property="og:image" content={image.url} />
-    {image.alt && <meta property="og:image:alt" content={image.alt} />}
+    <meta property="og:image:alt" content={image.alt || imageAlt} />
     {image.width && <meta property="og:image:width" content={String(image.width)} />}
     {image.height && <meta property="og:image:height" content={String(image.height)} />}
   </>
 ))}
 {og.locale && <meta property="og:locale" content={og.locale} />}
+{LOCALES.filter((l) => l !== locale).map((l) => (
+  <meta property="og:locale:alternate" content={ogLocales[l]} />
+))}
 {og.site_name && <meta property="og:site_name" content={og.site_name} />}
 
 {twitterCard?.cardType && <meta name="twitter:card" content={twitterCard.cardType} />}
 {twitterImage && <meta name="twitter:image" content={twitterImage} />}
+{twitterImage && <meta name="twitter:image:alt" content={imageAlt} />}
 {twitterCard?.site && <meta name="twitter:site" content={twitterCard.site} />}
 {twitterCard?.handle && <meta name="twitter:creator" content={twitterCard.handle} />}
 
