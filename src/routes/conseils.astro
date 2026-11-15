@@ -3,13 +3,12 @@ import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Features from '~/components/widgets/Features.astro';
-import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-import Headline from '~/components/ui/Headline.astro';
-import ContentBlock from '~/components/widgets/ContentBlock.astro';
+import GuideCards from '~/components/widgets/GuideCards.astro';
 import BreadcrumbsSEO from '~/components/common/BreadcrumbsSEO.astro';
 import { reader } from '~/utils/keystatic';
 import { getLocale, getLocalePath, t } from '~/i18n';
 import { getImageModule } from '~/utils/images';
+import type { ImageMetadata } from 'astro';
 
 import guidesAttachPointImage from '~/assets/images/guides-attach-point.jpg';
 
@@ -20,11 +19,11 @@ const metadata = {
 
 const guides = await reader.collections[`${getLocale()}_guide`].all();
 
-const guideImages = import.meta.glob<{ default: string }>('/src/assets/images/guides/**/*.{jpg,jpeg,png,webp}');
-const guidesWithImages = await Promise.all(
+const guideImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/guides/**/*.{jpg,jpeg,png,webp}');
+const guideCards = await Promise.all(
   guides.map(async ({ entry }) => ({
     ...entry,
-    imageModule: await getImageModule(guideImages, entry.image),
+    image: await getImageModule(guideImages, entry.image),
   }))
 );
 ---
@@ -77,25 +76,11 @@ const guidesWithImages = await Promise.all(
     ]}
   />
 
-  {guides.length && (
-    <>
-      <WidgetWrapper containerClass="max-w-5xl !pb-5">
-        <Headline title={t('guides:avoidableMistakes.title')} subtitle={t('guides:avoidableMistakes.subtitle')} />
-        <Fragment slot="bg">
-          <div class="absolute inset-0 bg-slate-50" />
-        </Fragment>
-      </WidgetWrapper>
-
-      {guidesWithImages.map((guide, index) => <ContentBlock
-        title={guide.title}
-        icon="tabler:alert-triangle"
-        content={guide.description}
-        {...(guide.imageModule ? { image: { src: guide.imageModule, alt: guide.imageAlt ?? '' } } : {})}
-      >
-        {index % 2 !== 0 && <Fragment slot="bg">
-          <div class="absolute inset-0 bg-slate-50" />
-        </Fragment>}
-      </ContentBlock>)}
-    </>
+  {guides.length > 0 && (
+    <GuideCards
+      title={t('guides:avoidableMistakes.title')}
+      subtitle={t('guides:avoidableMistakes.subtitle')}
+      guides={guideCards}
+    />
   )}
 </Layout>

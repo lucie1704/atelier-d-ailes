@@ -33,6 +33,7 @@ const guidesSchema = {
     publicPath: '/src/assets/images/guides',
   }),
   imageAlt: fields.text({ label: 'Image alt' }),
+  imageCaption: fields.text({ label: 'Image caption', multiline: true }),
 };
 
 export default config({

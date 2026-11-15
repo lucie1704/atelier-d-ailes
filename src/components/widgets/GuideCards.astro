@@ -1,0 +1,73 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { Icon } from 'astro-icon/components';
+import Headline from '~/components/ui/Headline.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import { renderMarkdown } from '~/utils/markdown';
+
+interface GuideCard {
+  title: string;
+  description: string;
+  image?: ImageMetadata | null;
+  imageAlt?: string | null;
+  imageCaption?: string | null;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  guides: GuideCard[];
+}
+
+const { title, subtitle, guides } = Astro.props;
+
+const sortedGuides = [...guides.filter((guide) => guide.image), ...guides.filter((guide) => !guide.image)];
+---
+
+<WidgetWrapper>
+  <Fragment slot="bg">
+    <div class="absolute inset-0 bg-slate-50"></div>
+  </Fragment>
+
+  <Headline title={title} subtitle={subtitle} />
+
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {sortedGuides.map((guide) => <article
+      class="row-span-3 grid grid-rows-subgrid gap-0 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-xs"
+    >
+      {guide.image ? (
+        <Image
+          src={guide.image}
+          alt={guide.imageAlt ?? ''}
+          widths={[400, 800, 1200]}
+          sizes="(min-width: 1280px) 400px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          class="w-full aspect-[4/3] object-cover"
+          loading="lazy"
+        />
+      ) : (
+        <div
+          class="flex w-full aspect-[4/3] items-center justify-center bg-slate-100 bg-[radial-gradient(var(--color-gray-300)_1px,transparent_1px)] [background-size:16px_16px]"
+          aria-hidden="true"
+        >
+          <img src="/logo.png" alt="" width="600" height="236" class="w-1/2 h-auto opacity-25" loading="lazy" />
+        </div>
+      )}
+      <div class="px-5 pt-5">
+        <h3 class="text-lg font-bold leading-snug">{guide.title}</h3>
+        <div
+          class="mt-2 text-gray-600 leading-relaxed [&_p+p]:mt-2 [&_ul]:list-disc [&_ul]:pl-5"
+          set:html={renderMarkdown(guide.description)}
+        />
+      </div>
+      <div class="px-5 pb-5">
+        {guide.image && guide.imageCaption && <div
+          class="mt-4 flex gap-2 border-t border-gray-200 pt-4 text-gray-500 leading-relaxed"
+        >
+          <Icon name="tabler:camera" class="w-5 h-5 mt-0.5 shrink-0" />
+          <p>{guide.imageCaption}</p>
+        </div>}
+      </div>
+    </article>)}
+  </div>
+</WidgetWrapper>

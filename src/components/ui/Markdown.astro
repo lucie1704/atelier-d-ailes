@@ -1,5 +1,5 @@
 ---
-import { marked, Renderer } from 'marked';
+import { renderMarkdown } from '~/utils/markdown';
 
 interface Props {
   content: string;
@@ -8,18 +8,7 @@ interface Props {
 
 const { content, class: extraClass = '' } = Astro.props;
 
-const renderer = new Renderer();
-
-renderer.link = ({ href, text }) => {
-  const isExternal = href?.startsWith('http');
-  const targetAttr = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
-  return `<a href="${href}" ${targetAttr} class="text-primary font-semibold hover:underline">${text}</a>`;
-};
-
-const html = marked.parse(content ?? '', {
-  async: false,
-  renderer,
-});
+const html = renderMarkdown(content);
 ---
 
 <div

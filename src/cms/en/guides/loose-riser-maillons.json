@@ -1,6 +1,7 @@
 {
   "title": "Loose riser maillons",
-  "description": "Check the tightness of your maillons before each flight. Tighten firmly but without forcing and replace plastic clips or O-rings if lost.\n\nSee photo: bottom maillon loose",
+  "description": "Check the tightness of your maillons before each flight. Tighten firmly but without forcing and replace plastic clips or O-rings if lost.",
   "image": "/src/assets/images/guides/maillons-d-elevateurs-desserres/image.jpg",
-  "imageAlt": "Example of loose riser maillons"
+  "imageAlt": "Example of loose riser maillons",
+  "imageCaption": "Bottom maillon loose"
 }

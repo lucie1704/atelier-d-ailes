@@ -106,12 +106,12 @@ export const adaptOpenGraphImages = async (
   return { ...openGraph, ...(adaptedImages ? { images: adaptedImages } : {}) };
 };
 
-type ImageLoader = () => Promise<{ default: string }>;
+type ImageLoader = () => Promise<{ default: ImageMetadata }>;
 
 export async function getImageModule(
   images: Record<string, ImageLoader>,
   imagePath: string | null | undefined
-): Promise<string | null> {
+): Promise<ImageMetadata | null> {
   if (!imagePath) return null;
 
   const loader = images[imagePath];

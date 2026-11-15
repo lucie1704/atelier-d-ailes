@@ -5,6 +5,7 @@ import { reader } from '~/utils/keystatic';
 import ContentBlock from '~/components/widgets/ContentBlock.astro';
 import { getLocale } from '~/i18n';
 import { getImageModule } from '~/utils/images';
+import type { ImageMetadata } from 'astro';
 
 const locale = getLocale();
 
@@ -17,7 +18,7 @@ if (!activeAnnouncementConfig?.active || !activeAnnouncementConfig?.announcement
   return new Response(null, { status: 404 });
 }
 
-const announcementImages = import.meta.glob<{ default: string }>(
+const announcementImages = import.meta.glob<{ default: ImageMetadata }>(
   '/src/assets/images/announcements/**/*.{jpg,jpeg,png,webp}'
 );
 const currentAnnouncementImageModule = await getImageModule(announcementImages, currentAnnouncement.image);
