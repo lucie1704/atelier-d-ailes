@@ -75,8 +75,8 @@
     ],
     "listTitle": "Préparez votre dépôt",
     "listSubtitle": "Pour chaque voile, indiquez le nom et le prénom du propriétaire, le modèle de la voile et la prestation demandée.",
-    "listDownload": "Télécharger le modèle Excel",
-    "listFile": "modele-liste-voiles-club.xlsx"
+    "listDownload": "Télécharger le modèle",
+    "listFile": "atelier-d-ailes-liste-voiles-club.xlsx"
   },
   "tables": {
     "repair": {

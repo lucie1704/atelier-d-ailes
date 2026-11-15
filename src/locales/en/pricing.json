@@ -75,8 +75,8 @@
     ],
     "listTitle": "Prepare your drop-off",
     "listSubtitle": "For each wing, give the owner’s first and last name, the wing model and the requested service.",
-    "listDownload": "Download the Excel template",
-    "listFile": "club-wing-list-template.xlsx"
+    "listDownload": "Download the template",
+    "listFile": "atelier-d-ailes-club-wing-list.xlsx"
   },
   "tables": {
     "repair": {
