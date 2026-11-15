@@ -67,6 +67,21 @@
     "typescript-eslint": "^8.72.2"
   },
   "overrides": {
-    "path-to-regexp": "^6.3.0"
+    "path-to-regexp": "^6.3.0",
+    "@keystatic/core": {
+      "minimatch": "^11.0.8"
+    },
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^11.0.8"
+    },
+    "@tailwindcss/typography": {
+      "postcss-selector-parser": "^6.1.6"
+    },
+    "@vercel/config": {
+      "zod": "^4.6.7"
+    }
+  },
+  "allowScripts": {
+    "fsevents@2.3.3": true
   }
 }
