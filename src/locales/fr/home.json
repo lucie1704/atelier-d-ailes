@@ -1,16 +1,16 @@
 {
   "meta": {
     "title": "Révision & réparation de parapente",
-    "description": "Plus de 30 ans d'expérience en contrôle, révision et réparation d'ailes de parapente et paramoteur. Atelier certifié ParachecK® en Seine-et-Marne."
+    "description": "Plus de 30 ans d’expérience en contrôle, révision et réparation d’ailes de parapente et paramoteur. Atelier certifié ParachecK® en Seine-et-Marne."
   },
   "banner": {
-    "baseline": "Contrôle, révision et réparation d'ailes de parapente et paramoteur.\nUne exigence et un savoir-faire au service de votre sécurité.",
+    "baseline": "Contrôle, révision et réparation d’ailes de parapente et paramoteur.\nUne exigence et un savoir-faire au service de votre sécurité.",
     "heroImage": {
-      "alt": "Aile de parapente en révision dans l'atelier"
+      "alt": "Aile de parapente en révision dans l’atelier"
     },
     "actions": {
       "contact": "Demander une révision",
-      "services": "Voir les services de l'atelier"
+      "services": "Voir les services de l’atelier"
     }
   },
   "services": {
@@ -33,9 +33,9 @@
   },
   "profile": {
     "position": "Fondateur de l’Atelier d’ailes",
-    "quote": "Je contrôle des ailes depuis plus de 30 ans. Anciennement basé à Paris dans la boutique de VLD (Vol Libre Diffusion), mon atelier est désormais installé en Seine-et-Marne depuis {{yearsSinceCreation}} ans où je mets mon expérience à votre service. Passionné par tout ce qui vole, j’entretiens vos ailes de parapente et paramoteur.",
+    "quote": "Je contrôle des ailes depuis plus de 30 ans. Anciennement basé à Paris dans la boutique de VLD (Vol Libre Diffusion), mon atelier est installé en Seine-et-Marne depuis {{yearsSinceCreation}} ans où je mets mon expérience à votre service. Passionné par tout ce qui vole, j’entretiens vos ailes de parapente et paramoteur.",
     "image": {
-      "alt": "Portrait de Christophe, fondateur de l'Atelier d'ailes"
+      "alt": "Portrait de Christophe, fondateur de l’Atelier d’ailes"
     }
   },
   "experience": {
@@ -57,18 +57,18 @@
   },
   "paracheck": {
     "title": "Certifié ParachecK®",
-    "description": "L'atelier est adhérent à la [charte ParachecK®](https://parapente.ffvl.fr/sites/parapente.ffvl.fr/files/Charte%20FFVL%20ParachecK%20V2_03.pdf) de la [FFVL](https://federation.ffvl.fr/), garantissant des révisions conformes aux standards officiels.",
+    "description": "L’atelier est adhérent à la [charte ParachecK®](https://parapente.ffvl.fr/sites/parapente.ffvl.fr/files/Charte%20FFVL%20ParachecK%20V2_03.pdf) de la [FFVL](https://federation.ffvl.fr/), garantissant des révisions conformes aux standards officiels.",
     "image": {
       "alt": "Certification ParachecK®"
     },
     "items": {
       "maintenance": {
         "title": "Révision Périodique ParachecK®",
-        "description": "La [Révision Périodique ParachecK®](https://parapente.ffvl.fr/revision-voiles) est le contrôle le plus complet pour évaluer l'état réel de votre aile : porosité et résistance du tissu, résistance des suspentes, contrôle du calage, inspection visuelle approfondie. Un rapport détaillé vous est remis, établi selon le cahier des charges de la charte."
+        "description": "La [Révision Périodique ParachecK®](https://parapente.ffvl.fr/revision-voiles) est le contrôle le plus complet pour évaluer l’état réel de votre aile : porosité et résistance du tissu, résistance des suspentes, contrôle du calage, inspection visuelle approfondie. Un rapport détaillé vous est remis, établi selon le cahier des charges de la charte."
       },
       "security": {
         "title": "Normes et sécurité",
-        "description": "Seule cette révision, exigée par la norme [EN 926-2](https://parapente.ffvl.fr/sites/parapente.ffvl.fr/files/Norme%20CEN%20-%20pr%C3%A9sentation%20EN%20926-2%20cF06%20modif%20AD_0.pdf), vous informe avec certitude de la capacité de votre aile à voler en sécurité à un instant donné. Elle est également recommandée lors de l'achat ou de la vente d'une aile d'occasion."
+        "description": "Seule cette révision, exigée par la norme [EN 926-2](https://parapente.ffvl.fr/sites/parapente.ffvl.fr/files/Norme%20CEN%20-%20pr%C3%A9sentation%20EN%20926-2%20cF06%20modif%20AD_0.pdf), vous informe avec certitude de la capacité de votre aile à voler en sécurité à un instant donné. Elle est également recommandée lors de l’achat ou de la vente d’une aile d’occasion."
       }
     }
   },

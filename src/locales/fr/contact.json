@@ -1,12 +1,12 @@
 {
   "meta": {
     "title": "Contact",
-    "description": "Prenez rendez-vous par téléphone ou SMS. Merci de prévenir avant tout passage à l'atelier."
+    "description": "Prenez rendez-vous par téléphone ou SMS. Merci de prévenir avant tout passage à l’atelier."
   },
   "hero": {
     "tagline": "Contact",
     "title": "Prendre rendez-vous",
-    "subtitle": "Merci de prévenir avant tout passage à l'atelier"
+    "subtitle": "Merci de prévenir avant tout passage à l’atelier"
   },
   "phone": {
     "title": "Par téléphone ou SMS",
@@ -14,10 +14,10 @@
   },
   "address": {
     "title": "Adresse",
-    "cta": "S'y rendre"
+    "cta": "S’y rendre"
   },
   "opening": {
-    "title": "Horaires d'ouverture",
+    "title": "Horaires d’ouverture",
     "description": "Du mardi au samedi, de 9h à 18h"
   },
   "helper": {
@@ -31,12 +31,12 @@
     },
     "rendezVous": {
       "title": "Rendez-vous",
-      "description": "Merci de prévenir avant tout passage à l'atelier pour vous assurer de notre disponibilité."
+      "description": "Merci de prévenir avant tout passage à l’atelier pour vous assurer de notre disponibilité."
     }
   },
   "bonus": {
     "title": "Merci de votre visite !",
-    "description": "C'est un plaisir de vous recevoir à l'atelier. Votre matériel est entre de bonnes mains, Baloo, notre acolyte à quatre pattes, y veille aussi à sa façon.\n\nEn vous souhaitant de très beaux vols !",
+    "description": "C’est un plaisir de vous recevoir à l’atelier. Votre matériel est entre de bonnes mains, Baloo, notre acolyte à quatre pattes, y veille aussi à sa façon.\n\nEn vous souhaitant de très beaux vols !",
     "image": {
       "alt": "Christophe avec son chien Baloo"
     }

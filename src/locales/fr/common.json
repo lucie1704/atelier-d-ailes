@@ -1,6 +1,6 @@
 {
   "onQuote": "Sur devis",
-  "breadcrumbs": "Fil d'Ariane",
+  "breadcrumbs": "Fil d’Ariane",
   "anchors": {
     "reviews": "avis-des-pilotes",
     "repair": "reparation",
@@ -12,7 +12,7 @@
   "header": {
     "links": {
       "home": "Accueil",
-      "services": "Les services de l'atelier",
+      "services": "Les services de l’atelier",
       "guides": "Conseils",
       "pricing": "Tarifs"
     },
@@ -51,8 +51,8 @@
     }
   },
   "cta": {
-    "title": "Besoin d'un service pour votre matériel ?",
-    "subtitle": "L'entretien régulier de votre aile contribue à voler en toute sécurité.\nContactez l'atelier pour toute demande.",
+    "title": "Besoin d’un service pour votre matériel ?",
+    "subtitle": "L’entretien régulier de votre aile contribue à voler en toute sécurité.\nContactez l’atelier pour toute demande.",
     "image": {
       "alt": "Parapente volant dans le ciel bleu"
     },
@@ -77,6 +77,6 @@
     "description": "Atelier de révision et de réparation de parapentes et de matériel de vol libre en Seine-et-Marne."
   },
   "shareImage": {
-    "alt": "Logo de l'Atelier d'ailes, atelier de révision et de réparation de parapentes"
+    "alt": "Logo de l’Atelier d’ailes, atelier de révision et de réparation de parapentes"
   }
 }
