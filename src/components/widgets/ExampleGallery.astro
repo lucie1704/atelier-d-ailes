@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import Headline from '~/components/ui/Headline.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+
+interface ExampleItem {
+  image: ImageMetadata;
+  alt: string;
+  label?: string;
+}
+
+interface Props {
+  title?: string;
+  items: ExampleItem[];
+}
+
+const { title, items } = Astro.props;
+---
+
+<WidgetWrapper>
+  <Headline title={title} />
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+    {items.map(({ image, alt, label }) => <figure class="relative">
+      <Image
+        src={image}
+        alt={alt}
+        widths={[400, 800]}
+        sizes="(min-width: 768px) 33vw, 50vw"
+        class="w-full aspect-square object-cover rounded-lg"
+        loading="lazy"
+      />
+      {label && <figcaption class="absolute left-2 bottom-2 px-2.5 py-1 rounded-full bg-white/90 text-xs font-semibold">
+        {label}
+      </figcaption>}
+    </figure>)}
+  </div>
+</WidgetWrapper>

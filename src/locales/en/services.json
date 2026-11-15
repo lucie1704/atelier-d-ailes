@@ -53,19 +53,30 @@
   },
   "repair": {
     "title": "Wing repair",
-    "description": "Following an incident, repair and return to flying condition of your paraglider or paramotor wing. \n\nTypes of repairs:\n\n- Stitching\n- Panel replacement\n- Profile replacement\n- Full fabric patch\n- Simple fabric patch\n- Self-adhesive patch\n- Sheathed or unsheathed lines\n- Complete line set replacement",
+    "description": "Following an incident, repair and return to flying condition of your paraglider or paramotor wing.\n\nTypes of repairs:",
+    "types": [
+      "Stitching",
+      "Panel replacement",
+      "Profile replacement",
+      "Full fabric patch",
+      "Simple fabric patch",
+      "Self-adhesive patch",
+      "Sheathed or unsheathed lines",
+      "Complete line set replacement"
+    ],
     "image": {
       "alt": "Paraglider line repair in the atelier"
     },
     "examples": {
+      "title": "A few repairs from the atelier",
       "full": {
-        "title": "Full fabric patches (Partial panel)",
+        "label": "Full patch",
         "image": {
           "alt": "Repair with full fabric patch (Partial panel)"
         }
       },
       "simple": {
-        "title": "Simple fabric patches",
+        "label": "Simple patch",
         "image": {
           "alt": "Repair with simple fabric patch"
         }
