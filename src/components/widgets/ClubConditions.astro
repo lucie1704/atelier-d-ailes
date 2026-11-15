@@ -26,7 +26,7 @@ const { id, title, subtitle, services, conditionsTitle, conditions, listTitle, l
 
 <section {...(id && { id })} data-hash-on-view class="bg-slate-50 py-16 scroll-mt-16">
   <div class="max-w-6xl mx-auto px-4 grid gap-12 lg:grid-cols-[5fr_7fr] items-start">
-    <div class="lg:sticky lg:top-24">
+    <div>
       <h2 class="text-3xl md:text-4xl font-bold tracking-tighter font-heading">{title}</h2>
       {subtitle && <p class="mt-4 text-muted text-xl" set:html={subtitle} />}
       <ul class="mt-8 flex flex-wrap gap-2">
