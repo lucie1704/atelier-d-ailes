@@ -49,7 +49,7 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h2 class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl mb-2">
+      <h2 class="text-3xl font-bold tracking-tight text-default dark:text-white sm:text-4xl mb-2">
         {t('services:maintenance.title')}
       </h2>
       <Markdown class="text-muted" content={t('services:maintenance.description')} />
@@ -106,7 +106,9 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl mb-2">{t('services:repair.title')}</h3>
+      <h3 class="text-3xl font-bold tracking-tight text-default dark:text-white sm:text-4xl mb-2">
+        {t('services:repair.title')}
+      </h3>
       <Markdown class="text-muted" content={t('services:repair.description')} />
     </Fragment>
 
@@ -166,7 +168,7 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl mb-2">
+      <h3 class="text-3xl font-bold tracking-tight text-default dark:text-white sm:text-4xl mb-2">
         {t('services:reserveParachutePacking.title')}
       </h3>
       <Markdown class="text-muted" content={t('services:reserveParachutePacking.description')} />
