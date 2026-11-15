@@ -43,6 +43,41 @@
     },
     "from": "From"
   },
+  "club": {
+    "title": "Are you a club?",
+    "subtitle": "Have your members’ wings inspected or repaired in a single drop-off and get <strong>15% off</strong> the atelier’s services, <strong>from 5 wings</strong>.",
+    "services": [
+      "ParachecK® inspection",
+      "Trim measurement",
+      "Individual inspection",
+      "Repair",
+      "Reserve parachute packing",
+      "Harness inspection"
+    ],
+    "conditionsTitle": "Conditions",
+    "conditions": [
+      {
+        "title": "Single invoice",
+        "details": "In the club’s name"
+      },
+      {
+        "title": "Single payment",
+        "details": "By bank transfer from the treasurer"
+      },
+      {
+        "title": "Reports by email",
+        "details": "Sent to the club’s address"
+      },
+      {
+        "title": "5 wings minimum",
+        "details": "Dropped off together"
+      }
+    ],
+    "listTitle": "Prepare your drop-off",
+    "listSubtitle": "For each wing, give the owner’s first and last name, the wing model and the requested service.",
+    "listDownload": "Download the Excel template",
+    "listFile": "club-wing-list-template.xlsx"
+  },
   "tables": {
     "repair": {
       "title": "Repair",

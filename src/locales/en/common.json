@@ -6,7 +6,8 @@
     "repair": "repair",
     "reserveParachutePacking": "reserve-parachute-packing",
     "reserveParachutePackingPriceDetails": "reserve-parachute-packing-price-details",
-    "maintenancePriceDetails": "paracheck-inspection-price-details"
+    "maintenancePriceDetails": "paracheck-inspection-price-details",
+    "clubPricing": "club"
   },
   "header": {
     "links": {

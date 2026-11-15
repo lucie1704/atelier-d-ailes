@@ -3,6 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Prices from '~/components/widgets/Prices.astro';
 import PriceTable from '~/components/widgets/PriceTable.astro';
+import ClubConditions from '~/components/widgets/ClubConditions.astro';
 import { getLocalePath, t } from '~/i18n';
 import BreadcrumbsSEO from '~/components/common/BreadcrumbsSEO.astro';
 
@@ -58,6 +59,12 @@ const maintenancePrices = [
   { title: t('pricing:tables.maintenance.items.twoSeatSheathed'), price: '200' },
   { title: t('pricing:tables.maintenance.items.twoSeatNonSheathed'), price: '220' },
 ];
+
+const clubConditionIcons = ['tabler:receipt', 'tabler:building-bank', 'tabler:mail', 'tabler:stack-2'];
+const clubConditions = t('pricing:club.conditions', { returnObjects: true }).map((condition, index) => ({
+  ...condition,
+  icon: clubConditionIcons[index],
+}));
 
 const parachuteFoldingPrices = [
   { title: t('pricing:tables.parachute.items.singleSeatWithoutHarness'), price: '50' },
@@ -127,5 +134,21 @@ const parachuteFoldingPrices = [
     id={t('anchors.reserveParachutePackingPriceDetails')}
     title={t('pricing:tables.parachute.title')}
     items={parachuteFoldingPrices}
+  />
+
+  <ClubConditions
+    id={t('anchors.clubPricing')}
+    title={t('pricing:club.title')}
+    subtitle={t('pricing:club.subtitle')}
+    services={t('pricing:club.services', { returnObjects: true })}
+    conditionsTitle={t('pricing:club.conditionsTitle')}
+    conditions={clubConditions}
+    listTitle={t('pricing:club.listTitle')}
+    listSubtitle={t('pricing:club.listSubtitle')}
+    listDownload={{
+      text: t('pricing:club.listDownload'),
+      href: `/downloads/${t('pricing:club.listFile')}`,
+      filename: t('pricing:club.listFile'),
+    }}
   />
 </Layout>

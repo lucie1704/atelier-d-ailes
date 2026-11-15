@@ -6,7 +6,8 @@
     "repair": "reparation",
     "reserveParachutePacking": "pliage-parachute-secours",
     "reserveParachutePackingPriceDetails": "pliage-parachute-secours-detail-des-prix",
-    "maintenancePriceDetails": "revision-paracheck-detail-des-prix"
+    "maintenancePriceDetails": "revision-paracheck-detail-des-prix",
+    "clubPricing": "club"
   },
   "header": {
     "links": {

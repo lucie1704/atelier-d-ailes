@@ -43,6 +43,41 @@
     },
     "from": "À partir de"
   },
+  "club": {
+    "title": "Vous êtes un club ?",
+    "subtitle": "Faites réviser ou réparer les voiles de vos membres en un seul dépôt et profitez de <strong>-15%</strong> sur les prestations de l’atelier, <strong>dès 5 voiles</strong>.",
+    "services": [
+      "Révision ParachecK®",
+      "Mesure de calage",
+      "Inspection au détail",
+      "Réparation",
+      "Pliage de parachute de secours",
+      "Inspection de sellette"
+    ],
+    "conditionsTitle": "Conditions",
+    "conditions": [
+      {
+        "title": "Facture unique",
+        "details": "Au nom du club"
+      },
+      {
+        "title": "Un seul règlement",
+        "details": "Par virement du trésorier"
+      },
+      {
+        "title": "Rapports par mail",
+        "details": "Sur l’adresse du club"
+      },
+      {
+        "title": "5 voiles minimum",
+        "details": "Déposées ensemble"
+      }
+    ],
+    "listTitle": "Préparez votre dépôt",
+    "listSubtitle": "Pour chaque voile, indiquez le nom et le prénom du propriétaire, le modèle de la voile et la prestation demandée.",
+    "listDownload": "Télécharger le modèle Excel",
+    "listFile": "modele-liste-voiles-club.xlsx"
+  },
   "tables": {
     "repair": {
       "title": "Réparation",

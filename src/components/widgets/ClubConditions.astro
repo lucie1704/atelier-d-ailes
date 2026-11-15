@@ -1,0 +1,86 @@
+---
+import { Icon } from 'astro-icon/components';
+import Button from '~/components/ui/Button.astro';
+
+interface ClubCondition {
+  title: string;
+  details: string;
+  icon: string;
+}
+
+interface Props {
+  id?: string;
+  title: string;
+  subtitle?: string;
+  services: string[];
+  conditionsTitle: string;
+  conditions: ClubCondition[];
+  listTitle: string;
+  listSubtitle?: string;
+  listDownload: { text: string; href: string; filename: string };
+}
+
+const { id, title, subtitle, services, conditionsTitle, conditions, listTitle, listSubtitle, listDownload } =
+  Astro.props;
+---
+
+<section {...(id && { id })} data-hash-on-view class="bg-slate-50 py-16 scroll-mt-16">
+  <div class="max-w-6xl mx-auto px-4 grid gap-12 lg:grid-cols-[5fr_7fr] items-start">
+    <div class="lg:sticky lg:top-24">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tighter font-heading">{title}</h2>
+      {subtitle && <p class="mt-4 text-muted text-xl" set:html={subtitle} />}
+      <ul class="mt-8 flex flex-wrap gap-2">
+        {services.map((service) => <li
+          class="px-3 py-1.5 rounded-full bg-white border border-gray-200 text-sm font-medium"
+        >
+          {service}
+        </li>)}
+      </ul>
+    </div>
+
+    <div class="space-y-6">
+      <div class="rounded-lg border border-gray-200 shadow-xs bg-white p-6 md:p-8">
+        <h3 class="text-xl font-bold font-heading">{conditionsTitle}</h3>
+        <ul class="mt-6 grid sm:grid-cols-2 gap-6">
+          {conditions.map((condition) => <li class="flex gap-3">
+            <div class="shrink-0 w-10 h-10 rounded-lg bg-green-300/30 text-green-800 flex items-center justify-center">
+              <Icon name={condition.icon} class="w-6 h-6" />
+            </div>
+            <div>
+              <p class="font-semibold">{condition.title}</p>
+              <p class="text-sm text-muted">{condition.details}</p>
+            </div>
+          </li>)}
+        </ul>
+      </div>
+
+      <div class="rounded-lg border border-gray-200 shadow-xs bg-white p-6 md:p-8">
+        <h3 class="text-xl font-bold font-heading">{listTitle}</h3>
+        {listSubtitle && <p class="mt-2 text-muted">{listSubtitle}</p>}
+        <Button href={listDownload.href} download={listDownload.filename} class="mt-6 w-full sm:w-auto">
+          <Icon name="tabler:download" class="w-5 h-5 mr-2 -ml-1.5 shrink-0" />{listDownload.text}
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const sections = document.querySelectorAll<HTMLElement>('section[data-hash-on-view][id]');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const { target, isIntersecting } of entries) {
+        const hash = `#${target.id}`;
+        if (isIntersecting && location.hash !== hash) {
+          history.replaceState(history.state, '', hash);
+        } else if (!isIntersecting && location.hash === hash) {
+          history.replaceState(history.state, '', location.pathname + location.search);
+        }
+      }
+    },
+    { rootMargin: '-50% 0px -50% 0px' }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+</script>
