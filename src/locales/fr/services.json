@@ -53,7 +53,7 @@
   },
   "repair": {
     "title": "Réparation de votre aile",
-    "description": "Suite à un incident, réparation et remise en ordre de vol de votre aile de parapente ou paramoteur.\n\nTypes de réparations :",
+    "description": "Suite à un incident, réparation et remise en ordre de vol de votre aile de parapente ou paramoteur.\n\nTypes de réparations",
     "types": [
       "Couture",
       "Changement de panneau",
